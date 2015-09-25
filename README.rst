@@ -35,8 +35,6 @@ Quick start
 
   Also add the following settings::
   
-	# Email address for logging in to NASA GPM FTP server
-	GPM_ACCOUNT = 'Enter your GPM email address'
 	#Location of GeoServer data directory
 	GS_DATA_DIR = '/usr/share/geoserver/data'
 	#Directory where temporary data_queues geoprocessing files should be downloaded
