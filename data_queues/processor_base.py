@@ -3,6 +3,7 @@ from __future__ import absolute_import
 import glob
 import json
 import logging
+from time import sleep
 from geoserver.catalog import Catalog
 import os
 import datetime
@@ -66,7 +67,6 @@ class GeoDataProcessor(object):
                      'threadCount': 4
                      }
                 })
-
         res = requests.post(url=gwc_url, data=truncate_json,
                            auth=(_user, _password), headers={"Content-type": "application/json"})
         res.raise_for_status()
