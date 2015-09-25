@@ -9,7 +9,7 @@ import shutil
 from ..processor_base import GeoDataMosaicProcessor
 from ..helpers import gdal_translate
 
-logger = logging.getLogger("geonodegp.data_queues.processors")
+logger = logging.getLogger("data_queues.processors")
 
 GS_DATA_DIR = getattr(settings, 'GS_DATA_DIR', '/data/geodata')
 
