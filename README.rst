@@ -15,10 +15,11 @@ Quick start
         ...
         'data_queues',
     )
+    
 2. In your settings.py or local_settings.py file, add a CELERYBEAT_SCHEDULE
-   setting to specify when Celery should run data_queues tasks:
+   setting to specify when Celery should run data_queues tasks::
    
-   from celery.schedules import crontab
+   	from celery.schedules import crontab
 	CELERYBEAT_SCHEDULE = {
 	    'gfms': {
 	        'task': 'data_queues.gfms.tasks.gfms_task',
@@ -32,9 +33,8 @@ Quick start
 	    },
 	}
 
-  Also add the following settings:
-	# Email address for logging in to NASA GPM FTP server
-	GPM_ACCOUNT = 'Enter your GPM email address'
+  Also add the following settings::
+  
 	#Location of GeoServer data directory
 	GS_DATA_DIR = '/usr/share/geoserver/data'
 	#Directory where temporary data_queues geoprocessing files should be downloaded
