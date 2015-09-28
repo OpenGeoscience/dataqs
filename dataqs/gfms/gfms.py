@@ -11,7 +11,7 @@ from ..helpers import gdal_translate
 from ..processor_base import GeoDataProcessor
 
 
-logger = logging.getLogger("data_queues.processors")
+logger = logging.getLogger("dataqs.processors")
 
 
 class GFMSProcessor(GeoDataProcessor):

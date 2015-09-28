@@ -2,18 +2,20 @@
 Data Queues
 =====
 
-Data Queues is a simple Django app to download, process, 
+dataqs (Data Queues) is a simple Django app to download, process,
 and import spatial data into GeoServer/GeoNode.
 
 
 Quick start
 -----------
 
-1. Add "data_queues" to your INSTALLED_APPS setting like this::
+1. Add "dataqs" to your INSTALLED_APPS setting like this::
 
     INSTALLED_APPS = (
         ...
-        'data_queues',
+        'dataqs',
+        'dataqs.forecastio',
+        'dataqs.gfms',
     )
     
 2. In your settings.py or local_settings.py file, add a CELERYBEAT_SCHEDULE
@@ -22,12 +24,12 @@ Quick start
    	from celery.schedules import crontab
 	CELERYBEAT_SCHEDULE = {
 	    'gfms': {
-	        'task': 'data_queues.gfms.tasks.gfms_task',
+	        'task': 'dataqs.gfms.tasks.gfms_task',
 	        'schedule': crontab(minute='3'),
 	        'args': ()
 	    },
 	    'forecast_io': {
-	        'task': 'data_queues.forecastio.tasks.forecast_io_task',
+	        'task': 'dataqs.forecastio.tasks.forecast_io_task',
 	        'schedule': crontab(minute='1'),
 	        'args': ()
 	    },
@@ -37,7 +39,7 @@ Quick start
   
 	#Location of GeoServer data directory
 	GS_DATA_DIR = '/usr/share/geoserver/data'
-	#Directory where temporary data_queues geoprocessing files should be downloaded
+	#Directory where temporary dataqs geoprocessing files should be downloaded
 	GS_TMP_DIR = GS_DATA_DIR + '/tmp'
 	#Time to wait before updating Geoserver mosaic (keep at 0 unless Geoserver is on a different server.
 	#In that case, there will need to be an automated rsync between GS_TMP_DIR where celery is running and
