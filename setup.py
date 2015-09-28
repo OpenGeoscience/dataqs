@@ -8,9 +8,9 @@ with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
-    name='data_queues',
+    name='dataqs',
     version='0.1',
-    packages=['data_queues'],
+    packages=['dataqs'],
     include_package_data=True,
     license='BSD License',  # example license
     description='A simple GeoNode app to download, process, and import spatial data into PostGIS.',
