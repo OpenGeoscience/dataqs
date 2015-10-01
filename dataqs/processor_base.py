@@ -70,6 +70,7 @@ class GeoDataProcessor(object):
     """
 
     gs_url = "http://{}:8080/geoserver/rest/workspaces/{}/coveragestores/{}/file.geotiff"
+    gs_vec_url = "http://{}:8080/geoserver/rest/workspaces/{}/datastores/{}/featuretypes"
 
     def __init__(self, workspace=DEFAULT_WORKSPACE, tmp_dir=GS_TMP_DIR, **kwargs):
         self.workspace = workspace
@@ -140,6 +141,25 @@ class GeoDataProcessor(object):
         res.raise_for_status()
         return res.content
 
+    def post_geoserver_vector(self, layer_name):
+        """
+        Add a PostGIS table into GeoServer as a layer
+        :param layer_name:
+        :return:
+        """
+        gs_url = self.gs_vec_url.format(ogc_server_settings.hostname,
+                                        self.workspace,
+                                        ogc_server_settings.DATASTORE)
+        data = "<featureType><name>{}</name></featureType>".format(layer_name)
+        _user, _password = ogc_server_settings.credentials
+        res = requests.post(url=gs_url,
+                            data=data,
+                            auth=(_user, _password),
+                            headers={'Content-Type': 'text/xml'})
+
+        res.raise_for_status()
+        return res.content
+
     def update_geonode(self, layer_name, title="", bounds=None):
         """
         Update a layer and it's title in GeoNode
@@ -167,9 +187,11 @@ class GeoDataProcessor(object):
 
     def cleanup(self):
         """
-        Remove any files in the temp directory matching the processor class prefix
+        Remove any files in the temp directory matching
+        the processor class prefix
         """
-        filelist = glob.glob("{}*.*".format(os.path.join(self.tmp_dir, self.prefix)))
+        filelist = glob.glob("{}*.*".format(
+            os.path.join(self.tmp_dir, self.prefix)))
         for f in filelist:
             os.remove(f)
 

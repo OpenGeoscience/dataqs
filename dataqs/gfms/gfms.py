@@ -43,7 +43,8 @@ class GFMSProcessor(GeoDataProcessor):
         today  = datetime.datetime.now()
         month = today.strftime("%m")
         year = today.strftime("%Y")
-        base_url = self.base_url + "{year}/{year}{month}".format(year=year, month=month)
+        base_url = self.base_url + "{year}/{year}{month}".format(
+            year=year, month=month)
 
         r = requests.get(base_url)
         html = bs(r.text)
@@ -53,7 +54,8 @@ class GFMSProcessor(GeoDataProcessor):
 
     def get_most_current(self):
         """
-        Get the URL for the image of projected flood intensity, closest to current date/time
+        Get the URL for the image of projected flood intensity,
+        closest to current date/time
         :return: URL of the current image
         """
         today = datetime.datetime.utcnow()
@@ -68,16 +70,18 @@ class GFMSProcessor(GeoDataProcessor):
             hour = int(hour) - (int(hour) % 3)
         hour = '{0:02d}'.format(hour)
 
-        base_url = self.base_url + "{year}/{year}{month}".format(year=year, month=month)
-        latest_img = "{prefix}{year}{month}{day}{hour}.bin".format(prefix=self.prefix, year=year,
-                                                                   month=month, day=day, hour=hour)
+        base_url = self.base_url + "{year}/{year}{month}".format(
+            year=year, month=month)
+        latest_img = "{prefix}{year}{month}{day}{hour}.bin".format(
+            prefix=self.prefix, year=year, month=month, day=day, hour=hour)
         img_url = "{}/{}".format(base_url, latest_img)
         return img_url
 
     def convert(self, img_file):
         """
         Convert a raw GFMS image into a GeoTIFF
-        :param img_file: Name of raw image file from GFMS (assumed to be in temp directory)
+        :param img_file: Name of raw image file from GFMS
+        (assumed to be in temp directory)
         :return: Name of converted GeoTIFF file
         """
         basename = os.path.splitext(img_file)[0]
@@ -88,7 +92,8 @@ class GFMSProcessor(GeoDataProcessor):
         infile = open(os.path.join(self.tmp_dir, img_file), "rb")
 
         try:
-            coords = struct.unpack('f'*self.rows*self.cols, infile.read(4*self.rows*self.cols))
+            coords = struct.unpack('f'*self.rows*self.cols,
+                                   infile.read(4*self.rows*self.cols))
             outfile.write(self.header)
 
             for idx, value in enumerate(coords):
@@ -101,7 +106,8 @@ class GFMSProcessor(GeoDataProcessor):
             outfile.close()
             infile.close()
 
-        gdal_translate(os.path.join(self.tmp_dir, aig_file), os.path.join(self.tmp_dir, tif_file),
+        gdal_translate(os.path.join(self.tmp_dir, aig_file),
+                       os.path.join(self.tmp_dir, tif_file),
                        projection="EPSG:4326")
         return tif_file
 
@@ -112,8 +118,10 @@ class GFMSProcessor(GeoDataProcessor):
         :return: New title for layer
         """
         latest_img_datestamp = re.findall("\d+", tif_file)[0]
-        latest_img_date = datetime.datetime.strptime(latest_img_datestamp, '%Y%m%d%H')
-        return "Flood Detection/Intensity - {}".format(latest_img_date.strftime("%m-%d-%Y %H:%M UTC"))
+        latest_img_date = datetime.datetime.strptime(
+            latest_img_datestamp, '%Y%m%d%H')
+        return "Flood Detection/Intensity - {}".format(
+            latest_img_date.strftime("%m-%d-%Y %H:%M UTC"))
 
     def import_future(self):
         """

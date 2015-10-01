@@ -131,7 +131,7 @@ def ogr2ogr_exec(argstring):
             sys.stdout = old_stdout
 
 
-def postgres_query(query, commit=False, returnable=False):
+def postgres_query(query, commit=False, returnable=False, params=None):
     """
     Execute a PostgreSQL query
     :param query: Query string to execute
@@ -149,7 +149,7 @@ def postgres_query(query, commit=False, returnable=False):
     conn = psycopg2.connect(conn_string)
     cur = conn.cursor()
     try:
-        cur.execute(query)
+        cur.execute(query, params)
         if returnable:
             return cur.fetchall()
         if commit:
@@ -158,6 +158,21 @@ def postgres_query(query, commit=False, returnable=False):
     finally:
         cur.close()
         conn.close()
+
+
+def table_exists(self, tablename):
+    """
+    Determine if a table/view already exists
+    :param tablename:
+    :return:
+    """
+    db_query = postgres_query("SELECT EXISTS " +
+                              "(SELECT 1 FROM information_schema.tables " +
+                              "WHERE table_name = '{}');".format(tablename),
+                              returnable=True)
+    if db_query and db_query[0][0]:
+        return True
+    return False
 
 
 def gdal_band_subset(infile, bands, dst_filename, dst_format="GTiff"):
