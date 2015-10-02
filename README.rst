@@ -16,6 +16,8 @@ Quick start
         'dataqs',
         'dataqs.forecastio',
         'dataqs.gfms',
+        'dataqs.airnow',
+        'dataqs.wqp',
     )
     
 2. In your settings.py or local_settings.py file, add a CELERYBEAT_SCHEDULE

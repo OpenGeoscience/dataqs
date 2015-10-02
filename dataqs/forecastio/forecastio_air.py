@@ -20,7 +20,7 @@ class ForecastIOAirTempProcessor(GeoDataMosaicProcessor):
     geotiff from forecast.io (http://forecast.io/quicksilver/)
     """
     prefix = "forecast_io_airtemp"
-    base_url = "http://maps.forecast.io/temperature"
+    base_url = "http://maps.forecast.io/temperature/"
     layer_name = "forecast_io_airtemp"
 
     def parse_name(self, img_date):
@@ -28,6 +28,22 @@ class ForecastIOAirTempProcessor(GeoDataMosaicProcessor):
         layer_title = "Global (near-surface) Air Temperature - {} UTC".format(
             imgstrtime)
         return layer_title
+
+    def convert(self, dl_file, imgtime):
+        """
+        Set the correct projection on the image and save as a GeoTIFF.
+        """
+        tif_file = "{prefix}_{year}{month}{day}T{hour}0000000Z.tif".format(
+            prefix=self.prefix,
+            year=str(imgtime.year),
+            month='{0:02d}'.format(imgtime.month),
+            day='{0:02d}'.format(imgtime.day), hour='{0:02d}'.format(
+                imgtime.hour))
+        gdal_translate(os.path.join(self.tmp_dir, dl_file),
+                       os.path.join(self.tmp_dir, tif_file),
+                       projection='EPSG:4326',
+                       options=['COMPRESS=DEFLATE'])
+        return tif_file
 
     def run(self, now=None):
         """
@@ -41,7 +57,7 @@ class ForecastIOAirTempProcessor(GeoDataMosaicProcessor):
             hour='{0:02d}'.format(now.hour))
         try:
             raw_file = self.download(
-                "{url}/{year}/{month}/{day}/{hour}.tif".format(
+                "{url}{year}/{month}/{day}/{hour}.tif".format(
                     url=self.base_url,
                     year=str(now.year),
                     month='{0:02d}'.format(now.month),
@@ -51,22 +67,14 @@ class ForecastIOAirTempProcessor(GeoDataMosaicProcessor):
             # Try the previous hour:
             now = now - datetime.timedelta(hours=1)
             raw_file = self.download(
-                "{url}/{year}/{month}/{day}/{hour}.tif".format(
+                "{url}{year}/{month}/{day}/{hour}.tif".format(
                     url=self.base_url,
                     year=str(now.year),
                     month='{0:02d}'.format(now.month),
                     day='{0:02d}'.format(now.day),
                     hour='{0:02d}'.format(now.hour)), raw_name)
 
-        tif_file = "{prefix}_{year}{month}{day}T{hour}0000000Z.tif".format(
-            prefix=self.prefix,
-            year=str(now.year),
-            month='{0:02d}'.format(now.month),
-            day='{0:02d}'.format(now.day), hour='{0:02d}'.format(now.hour))
-        gdal_translate(os.path.join(self.tmp_dir, raw_file),
-                       os.path.join(self.tmp_dir, tif_file),
-                       projection='EPSG:4326',
-                       options=['COMPRESS=DEFLATE'])
+        tif_file = self.convert(raw_file, now)
 
         dst_file = self.data_dir.format(gsd=GS_DATA_DIR, ws=self.workspace,
                                         layer=self.layer_name, file=tif_file)

@@ -316,7 +316,7 @@ class GeoDataMosaicProcessor(GeoDataProcessor):
         fc = json.loads(r.content)
         for feature in fc['features']:
             dst_file = self.data_dir.format(
-                gsd=self.tmp_dir, ws=self.workspace,
+                gsd=GS_DATA_DIR, ws=self.workspace,
                 layer=layer_name, file=feature['properties']['location'])
             if os.path.isfile(dst_file):
                 os.remove(dst_file)

@@ -287,7 +287,7 @@ class WaterQualityPortalProcessor(GeoDataProcessor):
                     indicator, datetime.datetime.now().strftime('%Y-%m-%d'))
                 self.update_geonode(layer_name, title=layer_title)
                 self.truncate_gs_cache(layer_name)
-
+        self.cleanup()
 
 
 if __name__ == '__main__':
