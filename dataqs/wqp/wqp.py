@@ -10,8 +10,8 @@ import itertools
 import requests
 from bs4 import BeautifulSoup as bs
 from dataqs.helpers import gdal_translate, postgres_query, ogr2ogr_exec, \
-    table_exists, purge_old_data
-from dataqs.processor_base import GeoDataProcessor
+    table_exists, purge_old_data, layer_exists
+from dataqs.processor_base import GeoDataProcessor, DEFAULT_WORKSPACE
 import unicodecsv as csv
 from geonode.geoserver.helpers import ogc_server_settings
 
@@ -283,8 +283,12 @@ class WaterQualityPortalProcessor(GeoDataProcessor):
             if os.path.getsize(os.path.join(self.tmp_dir, result_csv)) > 0:
                 self.update_indicator_table(result_csv)
                 layer_name = self.prefix + self.safe_name(indicator) + self.suffix
-                layer_title = 'Water Quality - {} -{}'.format(
+                layer_title = 'Water Quality - {} - Updated {}'.format(
                     indicator, datetime.datetime.now().strftime('%Y-%m-%d'))
+                if not layer_exists(layer_name,
+                                    ogc_server_settings.server.get('DATASTORE'),
+                                    DEFAULT_WORKSPACE):
+                    self.post_geoserver_vector(layer_name)
                 self.update_geonode(layer_name, title=layer_title)
                 self.truncate_gs_cache(layer_name)
         self.cleanup()
