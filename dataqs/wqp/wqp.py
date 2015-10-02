@@ -10,7 +10,7 @@ import itertools
 import requests
 from bs4 import BeautifulSoup as bs
 from dataqs.helpers import gdal_translate, postgres_query, ogr2ogr_exec, \
-    table_exists
+    table_exists, purge_old_data
 from dataqs.processor_base import GeoDataProcessor
 import unicodecsv as csv
 from geonode.geoserver.helpers import ogc_server_settings
@@ -26,10 +26,10 @@ CREATE_RESULTS_TABLE_SQL = """CREATE TABLE IF NOT EXISTS {tablename}
 "ActivityTypeCode" character varying,
 "ActivityMediaName" character varying,
 "ActivityMediaSubdivisionName" character varying,
-"ActivityStartDate" character varying,
+"ActivityStartDate" timestamp with time zone,
 "ActivityStartTime_Time" character varying,
 "ActivityStartTime_TimeZoneCode" character varying,
-"ActivityEndDate" character varying,
+"ActivityEndDate" timestamp with time zone,
 "ActivityEndTime_Time" character varying,
 "ActivityEndTime_TimeZoneCode" character varying,
 "ActivityDepthHeightMeasure_MeasureValue" float,
@@ -83,8 +83,6 @@ CREATE_RESULTS_TABLE_SQL = """CREATE TABLE IF NOT EXISTS {tablename}
 "DetectionQuantitationLimitMeasure_MeasureUnitCode" character varying,
 "PreparationStartDate" character varying,
 "ProviderName" character varying,
-"ActivityStartTimeStamp" timestamp with time zone,
-"ActivityEndTimeStamp" timestamp with time zone,
 CONSTRAINT wqp_{tablename}_pkey PRIMARY KEY ("ActivityIdentifier")
 )"""
 
@@ -97,7 +95,8 @@ class WaterQualityPortalProcessor(GeoDataProcessor):
     and the National Water Quality Monitoring Council (NWQMC).
     """
 
-    days = 7
+    days = 1
+    days_to_keep = 90
     indicators = ['pH',
                   'Oxygen',
                   'Temperature, water',
@@ -117,6 +116,8 @@ class WaterQualityPortalProcessor(GeoDataProcessor):
         super(WaterQualityPortalProcessor, self).__init__(*args, **kwargs)
         if 'indicators' in kwargs.keys():
             self.indicators = kwargs['indicators']
+        if 'days_to_keep' in kwargs.keys():
+            self.days_to_keep = kwargs['days_to_keep']
 
     def update_station_table(self, csvfile):
         """
@@ -195,6 +196,7 @@ class WaterQualityPortalProcessor(GeoDataProcessor):
                     for i, val in enumerate(row):
                         attribute = headers[i].strip('"')
                         id_idx = headers.index('"ActivityIdentifier"')
+                        query_format.append("%s")
                         if attribute in date_cols and val:
                             time_idx = headers.index(
                                 '"{}_Time"'.format(
@@ -204,11 +206,11 @@ class WaterQualityPortalProcessor(GeoDataProcessor):
                                     attribute.replace("Date", "Time")))
                             time_str = "{} {} {}".format(
                                 val, row[time_idx], row[zone_idx])
-                            query_format.append(
-                                "CAST(%s as timestamp with time zone)")
+                            # query_format.append(
+                            #     "CAST(%s as timestamp with time zone)")
                             row[i] = time_str
                         else:
-                            query_format.append("%s")
+
                             if not val:
                                 row[i] = None
                     insert_sql += '{}'.format(
@@ -217,6 +219,7 @@ class WaterQualityPortalProcessor(GeoDataProcessor):
                         '{} WHERE "ActivityIdentifier" = \'{}\');'.format(
                             indicator, row[id_idx])
                     postgres_query(insert_sql, params=tuple(row), commit=True)
+        purge_old_data(indicator, date_cols[0], self.days_to_keep)
         if not table_exists(indicator + self.suffix):
             view_sql = 'CREATE OR REPLACE VIEW ' + indicator + self.suffix + \
                 ' AS SELECT i.*, g.wkb_geometry from ' + indicator + ' i ' + \

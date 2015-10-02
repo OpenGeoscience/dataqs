@@ -11,6 +11,7 @@ import datetime
 import requests
 from django.conf import settings
 import shutil
+from dataqs.helpers import postgres_query
 from geonode.geoserver.helpers import ogc_server_settings
 from geonode.geoserver.management.commands.updatelayers import Command \
     as UpdateLayersCommand
@@ -157,7 +158,7 @@ class GeoDataProcessor(object):
                             auth=(_user, _password),
                             headers={'Content-Type': 'text/xml'})
 
-        res.raise_for_status()
+        #res.raise_for_status()
         return res.content
 
     def update_geonode(self, layer_name, title="", bounds=None):

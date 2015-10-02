@@ -1,3 +1,4 @@
+import datetime
 import os
 import subprocess
 import psycopg2
@@ -160,7 +161,17 @@ def postgres_query(query, commit=False, returnable=False, params=None):
         conn.close()
 
 
-def table_exists(self, tablename):
+def purge_old_data(table, datefield, days):
+    """
+    Remove data older than x days from a table
+    """
+    today = datetime.date.today()
+    cutoff = (today - datetime.timedelta(days=days)).strftime("%Y-%m-%d 00:00:00")
+    postgres_query('DELETE FROM {} where CAST("{}" as timestamp) < %s;'.format(
+        table, datefield), commit=True, params=(cutoff,))
+
+
+def table_exists(tablename):
     """
     Determine if a table/view already exists
     :param tablename:
