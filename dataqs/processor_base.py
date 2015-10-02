@@ -4,6 +4,7 @@ import glob
 import json
 import logging
 from time import sleep
+from urlparse import urljoin
 from zipfile import ZipFile
 from geoserver.catalog import Catalog
 import os
@@ -11,6 +12,7 @@ import datetime
 import requests
 from django.conf import settings
 import shutil
+from requests.packages.urllib3.exceptions import HTTPError
 from dataqs.helpers import postgres_query
 from geonode.geoserver.helpers import ogc_server_settings
 from geonode.geoserver.management.commands.updatelayers import Command \
@@ -23,7 +25,7 @@ GS_DATA_DIR = getattr(settings, 'GS_DATA_DIR', '/data/geodata')
 GS_TMP_DIR = getattr(settings, 'GS_TMP_DIR', '/tmp')
 RSYNC_WAIT_TIME = getattr(settings, 'RSYNC_WAIT_TIME', 0)
 
-GPMOSAIC_COVERAGE_JSON="""{
+GPMOSAIC_COVERAGE_JSON = """{
     "coverage": {
         "enabled": true,
         "metadata": {
@@ -42,7 +44,7 @@ GPMOSAIC_COVERAGE_JSON="""{
     }
 }"""
 
-GPMOSAIC_DS_PROPERTIES="""SPI=org.geotools.data.postgis.PostgisNGDataStoreFactory
+GPMOSAIC_DS_PROPERTIES = """SPI=org.geotools.data.postgis.PostgisNGDataStoreFactory
 host=localhost
 port=5432
 database={db_data_instance}
@@ -56,9 +58,9 @@ Connection\ timeout=10
 preparedStatements=true
 """
 
-GPMOSAIC_TIME_REGEX="regex=[0-9]{8}T[0-9]{9}Z"
+GPMOSAIC_TIME_REGEX = "regex=[0-9]{8}T[0-9]{9}Z"
 
-GPMOSAIC_INDEXER_PROP="""TimeAttribute=ingestion
+GPMOSAIC_INDEXER_PROP = """TimeAttribute=ingestion
 Schema=*the_geom:Polygon,location:String,ingestion:java.util.Date
 PropertyCollectors=TimestampFileNameExtractorSPI[timeregex](ingestion)
 """
@@ -72,8 +74,10 @@ class GeoDataProcessor(object):
 
     gs_url = "http://{}:8080/geoserver/rest/workspaces/{}/coveragestores/{}/file.geotiff"
     gs_vec_url = "http://{}:8080/geoserver/rest/workspaces/{}/datastores/{}/featuretypes"
+    gs_style_url = "http://{}:8080/geoserver/rest/styles/"
 
-    def __init__(self, workspace=DEFAULT_WORKSPACE, tmp_dir=GS_TMP_DIR, **kwargs):
+    def __init__(self, workspace=DEFAULT_WORKSPACE, tmp_dir=GS_TMP_DIR,
+                 **kwargs):
         self.workspace = workspace
         self.tmp_dir = tmp_dir
         if not os.path.exists(tmp_dir):
@@ -93,7 +97,7 @@ class GeoDataProcessor(object):
         r = requests.get(url, stream=True)
         with open(os.path.join(self.tmp_dir, filename), 'wb') as out_file:
             for chunk in r.iter_content(chunk_size=1024):
-                if chunk: # filter out keep-alive new chunks
+                if chunk:  # filter out keep-alive new chunks
                     out_file.write(chunk)
                     out_file.flush()
         r.raise_for_status()
@@ -107,15 +111,16 @@ class GeoDataProcessor(object):
             layer=layer_name
         )
         truncate_json = json.dumps({'seedRequest':
-                    {'name': 'geonode:{}'.format(layer_name),
-                     'srs': {'number': 900913},
-                     'zoomStart': 0,
-                     'zoomStop': 19,
-                     'format': 'image/png',
-                     'type': 'truncate',
-                     'threadCount': 4
-                     }
-                })
+                                        {'name': 'geonode:{}'.format(
+                                            layer_name),
+                                         'srs': {'number': 900913},
+                                         'zoomStart': 0,
+                                         'zoomStop': 19,
+                                         'format': 'image/png',
+                                         'type': 'truncate',
+                                         'threadCount': 4
+                                         }
+                                    })
         res = requests.post(url=gwc_url, data=truncate_json,
                             auth=(_user, _password),
                             headers={"Content-type": "application/json"})
@@ -135,22 +140,22 @@ class GeoDataProcessor(object):
             data = tif_binary.read()
         _user, _password = ogc_server_settings.credentials
         res = requests.put(url=gs_url,
-                            data=data,
-                            auth=(_user, _password),
-                            headers={'Content-Type': 'image/tif'})
+                           data=data,
+                           auth=(_user, _password),
+                           headers={'Content-Type': 'image/tif'})
 
         res.raise_for_status()
         return res.content
 
-    def post_geoserver_vector(self, layer_name):
+    def post_geoserver_vector(self, layer_name,
+                              store=ogc_server_settings.DATASTORE):
         """
         Add a PostGIS table into GeoServer as a layer
         :param layer_name:
         :return:
         """
         gs_url = self.gs_vec_url.format(ogc_server_settings.hostname,
-                                        self.workspace,
-                                        ogc_server_settings.DATASTORE)
+                                        self.workspace, store)
         data = "<featureType><name>{}</name></featureType>".format(layer_name)
         _user, _password = ogc_server_settings.credentials
         res = requests.post(url=gs_url,
@@ -158,7 +163,7 @@ class GeoDataProcessor(object):
                             auth=(_user, _password),
                             headers={'Content-Type': 'text/xml'})
 
-        #res.raise_for_status()
+        res.raise_for_status()
         return res.content
 
     def update_geonode(self, layer_name, title="", bounds=None):
@@ -185,6 +190,52 @@ class GeoDataProcessor(object):
                 gs_catalog = Catalog(url, _user, _password)
                 gs_catalog.save(res)
 
+    def set_default_style(self, layer_name, sld_name, sld_content):
+        """
+        Create a style and assign it as default to a layer
+        :param layer_name: the layer to assign the style to
+        :param sld_name: the name to give the style
+        :param sld_content: the actual XML content for the style
+        :return: None
+        """
+        gs_url = self.gs_style_url.format(ogc_server_settings.hostname)
+
+        # Create the style
+        data = "<style><name>{name}</name><filename>{name}.sld</filename></style>".format(
+            name=sld_name)
+        _user, _password = ogc_server_settings.credentials
+        res = requests.post(url=gs_url,
+                            data=data,
+                            auth=(_user, _password),
+                            headers={'Content-Type': 'text/xml'})
+
+        res.raise_for_status()
+
+        # Populate the style
+        data = sld_content
+        url = urljoin(gs_url, sld_name)
+        print url
+        res = requests.put(url=url,
+                           data=data,
+                           auth=(_user, _password),
+                           headers={'Content-Type':
+                                        'application/vnd.ogc.sld+xml'})
+
+        res.raise_for_status()
+
+        # Assign to the layer
+        layer_typename = "{}%3A{}".format(DEFAULT_WORKSPACE, layer_name)
+        data = '<layer><defaultStyle><name>{}</name></defaultStyle></layer>'.format(
+            sld_name)
+        url = urljoin(gs_url.replace("styles", "layers"), layer_typename)
+        print url
+        res = requests.put(
+            url=url,
+            data=data,
+            auth=(_user, _password),
+            headers={'Content-Type': 'text/xml'})
+
+        res.raise_for_status()
 
     def cleanup(self):
         """
@@ -208,7 +259,8 @@ class GeoDataMosaicProcessor(GeoDataProcessor):
     """
 
     gs_url = "http://{}:8080/geoserver/rest/workspaces/{}/coveragestores/{}/external.imagemosaic"
-    mosaic_url = gs_url.replace('external.imagemosaic', 'coverages/{}/index/granules')
+    mosaic_url = gs_url.replace('external.imagemosaic',
+                                'coverages/{}/index/granules')
     create_url = gs_url.replace('external.imagemosaic', 'file.imagemosaic')
 
     archive_hours = ("T12:00:00.000Z",)
@@ -242,11 +294,20 @@ class GeoDataMosaicProcessor(GeoDataProcessor):
                             data=data,
                             auth=(_user, _password),
                             headers={'Content-Type': 'text/plain'})
-
-        res.raise_for_status()
-        return res.content
+        if res.status_code == 405:
+            logger.warn("Mosaic may not exist, try to create it")
+            self.create_mosaic(layer_name, filepath)
+        else:
+            res.raise_for_status()
 
     def remove_mosaic_granules(self, mosaic_url, mosaic_query, layer_name):
+        """
+        Remove granules from an image mosaic based on query parameters
+        :param mosaic_url: The base image mosaic REST URL
+        :param mosaic_query: Query specifying which granules to remove
+        :param layer_name: The name of the image mosaic layer
+        :return: None
+        """
         _user, _password = ogc_server_settings.credentials
         r = requests.get("{url}.json?filter={query}".format(
             url=mosaic_url, query=mosaic_query),
@@ -255,7 +316,7 @@ class GeoDataMosaicProcessor(GeoDataProcessor):
         fc = json.loads(r.content)
         for feature in fc['features']:
             dst_file = self.data_dir.format(
-                gsd=GS_DATA_DIR, ws=self.workspace,
+                gsd=self.tmp_dir, ws=self.workspace,
                 layer=layer_name, file=feature['properties']['location'])
             if os.path.isfile(dst_file):
                 os.remove(dst_file)
@@ -272,7 +333,7 @@ class GeoDataMosaicProcessor(GeoDataProcessor):
         morn = nowtime.strftime("%Y-%m-%dT00:00:00.000Z")
         archive_query = ""
 
-        #Remove today's old images
+        # Remove today's old images
         for hour in self.archive_hours:
             archive_query += (" AND ingestion<>" +
                               nowtime.strftime("%Y-%m-%d{}".format(hour)))
@@ -282,10 +343,10 @@ class GeoDataMosaicProcessor(GeoDataProcessor):
                                                   layer_name)
         mosaic_query = (
             "ingestion<{now} AND ingestion>={morn}{archive_query}".format(
-            now=today, morn=morn, archive_query=archive_query))
+                now=today, morn=morn, archive_query=archive_query))
         self.remove_mosaic_granules(mosaic_index_url, mosaic_query, layer_name)
 
-        #Remove yesterday's old images if any remaining
+        # Remove yesterday's old images if any remaining
         yesterday = nowtime - datetime.timedelta(days=1)
         archive_query = ""
         for hour in self.archive_hours:
@@ -297,7 +358,6 @@ class GeoDataMosaicProcessor(GeoDataProcessor):
                 archive=archive_query,
                 yestermorn=yesterday.strftime("%Y-%m-%dT00:00:00.000Z")))
         self.remove_mosaic_granules(mosaic_index_url, mosaic_query, layer_name)
-
 
     def drop_old_daily_images(self, nowtime, layer_name):
         """
@@ -336,7 +396,7 @@ class GeoDataMosaicProcessor(GeoDataProcessor):
                 with open(dsprop_file, 'w') as datastore_prop:
                     db = ogc_server_settings.datastore_db
                     properties = GPMOSAIC_DS_PROPERTIES.format(
-                        db_data_instance=db['HOST'],
+                        db_data_instance=db['NAME'],
                         db_user=db['USER'],
                         db_password=db['PASSWORD']
                     )
@@ -354,10 +414,8 @@ class GeoDataMosaicProcessor(GeoDataProcessor):
                 zipFile.write(idxprop_file, 'indexer.properties')
             return zip_archive
         except Exception as e:
-            os.remove(zip_archive)
-            raise e
-        finally:
             shutil.rmtree(tmp_dir)
+            raise e
 
     def create_mosaic(self, layer_name, img_file):
         """
@@ -386,4 +444,5 @@ class GeoDataMosaicProcessor(GeoDataProcessor):
                                    headers={'Content-Type': 'application/json'})
                 res.raise_for_status()
         finally:
-            os.remove(ziploc)
+            if os.path.exists(ziploc):
+                shutil.rmtree(os.path.dirname(ziploc))
