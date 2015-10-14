@@ -39,6 +39,7 @@ setup(
       'unicodecsv',
       'shapely',
       'pymongo',
-      'numpy'
+      'numpy',
+      'rasterio',
     ]
 )

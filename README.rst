@@ -16,6 +16,8 @@ Quick start
         'dataqs',
         'dataqs.forecastio',
         'dataqs.gfms',
+        'dataqs.airnow',
+        'dataqs.wqp',
     )
     
 2. In your settings.py or local_settings.py file, add a CELERYBEAT_SCHEDULE
@@ -39,9 +41,16 @@ Quick start
   
 	#Location of GeoServer data directory
 	GS_DATA_DIR = '/usr/share/geoserver/data'
+
 	#Directory where temporary dataqs geoprocessing files should be downloaded
 	GS_TMP_DIR = GS_DATA_DIR + '/tmp'
-	#Time to wait before updating Geoserver mosaic (keep at 0 unless Geoserver is on a different server.
-	#In that case, there will need to be an automated rsync between GS_TMP_DIR where celery is running and
+
+	#AirNow API username:password
+	#(sign up for a free account at http://airnowapi.org/account/request/)
+	AIRNOW_ACCOUNT = 'your_airnow_username:your_airnow_password'
+
+	#Time to wait before updating Geoserver mosaic (keep at 0 unless Geoserver
+	#is on a different server. In that case, there will need to be an automated
+	#rsync between GS_TMP_DIR where celery is running and
 	#GS_DATA_DIR where GeoServer is running.
 	RSYNC_WAIT_TIME = 0
