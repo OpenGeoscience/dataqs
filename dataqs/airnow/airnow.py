@@ -7,7 +7,6 @@ import datetime
 import re
 import shutil
 from django.conf import settings
-from requests import HTTPError
 from dataqs.processor_base import GeoDataMosaicProcessor
 from dataqs.helpers import warp_image, style_exists
 

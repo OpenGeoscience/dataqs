@@ -7,8 +7,8 @@ import struct
 import re
 import requests
 from bs4 import BeautifulSoup as bs
-from ..helpers import gdal_translate
-from ..processor_base import GeoDataProcessor
+from dataqs.helpers import gdal_translate
+from dataqs.processor_base import GeoDataProcessor
 
 
 logger = logging.getLogger("dataqs.processors")

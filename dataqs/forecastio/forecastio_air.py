@@ -6,8 +6,8 @@ import datetime
 import requests
 from django.conf import settings
 import shutil
-from ..processor_base import GeoDataMosaicProcessor
-from ..helpers import gdal_translate
+from dataqs.processor_base import GeoDataMosaicProcessor
+from dataqs.helpers import gdal_translate
 
 logger = logging.getLogger("dataqs.processors")
 

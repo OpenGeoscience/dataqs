@@ -12,8 +12,6 @@ import datetime
 import requests
 from django.conf import settings
 import shutil
-from requests.packages.urllib3.exceptions import HTTPError
-from dataqs.helpers import postgres_query
 from geonode.geoserver.helpers import ogc_server_settings
 from geonode.geoserver.management.commands.updatelayers import Command \
     as UpdateLayersCommand

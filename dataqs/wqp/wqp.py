@@ -3,12 +3,8 @@ from __future__ import absolute_import
 import logging
 import os
 import datetime
-import struct
 import re
-import multiprocessing
-import itertools
 import requests
-from bs4 import BeautifulSoup as bs
 from dataqs.helpers import gdal_translate, postgres_query, ogr2ogr_exec, \
     table_exists, purge_old_data, layer_exists
 from dataqs.processor_base import GeoDataProcessor, DEFAULT_WORKSPACE
