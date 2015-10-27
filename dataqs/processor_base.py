@@ -6,13 +6,13 @@ import logging
 from time import sleep
 from urlparse import urljoin
 from zipfile import ZipFile
-from geoserver.catalog import Catalog
+from geoserver.catalog import Catalog, FailedRequestError
 import os
 import datetime
 import requests
 from django.conf import settings
 import shutil
-from geonode.geoserver.helpers import ogc_server_settings
+from geonode.geoserver.helpers import ogc_server_settings, gs_catalog, get_store
 from geonode.geoserver.management.commands.updatelayers import Command \
     as UpdateLayersCommand
 
@@ -145,6 +145,26 @@ class GeoDataProcessor(object):
         res.raise_for_status()
         return res.content
 
+    def verify_store(self, store, workspace=DEFAULT_WORKSPACE):
+        cat = gs_catalog
+        try:
+            get_store(cat, store, workspace=workspace)
+
+        except FailedRequestError:
+            ds = cat.create_datastore(store, workspace=workspace)
+            db = ogc_server_settings.datastore_db
+            db_engine = 'postgis' if \
+                'postgis' in db['ENGINE'] else db['ENGINE']
+            ds.connection_parameters.update(
+                host=db['HOST'],
+                port=db['PORT'],
+                database=db['NAME'],
+                user=db['USER'],
+                passwd=db['PASSWORD'],
+                dbtype=db_engine
+            )
+            cat.save(ds)
+
     def post_geoserver_vector(self, layer_name,
                               store=ogc_server_settings.DATASTORE):
         """
@@ -152,6 +172,7 @@ class GeoDataProcessor(object):
         :param layer_name:
         :return:
         """
+        self.verify_store(store)
         gs_url = self.gs_vec_url.format(ogc_server_settings.hostname,
                                         self.workspace, store)
         data = "<featureType><name>{}</name></featureType>".format(layer_name)
