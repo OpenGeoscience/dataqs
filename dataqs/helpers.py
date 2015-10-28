@@ -1,7 +1,7 @@
 import datetime
 import os
 import subprocess
-from geoserver.catalog import Catalog, FailedRequestError
+from geoserver.catalog import Catalog
 import psycopg2
 import re
 import sys
@@ -191,14 +191,10 @@ def layer_exists(layer_name, store, workspace):
     _user, _password = ogc_server_settings.credentials
     url = ogc_server_settings.rest
     gs_catalog = Catalog(url, _user, _password)
-    try:
-        layer = gs_catalog.get_resource(layer_name,
+    layer = gs_catalog.get_resource(layer_name,
                                     store=store,
                                     workspace=workspace)
-        return layer is not None
-    except FailedRequestError:
-        return False
-
+    return layer is not None
 
 
 def style_exists(style_name):
