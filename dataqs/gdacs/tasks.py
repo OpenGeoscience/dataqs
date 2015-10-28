@@ -1,9 +1,9 @@
 from __future__ import absolute_import
 
 from celery import shared_task
-from dataqs.gfms.gfms import GFMSProcessor
+from dataqs.gdacs.gdacs import GDACSProcessor
 
 @shared_task()
-def gfms_task():
-    processor = GFMSProcessor()
+def gdacs_task():
+    processor = GDACSProcessor()
     processor.run()
