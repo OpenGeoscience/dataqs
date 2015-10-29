@@ -64,7 +64,7 @@ class SPEIProcessor(GeoDataProcessor):
         object's spei_files property.
         """
         for layer_name in self.spei_files.keys():
-            #self.download("{}{}.nc".format(self.base_url, layer_name))
+            self.download("{}{}.nc".format(self.base_url, layer_name))
             tif_file = self.convert(layer_name)
             self.post_geoserver(tif_file, layer_name)
             if not style_exists(layer_name):
@@ -73,7 +73,7 @@ class SPEIProcessor(GeoDataProcessor):
                 ))
             self.update_geonode(layer_name, title=self.spei_files[layer_name])
             self.truncate_gs_cache(layer_name)
-            #self.cleanup()
+            self.cleanup()
 
 
 if __name__ == '__main__':
