@@ -89,11 +89,9 @@ class USGSQuakeProcessor(GeoDataProcessor):
                 dbname={db_name}\" {rss} -nln {table}".format(
                 db_host=db["HOST"], db_user=db["USER"], db_pass=db["PASSWORD"],
                 db_name=db["NAME"], rss="{}".format(rss_file), table=table))
-
-            if not layer_exists(table,
-                            ogc_server_settings.server.get('DATASTORE'),
-                            DEFAULT_WORKSPACE):
-                c = connections['datastore'].cursor()
+            datastore = ogc_server_settings.server.get('DATASTORE')
+            if not layer_exists(table, datastore, DEFAULT_WORKSPACE):
+                c = connections[datastore].cursor()
                 try:
                     c.execute(
                         'ALTER TABLE {tb} ADD CONSTRAINT {tb}_ids UNIQUE (ids);'.

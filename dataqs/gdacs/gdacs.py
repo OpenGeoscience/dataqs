@@ -50,10 +50,9 @@ class GDACSProcessor(GeoDataProcessor):
                                        rss="{}".format(os.path.join(
                                            self.tmp_dir, rss)),
                                        table=self.prefix))
-        if not layer_exists(self.prefix,
-                            ogc_server_settings.server.get('DATASTORE'),
-                            DEFAULT_WORKSPACE):
-            c = connections['datastore'].cursor()
+        datastore = ogc_server_settings.server.get('DATASTORE')
+        if not layer_exists(self.prefix, datastore, DEFAULT_WORKSPACE):
+            c = connections[datastore].cursor()
             try:
                 c.execute(
                     'ALTER TABLE {tb} ADD CONSTRAINT {tb}_guid UNIQUE (guid);'.
