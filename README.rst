@@ -61,5 +61,6 @@ Quick start
 	RSYNC_WAIT_TIME = 0
 
 4. In order to run the spei processor, the following must be installed::
+
     sudo apt-get install netcdf-bin
     sudo apt-get install cdo
