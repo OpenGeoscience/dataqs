@@ -43,7 +43,7 @@ GPMOSAIC_COVERAGE_JSON = """{
 }"""
 
 GPMOSAIC_DS_PROPERTIES = """SPI=org.geotools.data.postgis.PostgisNGDataStoreFactory
-host=localhost
+host={db_host}
 port=5432
 database={db_data_instance}
 schema=public
@@ -415,6 +415,7 @@ class GeoDataMosaicProcessor(GeoDataProcessor):
                 with open(dsprop_file, 'w') as datastore_prop:
                     db = ogc_server_settings.datastore_db
                     properties = GPMOSAIC_DS_PROPERTIES.format(
+                        db_host=db['HOST'],
                         db_data_instance=db['NAME'],
                         db_user=db['USER'],
                         db_password=db['PASSWORD']
