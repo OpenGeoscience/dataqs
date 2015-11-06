@@ -5,6 +5,6 @@ from dataqs.wqp.wqp import WaterQualityPortalProcessor
 
 
 @shared_task
-def airnow_grib_hourly_task():
+def wqp_task():
     processor = WaterQualityPortalProcessor()
     processor.run()
