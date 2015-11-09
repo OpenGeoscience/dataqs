@@ -128,7 +128,7 @@ class AirNowGRIB2HourlyProcessor(GeoDataMosaicProcessor):
         for grib_file in gribs:
             layer_title, layer_name, imgtime = self.parse_name(grib_file)
             tif_out = self.convert(grib_file, imgtime, layer_name)
-            dst_file = self.data_dir.format(gsd=GS_TMP_DIR, ws=self.workspace,
+            dst_file = self.data_dir.format(gsd=GS_DATA_DIR, ws=self.workspace,
                                             layer=layer_name, file=tif_out)
             dst_dir = os.path.dirname(dst_file)
             if not os.path.exists(dst_dir):
