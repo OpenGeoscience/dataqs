@@ -170,9 +170,6 @@ class WaterQualityPortalProcessor(GeoDataProcessor):
         :param csvfile: CSV file containing measurement data
         :return: None
         """
-        num_cols = ("ActivityDepthHeightMeasure_MeasureValue",
-                    "ResultMeasureValue",
-                    "ResultDepthHeightMeasure_MeasureValue")
         date_cols = ("ActivityStartDate", "ActivityEndDate")
         indicator = csvfile.replace('_Result.csv', '')
         if not table_exists(indicator):
@@ -202,8 +199,6 @@ class WaterQualityPortalProcessor(GeoDataProcessor):
                                     attribute.replace("Date", "Time")))
                             time_str = "{} {} {}".format(
                                 val, row[time_idx], row[zone_idx])
-                            # query_format.append(
-                            #     "CAST(%s as timestamp with time zone)")
                             row[i] = time_str
                         else:
 
@@ -291,5 +286,5 @@ class WaterQualityPortalProcessor(GeoDataProcessor):
 
 
 if __name__ == '__main__':
-    processor = WaterQualityPortalProcessor()
+    processor = WaterQualityPortalProcessor(days=90)
     processor.run()

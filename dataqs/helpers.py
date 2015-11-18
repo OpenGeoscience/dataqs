@@ -1,7 +1,7 @@
 import datetime
 import os
 import subprocess
-from geoserver.catalog import Catalog
+from geoserver.catalog import Catalog, FailedRequestError
 import psycopg2
 import re
 import sys
@@ -101,14 +101,30 @@ def gdal_translate(src_filename, dst_filename, dst_format="GTiff", bands=None,
         if bands and tmp_file:
             os.remove(tmp_file)
 
+def nc_convert(filename):
+    """
+    Transform a NETCDF4 file to classic-model format.
+    Requires installation of netcdf binaries:
+    apt-get install netcdf-bin (Ubuntu) or brew install netcdf (OSX)
+    :param filename:
+    :return: output filename
+    """
+    output_file = "{}.classic.nc".format(filename)
+    subprocess.check_call(["nccopy", "-k", "classic", "{}.nc".format(
+        filename), output_file])
+    return output_file
 
 def cdo_invert(filename):
     """
     Invert a NetCDF image so that gdal_translate can read it.
+    Requires installation of cdo (Climate Data Operators).
+    apt-get install cdo (Ubuntu) or brew install cdo (OSX)
     :param filename: Full path * name of NetCDF image to invert
+    :return: output filename
     """
-    output_file = "{}.inv.nc".format(filename)
-    subprocess.check_call(["cdo", "invertlat", "{}.nc".format(
+
+    output_file = "{}.inv.nc".format(os.path.splitext(filename)[0])
+    subprocess.check_call(["cdo", "invertlat", "{}".format(
         filename), output_file])
     return output_file
 
@@ -191,10 +207,14 @@ def layer_exists(layer_name, store, workspace):
     _user, _password = ogc_server_settings.credentials
     url = ogc_server_settings.rest
     gs_catalog = Catalog(url, _user, _password)
-    layer = gs_catalog.get_resource(layer_name,
+    try:
+        layer = gs_catalog.get_resource(layer_name,
                                     store=store,
                                     workspace=workspace)
-    return layer is not None
+        return layer is not None
+    except FailedRequestError:
+        return False
+
 
 
 def style_exists(style_name):
