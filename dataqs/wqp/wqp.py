@@ -286,5 +286,5 @@ class WaterQualityPortalProcessor(GeoDataProcessor):
 
 
 if __name__ == '__main__':
-    processor = WaterQualityPortalProcessor(days=30)
+    processor = WaterQualityPortalProcessor(days=90)
     processor.run()
