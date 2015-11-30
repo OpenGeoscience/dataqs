@@ -1,6 +1,10 @@
 import datetime
 import os
 import subprocess
+
+import functools
+import requests
+from django.core.cache import cache
 from geoserver.catalog import Catalog, FailedRequestError
 import psycopg2
 import re
@@ -216,7 +220,6 @@ def layer_exists(layer_name, store, workspace):
         return False
 
 
-
 def style_exists(style_name):
     _user, _password = ogc_server_settings.credentials
     url = ogc_server_settings.rest
@@ -263,6 +266,14 @@ def gdal_band_subset(infile, bands, dst_filename, dst_format="GTiff"):
 
 
 def warp_image(infile, outfile, dst_crs="EPSG:3857", dst_driver='GTiff'):
+    """
+    Use rasterio to warp an image from one projection to another
+    :param infile: Origina raster image
+    :param outfile: Warped raster image
+    :param dst_crs: Output projection
+    :param dst_driver: Output filetype driver
+    :return: None
+    """
     with rasterio.drivers(CPL_DEBUG=False):
         with rasterio.open(infile) as src:
             res = None
@@ -290,3 +301,38 @@ def warp_image(infile, outfile, dst_crs="EPSG:3857", dst_driver='GTiff'):
                         dst_crs=out_kwargs['crs'],
                         resampling=RESAMPLING.nearest,
                         num_threads=1)
+
+
+def get_html(url=None):
+    """
+    Make a standard GET request and return the response content
+    :param url: URL to get
+    :return: Response content
+    """
+    r = requests.get(url, timeout=60)
+    r.raise_for_status()
+    return r.content
+
+
+def single_instance_task(timeout=86400):
+    """
+    Celery wrapper to prevent running more than one instance
+    of a task at the same time.
+    :param timeout: Length of time to keep lock
+    :return:
+    """
+    def task_exc(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            lock_id = "celery-single-instance-" + func.__name__
+            acquire_lock = lambda: cache.add(lock_id, "true", timeout)
+            release_lock = lambda: cache.delete(lock_id)
+            if acquire_lock():
+                try:
+                    func(*args, **kwargs)
+                finally:
+                    release_lock()
+            else:
+                raise Exception('Could not start; previous task still running')
+        return wrapper
+    return task_exc

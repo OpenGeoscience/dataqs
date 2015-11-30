@@ -1,7 +1,5 @@
-#!/usr/local/bin/python
-#Author:Bryan Roscoe
-#https://github.com/bryanroscoe/aqicn
 import json
+import logging
 import sys
 import re
 import time
@@ -18,6 +16,8 @@ from dataqs.helpers import postgres_query, get_html, layer_exists, table_exists
 from dataqs.processor_base import GeoDataProcessor, DEFAULT_WORKSPACE
 from geonode.geoserver.helpers import ogc_server_settings
 
+logger = logging.getLogger("dataqs.processors")
+
 REQ_HEADER={'User-Agent':
                 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) \
                 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 '
@@ -27,14 +27,14 @@ REQ_HEADER={'User-Agent':
 AQICN_SQL = u"""
 DELETE FROM {table} where city = '{city}';
 INSERT INTO {table}
-(datetime, lat, lng, city, {keys}, country, country_name, the_geom)
- SELECT '{time}', {lat}, {lng}, '{city}', {val}, '{cntry}', '{cntry_name}',
+(datetime, lat, lng, city, {keys}, country, the_geom)
+ SELECT '{time}', {lat}, {lng}, '{city}', {val}, '{cntry}',
  ST_GeomFromText('POINT({lng} {lat})') WHERE NOT EXISTS (
  SELECT 1 from {table} WHERE city = '{city}');
 DELETE FROM {table}_archive where city = '{city}' and datetime = '{time}';
 INSERT INTO {table}_archive
-(datetime, lat, lng, city, {keys}, country, country_name, the_geom)
- SELECT '{time}', {lat}, {lng}, '{city}', {val}, '{cntry}', '{cntry_name}',
+(datetime, lat, lng, city, {keys}, country, the_geom)
+ SELECT '{time}', {lat}, {lng}, '{city}', {val}, '{cntry}',
  ST_GeomFromText('POINT({lng} {lat})') WHERE NOT EXISTS (
  SELECT 1 from {table}_archive WHERE city = '{city}' and datetime = '{time}');
 """
@@ -63,7 +63,6 @@ CREATE TABLE IF NOT EXISTS {table}
   city character varying(256),
   datetime timestamp without time zone,
   country character varying(255),
-  country_name character varying(255),
   CONSTRAINT {table}_pkey PRIMARY KEY (id)
 )
 WITH (
@@ -75,90 +74,62 @@ CREATE INDEX {table}_the_geom ON {table} USING gist (the_geom);
 """
 
 
-def thread_parse(table, html, cities, countries):
-    aqi_parser = AQICNWorker(table, html, cities, countries)
-    time.sleep(randint(0, 5))
+def thread_parse(table, cities):
+    aqi_parser = AQICNWorker(table, cities)
     aqi_parser.run()
 
 
 class AQICNWorker(object):
-    def __init__(self, table, country_html, cities, countries):
-        self.countrycities = country_html
+    def __init__(self, table, cities):
         self.cities = cities
         self.prefix = table
         self.archive = self.prefix + "_archive"
-        self.countries = countries
         if not table_exists(self.archive):
             postgres_query(AQICN_TABLE.format(table=self.archive), commit=True)
 
-    def get_country(self, url):
-        link = self.countrycities.find("a", href=url)
-        if link:
-            country_link = link.findPrevious('a', id=re.compile('.+'))
-            if country_link:
-                country_name = country_link.findNext('div').text.title()
-                return country_link.get("id"), country_name
-        return '', ''
-
-    def handleCity(self, i, cityjson):
+    def handleCity(self, i, city):
         try:
-            print("\n\nScraping "+ cityjson["city"] , i+1, "of",
-                  len(self.cities),
-                  cityjson["g"], cityjson["x"])
-            city = self.getUpdatedCity(cityjson)
-            if city is None:
-                return
+            logger.debug('\n\nScraping '+ city['url'], i+1, 'of',
+                  len(self.cities))
+            page = requests.get(city['url'], timeout=60, headers=REQ_HEADER)
+            soup = bs(page.text, "lxml")
+            title = soup.find('title').text
+
+            mapString = re.search(
+                '(?<=mapInitWithData\()\[\{[^;]*\}\]', soup.text).group(0)
+            mapJson = json.loads(mapString.strip('\n'))
+            for item in mapJson:
+                if item['city'] in title:
+                    for key in ['utime', 'tz', 'aqi', 'g']:
+                        city[key] = item[key]
+                    break
             city['dateTime'] = self.getTime(city)
-            #Get the details url from the popup
-            city["popupURL"]=("http://aqicn.org/aqicn/json/mapinfo/@" +
-                              str(city["x"]))
+            city["data"] = {}
 
-            print("Popup url is:", city["popupURL"])
-
-            cityDetailPage = requests.get(city["popupURL"],
-                                          timeout=60, headers=REQ_HEADER).text
-            city["detailURL"] = re.search("http://aqicn\.org/[^\']*",
-                                          cityDetailPage)
-
-            if city["detailURL"]:
-                city["detailURL"] = city["detailURL"].group(0)
-                print("City Detail url is:", city["detailURL"])
-                city['country'], city['country_name'] = \
-                    self.get_country(city["detailURL"])
-
-                if not self.countries or city['country'] in self.cities:
-                    page = requests.get(city["detailURL"],
-                                        timeout=60, headers=REQ_HEADER)
-                    soup = bs(page.text, "lxml")
-                    city["data"] = {}
-
-                    curList = soup.find_all("td", {"id" : re.compile('^cur_')})
-                    #Go on to the next city if we don't find anything
-                    if not curList:
-                        print("Nothing found for", city['city'])
-                        return
-                    #Loop through all the variables for this city
-                    savedVars = ""
-                    for cur in curList:
-                        curId = cur['id']
-                        savedVars += curId + ","
-                        if type(cur.contents[0]).__name__ == 'Tag':
-                            city['data'][curId] = cur.contents[0].text
-                        else:
-                            city['data'][curId] = cur.contents[0]
-                    city['data']['cur_aqi'] = city['aqi']
-                    self.saveData(city)
-
-                    print("Saved", savedVars + "aqi", "for city", city['city'])
+            curList = soup.find_all("td", {"id" : re.compile('^cur_')})
+            #Go on to the next city if we don't find anything
+            if not curList:
+                logger.debug("Nothing found for", city['city'])
+                return
+            #Loop through all the variables for this city
+            savedVars = ""
+            for cur in curList:
+                curId = cur['id']
+                savedVars += curId + ","
+                if type(cur.contents[0]).__name__ == 'Tag':
+                    city['data'][curId] = cur.contents[0].text
                 else:
-                    print ('{} not in countries {}'.format(
-                        city['name'], str(self.countries)))
-            else:
-                print('Not found')
+                    city['data'][curId] = cur.contents[0]
+            city['data']['cur_aqi'] = city['aqi']
+            self.saveData(city)
+
+            logger.debug("Saved", savedVars + "aqi", "for city", city['city'])
+
+
         except KeyboardInterrupt:
             sys.exit()
         except:
-            print("encountered an error:", traceback.format_exc() )
+            logger.debug("encountered an error:", traceback.format_exc() )
 
     def saveData(self, city):
         for item in city['data']:
@@ -181,49 +152,31 @@ class AQICNWorker(object):
             keys=measurements,
             val=values,
             kv=kv,
-            cntry=city['country'],
-            cntry_name=city['country_name']
-
+            cntry=city['country']
         ))
         postgres_query(sql_str, commit=True)
-
-    def getUpdatedCity(self, city):
-        for c in self.cities:
-            if c["x"] == city["x"]:
-                print("Matched cities for time update")
-                print("Old", city)
-                print("New", c)
-                if c["city"] != city["city"]:
-                    print("Whoops city is not the same")
-                return c
-        print("Whoops city not found")
-        return None
 
     @staticmethod
     def getTime(city):
         long = str(city['g'][1])
         utime = city["utime"]
-        print("Stripping time:", utime, ",", long);
+        logger.debug("Stripping time:", utime, ",", long);
         utime = utime.strip()
         utime = re.sub(r"on |\.|-", "", utime)
-        print("Trying to parse time:", utime + " " + city["tz"]);
+        logger.debug("Trying to parse time:", utime + " " + city["tz"]);
         try:
             cityTime = parse(utime + " " + city["tz"]).astimezone(tzutc());
         except:
             utime = re.sub(r"am$|pm$", "", utime)
             cityTime = parse(utime + " " + city["tz"]).astimezone(tzutc());
 
-        print("Time parsed as:", cityTime);
+        logger.debug("Time parsed as:", cityTime);
         return cityTime
 
     def run(self):
         for i, city in enumerate(self.cities):
-            try:
-                int(city["x"])
-            except:
-                continue
             self.handleCity(i, city)
-        print("End", datetime.datetime.now())
+        logger.debug("End", datetime.datetime.now())
 
 
 class AQICNProcessor(GeoDataProcessor):
@@ -231,7 +184,7 @@ class AQICNProcessor(GeoDataProcessor):
     directory = 'output'
     cities=None
     countries=None
-    pool_size = 1
+    pool_size = 5
     base_url = 'http://aqicn.org/city/all/'
     layers = {
         'aqi': 'Air Quality Index',
@@ -250,54 +203,47 @@ class AQICNProcessor(GeoDataProcessor):
         'w': 'Wind Speed'
     }
 
-    def __init__(self, cities=None, countries=None):
-        if cities:
-            self.cities = cities
-        else:
-            self.cities = self.getCities()
-        if countries:
+    def __init__(self, countries=None):
+        if not countries:
             self.countries = []
-
+        else:
+            self.countries = countries
+        self.cities = []
 
     def download(self, url=None):
         if not url:
             url = self.base_url
         return get_html(url)
 
-    def get_country_content(self):
+    def getCities(self):
         soup = bs(self.download(self.base_url), "lxml")
-        return soup.find('div', class_='citytreehdr').findParent()
+        city_div = soup.find('div', class_='citytreehdr').findParent()
 
-    @staticmethod
-    def getCities():
-        #First we must get the main map page
-        print("Getting the cities")
-        fullMap = requests.get("http://aqicn.org/map/world/",
-                               timeout=60, headers=REQ_HEADER).text
+        countries = city_div.find_all('a', id=re.compile("^.+"))
 
-        #Find the json embedded in the main page
-        print("Finding the json")
-        fullMapJsonString = re.search("(?<=mapInitWithData\()\[.*\](?=\))", fullMap)
-
-        #Parse the json
-        cities = None
-        if fullMapJsonString:
-            cities = json.loads(fullMapJsonString.group(0))
-        return cities
+        for country in countries:
+            country_code = country.get('id')
+            if not self.countries or country.get("id") in self.countries:
+                citylink = country.findNext('a')
+                while citylink.get('id') is None:
+                    self.cities.append({'city': citylink.text,
+                                         'country': country_code,
+                                         'url': citylink.get('href')})
+                    citylink = citylink.findNext('a')
 
     def process(self):
-        datastore = ogc_server_settings.server.get('DATASTORE')
-        if not layer_exists(self.prefix, datastore, DEFAULT_WORKSPACE):
+        if not table_exists(self.prefix):
             postgres_query(AQICN_TABLE.format(table=self.prefix), commit=True)
 
-        print("Start" ,datetime.datetime.now())
-        print("There are" ,len(self.cities) , "cities")
+        logger.debug("Start" ,datetime.datetime.now())
+        self.getCities()
+        logger.debug("There are" ,len(self.cities) , "cities")
         pool = ThreadPool(self.pool_size)
-        worker_html = self.get_country_content()
         for citylist in \
-                [self.cities[i::self.pool_size] for i in xrange(len(self.cities))]:
-            pool.apply(thread_parse, args=(
-                self.prefix, worker_html, citylist, self.countries))
+                [self.cities[i::self.pool_size] for i in xrange(
+                    len(self.cities))]:
+            #thread_parse(self.prefix, citylist)
+            pool.apply_async(thread_parse, args=(self.prefix, citylist))
         pool.close()
         pool.join()
 
@@ -306,7 +252,6 @@ class AQICNProcessor(GeoDataProcessor):
         layer_name = self.prefix
         datastore = ogc_server_settings.server.get('DATASTORE')
         if not layer_exists(layer_name, datastore, DEFAULT_WORKSPACE):
-            #self.create_view(layer)
             self.post_geoserver_vector(layer_name)
         self.update_geonode(layer_name,
                             title='Air Quality Index',
@@ -316,9 +261,9 @@ class AQICNProcessor(GeoDataProcessor):
 
 if __name__ == '__main__':
     start = time.time()
-    print start
+    print(start)
     parser = AQICNProcessor(countries=['China', ])
     parser.run()
     end = time.time()
-    print end
-    print end-start
+    print(end)
+    print(end-start)

@@ -1,12 +1,13 @@
 from __future__ import absolute_import
 from celery import shared_task
-from django.conf import settings
 from dataqs.aqicn.aqicn import AQICNProcessor
+from dataqs.helpers import single_instance_task
 
 
 @shared_task
-def aqicn_task():
-    processor = AQICNProcessor(countries=settings.AQICN_COUNTRIES or None)
+@single_instance_task
+def aqicn_task(countries):
+    processor = AQICNProcessor(countries=countries)
     processor.run()
 
 
