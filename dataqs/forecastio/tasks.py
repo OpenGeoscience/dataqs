@@ -1,14 +1,14 @@
 from __future__ import absolute_import
 
 from celery import shared_task
-from dataqs.forecastio.forecastio_air import ForecastIOAirTempProcessor
+from dataqs.aqicn.aqicn import AQICNProcessor
 from dataqs.helpers import single_instance_task
 
 
 @shared_task
 @single_instance_task
-def forecast_io_task():
-    processor = ForecastIOAirTempProcessor()
+def aqicn_task():
+    processor = AQICNProcessor()
     processor.run()
 
 
