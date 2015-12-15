@@ -196,7 +196,7 @@ class AQICNProcessor(GeoDataProcessor):
     directory = 'output'
     cities=None
     countries=None
-    pool_size = 3
+    pool_size = 6
     base_url = 'http://aqicn.org/city/all/'
     layers = {
         'aqi': 'Air Quality Index',
