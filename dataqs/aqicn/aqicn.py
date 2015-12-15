@@ -12,7 +12,7 @@ import datetime
 import traceback
 from dateutil.parser import parse
 from dateutil.tz import tzutc
-from dataqs.helpers import postgres_query, get_html, layer_exists, table_exists
+from dataqs.helpers import postgres_query, get_html, layer_exists, table_exists, style_exists
 from dataqs.processor_base import GeoDataProcessor, DEFAULT_WORKSPACE
 from geonode.geoserver.helpers import ogc_server_settings
 
@@ -73,6 +73,127 @@ SELECT AddGeometryColumn ('public','{table}','the_geom',4326,'POINT',2);
 CREATE INDEX {table}_the_geom ON {table} USING gist (the_geom);
 """
 
+AQICN_SLD="""<?xml version="1.0" encoding="UTF-8"?><sld:StyledLayerDescriptor xmlns="http://www.opengis.net/sld" xmlns:sld="http://www.opengis.net/sld" xmlns:ogc="http://www.opengis.net/ogc" xmlns:gml="http://www.opengis.net/gml" version="1.0.0">
+  <sld:NamedLayer>
+    <sld:Name>aqicn</sld:Name>
+    <sld:UserStyle>
+      <sld:Name>aqicn</sld:Name>
+      <sld:Title>aqicn</sld:Title>
+      <sld:IsDefault>1</sld:IsDefault>
+      <sld:Abstract>Air Quality Index</sld:Abstract>
+      <sld:FeatureTypeStyle>
+        <sld:Name>name</sld:Name>
+        <sld:Rule>
+          <sld:Name>rule1</sld:Name>
+          <sld:Title>Good (&lt;= 50)</sld:Title>
+          <sld:Abstract></sld:Abstract>
+          <ogc:Filter>
+            <ogc:PropertyIsLessThanOrEqualTo>
+              <ogc:PropertyName>aqi</ogc:PropertyName>
+              <ogc:Literal>50.0</ogc:Literal>
+            </ogc:PropertyIsLessThanOrEqualTo>
+          </ogc:Filter>
+          <sld:PointSymbolizer>
+            <sld:Graphic>
+              <sld:Mark>
+                <sld:WellKnownName>circle</sld:WellKnownName>
+                <sld:Fill>
+                  <sld:CssParameter name="fill">#10A624</sld:CssParameter>
+                </sld:Fill>
+              </sld:Mark>
+              <sld:Size>10</sld:Size>
+            </sld:Graphic>
+          </sld:PointSymbolizer>
+        </sld:Rule>
+        <sld:Rule>
+          <sld:Name>rule1</sld:Name>
+          <sld:Title>Moderate (50-100)</sld:Title>
+          <sld:Abstract></sld:Abstract>
+          <ogc:Filter>
+            <ogc:And>
+              <ogc:PropertyIsGreaterThan>
+                <ogc:PropertyName>aqi</ogc:PropertyName>
+                <ogc:Literal>50.0</ogc:Literal>
+              </ogc:PropertyIsGreaterThan>
+              <ogc:PropertyIsLessThanOrEqualTo>
+                <ogc:PropertyName>aqi</ogc:PropertyName>
+                <ogc:Literal>100.0</ogc:Literal>
+              </ogc:PropertyIsLessThanOrEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <sld:PointSymbolizer>
+            <sld:Graphic>
+              <sld:Mark>
+                <sld:WellKnownName>circle</sld:WellKnownName>
+                <sld:Fill>
+                  <sld:CssParameter name="fill">#F5F108</sld:CssParameter>
+                </sld:Fill>
+              </sld:Mark>
+              <sld:Size>10</sld:Size>
+            </sld:Graphic>
+          </sld:PointSymbolizer>
+        </sld:Rule>
+        <sld:Rule>
+          <sld:Name>rule1</sld:Name>
+          <sld:Title>Unhealthy for Sensitive Groups (101-150)</sld:Title>
+          <sld:Abstract></sld:Abstract>
+          <ogc:Filter>
+            <ogc:And>
+              <ogc:PropertyIsGreaterThan>
+                <ogc:PropertyName>aqi</ogc:PropertyName>
+                <ogc:Literal>101.0</ogc:Literal>
+              </ogc:PropertyIsGreaterThan>
+              <ogc:PropertyIsLessThanOrEqualTo>
+                <ogc:PropertyName>aqi</ogc:PropertyName>
+                <ogc:Literal>150.0</ogc:Literal>
+              </ogc:PropertyIsLessThanOrEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <sld:PointSymbolizer>
+            <sld:Graphic>
+              <sld:Mark>
+                <sld:WellKnownName>circle</sld:WellKnownName>
+                <sld:Fill>
+                  <sld:CssParameter name="fill">#EFAE17</sld:CssParameter>
+                </sld:Fill>
+              </sld:Mark>
+              <sld:Size>10</sld:Size>
+            </sld:Graphic>
+          </sld:PointSymbolizer>
+        </sld:Rule>
+        <sld:Rule>
+          <sld:Name>rule1</sld:Name>
+          <sld:Title> Unhealthy (&gt; 150)</sld:Title>
+          <sld:Abstract></sld:Abstract>
+          <ogc:Filter>
+            <ogc:And>
+              <ogc:PropertyIsGreaterThan>
+                <ogc:PropertyName>aqi</ogc:PropertyName>
+                <ogc:Literal>228.0</ogc:Literal>
+              </ogc:PropertyIsGreaterThan>
+              <ogc:PropertyIsLessThanOrEqualTo>
+                <ogc:PropertyName>aqi</ogc:PropertyName>
+                <ogc:Literal>603.0</ogc:Literal>
+              </ogc:PropertyIsLessThanOrEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <sld:PointSymbolizer>
+            <sld:Graphic>
+              <sld:Mark>
+                <sld:WellKnownName>circle</sld:WellKnownName>
+                <sld:Fill>
+                  <sld:CssParameter name="fill">#FF0000</sld:CssParameter>
+                </sld:Fill>
+              </sld:Mark>
+              <sld:Size>10</sld:Size>
+            </sld:Graphic>
+          </sld:PointSymbolizer>
+        </sld:Rule>
+      </sld:FeatureTypeStyle>
+    </sld:UserStyle>
+  </sld:NamedLayer>
+</sld:StyledLayerDescriptor>
+"""
 
 def thread_parse(table, cities):
     aqi_parser = AQICNWorker(table, cities)
@@ -276,6 +397,8 @@ class AQICNProcessor(GeoDataProcessor):
         datastore = ogc_server_settings.server.get('DATASTORE')
         if not layer_exists(layer_name, datastore, DEFAULT_WORKSPACE):
             self.post_geoserver_vector(layer_name)
+        if not style_exists(layer_name):
+            self.set_default_style(layer_name, layer_name, AQICN_SLD)
         self.update_geonode(layer_name,
                             title='Air Quality Index',
                             store=datastore)
