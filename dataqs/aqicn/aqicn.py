@@ -29,13 +29,13 @@ DELETE FROM {table} where city = '{city}';
 INSERT INTO {table}
 (datetime, lat, lng, city, {keys}, country, the_geom)
  SELECT '{time}', {lat}, {lng}, '{city}', {val}, '{cntry}',
- ST_GeomFromText('POINT({lng} {lat})') WHERE NOT EXISTS (
+ ST_GeomFromText('POINT({lng} {lat})',4326) WHERE NOT EXISTS (
  SELECT 1 from {table} WHERE city = '{city}');
 DELETE FROM {table}_archive where city = '{city}' and datetime = '{time}';
 INSERT INTO {table}_archive
 (datetime, lat, lng, city, {keys}, country, the_geom)
  SELECT '{time}', {lat}, {lng}, '{city}', {val}, '{cntry}',
- ST_GeomFromText('POINT({lng} {lat})') WHERE NOT EXISTS (
+ ST_GeomFromText('POINT({lng} {lat})',4326) WHERE NOT EXISTS (
  SELECT 1 from {table}_archive WHERE city = '{city}' and datetime = '{time}');
 """
 
@@ -59,7 +59,6 @@ CREATE TABLE IF NOT EXISTS {table}
   t integer,
   uvi integer,
   w integer,
-  the_geom geometry,
   city character varying(256),
   datetime timestamp without time zone,
   country character varying(255),
@@ -70,6 +69,7 @@ WITH (
 );
 CREATE INDEX {table}_city_idx ON {table}(city);
 CREATE INDEX {table}_datetime_idx ON {table}(datetime);
+SELECT AddGeometryColumn ('public','{table}','the_geom',4326,'POINT',2);
 CREATE INDEX {table}_the_geom ON {table} USING gist (the_geom);
 """
 
@@ -106,6 +106,9 @@ class AQICNWorker(object):
                     for key in ['utime', 'tz', 'aqi', 'g']:
                         city[key] = item[key]
                     break
+            if 'utime' not in city:
+                logger.warn('No data for {}'.format(title))
+                return
             city['dateTime'] = self.getTime(city)
             city["data"] = {}
 
@@ -181,7 +184,10 @@ class AQICNWorker(object):
 
     def run(self):
         for i, city in enumerate(self.cities):
-            self.handleCity(i, city)
+            if 'url' in city:
+                self.handleCity(i, city)
+            else:
+                logger.warn('No url for {}'.format(city))
         logger.debug("End %s" % str(datetime.datetime.now()))
 
 
@@ -190,7 +196,7 @@ class AQICNProcessor(GeoDataProcessor):
     directory = 'output'
     cities=None
     countries=None
-    pool_size = 10
+    pool_size = 3
     base_url = 'http://aqicn.org/city/all/'
     layers = {
         'aqi': 'Air Quality Index',
@@ -210,11 +216,13 @@ class AQICNProcessor(GeoDataProcessor):
     }
 
     def __init__(self, countries=None):
+        super(AQICNProcessor, self ).__init__()
         if not countries:
             self.countries = []
         else:
             self.countries = countries
         self.cities = []
+
 
     def download(self, url=None):
         if not url:
@@ -237,6 +245,14 @@ class AQICNProcessor(GeoDataProcessor):
                                          'url': citylink.get('href')})
                     citylink = citylink.findNext('a')
 
+    def split_list(self, num):
+        """ Yield n successive lists from cities list.
+        """
+        newn = int(1.0 * len(self.cities) / num + 0.5)
+        for i in xrange(0, num-1):
+            yield self.cities[i*newn:i*newn+newn]
+        yield self.cities[num*newn-newn:]
+
     def process(self):
         if not table_exists(self.prefix):
             postgres_query(AQICN_TABLE.format(table=self.prefix), commit=True)
@@ -245,9 +261,7 @@ class AQICNProcessor(GeoDataProcessor):
         self.getCities()
         logger.debug("There are %s cities" % str(len(self.cities)))
         pool = ThreadPool(self.pool_size)
-        for citylist in \
-                [self.cities[i::self.pool_size] for i in xrange(
-                    len(self.cities))]:
+        for citylist in self.split_list(self.pool_size):
             #thread_parse(self.prefix, citylist)
             pool.apply_async(thread_parse, args=(self.prefix, citylist))
         pool.close()
