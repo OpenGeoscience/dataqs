@@ -84,14 +84,17 @@ class AQICNWorker(object):
         self.cities = cities
         self.prefix = table
         self.archive = self.prefix + "_archive"
+        self.max_wait = 5
         if not table_exists(self.archive):
             postgres_query(AQICN_TABLE.format(table=self.archive), commit=True)
 
     def handleCity(self, i, city):
         try:
-            logger.debug('\n\nScraping '+ city['url'], i+1, 'of',
-                  len(self.cities))
+            logger.debug('Scraping %d of %d cities - %s' % (
+                i+1, len(self.cities), city['url']))
+            time.sleep(randint(1, self.max_wait))
             page = requests.get(city['url'], timeout=60, headers=REQ_HEADER)
+            page.raise_for_status()
             soup = bs(page.text, "lxml")
             title = soup.find('title').text
 
@@ -109,7 +112,7 @@ class AQICNWorker(object):
             curList = soup.find_all("td", {"id" : re.compile('^cur_')})
             #Go on to the next city if we don't find anything
             if not curList:
-                logger.debug("Nothing found for", city['city'])
+                logger.debug("Nothing found for %s" % city['city'])
                 return
             #Loop through all the variables for this city
             savedVars = ""
@@ -122,14 +125,15 @@ class AQICNWorker(object):
                     city['data'][curId] = cur.contents[0]
             city['data']['cur_aqi'] = city['aqi']
             self.saveData(city)
-
-            logger.debug("Saved", savedVars + "aqi", "for city", city['city'])
-
+            logger.debug("Saved %s aqi for city %s" % (savedVars, city['city']))
+            #Clear out the city to reduce memory footprint
+            for key in city.keys():
+                city.pop(key, None)
 
         except KeyboardInterrupt:
             sys.exit()
         except:
-            logger.debug("encountered an error:", traceback.format_exc() )
+            logger.error(traceback.format_exc())
 
     def saveData(self, city):
         for item in city['data']:
@@ -158,25 +162,27 @@ class AQICNWorker(object):
 
     @staticmethod
     def getTime(city):
-        long = str(city['g'][1])
-        utime = city["utime"]
-        logger.debug("Stripping time:", utime, ",", long);
-        utime = utime.strip()
-        utime = re.sub(r"on |\.|-", "", utime)
-        logger.debug("Trying to parse time:", utime + " " + city["tz"]);
         try:
-            cityTime = parse(utime + " " + city["tz"]).astimezone(tzutc());
-        except:
-            utime = re.sub(r"am$|pm$", "", utime)
-            cityTime = parse(utime + " " + city["tz"]).astimezone(tzutc());
+            utime = city["utime"]
+            utime = utime.strip()
+            utime = re.sub(r"on |\.|-", "", utime)
+            logger.debug("Trying to parse time: %s , %s" % (str(utime), city["tz"]))
+            try:
+                cityTime = parse(utime + " " + city["tz"]).astimezone(tzutc())
+            except:
+                utime = re.sub(r"am$|pm$", "", utime)
+                cityTime = parse(utime + " " + city["tz"]).astimezone(tzutc())
 
-        logger.debug("Time parsed as:", cityTime);
+            logger.debug("Time parsed as: %s", str(cityTime));
+        except Exception as e:
+            logger.error(city)
+            raise e
         return cityTime
 
     def run(self):
         for i, city in enumerate(self.cities):
             self.handleCity(i, city)
-        logger.debug("End", datetime.datetime.now())
+        logger.debug("End %s" % str(datetime.datetime.now()))
 
 
 class AQICNProcessor(GeoDataProcessor):
@@ -184,7 +190,7 @@ class AQICNProcessor(GeoDataProcessor):
     directory = 'output'
     cities=None
     countries=None
-    pool_size = 5
+    pool_size = 10
     base_url = 'http://aqicn.org/city/all/'
     layers = {
         'aqi': 'Air Quality Index',
@@ -225,7 +231,7 @@ class AQICNProcessor(GeoDataProcessor):
             country_code = country.get('id')
             if not self.countries or country.get("id") in self.countries:
                 citylink = country.findNext('a')
-                while citylink.get('id') is None:
+                while citylink and citylink.get('id') is None and citylink.text:
                     self.cities.append({'city': citylink.text,
                                          'country': country_code,
                                          'url': citylink.get('href')})
@@ -235,9 +241,9 @@ class AQICNProcessor(GeoDataProcessor):
         if not table_exists(self.prefix):
             postgres_query(AQICN_TABLE.format(table=self.prefix), commit=True)
 
-        logger.debug("Start" ,datetime.datetime.now())
+        logger.debug("Start %s" % datetime.datetime.now())
         self.getCities()
-        logger.debug("There are" ,len(self.cities) , "cities")
+        logger.debug("There are %s cities" % str(len(self.cities)))
         pool = ThreadPool(self.pool_size)
         for citylist in \
                 [self.cities[i::self.pool_size] for i in xrange(
@@ -262,7 +268,7 @@ class AQICNProcessor(GeoDataProcessor):
 if __name__ == '__main__':
     start = time.time()
     print(start)
-    parser = AQICNProcessor(countries=['China', ])
+    parser = AQICNProcessor()
     parser.run()
     end = time.time()
     print(end)
