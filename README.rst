@@ -38,7 +38,7 @@ Quick start
 	    },
 	    'aqicn': {
 	        'task': 'dataqs.aqicn.tasks.aqicn',
-	        'schedule': crontab(minute='1'),
+	        'schedule': crontab(hour='*/6'),
 	        'args': ()
 	    },
 	}

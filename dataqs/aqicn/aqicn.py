@@ -102,12 +102,14 @@ class AQICNWorker(object):
                 '(?<=mapInitWithData\()\[\{[^;]*\}\]', soup.text).group(0)
             mapJson = json.loads(mapString.strip('\n'))
             for item in mapJson:
-                if item['city'] in title:
+                if soup.body.findAll(
+                        text=re.compile('{} Air Quality Index'.format(
+                            item['city'].encode('utf-8')))):
                     for key in ['utime', 'tz', 'aqi', 'g']:
                         city[key] = item[key]
                     break
             if 'utime' not in city:
-                logger.warn('No data for {}'.format(title))
+                logger.warn('No data for {}'.format(city['url']))
                 return
             city['dateTime'] = self.getTime(city)
             city["data"] = {}
@@ -136,6 +138,7 @@ class AQICNWorker(object):
         except KeyboardInterrupt:
             sys.exit()
         except:
+            logger.error('Error with city {}'.format(city['url']))
             logger.error(traceback.format_exc())
 
     def saveData(self, city):
@@ -216,7 +219,7 @@ class AQICNProcessor(GeoDataProcessor):
     }
 
     def __init__(self, countries=None):
-        super(AQICNProcessor, self ).__init__()
+        super(AQICNProcessor, self).__init__()
         if not countries:
             self.countries = []
         else:
