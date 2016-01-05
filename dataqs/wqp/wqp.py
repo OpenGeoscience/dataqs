@@ -91,7 +91,7 @@ class WaterQualityPortalProcessor(GeoDataProcessor):
     and the National Water Quality Monitoring Council (NWQMC).
     """
 
-    days = 1
+    days = 30
     days_to_keep = 90
     indicators = ['pH',
                   'Oxygen',
@@ -201,8 +201,7 @@ class WaterQualityPortalProcessor(GeoDataProcessor):
                                 val, row[time_idx], row[zone_idx])
                             row[i] = time_str
                         else:
-
-                            if not val:
+                            if not val or val == '.' or val == 'None':
                                 row[i] = None
                     insert_sql += '{}'.format(
                         ','.join('{}'.format(x) for x in query_format)) + \
