@@ -185,7 +185,32 @@ class GeoDataProcessor(object):
         res.raise_for_status()
         return res.content
 
-    def update_geonode(self, layer_name, title="", bounds=None):
+    def update_gs_metadata(self, layer_name, json_data, vector=False,
+                           store=ogc_server_settings.DATASTORE):
+        """
+        Update the metadata for a layer, for instance to enable time
+        :param layer_name:
+        :param json_data:
+        :param vector:
+        :param store:
+        :return:
+        """
+        if vector:
+            gs_url = self.gs_vec_url.format(ogc_server_settings.hostname,
+                                            self.workspace, store)
+            gs_url += "/{lyr}/{lyr}.json".format(lyr=layer_name)
+        else:
+            gs_url = self.gs_url.format(ogc_server_settings.hostname,
+                                        self.workspace, store).replace(
+                'file.geotiff', '')
+            gs_url += "/{lyr}.json".format(lyr=layer_name)
+        _user, _password = ogc_server_settings.credentials
+        res = requests.put(url=gs_url, data=json_data, auth=(_user, _password),
+                           headers={'Content-Type': 'application/json'})
+        res.raise_for_status()
+        return res.content
+
+    def update_geonode(self, layer_name, title="", bounds=None, store=None):
         """
         Update a layer and it's title in GeoNode
         :param layer_name: Name of the layer
@@ -193,7 +218,8 @@ class GeoDataProcessor(object):
         """
         # Update the layer in GeoNode
         ulc = UpdateLayersCommand()
-        ulc.handle(verbosity=1, filter=layer_name)
+        ulc.handle(verbosity=1, filter=layer_name, store=store,
+                   workspace=DEFAULT_WORKSPACE)
 
         if title:
             from geonode.layers.models import Layer

@@ -36,6 +36,11 @@ Quick start
 	        'schedule': crontab(minute='1'),
 	        'args': ()
 	    },
+	    'aqicn': {
+	        'task': 'dataqs.aqicn.tasks.aqicn',
+	        'schedule': crontab(hour='*/6'),
+	        'args': ()
+	    },
 	}
 
 3. Also add the following settings::
