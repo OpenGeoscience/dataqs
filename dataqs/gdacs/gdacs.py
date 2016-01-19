@@ -60,7 +60,8 @@ class GDACSProcessor(GeoDataProcessor):
             except:
                 c.close()
             self.post_geoserver_vector(self.prefix)
-        self.update_geonode(self.prefix, title=self.layer_title)
+        self.update_geonode(self.prefix, title=self.layer_title,
+                            store=datastore)
         self.truncate_gs_cache(self.prefix)
         self.cleanup()
 

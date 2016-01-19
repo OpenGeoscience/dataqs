@@ -195,10 +195,20 @@ AQICN_SLD="""<?xml version="1.0" encoding="UTF-8"?><sld:StyledLayerDescriptor xm
 </sld:StyledLayerDescriptor>
 """
 
+
 def thread_parse(table, cities):
+    """
+    Thread worker for a list of cities
+    """
     aqi_parser = AQICNWorker(table, cities)
     aqi_parser.run()
 
+
+def asciier(txt):
+    """
+    Remove any non-ASCII characters
+    """
+    return ''.join(i for i in txt if ord(i) < 128)
 
 class AQICNWorker(object):
     def __init__(self, table, cities):
@@ -223,9 +233,7 @@ class AQICNWorker(object):
                 '(?<=mapInitWithData\()\[\{[^;]*\}\]', soup.text).group(0)
             mapJson = json.loads(mapString.strip('\n'))
             for item in mapJson:
-                if soup.body.findAll(
-                        text=re.compile('{} Air Quality Index'.format(
-                            item['city'].encode('utf-8')))):
+                if re.match(asciier(item['city']), asciier(title)):
                     for key in ['utime', 'tz', 'aqi', 'g']:
                         city[key] = item[key]
                     break
@@ -339,13 +347,16 @@ class AQICNProcessor(GeoDataProcessor):
         'w': 'Wind Speed'
     }
 
-    def __init__(self, countries=None):
+    def __init__(self, countries=None, cities=None):
         super(AQICNProcessor, self).__init__()
         if not countries:
             self.countries = []
         else:
             self.countries = countries
-        self.cities = []
+        if not cities:
+            self.cities = []
+        else:
+            self.cities = cities
 
 
     def download(self, url=None):
@@ -382,7 +393,8 @@ class AQICNProcessor(GeoDataProcessor):
             postgres_query(AQICN_TABLE.format(table=self.prefix), commit=True)
 
         logger.debug("Start %s" % datetime.datetime.now())
-        self.getCities()
+        if not self.cities:
+            self.getCities()
         logger.debug("There are %s cities" % str(len(self.cities)))
         pool = ThreadPool(self.pool_size)
         for citylist in self.split_list(self.pool_size):
@@ -406,10 +418,5 @@ class AQICNProcessor(GeoDataProcessor):
         self.cleanup()
 
 if __name__ == '__main__':
-    start = time.time()
-    print(start)
     parser = AQICNProcessor()
     parser.run()
-    end = time.time()
-    print(end)
-    print(end-start)

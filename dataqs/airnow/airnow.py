@@ -141,7 +141,7 @@ class AirNowGRIB2HourlyProcessor(GeoDataMosaicProcessor):
             self.drop_old_daily_images(imgtime, layer_name)
             if not style_exists(layer_name):
                 self.set_default_style(layer_name, layer_name, AIRNOW_SLD)
-            self.update_geonode(layer_name, title=layer_title)
+            self.update_geonode(layer_name, title=layer_title, store=layer_name)
             self.truncate_gs_cache(layer_name)
         self.cleanup()
 

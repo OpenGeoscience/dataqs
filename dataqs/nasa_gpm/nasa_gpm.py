@@ -119,6 +119,7 @@ class GPMProcessor(GeoDataMosaicProcessor):
         if not style_exists(self.layer_name):
             self.set_default_style(self.layer_name, self.layer_name, GPM_SLD)
         self.update_geonode(self.layer_name, title=layer_title,
+                            store=self.layer_name,
                             bounds=('-180.0', '180.0', '-90.0', '90.0',
                                     'EPSG:4326'))
         self.truncate_gs_cache(self.layer_name)

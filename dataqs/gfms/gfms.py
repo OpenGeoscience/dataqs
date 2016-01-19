@@ -132,7 +132,8 @@ class GFMSProcessor(GeoDataProcessor):
         tif_file = self.convert(img_file)
         new_title = self.parse_title(tif_file)
         self.post_geoserver(tif_file, self.layer_future)
-        self.update_geonode(self.layer_future, title=new_title)
+        self.update_geonode(self.layer_future, title=new_title,
+                            store=self.layer_future)
         self.truncate_gs_cache(self.layer_future)
 
     def import_current(self):
@@ -144,7 +145,8 @@ class GFMSProcessor(GeoDataProcessor):
         tif_file = self.convert(img_file)
         new_title = self.parse_title(tif_file)
         self.post_geoserver(tif_file, self.layer_current)
-        self.update_geonode(self.layer_current, title=new_title)
+        self.update_geonode(self.layer_current, title=new_title,
+                            store=self.layer_current)
         self.truncate_gs_cache(self.layer_current)
 
     def run(self):

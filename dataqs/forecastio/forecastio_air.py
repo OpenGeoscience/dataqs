@@ -89,6 +89,7 @@ class ForecastIOAirTempProcessor(GeoDataMosaicProcessor):
         self.drop_old_daily_images(now, self.layer_name)
 
         self.update_geonode(self.layer_name, title=self.parse_name(now),
+                            store=self.layer_name,
                             bounds=('-180.0', '180.0',
                                     '-90.0', '90.0', 'EPSG:4326'))
         self.truncate_gs_cache(self.layer_name)

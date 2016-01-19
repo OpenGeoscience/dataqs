@@ -71,7 +71,8 @@ class SPEIProcessor(GeoDataProcessor):
                 self.set_default_style(layer_name, layer_name, SPEI_SLD.format(
                     name=layer_name
                 ))
-            self.update_geonode(layer_name, title=self.spei_files[layer_name])
+            self.update_geonode(layer_name, title=self.spei_files[layer_name],
+                                store=layer_name)
             self.truncate_gs_cache(layer_name)
             self.cleanup()
 

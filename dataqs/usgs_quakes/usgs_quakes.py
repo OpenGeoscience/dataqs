@@ -99,7 +99,9 @@ class USGSQuakeProcessor(GeoDataProcessor):
                 except:
                     c.close()
                 self.post_geoserver_vector(table)
-            self.update_geonode(table, title="Earthquakes - {}".format(title))
+            self.update_geonode(table,
+                                title="Earthquakes - {}".format(title),
+                                store=datastore)
             self.truncate_gs_cache(table)
         self.purge_old_data()
         self.cleanup()
