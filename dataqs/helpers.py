@@ -15,6 +15,7 @@ import rasterio
 from osgeo import gdal
 from rasterio._warp import RESAMPLING
 from rasterio.warp import calculate_default_transform, reproject
+import unicodedata
 from geonode.geoserver.helpers import ogc_server_settings
 import ogr2ogr
 
@@ -336,3 +337,12 @@ def single_instance_task(timeout=86400):
                 raise Exception('Could not start; previous task still running')
         return wrapper
     return task_exc
+
+
+def asciier(txt):
+    """
+    Replace any non-ASCII characters
+    """
+    norm_txt = re.sub('\s+', ' ', unicodedata.normalize('NFD', txt))
+    ascii_txt = norm_txt.encode('ascii', 'ignore').decode('ascii')
+    return ascii_txt
