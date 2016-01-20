@@ -19,11 +19,13 @@ from geonode.geoserver.helpers import ogc_server_settings
 
 logger = logging.getLogger("dataqs.processors")
 
-REQ_HEADER={'User-Agent':
+REQ_HEADER = {
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+    'User-Agent':
                 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) \
                 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 '
                 'Safari/537.36'
-            }
+}
 
 AQICN_SQL = u"""
 DELETE FROM {table} where city = '{city}';
