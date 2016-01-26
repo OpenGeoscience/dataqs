@@ -1,0 +1,2 @@
+mock==1.3.0
+httpretty==0.8.14
