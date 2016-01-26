@@ -7,42 +7,16 @@ import datetime
 import re
 import shutil
 from django.conf import settings
-from dataqs.processor_base import GeoDataMosaicProcessor
+from dataqs.processor_base import GeoDataMosaicProcessor, DEFAULT_WORKSPACE
 from dataqs.helpers import warp_image, style_exists
 
 logger = logging.getLogger("dataqs.processors")
 
+script_dir = os.path.dirname(os.path.realpath(__file__))
+
 AIRNOW_ACCOUNT = getattr(settings, 'AIRNOW_ACCOUNT', 'anonymous:anonymouse')
 GS_DATA_DIR = getattr(settings, 'GS_DATA_DIR', '/data/geodata')
 GS_TMP_DIR = getattr(settings, 'GS_TMP_DIR', '/tmp')
-
-AIRNOW_SLD="""<?xml version="1.0" encoding="UTF-8"?><sld:StyledLayerDescriptor xmlns="http://www.opengis.net/sld" xmlns:sld="http://www.opengis.net/sld" xmlns:ogc="http://www.opengis.net/ogc" xmlns:gml="http://www.opengis.net/gml" version="1.0.0">
-  <sld:NamedLayer>
-    <sld:Name>airnow</sld:Name>
-    <sld:UserStyle>
-      <sld:Name>airnow</sld:Name>
-      <sld:FeatureTypeStyle>
-        <sld:Rule>
-          <sld:RasterSymbolizer>
-            <sld:Geometry>
-              <ogc:PropertyName>grid</ogc:PropertyName>
-            </sld:Geometry>
-            <sld:ColorMap>
-              <sld:ColorMapEntry color="#008000" opacity="1.0" quantity="0" label="Good"/>
-              <sld:ColorMapEntry color="#FFFF00" opacity="1.0" quantity="50" label="Moderate"/>
-              <sld:ColorMapEntry color="#FFA500" opacity="1.0" quantity="100" label="Unhealthy for Sensitive Groups"/>
-              <sld:ColorMapEntry color="#FF0000" opacity="1.0" quantity="150" label="Unhealthy"/>
-              <sld:ColorMapEntry color="#800080" opacity="1.0" quantity="200" label="Very Unhealthy"/>
-              <sld:ColorMapEntry color="#800000" opacity="1.0" quantity="300" label="Hazardous"/>
-              <sld:ColorMapEntry color="#008000" opacity="0.0001" quantity="500" label=""/>
-            </sld:ColorMap>
-          </sld:RasterSymbolizer>
-        </sld:Rule>
-      </sld:FeatureTypeStyle>
-    </sld:UserStyle>
-  </sld:NamedLayer>
-</sld:StyledLayerDescriptor>
-"""
 
 
 class AirNowGRIB2HourlyProcessor(GeoDataMosaicProcessor):
@@ -51,7 +25,7 @@ class AirNowGRIB2HourlyProcessor(GeoDataMosaicProcessor):
     time-series images from the AirNow API.
     (http://www.airnowapi.org/docs/AirNowMappingFactSheet.pdf)
     """
-    prefix = "US-"
+    prefix = "airnow"
     base_url = "ftp.airnowapi.org"
     layer_names = ["airnow_aqi_ozone", "airnow_aqi_pm25",
                          "airnow_aqi_combined"]
@@ -79,10 +53,11 @@ class AirNowGRIB2HourlyProcessor(GeoDataMosaicProcessor):
             re_1day = re.compile(time_pattern)
             files = sorted([x for x in file_list if re_1day.search(x)])[-days:]
             for file_1day in files:
-                with open(os.path.join(self.tmp_dir, file_1day),
+                filename = '{}_{}'.format(self.prefix, file_1day)
+                with open(os.path.join(self.tmp_dir, filename),
                           'wb') as outfile:
                     ftp.retrbinary('RETR %s' % file_1day, outfile.write)
-                dl_files.append(file_1day)
+                dl_files.append(filename)
         return dl_files
 
     def parse_name(self, imgname):
@@ -114,7 +89,7 @@ class AirNowGRIB2HourlyProcessor(GeoDataMosaicProcessor):
         tif_out = "{prefix}_{time}.tif".format(
             prefix=layer_name, time=time_format)
         warp_image(os.path.join(self.tmp_dir, grib_file),
-                       os.path.join(self.tmp_dir, tif_out))
+                   os.path.join(self.tmp_dir, tif_out))
         return tif_out
 
     def run(self, days=1):
@@ -135,12 +110,13 @@ class AirNowGRIB2HourlyProcessor(GeoDataMosaicProcessor):
                 os.makedirs(dst_dir)
             if dst_file.endswith('.tif'):
                 shutil.move(os.path.join(self.tmp_dir, tif_out), dst_file)
-
             self.post_geoserver(dst_file, layer_name)
             self.drop_old_hourly_images(imgtime, layer_name)
             self.drop_old_daily_images(imgtime, layer_name)
             if not style_exists(layer_name):
-                self.set_default_style(layer_name, layer_name, AIRNOW_SLD)
+                with open(os.path.join(
+                        script_dir, 'resources/airnow.sld')) as sld:
+                    self.set_default_style(layer_name, layer_name, sld.read())
             self.update_geonode(layer_name, title=layer_title, store=layer_name)
             self.truncate_gs_cache(layer_name)
         self.cleanup()

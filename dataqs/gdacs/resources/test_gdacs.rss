@@ -1,0 +1,2290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:asgard="http://asgard.jrc.it" xmlns:gdacs="http://www.gdacs.org" xmlns:glide="http://glidenumber.net" xmlns:georss="http://www.georss.org/georss" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GDACS RSS information</title>
+    <link>http://www.gdacs.org</link>
+    <description>Near real-time alerts about natural disaster with a potential humanitarian impact</description>
+    <managingEditor>tom.de-groeve@jrc.ec.europa.eu (Tom De Groeve)</managingEditor>
+    <!--Records number 65-->
+    <!--Start 1/25/2016 10:10:41 PM-->
+    <!--=Start 1/25/2016 10:10:25 PMEND - 1/25/2016 10:10:41 PM-->
+    <webMaster>tom.de-groeve@jrc.ec.europa.eu (Tom De Groeve)</webMaster>
+    <pubDate>Mon, 25 Jan 2016 21:10:41 GMT</pubDate>
+    <atom:link href="http://www.gdacs.org:80/rss.aspx?profile=ARCHIVE&amp;from=2016-01-01&amp;to=2016-01-05" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Green alert for tropical cyclone ULA-16. Population affected by Category 1 (120 km/h) wind speeds or higher is 0.</title>
+      <description>From 30/12/2015 to 12/01/2016, a Tropical Storm (maximum wind speed of 213 km/h) ULA-16 was active in SEPacific. The cyclone affects these countries: Vanuatu, Niue, Tonga (vulnerability High). Estimated population affected by category 1 (120 km/h) wind speeds or higher is 0.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/tc/1000244/1000244_28_tn.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=TC&amp;eventid=1000244</link>
+      <pubDate>Tue, 12 Jan 2016 18:00:00 GMT</pubDate>
+      <gdacs:fromdate>Wed, 30 Dec 2015 06:00:00 GMT</gdacs:fromdate>
+      <gdacs:todate>Tue, 12 Jan 2016 18:00:00 GMT</gdacs:todate>
+      <dc:subject>TC1</dc:subject>
+      <guid isPermaLink="false">TC1000244</guid>
+      <geo:Point>
+        <geo:lat>-29.5</geo:lat>
+        <geo:long>175.3</geo:long>
+      </geo:Point>
+      <georss:point>-29.5 175.3</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=TC&amp;eventid=1000244</gdacs:cap>
+      <gdacs:version>28</gdacs:version>
+      <gdacs:eventtype>TC</gdacs:eventtype>
+      <gdacs:alertlevel>Green</gdacs:alertlevel>
+      <gdacs:eventname>ULA-16</gdacs:eventname>
+      <gdacs:eventid>1000244</gdacs:eventid>
+      <gdacs:episodeid>28</gdacs:episodeid>
+      <gdacs:calculationtype>tropicalcyclonewithstormsurge</gdacs:calculationtype>
+      <gdacs:severity unit="km/h" value="212.9616">Tropical Storm (maximum wind speed of 213 km/h)</gdacs:severity>
+      <gdacs:population unit="Pop74" value="0">Population affected by Category 1 (120 km/h) wind speeds or higher is 0</gdacs:population>
+      <gdacs:vulnerability value="3">High</gdacs:vulnerability>
+      <gdacs:iso3 />
+      <gdacs:country>Vanuatu, Niue, Tonga</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage>http://www.gdacs.org/datareport/dailymap/TC/1000244/ECDM_20150108_TC_ULA.jpg</gdacs:mapimage>
+      <gdacs:maplink>http://www.gdacs.org/datareport/dailymap/TC/1000244/ECDM_20150108_TC_ULA.pdf</gdacs:maplink>
+      <gdacs:gtsimage>http://www.gdacs.org//images/satellite-icon.png</gdacs:gtsimage>
+      <gdacs:gtslink>http://www.gdacs.org/gts_list.aspx?eventid=1000244&amp;eventtype=TC</gdacs:gtslink>
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>Green flood alert in USA</title>
+      <description>On 15/12/2015, a flood started in USA, lasting until 06/01/2016 (last update). The flood caused 31 killed and 4000 displaced .</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/fl/dfo2015_4314.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=FL&amp;eventid=4314</link>
+      <pubDate>Wed, 06 Jan 2016 23:59:59 GMT</pubDate>
+      <gdacs:fromdate>Tue, 15 Dec 2015 00:00:00 GMT</gdacs:fromdate>
+      <gdacs:todate>Wed, 06 Jan 2016 23:59:59 GMT</gdacs:todate>
+      <dc:subject>FL1</dc:subject>
+      <guid isPermaLink="false">FL4314</guid>
+      <geo:Point>
+        <geo:lat>35.666</geo:lat>
+        <geo:long>-91.083</geo:long>
+      </geo:Point>
+      <georss:point>35.666 -91.083</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=FL&amp;eventid=4314</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>FL</gdacs:eventtype>
+      <gdacs:alertlevel>Green</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>4314</gdacs:eventid>
+      <gdacs:episodeid>1</gdacs:episodeid>
+      <gdacs:calculationtype />
+      <gdacs:severity unit="" value="7.38">Magnitude 7.38</gdacs:severity>
+      <gdacs:population unit="Population affected" value="31">31 killed and 4000 displaced </gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>USA</gdacs:country>
+      <gdacs:glide>0</gdacs:glide>
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>Orange flood alert in Paraguay</title>
+      <description>On 01/12/2015, a flood started in Paraguay, lasting until 06/01/2016 (last update). The flood caused 12 killed and 170000 displaced .</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/fl/dfo2015_4315.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=FL&amp;eventid=4315</link>
+      <pubDate>Wed, 06 Jan 2016 23:59:59 GMT</pubDate>
+      <gdacs:fromdate>Tue, 01 Dec 2015 00:00:00 GMT</gdacs:fromdate>
+      <gdacs:todate>Wed, 06 Jan 2016 23:59:59 GMT</gdacs:todate>
+      <dc:subject>FL2</dc:subject>
+      <guid isPermaLink="false">FL4315</guid>
+      <geo:Point>
+        <geo:lat>-26.037</geo:lat>
+        <geo:long>-55.848</geo:long>
+      </geo:Point>
+      <georss:point>-26.037 -55.848</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=FL&amp;eventid=4315</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>FL</gdacs:eventtype>
+      <gdacs:alertlevel>Orange</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>4315</gdacs:eventid>
+      <gdacs:episodeid>1</gdacs:episodeid>
+      <gdacs:calculationtype />
+      <gdacs:severity unit="" value="7.63">Magnitude 7.63</gdacs:severity>
+      <gdacs:population unit="Population affected" value="12">12 killed and 170000 displaced </gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Paraguay</gdacs:country>
+      <gdacs:glide>FL-2015-000171-PRY</gdacs:glide>
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>Green flood alert in Australia</title>
+      <description>On 23/12/2015, a flood started in Australia, lasting until 06/01/2016 (last update). The flood caused 0 killed and 0 displaced .</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/fl/dfo2015_4316.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=FL&amp;eventid=4316</link>
+      <pubDate>Wed, 06 Jan 2016 23:59:59 GMT</pubDate>
+      <gdacs:fromdate>Wed, 23 Dec 2015 00:00:00 GMT</gdacs:fromdate>
+      <gdacs:todate>Wed, 06 Jan 2016 23:59:59 GMT</gdacs:todate>
+      <dc:subject>FL1</dc:subject>
+      <guid isPermaLink="false">FL4316</guid>
+      <geo:Point>
+        <geo:lat>-30.357</geo:lat>
+        <geo:long>152.121</geo:long>
+      </geo:Point>
+      <georss:point>-30.357 152.121</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=FL&amp;eventid=4316</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>FL</gdacs:eventtype>
+      <gdacs:alertlevel>Green</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>4316</gdacs:eventid>
+      <gdacs:episodeid>1</gdacs:episodeid>
+      <gdacs:calculationtype />
+      <gdacs:severity unit="" value="6">Magnitude 6.00</gdacs:severity>
+      <gdacs:population unit="Population affected" value="0">0 killed and 0 displaced </gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Australia</gdacs:country>
+      <gdacs:glide>0</gdacs:glide>
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>Orange flood alert in Kenya</title>
+      <description>On 01/12/2015, a flood started in Kenya, lasting until 06/01/2016 (last update). The flood caused 112 killed and 100000 displaced .</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/fl/dfo2015_4317.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=FL&amp;eventid=4317</link>
+      <pubDate>Wed, 06 Jan 2016 23:59:59 GMT</pubDate>
+      <gdacs:fromdate>Tue, 01 Dec 2015 00:00:00 GMT</gdacs:fromdate>
+      <gdacs:todate>Wed, 06 Jan 2016 23:59:59 GMT</gdacs:todate>
+      <dc:subject>FL2</dc:subject>
+      <guid isPermaLink="false">FL4317</guid>
+      <geo:Point>
+        <geo:lat>-2.036</geo:lat>
+        <geo:long>39.513</geo:long>
+      </geo:Point>
+      <georss:point>-2.036 39.513</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=FL&amp;eventid=4317</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>FL</gdacs:eventtype>
+      <gdacs:alertlevel>Orange</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>4317</gdacs:eventid>
+      <gdacs:episodeid>1</gdacs:episodeid>
+      <gdacs:calculationtype />
+      <gdacs:severity unit="" value="6.76">Magnitude 6.76</gdacs:severity>
+      <gdacs:population unit="Population affected" value="112">112 killed and 100000 displaced </gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Kenya</gdacs:country>
+      <gdacs:glide>0</gdacs:glide>
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>Green flood alert in Philippines</title>
+      <description>On 12/12/2015, a flood started in Philippines, lasting until 06/01/2016 (last update). The flood caused 40 killed and 20000 displaced .</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/fl/dfo2015_4318.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=FL&amp;eventid=4318</link>
+      <pubDate>Wed, 06 Jan 2016 23:59:59 GMT</pubDate>
+      <gdacs:fromdate>Sat, 12 Dec 2015 00:00:00 GMT</gdacs:fromdate>
+      <gdacs:todate>Wed, 06 Jan 2016 23:59:59 GMT</gdacs:todate>
+      <dc:subject>FL1</dc:subject>
+      <guid isPermaLink="false">FL4318</guid>
+      <geo:Point>
+        <geo:lat>12.836</geo:lat>
+        <geo:long>121.229</geo:long>
+      </geo:Point>
+      <georss:point>12.836 121.229</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=FL&amp;eventid=4318</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>FL</gdacs:eventtype>
+      <gdacs:alertlevel>Green</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>4318</gdacs:eventid>
+      <gdacs:episodeid>1</gdacs:episodeid>
+      <gdacs:calculationtype />
+      <gdacs:severity unit="" value="5.38">Magnitude 5.38</gdacs:severity>
+      <gdacs:population unit="Population affected" value="40">40 killed and 20000 displaced </gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Philippines</gdacs:country>
+      <gdacs:glide>TC-2015-000170-PHL</gdacs:glide>
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>Green flood alert in United Kingdom</title>
+      <description>On 05/12/2015, a flood started in United Kingdom, lasting until 06/01/2016 (last update). The flood caused 3 killed and 64000 displaced .</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/fl/dfo2015_4319.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=FL&amp;eventid=4319</link>
+      <pubDate>Wed, 06 Jan 2016 23:59:59 GMT</pubDate>
+      <gdacs:fromdate>Sat, 05 Dec 2015 00:00:00 GMT</gdacs:fromdate>
+      <gdacs:todate>Wed, 06 Jan 2016 23:59:59 GMT</gdacs:todate>
+      <dc:subject>FL1</dc:subject>
+      <guid isPermaLink="false">FL4319</guid>
+      <geo:Point>
+        <geo:lat>54.987</geo:lat>
+        <geo:long>-2.775</geo:long>
+      </geo:Point>
+      <georss:point>54.987 -2.775</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=FL&amp;eventid=4319</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>FL</gdacs:eventtype>
+      <gdacs:alertlevel>Green</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>4319</gdacs:eventid>
+      <gdacs:episodeid>1</gdacs:episodeid>
+      <gdacs:calculationtype />
+      <gdacs:severity unit="" value="6.38">Magnitude 6.38</gdacs:severity>
+      <gdacs:population unit="Population affected" value="3">3 killed and 64000 displaced </gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>United Kingdom</gdacs:country>
+      <gdacs:glide>0</gdacs:glide>
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.1M, Depth:139km) in Greece 05/01/2016 23:11 UTC, 221361 people within 100km.</title>
+      <description>On 1/5/2016 11:11:50 PM, an earthquake occurred in Greece potentially affecting 221361 people within 100km. The earthquake had Magnitude 4.1M, Depth:139km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114393_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077909</link>
+      <pubDate>Tue, 05 Jan 2016 23:11:50 GMT</pubDate>
+      <gdacs:fromdate>Tue, 05 Jan 2016 23:11:50 GMT</gdacs:fromdate>
+      <gdacs:todate>Tue, 05 Jan 2016 23:11:50 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077909</guid>
+      <geo:Point>
+        <geo:lat>36.556</geo:lat>
+        <geo:long>26.8495</geo:long>
+      </geo:Point>
+      <georss:point>36.556 26.8495</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077909</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077909</gdacs:eventid>
+      <gdacs:episodeid>1114393</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.1">Magnitude 4.1M, Depth:139km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="221361">221361 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Greece</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.9M, Depth:10km) in Northern Mid-Atlantic Ridge 05/01/2016 22:05 UTC, No people within 100km.</title>
+      <description>On 1/5/2016 10:05:01 PM, an earthquake occurred in Northern Mid-Atlantic Ridge potentially affecting No people within 100km. The earthquake had Magnitude 4.9M, Depth:10km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114392_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077908</link>
+      <pubDate>Tue, 05 Jan 2016 22:05:01 GMT</pubDate>
+      <gdacs:fromdate>Tue, 05 Jan 2016 22:05:01 GMT</gdacs:fromdate>
+      <gdacs:todate>Tue, 05 Jan 2016 22:05:01 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077908</guid>
+      <geo:Point>
+        <geo:lat>23.5891</geo:lat>
+        <geo:long>-45.6581</geo:long>
+      </geo:Point>
+      <georss:point>23.5891 -45.6581</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077908</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077908</gdacs:eventid>
+      <gdacs:episodeid>1114392</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.9">Magnitude 4.9M, Depth:10km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="0">No people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Northern Mid-Atlantic Ridge</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 5.9M, Depth:158.37km) in Volcano Islands, Japan Region 05/01/2016 21:59 UTC, No people within 100km.</title>
+      <description>On 1/5/2016 9:59:50 PM, an earthquake occurred in Volcano Islands, Japan Region potentially affecting No people within 100km. The earthquake had Magnitude 5.9M, Depth:158.37km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114388_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077906</link>
+      <pubDate>Tue, 05 Jan 2016 21:59:50 GMT</pubDate>
+      <gdacs:fromdate>Tue, 05 Jan 2016 21:59:50 GMT</gdacs:fromdate>
+      <gdacs:todate>Tue, 05 Jan 2016 21:59:50 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077906</guid>
+      <geo:Point>
+        <geo:lat>22.0495</geo:lat>
+        <geo:long>143.6729</geo:long>
+      </geo:Point>
+      <georss:point>22.0495 143.6729</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077906</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077906</gdacs:eventid>
+      <gdacs:episodeid>1114388</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="5.9">Magnitude 5.9M, Depth:158.37km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="0">No people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Volcano Islands, Japan Region</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>Green earthquake alert (Magnitude 4.8M, Depth:10km) in Indonesia 05/01/2016 21:52 UTC, About 38046 people within 100km.</title>
+      <description>On 1/5/2016 9:52:00 PM, an earthquake occurred in Indonesia potentially affecting About 38046 people within 100km. The earthquake had Magnitude 4.8M, Depth:10km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114389_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077904</link>
+      <pubDate>Tue, 05 Jan 2016 21:52:00 GMT</pubDate>
+      <gdacs:fromdate>Tue, 05 Jan 2016 21:52:00 GMT</gdacs:fromdate>
+      <gdacs:todate>Tue, 05 Jan 2016 21:52:00 GMT</gdacs:todate>
+      <dc:subject>EQ1</dc:subject>
+      <guid isPermaLink="false">EQ1077904</guid>
+      <geo:Point>
+        <geo:lat>-2.7726</geo:lat>
+        <geo:long>99.8746</geo:long>
+      </geo:Point>
+      <georss:point>-2.7726 99.8746</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077904</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>Green</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077904</gdacs:eventid>
+      <gdacs:episodeid>1114389</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.8">Magnitude 4.8M, Depth:10km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="38046">About 38046 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Indonesia</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>Green earthquake alert (Magnitude 5.2M, Depth:19.11km) in Philippines 05/01/2016 20:36 UTC, 602816 people within 100km.</title>
+      <description>On 1/5/2016 8:36:16 PM, an earthquake occurred in Philippines potentially affecting 602816 people within 100km. The earthquake had Magnitude 5.2M, Depth:19.11km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114495_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077899</link>
+      <pubDate>Tue, 05 Jan 2016 20:36:16 GMT</pubDate>
+      <gdacs:fromdate>Tue, 05 Jan 2016 20:36:16 GMT</gdacs:fromdate>
+      <gdacs:todate>Tue, 05 Jan 2016 20:36:16 GMT</gdacs:todate>
+      <dc:subject>EQ1</dc:subject>
+      <guid isPermaLink="false">EQ1077899</guid>
+      <geo:Point>
+        <geo:lat>10.1347</geo:lat>
+        <geo:long>126.2116</geo:long>
+      </geo:Point>
+      <georss:point>10.1347 126.2116</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077899</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>Green</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077899</gdacs:eventid>
+      <gdacs:episodeid>1114495</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="5.2">Magnitude 5.2M, Depth:19.11km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="602816">602816 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Philippines</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 5M, Depth:53.99km) in Philippines 05/01/2016 20:31 UTC, 585076 people within 100km.</title>
+      <description>On 1/5/2016 8:31:22 PM, an earthquake occurred in Philippines potentially affecting 585076 people within 100km. The earthquake had Magnitude 5M, Depth:53.99km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114493_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077900</link>
+      <pubDate>Tue, 05 Jan 2016 20:31:22 GMT</pubDate>
+      <gdacs:fromdate>Tue, 05 Jan 2016 20:31:22 GMT</gdacs:fromdate>
+      <gdacs:todate>Tue, 05 Jan 2016 20:31:22 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077900</guid>
+      <geo:Point>
+        <geo:lat>10.1357</geo:lat>
+        <geo:long>126.2709</geo:long>
+      </geo:Point>
+      <georss:point>10.1357 126.2709</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077900</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077900</gdacs:eventid>
+      <gdacs:episodeid>1114493</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="5">Magnitude 5M, Depth:53.99km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="585076">585076 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Philippines</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.6M, Depth:625.5km) in Vanuatu 05/01/2016 19:48 UTC, No people within 100km.</title>
+      <description>On 1/5/2016 7:48:10 PM, an earthquake occurred in Vanuatu potentially affecting No people within 100km. The earthquake had Magnitude 4.6M, Depth:625.5km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114378_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077902</link>
+      <pubDate>Tue, 05 Jan 2016 19:48:10 GMT</pubDate>
+      <gdacs:fromdate>Tue, 05 Jan 2016 19:48:10 GMT</gdacs:fromdate>
+      <gdacs:todate>Tue, 05 Jan 2016 19:48:10 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077902</guid>
+      <geo:Point>
+        <geo:lat>-12.8666</geo:lat>
+        <geo:long>169.0584</geo:long>
+      </geo:Point>
+      <georss:point>-12.8666 169.0584</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077902</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077902</gdacs:eventid>
+      <gdacs:episodeid>1114378</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.6">Magnitude 4.6M, Depth:625.5km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="0">No people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Vanuatu</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>Green earthquake alert (Magnitude 4.7M, Depth:89.53km) in Papua New Guinea 05/01/2016 19:48 UTC, 454868 people within 100km.</title>
+      <description>On 1/5/2016 7:48:07 PM, an earthquake occurred in Papua New Guinea potentially affecting 454868 people within 100km. The earthquake had Magnitude 4.7M, Depth:89.53km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114390_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077897</link>
+      <pubDate>Tue, 05 Jan 2016 19:48:07 GMT</pubDate>
+      <gdacs:fromdate>Tue, 05 Jan 2016 19:48:07 GMT</gdacs:fromdate>
+      <gdacs:todate>Tue, 05 Jan 2016 19:48:07 GMT</gdacs:todate>
+      <dc:subject>EQ1</dc:subject>
+      <guid isPermaLink="false">EQ1077897</guid>
+      <geo:Point>
+        <geo:lat>-6.447</geo:lat>
+        <geo:long>147.1328</geo:long>
+      </geo:Point>
+      <georss:point>-6.447 147.1328</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077897</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>Green</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077897</gdacs:eventid>
+      <gdacs:episodeid>1114390</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.7">Magnitude 4.7M, Depth:89.53km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="454868">454868 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Papua New Guinea</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.7M, Depth:27.71km) in Japan 05/01/2016 19:46 UTC, No people within 100km.</title>
+      <description>On 1/5/2016 7:46:11 PM, an earthquake occurred in Japan potentially affecting No people within 100km. The earthquake had Magnitude 4.7M, Depth:27.71km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114482_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077905</link>
+      <pubDate>Tue, 05 Jan 2016 19:46:11 GMT</pubDate>
+      <gdacs:fromdate>Tue, 05 Jan 2016 19:46:11 GMT</gdacs:fromdate>
+      <gdacs:todate>Tue, 05 Jan 2016 19:46:11 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077905</guid>
+      <geo:Point>
+        <geo:lat>37.5669</geo:lat>
+        <geo:long>144.5305</geo:long>
+      </geo:Point>
+      <georss:point>37.5669 144.5305</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077905</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077905</gdacs:eventid>
+      <gdacs:episodeid>1114482</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.7">Magnitude 4.7M, Depth:27.71km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="0">No people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Japan</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.9M, Depth:51.67km) in Indonesia 05/01/2016 18:40 UTC, 475850 people within 100km.</title>
+      <description>On 1/5/2016 6:40:25 PM, an earthquake occurred in Indonesia potentially affecting 475850 people within 100km. The earthquake had Magnitude 4.9M, Depth:51.67km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114481_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077893</link>
+      <pubDate>Tue, 05 Jan 2016 18:40:25 GMT</pubDate>
+      <gdacs:fromdate>Tue, 05 Jan 2016 18:40:25 GMT</gdacs:fromdate>
+      <gdacs:todate>Tue, 05 Jan 2016 18:40:25 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077893</guid>
+      <geo:Point>
+        <geo:lat>4.1937</geo:lat>
+        <geo:long>95.4708</geo:long>
+      </geo:Point>
+      <georss:point>4.1937 95.4708</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077893</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077893</gdacs:eventid>
+      <gdacs:episodeid>1114481</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.9">Magnitude 4.9M, Depth:51.67km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="475850">475850 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Indonesia</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.7M, Depth:103.19km) in Venezuela 05/01/2016 14:33 UTC, 865147 people within 100km.</title>
+      <description>On 1/5/2016 2:33:40 PM, an earthquake occurred in Venezuela potentially affecting 865147 people within 100km. The earthquake had Magnitude 4.7M, Depth:103.19km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114342_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077873</link>
+      <pubDate>Tue, 05 Jan 2016 14:33:40 GMT</pubDate>
+      <gdacs:fromdate>Tue, 05 Jan 2016 14:33:40 GMT</gdacs:fromdate>
+      <gdacs:todate>Tue, 05 Jan 2016 14:33:40 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077873</guid>
+      <geo:Point>
+        <geo:lat>10.9466</geo:lat>
+        <geo:long>-62.0399</geo:long>
+      </geo:Point>
+      <georss:point>10.9466 -62.0399</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077873</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077873</gdacs:eventid>
+      <gdacs:episodeid>1114342</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.7">Magnitude 4.7M, Depth:103.19km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="865147">865147 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Venezuela</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.9M, Depth:59.32km) in South Georgia and the South Sandwich Islands 05/01/2016 10:33 UTC, No people within 100km.</title>
+      <description>On 1/5/2016 10:33:41 AM, an earthquake occurred in South Georgia and the South Sandwich Islands potentially affecting No people within 100km. The earthquake had Magnitude 4.9M, Depth:59.32km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114324_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077864</link>
+      <pubDate>Tue, 05 Jan 2016 10:33:41 GMT</pubDate>
+      <gdacs:fromdate>Tue, 05 Jan 2016 10:33:41 GMT</gdacs:fromdate>
+      <gdacs:todate>Tue, 05 Jan 2016 10:33:41 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077864</guid>
+      <geo:Point>
+        <geo:lat>-59.0695</geo:lat>
+        <geo:long>-25.6226</geo:long>
+      </geo:Point>
+      <georss:point>-59.0695 -25.6226</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077864</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077864</gdacs:eventid>
+      <gdacs:episodeid>1114324</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.9">Magnitude 4.9M, Depth:59.32km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="0">No people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>South Georgia and the South Sandwich Islands</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 5.4M, Depth:10km) in Pacific-Antarctic Ridge 05/01/2016 09:34 UTC, No people within 100km.</title>
+      <description>On 1/5/2016 9:34:15 AM, an earthquake occurred in Pacific-Antarctic Ridge potentially affecting No people within 100km. The earthquake had Magnitude 5.4M, Depth:10km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114321_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077861</link>
+      <pubDate>Tue, 05 Jan 2016 09:34:15 GMT</pubDate>
+      <gdacs:fromdate>Tue, 05 Jan 2016 09:34:15 GMT</gdacs:fromdate>
+      <gdacs:todate>Tue, 05 Jan 2016 09:34:15 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077861</guid>
+      <geo:Point>
+        <geo:lat>-54.3367</geo:lat>
+        <geo:long>-136.1409</geo:long>
+      </geo:Point>
+      <georss:point>-54.3367 -136.1409</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077861</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077861</gdacs:eventid>
+      <gdacs:episodeid>1114321</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="5.4">Magnitude 5.4M, Depth:10km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="0">No people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Pacific-Antarctic Ridge</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.6M, Depth:34.38km) in United States 05/01/2016 07:20 UTC, No people within 100km.</title>
+      <description>On 1/5/2016 7:20:49 AM, an earthquake occurred in United States potentially affecting No people within 100km. The earthquake had Magnitude 4.6M, Depth:34.38km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114314_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077857</link>
+      <pubDate>Tue, 05 Jan 2016 07:20:49 GMT</pubDate>
+      <gdacs:fromdate>Tue, 05 Jan 2016 07:20:49 GMT</gdacs:fromdate>
+      <gdacs:todate>Tue, 05 Jan 2016 07:20:49 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077857</guid>
+      <geo:Point>
+        <geo:lat>52.0878</geo:lat>
+        <geo:long>-169.6875</geo:long>
+      </geo:Point>
+      <georss:point>52.0878 -169.6875</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077857</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077857</gdacs:eventid>
+      <gdacs:episodeid>1114314</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.6">Magnitude 4.6M, Depth:34.38km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="0">No people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>United States</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.5M, Depth:30km) in Cyprus 05/01/2016 07:17 UTC, 249436 people within 100km.</title>
+      <description>On 1/5/2016 7:17:15 AM, an earthquake occurred in Cyprus potentially affecting 249436 people within 100km. The earthquake had Magnitude 4.5M, Depth:30km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114315_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077856</link>
+      <pubDate>Tue, 05 Jan 2016 07:17:15 GMT</pubDate>
+      <gdacs:fromdate>Tue, 05 Jan 2016 07:17:15 GMT</gdacs:fromdate>
+      <gdacs:todate>Tue, 05 Jan 2016 07:17:15 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077856</guid>
+      <geo:Point>
+        <geo:lat>34.25</geo:lat>
+        <geo:long>32.68</geo:long>
+      </geo:Point>
+      <georss:point>34.25 32.68</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077856</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077856</gdacs:eventid>
+      <gdacs:episodeid>1114315</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.5">Magnitude 4.5M, Depth:30km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="249436">249436 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Cyprus</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 5.2M, Depth:130.31km) in Indonesia 05/01/2016 05:28 UTC, Few people within 100km.</title>
+      <description>On 1/5/2016 5:28:30 AM, an earthquake occurred in Indonesia potentially affecting Few people within 100km. The earthquake had Magnitude 5.2M, Depth:130.31km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114306_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077854</link>
+      <pubDate>Tue, 05 Jan 2016 05:28:30 GMT</pubDate>
+      <gdacs:fromdate>Tue, 05 Jan 2016 05:28:30 GMT</gdacs:fromdate>
+      <gdacs:todate>Tue, 05 Jan 2016 05:28:30 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077854</guid>
+      <geo:Point>
+        <geo:lat>-5.9989</geo:lat>
+        <geo:long>130.6143</geo:long>
+      </geo:Point>
+      <georss:point>-5.9989 130.6143</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077854</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077854</gdacs:eventid>
+      <gdacs:episodeid>1114306</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="5.2">Magnitude 5.2M, Depth:130.31km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="58">Few people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Indonesia</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.6M, Depth:30.72km) in Northern Mariana Islands 05/01/2016 03:10 UTC, No people within 100km.</title>
+      <description>On 1/5/2016 3:10:49 AM, an earthquake occurred in Northern Mariana Islands potentially affecting No people within 100km. The earthquake had Magnitude 4.6M, Depth:30.72km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114299_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077849</link>
+      <pubDate>Tue, 05 Jan 2016 03:10:49 GMT</pubDate>
+      <gdacs:fromdate>Tue, 05 Jan 2016 03:10:49 GMT</gdacs:fromdate>
+      <gdacs:todate>Tue, 05 Jan 2016 03:10:49 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077849</guid>
+      <geo:Point>
+        <geo:lat>15.4098</geo:lat>
+        <geo:long>147.909</geo:long>
+      </geo:Point>
+      <georss:point>15.4098 147.909</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077849</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077849</gdacs:eventid>
+      <gdacs:episodeid>1114299</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.6">Magnitude 4.6M, Depth:30.72km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="0">No people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Northern Mariana Islands</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 5.8M, Depth:10km) in Japan 05/01/2016 02:21 UTC, No people within 100km.</title>
+      <description>On 1/5/2016 2:21:12 AM, an earthquake occurred in Japan potentially affecting No people within 100km. The earthquake had Magnitude 5.8M, Depth:10km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114292_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077843</link>
+      <pubDate>Tue, 05 Jan 2016 02:21:12 GMT</pubDate>
+      <gdacs:fromdate>Tue, 05 Jan 2016 02:21:12 GMT</gdacs:fromdate>
+      <gdacs:todate>Tue, 05 Jan 2016 02:21:12 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077843</guid>
+      <geo:Point>
+        <geo:lat>30.6419</geo:lat>
+        <geo:long>132.8007</geo:long>
+      </geo:Point>
+      <georss:point>30.6419 132.8007</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077843</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077843</gdacs:eventid>
+      <gdacs:episodeid>1114292</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="5.8">Magnitude 5.8M, Depth:10km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="0">No people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Japan</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 5M, Depth:35.04km) in Mexico 05/01/2016 01:58 UTC, 216483 people within 100km.</title>
+      <description>On 1/5/2016 1:58:22 AM, an earthquake occurred in Mexico potentially affecting 216483 people within 100km. The earthquake had Magnitude 5M, Depth:35.04km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114288_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077840</link>
+      <pubDate>Tue, 05 Jan 2016 01:58:22 GMT</pubDate>
+      <gdacs:fromdate>Tue, 05 Jan 2016 01:58:22 GMT</gdacs:fromdate>
+      <gdacs:todate>Tue, 05 Jan 2016 01:58:22 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077840</guid>
+      <geo:Point>
+        <geo:lat>15.527</geo:lat>
+        <geo:long>-95.1815</geo:long>
+      </geo:Point>
+      <georss:point>15.527 -95.1815</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077840</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077840</gdacs:eventid>
+      <gdacs:episodeid>1114288</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="5">Magnitude 5M, Depth:35.04km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="216483">216483 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Mexico</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.8M, Depth:194.87km) in Northern Mariana Islands 05/01/2016 01:18 UTC, No people within 100km.</title>
+      <description>On 1/5/2016 1:18:48 AM, an earthquake occurred in Northern Mariana Islands potentially affecting No people within 100km. The earthquake had Magnitude 4.8M, Depth:194.87km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114283_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077838</link>
+      <pubDate>Tue, 05 Jan 2016 01:18:48 GMT</pubDate>
+      <gdacs:fromdate>Tue, 05 Jan 2016 01:18:48 GMT</gdacs:fromdate>
+      <gdacs:todate>Tue, 05 Jan 2016 01:18:48 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077838</guid>
+      <geo:Point>
+        <geo:lat>18.6031</geo:lat>
+        <geo:long>145.7544</geo:long>
+      </geo:Point>
+      <georss:point>18.6031 145.7544</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077838</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077838</gdacs:eventid>
+      <gdacs:episodeid>1114283</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.8">Magnitude 4.8M, Depth:194.87km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="0">No people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Northern Mariana Islands</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>Green earthquake alert (Magnitude 4.7M, Depth:98.27km) in New Zealand 04/01/2016 23:57 UTC, 107557 people within 100km.</title>
+      <description>On 1/4/2016 11:57:45 PM, an earthquake occurred in New Zealand potentially affecting 107557 people within 100km. The earthquake had Magnitude 4.7M, Depth:98.27km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114278_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077831</link>
+      <pubDate>Mon, 04 Jan 2016 23:57:45 GMT</pubDate>
+      <gdacs:fromdate>Mon, 04 Jan 2016 23:57:45 GMT</gdacs:fromdate>
+      <gdacs:todate>Mon, 04 Jan 2016 23:57:45 GMT</gdacs:todate>
+      <dc:subject>EQ1</dc:subject>
+      <guid isPermaLink="false">EQ1077831</guid>
+      <geo:Point>
+        <geo:lat>-38.3173</geo:lat>
+        <geo:long>177.5085</geo:long>
+      </geo:Point>
+      <georss:point>-38.3173 177.5085</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077831</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>Green</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077831</gdacs:eventid>
+      <gdacs:episodeid>1114278</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.7">Magnitude 4.7M, Depth:98.27km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="107557">107557 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>New Zealand</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.2M, Depth:23km) in Turkey 04/01/2016 23:48 UTC, 4198014 people within 100km.</title>
+      <description>On 1/4/2016 11:48:55 PM, an earthquake occurred in Turkey potentially affecting 4198014 people within 100km. The earthquake had Magnitude 4.2M, Depth:23km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114268_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077830</link>
+      <pubDate>Mon, 04 Jan 2016 23:48:55 GMT</pubDate>
+      <gdacs:fromdate>Mon, 04 Jan 2016 23:48:55 GMT</gdacs:fromdate>
+      <gdacs:todate>Mon, 04 Jan 2016 23:48:55 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077830</guid>
+      <geo:Point>
+        <geo:lat>36.8995</geo:lat>
+        <geo:long>35.4057</geo:long>
+      </geo:Point>
+      <georss:point>36.8995 35.4057</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077830</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077830</gdacs:eventid>
+      <gdacs:episodeid>1114268</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.2">Magnitude 4.2M, Depth:23km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="4198014">4198014 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Turkey</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>Green earthquake alert (Magnitude 4.6M, Depth:34.02km) in Indonesia 04/01/2016 21:09 UTC, 104408 people within 100km.</title>
+      <description>On 1/4/2016 9:09:03 PM, an earthquake occurred in Indonesia potentially affecting 104408 people within 100km. The earthquake had Magnitude 4.6M, Depth:34.02km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114275_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077835</link>
+      <pubDate>Mon, 04 Jan 2016 21:09:03 GMT</pubDate>
+      <gdacs:fromdate>Mon, 04 Jan 2016 21:09:03 GMT</gdacs:fromdate>
+      <gdacs:todate>Mon, 04 Jan 2016 21:09:03 GMT</gdacs:todate>
+      <dc:subject>EQ1</dc:subject>
+      <guid isPermaLink="false">EQ1077835</guid>
+      <geo:Point>
+        <geo:lat>2.2545</geo:lat>
+        <geo:long>96.2987</geo:long>
+      </geo:Point>
+      <georss:point>2.2545 96.2987</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077835</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>Green</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077835</gdacs:eventid>
+      <gdacs:episodeid>1114275</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.6">Magnitude 4.6M, Depth:34.02km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="104408">104408 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Indonesia</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.6M, Depth:29.19km) in Indonesia 04/01/2016 21:05 UTC, About 605 people within 100km.</title>
+      <description>On 1/4/2016 9:05:39 PM, an earthquake occurred in Indonesia potentially affecting About 605 people within 100km. The earthquake had Magnitude 4.6M, Depth:29.19km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114267_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077823</link>
+      <pubDate>Mon, 04 Jan 2016 21:05:39 GMT</pubDate>
+      <gdacs:fromdate>Mon, 04 Jan 2016 21:05:39 GMT</gdacs:fromdate>
+      <gdacs:todate>Mon, 04 Jan 2016 21:05:39 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077823</guid>
+      <geo:Point>
+        <geo:lat>-6.3149</geo:lat>
+        <geo:long>103.7403</geo:long>
+      </geo:Point>
+      <georss:point>-6.3149 103.7403</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077823</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077823</gdacs:eventid>
+      <gdacs:episodeid>1114267</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.6">Magnitude 4.6M, Depth:29.19km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="605">About 605 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Indonesia</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>Green earthquake alert (Magnitude 4.7M, Depth:10km) in Greece 04/01/2016 18:00 UTC, 467767 people within 100km.</title>
+      <description>On 1/4/2016 6:00:55 PM, an earthquake occurred in Greece potentially affecting 467767 people within 100km. The earthquake had Magnitude 4.7M, Depth:10km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114242_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077809</link>
+      <pubDate>Mon, 04 Jan 2016 18:00:55 GMT</pubDate>
+      <gdacs:fromdate>Mon, 04 Jan 2016 18:00:55 GMT</gdacs:fromdate>
+      <gdacs:todate>Mon, 04 Jan 2016 18:00:55 GMT</gdacs:todate>
+      <dc:subject>EQ1</dc:subject>
+      <guid isPermaLink="false">EQ1077809</guid>
+      <geo:Point>
+        <geo:lat>38.64</geo:lat>
+        <geo:long>20.48</geo:long>
+      </geo:Point>
+      <georss:point>38.64 20.48</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077809</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>Green</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077809</gdacs:eventid>
+      <gdacs:episodeid>1114242</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.7">Magnitude 4.7M, Depth:10km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="467767">467767 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Greece</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>Green earthquake alert (Magnitude 4.5M, Depth:18.96km) in Venezuela 04/01/2016 14:59 UTC, 1527983 people within 100km.</title>
+      <description>On 1/4/2016 2:59:11 PM, an earthquake occurred in Venezuela potentially affecting 1527983 people within 100km. The earthquake had Magnitude 4.5M, Depth:18.96km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114261_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077825</link>
+      <pubDate>Mon, 04 Jan 2016 14:59:11 GMT</pubDate>
+      <gdacs:fromdate>Mon, 04 Jan 2016 14:59:11 GMT</gdacs:fromdate>
+      <gdacs:todate>Mon, 04 Jan 2016 14:59:11 GMT</gdacs:todate>
+      <dc:subject>EQ1</dc:subject>
+      <guid isPermaLink="false">EQ1077825</guid>
+      <geo:Point>
+        <geo:lat>9.6131</geo:lat>
+        <geo:long>-70.7361</geo:long>
+      </geo:Point>
+      <georss:point>9.6131 -70.7361</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077825</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>Green</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077825</gdacs:eventid>
+      <gdacs:episodeid>1114261</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.5">Magnitude 4.5M, Depth:18.96km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="1527983">1527983 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Venezuela</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>Green earthquake alert (Magnitude 5.2M, Depth:22.12km) in Philippines 04/01/2016 14:36 UTC, 150750 people within 100km.</title>
+      <description>On 1/4/2016 2:36:15 PM, an earthquake occurred in Philippines potentially affecting 150750 people within 100km. The earthquake had Magnitude 5.2M, Depth:22.12km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114227_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077803</link>
+      <pubDate>Mon, 04 Jan 2016 14:36:15 GMT</pubDate>
+      <gdacs:fromdate>Mon, 04 Jan 2016 14:36:15 GMT</gdacs:fromdate>
+      <gdacs:todate>Mon, 04 Jan 2016 14:36:15 GMT</gdacs:todate>
+      <dc:subject>EQ1</dc:subject>
+      <guid isPermaLink="false">EQ1077803</guid>
+      <geo:Point>
+        <geo:lat>19.1566</geo:lat>
+        <geo:long>121.1054</geo:long>
+      </geo:Point>
+      <georss:point>19.1566 121.1054</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077803</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>Green</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077803</gdacs:eventid>
+      <gdacs:episodeid>1114227</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="5.2">Magnitude 5.2M, Depth:22.12km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="150750">150750 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Philippines</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.8M, Depth:14.32km) in China 04/01/2016 13:56 UTC, 113262 people within 100km.</title>
+      <description>On 1/4/2016 1:56:11 PM, an earthquake occurred in China potentially affecting 113262 people within 100km. The earthquake had Magnitude 4.8M, Depth:14.32km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114264_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077827</link>
+      <pubDate>Mon, 04 Jan 2016 13:56:11 GMT</pubDate>
+      <gdacs:fromdate>Mon, 04 Jan 2016 13:56:11 GMT</gdacs:fromdate>
+      <gdacs:todate>Mon, 04 Jan 2016 13:56:11 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077827</guid>
+      <geo:Point>
+        <geo:lat>36.436</geo:lat>
+        <geo:long>97.64</geo:long>
+      </geo:Point>
+      <georss:point>36.436 97.64</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077827</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077827</gdacs:eventid>
+      <gdacs:episodeid>1114264</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.8">Magnitude 4.8M, Depth:14.32km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="113262">113262 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>China</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.9M, Depth:12.59km) in Japan 04/01/2016 13:53 UTC, 1224886 people within 100km.</title>
+      <description>On 1/4/2016 1:53:14 PM, an earthquake occurred in Japan potentially affecting 1224886 people within 100km. The earthquake had Magnitude 4.9M, Depth:12.59km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114223_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077799</link>
+      <pubDate>Mon, 04 Jan 2016 13:53:14 GMT</pubDate>
+      <gdacs:fromdate>Mon, 04 Jan 2016 13:53:14 GMT</gdacs:fromdate>
+      <gdacs:todate>Mon, 04 Jan 2016 13:53:14 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077799</guid>
+      <geo:Point>
+        <geo:lat>25.9308</geo:lat>
+        <geo:long>128.2942</geo:long>
+      </geo:Point>
+      <georss:point>25.9308 128.2942</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077799</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077799</gdacs:eventid>
+      <gdacs:episodeid>1114223</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.9">Magnitude 4.9M, Depth:12.59km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="1224886">1224886 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Japan</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>Green earthquake alert (Magnitude 4.7M, Depth:40.54km) in China 04/01/2016 10:27 UTC, 1102785 people within 100km.</title>
+      <description>On 1/4/2016 10:27:07 AM, an earthquake occurred in China potentially affecting 1102785 people within 100km. The earthquake had Magnitude 4.7M, Depth:40.54km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114200_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077787</link>
+      <pubDate>Mon, 04 Jan 2016 10:27:07 GMT</pubDate>
+      <gdacs:fromdate>Mon, 04 Jan 2016 10:27:07 GMT</gdacs:fromdate>
+      <gdacs:todate>Mon, 04 Jan 2016 10:27:07 GMT</gdacs:todate>
+      <dc:subject>EQ1</dc:subject>
+      <guid isPermaLink="false">EQ1077787</guid>
+      <geo:Point>
+        <geo:lat>43.6181</geo:lat>
+        <geo:long>83.1264</geo:long>
+      </geo:Point>
+      <georss:point>43.6181 83.1264</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077787</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>Green</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077787</gdacs:eventid>
+      <gdacs:episodeid>1114200</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.7">Magnitude 4.7M, Depth:40.54km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="1102785">1102785 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>China</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4M, Depth:15km) in Greece 04/01/2016 07:21 UTC, 419425 people within 100km.</title>
+      <description>On 1/4/2016 7:21:45 AM, an earthquake occurred in Greece potentially affecting 419425 people within 100km. The earthquake had Magnitude 4M, Depth:15km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114185_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077775</link>
+      <pubDate>Mon, 04 Jan 2016 07:21:45 GMT</pubDate>
+      <gdacs:fromdate>Mon, 04 Jan 2016 07:21:45 GMT</gdacs:fromdate>
+      <gdacs:todate>Mon, 04 Jan 2016 07:21:45 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077775</guid>
+      <geo:Point>
+        <geo:lat>38.3155</geo:lat>
+        <geo:long>20.4012</geo:long>
+      </geo:Point>
+      <georss:point>38.3155 20.4012</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077775</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077775</gdacs:eventid>
+      <gdacs:episodeid>1114185</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4">Magnitude 4M, Depth:15km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="419425">419425 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Greece</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.1M, Depth:220.2km) in Greece 04/01/2016 02:58 UTC, 211970 people within 100km.</title>
+      <description>On 1/4/2016 2:58:09 AM, an earthquake occurred in Greece potentially affecting 211970 people within 100km. The earthquake had Magnitude 4.1M, Depth:220.2km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114169_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077765</link>
+      <pubDate>Mon, 04 Jan 2016 02:58:09 GMT</pubDate>
+      <gdacs:fromdate>Mon, 04 Jan 2016 02:58:09 GMT</gdacs:fromdate>
+      <gdacs:todate>Mon, 04 Jan 2016 02:58:09 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077765</guid>
+      <geo:Point>
+        <geo:lat>36.5268</geo:lat>
+        <geo:long>26.9177</geo:long>
+      </geo:Point>
+      <georss:point>36.5268 26.9177</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077765</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077765</gdacs:eventid>
+      <gdacs:episodeid>1114169</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.1">Magnitude 4.1M, Depth:220.2km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="211970">211970 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Greece</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.6M, Depth:10km) in West Chile Rise 04/01/2016 02:34 UTC, No people within 100km.</title>
+      <description>On 1/4/2016 2:34:33 AM, an earthquake occurred in West Chile Rise potentially affecting No people within 100km. The earthquake had Magnitude 4.6M, Depth:10km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114177_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077771</link>
+      <pubDate>Mon, 04 Jan 2016 02:34:33 GMT</pubDate>
+      <gdacs:fromdate>Mon, 04 Jan 2016 02:34:33 GMT</gdacs:fromdate>
+      <gdacs:todate>Mon, 04 Jan 2016 02:34:33 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077771</guid>
+      <geo:Point>
+        <geo:lat>-36.8866</geo:lat>
+        <geo:long>-96.1243</geo:long>
+      </geo:Point>
+      <georss:point>-36.8866 -96.1243</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077771</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077771</gdacs:eventid>
+      <gdacs:episodeid>1114177</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.6">Magnitude 4.6M, Depth:10km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="0">No people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>West Chile Rise</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.6M, Depth:25.45km) in New Zealand 04/01/2016 00:07 UTC, About 90831 people within 100km.</title>
+      <description>On 1/4/2016 12:07:53 AM, an earthquake occurred in New Zealand potentially affecting About 90831 people within 100km. The earthquake had Magnitude 4.6M, Depth:25.45km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114161_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077760</link>
+      <pubDate>Mon, 04 Jan 2016 00:07:53 GMT</pubDate>
+      <gdacs:fromdate>Mon, 04 Jan 2016 00:07:53 GMT</gdacs:fromdate>
+      <gdacs:todate>Mon, 04 Jan 2016 00:07:53 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077760</guid>
+      <geo:Point>
+        <geo:lat>-40.76</geo:lat>
+        <geo:long>176.7248</geo:long>
+      </geo:Point>
+      <georss:point>-40.76 176.7248</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077760</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077760</gdacs:eventid>
+      <gdacs:episodeid>1114161</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.6">Magnitude 4.6M, Depth:25.45km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="90831">About 90831 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>New Zealand</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>Red earthquake alert (Magnitude 6.7M, Depth:55km) in India 03/01/2016 23:05 UTC, 4176950 people within 100km.</title>
+      <description>On 1/3/2016 11:05:22 PM, an earthquake occurred in India potentially affecting 4176950 people within 100km. The earthquake had Magnitude 6.7M, Depth:55km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114155_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077755</link>
+      <pubDate>Sun, 03 Jan 2016 23:05:22 GMT</pubDate>
+      <gdacs:fromdate>Sun, 03 Jan 2016 23:05:22 GMT</gdacs:fromdate>
+      <gdacs:todate>Sun, 03 Jan 2016 23:05:22 GMT</gdacs:todate>
+      <dc:subject>EQ3</dc:subject>
+      <guid isPermaLink="false">EQ1077755</guid>
+      <geo:Point>
+        <geo:lat>24.8339</geo:lat>
+        <geo:long>93.6556</geo:long>
+      </geo:Point>
+      <georss:point>24.8339 93.6556</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077755</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>Red</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077755</gdacs:eventid>
+      <gdacs:episodeid>1114155</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="6.7">Magnitude 6.7M, Depth:55km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="4176950">4176950 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>India</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage>http://www.gdacs.org/datareport/dailymap/EQ/1077755/ECDM_20160104_India_Earthquake.jpg</gdacs:mapimage>
+      <gdacs:maplink>http://www.gdacs.org/datareport/dailymap/EQ/1077755/ECDM_20160104_India_Earthquake.pdf</gdacs:maplink>
+      <gdacs:gtsimage>http://www.gdacs.org//images/satellite-icon.png</gdacs:gtsimage>
+      <gdacs:gtslink>http://www.gdacs.org/gts_list.aspx?eventid=1077755&amp;eventtype=EQ</gdacs:gtslink>
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.7M, Depth:12.74km) in Vanuatu 03/01/2016 16:51 UTC, About 50554 people within 100km.</title>
+      <description>On 1/3/2016 4:51:54 PM, an earthquake occurred in Vanuatu potentially affecting About 50554 people within 100km. The earthquake had Magnitude 4.7M, Depth:12.74km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114127_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077734</link>
+      <pubDate>Sun, 03 Jan 2016 16:51:54 GMT</pubDate>
+      <gdacs:fromdate>Sun, 03 Jan 2016 16:51:54 GMT</gdacs:fromdate>
+      <gdacs:todate>Sun, 03 Jan 2016 16:51:54 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077734</guid>
+      <geo:Point>
+        <geo:lat>-14.9035</geo:lat>
+        <geo:long>167.8265</geo:long>
+      </geo:Point>
+      <georss:point>-14.9035 167.8265</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077734</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077734</gdacs:eventid>
+      <gdacs:episodeid>1114127</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.7">Magnitude 4.7M, Depth:12.74km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="50554">About 50554 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Vanuatu</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>Green earthquake alert (Magnitude 4.6M, Depth:10km) in China 03/01/2016 15:44 UTC, 20882466 people within 100km.</title>
+      <description>On 1/3/2016 3:44:31 PM, an earthquake occurred in China potentially affecting 20882466 people within 100km. The earthquake had Magnitude 4.6M, Depth:10km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114120_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077726</link>
+      <pubDate>Sun, 03 Jan 2016 15:44:31 GMT</pubDate>
+      <gdacs:fromdate>Sun, 03 Jan 2016 15:44:31 GMT</gdacs:fromdate>
+      <gdacs:todate>Sun, 03 Jan 2016 15:44:31 GMT</gdacs:todate>
+      <dc:subject>EQ1</dc:subject>
+      <guid isPermaLink="false">EQ1077726</guid>
+      <geo:Point>
+        <geo:lat>29.4538</geo:lat>
+        <geo:long>104.1309</geo:long>
+      </geo:Point>
+      <georss:point>29.4538 104.1309</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077726</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>Green</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077726</gdacs:eventid>
+      <gdacs:episodeid>1114120</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.6">Magnitude 4.6M, Depth:10km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="20882466">20882466 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>China</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.8M, Depth:102.48km) in Volcano Islands, Japan Region 03/01/2016 14:39 UTC, No people within 100km.</title>
+      <description>On 1/3/2016 2:39:25 PM, an earthquake occurred in Volcano Islands, Japan Region potentially affecting No people within 100km. The earthquake had Magnitude 4.8M, Depth:102.48km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114108_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077719</link>
+      <pubDate>Sun, 03 Jan 2016 14:39:25 GMT</pubDate>
+      <gdacs:fromdate>Sun, 03 Jan 2016 14:39:25 GMT</gdacs:fromdate>
+      <gdacs:todate>Sun, 03 Jan 2016 14:39:25 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077719</guid>
+      <geo:Point>
+        <geo:lat>23.1054</geo:lat>
+        <geo:long>142.6231</geo:long>
+      </geo:Point>
+      <georss:point>23.1054 142.6231</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077719</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077719</gdacs:eventid>
+      <gdacs:episodeid>1114108</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.8">Magnitude 4.8M, Depth:102.48km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="0">No people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Volcano Islands, Japan Region</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.7M, Depth:43.09km) in United States 03/01/2016 09:55 UTC, Few people within 100km.</title>
+      <description>On 1/3/2016 9:55:25 AM, an earthquake occurred in United States potentially affecting Few people within 100km. The earthquake had Magnitude 4.7M, Depth:43.09km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114097_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077712</link>
+      <pubDate>Sun, 03 Jan 2016 09:55:25 GMT</pubDate>
+      <gdacs:fromdate>Sun, 03 Jan 2016 09:55:25 GMT</gdacs:fromdate>
+      <gdacs:todate>Sun, 03 Jan 2016 09:55:25 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077712</guid>
+      <geo:Point>
+        <geo:lat>52.6625</geo:lat>
+        <geo:long>172.5162</geo:long>
+      </geo:Point>
+      <georss:point>52.6625 172.5162</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077712</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077712</gdacs:eventid>
+      <gdacs:episodeid>1114097</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.7">Magnitude 4.7M, Depth:43.09km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="20">Few people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>United States</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.5M, Depth:36.91km) in Nicaragua 03/01/2016 05:03 UTC, 237132 people within 100km.</title>
+      <description>On 1/3/2016 5:03:19 AM, an earthquake occurred in Nicaragua potentially affecting 237132 people within 100km. The earthquake had Magnitude 4.5M, Depth:36.91km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114084_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077704</link>
+      <pubDate>Sun, 03 Jan 2016 05:03:19 GMT</pubDate>
+      <gdacs:fromdate>Sun, 03 Jan 2016 05:03:19 GMT</gdacs:fromdate>
+      <gdacs:todate>Sun, 03 Jan 2016 05:03:19 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077704</guid>
+      <geo:Point>
+        <geo:lat>10.9993</geo:lat>
+        <geo:long>-86.5634</geo:long>
+      </geo:Point>
+      <georss:point>10.9993 -86.5634</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077704</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077704</gdacs:eventid>
+      <gdacs:episodeid>1114084</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.5">Magnitude 4.5M, Depth:36.91km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="237132">237132 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Nicaragua</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.8M, Depth:2km) in Svalbard and Jan Mayen 03/01/2016 02:01 UTC, No people within 100km.</title>
+      <description>On 1/3/2016 2:01:43 AM, an earthquake occurred in Svalbard and Jan Mayen potentially affecting No people within 100km. The earthquake had Magnitude 4.8M, Depth:2km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114086_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077685</link>
+      <pubDate>Sun, 03 Jan 2016 02:01:43 GMT</pubDate>
+      <gdacs:fromdate>Sun, 03 Jan 2016 02:01:43 GMT</gdacs:fromdate>
+      <gdacs:todate>Sun, 03 Jan 2016 02:01:43 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077685</guid>
+      <geo:Point>
+        <geo:lat>71.49</geo:lat>
+        <geo:long>-3.74</geo:long>
+      </geo:Point>
+      <georss:point>71.49 -3.74</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077685</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077685</gdacs:eventid>
+      <gdacs:episodeid>1114086</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.8">Magnitude 4.8M, Depth:2km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="0">No people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Svalbard and Jan Mayen</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.8M, Depth:63.9km) in Russia 03/01/2016 00:37 UTC, About 5974 people within 100km.</title>
+      <description>On 1/3/2016 12:37:09 AM, an earthquake occurred in Russia potentially affecting About 5974 people within 100km. The earthquake had Magnitude 4.8M, Depth:63.9km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114057_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077683</link>
+      <pubDate>Sun, 03 Jan 2016 00:37:09 GMT</pubDate>
+      <gdacs:fromdate>Sun, 03 Jan 2016 00:37:09 GMT</gdacs:fromdate>
+      <gdacs:todate>Sun, 03 Jan 2016 00:37:09 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077683</guid>
+      <geo:Point>
+        <geo:lat>44.5469</geo:lat>
+        <geo:long>148.1332</geo:long>
+      </geo:Point>
+      <georss:point>44.5469 148.1332</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077683</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077683</gdacs:eventid>
+      <gdacs:episodeid>1114057</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.8">Magnitude 4.8M, Depth:63.9km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="5974">About 5974 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Russia</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.7M, Depth:21.82km) in Russian Federation 02/01/2016 21:25 UTC, About 6348 people within 100km.</title>
+      <description>On 1/2/2016 9:25:00 PM, an earthquake occurred in Russian Federation potentially affecting About 6348 people within 100km. The earthquake had Magnitude 4.7M, Depth:21.82km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114051_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077679</link>
+      <pubDate>Sat, 02 Jan 2016 21:25:00 GMT</pubDate>
+      <gdacs:fromdate>Sat, 02 Jan 2016 21:25:00 GMT</gdacs:fromdate>
+      <gdacs:todate>Sat, 02 Jan 2016 21:25:00 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077679</guid>
+      <geo:Point>
+        <geo:lat>43.1645</geo:lat>
+        <geo:long>146.8995</geo:long>
+      </geo:Point>
+      <georss:point>43.1645 146.8995</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077679</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077679</gdacs:eventid>
+      <gdacs:episodeid>1114051</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.7">Magnitude 4.7M, Depth:21.82km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="6348">About 6348 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Russian Federation</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 5M, Depth:575.61km) in Fiji 02/01/2016 19:31 UTC, About 9422 people within 100km.</title>
+      <description>On 1/2/2016 7:31:16 PM, an earthquake occurred in Fiji potentially affecting About 9422 people within 100km. The earthquake had Magnitude 5M, Depth:575.61km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114043_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077672</link>
+      <pubDate>Sat, 02 Jan 2016 19:31:16 GMT</pubDate>
+      <gdacs:fromdate>Sat, 02 Jan 2016 19:31:16 GMT</gdacs:fromdate>
+      <gdacs:todate>Sat, 02 Jan 2016 19:31:16 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077672</guid>
+      <geo:Point>
+        <geo:lat>-17.9469</geo:lat>
+        <geo:long>-178.5941</geo:long>
+      </geo:Point>
+      <georss:point>-17.9469 -178.5941</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077672</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077672</gdacs:eventid>
+      <gdacs:episodeid>1114043</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="5">Magnitude 5M, Depth:575.61km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="9422">About 9422 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Fiji</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>Green earthquake alert (Magnitude 4.5M, Depth:12.24km) in Dominican Republic 02/01/2016 15:25 UTC, 3008986 people within 100km.</title>
+      <description>On 1/2/2016 3:25:41 PM, an earthquake occurred in Dominican Republic potentially affecting 3008986 people within 100km. The earthquake had Magnitude 4.5M, Depth:12.24km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114032_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077657</link>
+      <pubDate>Sat, 02 Jan 2016 15:25:41 GMT</pubDate>
+      <gdacs:fromdate>Sat, 02 Jan 2016 15:25:41 GMT</gdacs:fromdate>
+      <gdacs:todate>Sat, 02 Jan 2016 15:25:41 GMT</gdacs:todate>
+      <dc:subject>EQ1</dc:subject>
+      <guid isPermaLink="false">EQ1077657</guid>
+      <geo:Point>
+        <geo:lat>19.7865</geo:lat>
+        <geo:long>-71.4771</geo:long>
+      </geo:Point>
+      <georss:point>19.7865 -71.4771</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077657</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>Green</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077657</gdacs:eventid>
+      <gdacs:episodeid>1114032</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.5">Magnitude 4.5M, Depth:12.24km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="3008986">3008986 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Dominican Republic</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 5.3M, Depth:189.87km) in Afghanistan 02/01/2016 08:37 UTC, 876269 people within 100km.</title>
+      <description>On 1/2/2016 8:37:22 AM, an earthquake occurred in Afghanistan potentially affecting 876269 people within 100km. The earthquake had Magnitude 5.3M, Depth:189.87km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1113996_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077636</link>
+      <pubDate>Sat, 02 Jan 2016 08:37:22 GMT</pubDate>
+      <gdacs:fromdate>Sat, 02 Jan 2016 08:37:22 GMT</gdacs:fromdate>
+      <gdacs:todate>Sat, 02 Jan 2016 08:37:22 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077636</guid>
+      <geo:Point>
+        <geo:lat>36.5563</geo:lat>
+        <geo:long>70.9312</geo:long>
+      </geo:Point>
+      <georss:point>36.5563 70.9312</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077636</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077636</gdacs:eventid>
+      <gdacs:episodeid>1113996</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="5.3">Magnitude 5.3M, Depth:189.87km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="876269">876269 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Afghanistan</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.6M, Depth:22.23km) in El Salvador 02/01/2016 04:50 UTC, No people within 100km.</title>
+      <description>On 1/2/2016 4:50:22 AM, an earthquake occurred in El Salvador potentially affecting No people within 100km. The earthquake had Magnitude 4.6M, Depth:22.23km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1113983_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077628</link>
+      <pubDate>Sat, 02 Jan 2016 04:50:22 GMT</pubDate>
+      <gdacs:fromdate>Sat, 02 Jan 2016 04:50:22 GMT</gdacs:fromdate>
+      <gdacs:todate>Sat, 02 Jan 2016 04:50:22 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077628</guid>
+      <geo:Point>
+        <geo:lat>12.0126</geo:lat>
+        <geo:long>-88.8222</geo:long>
+      </geo:Point>
+      <georss:point>12.0126 -88.8222</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077628</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077628</gdacs:eventid>
+      <gdacs:episodeid>1113983</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.6">Magnitude 4.6M, Depth:22.23km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="0">No people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>El Salvador</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 5.7M, Depth:583.06km) in China 02/01/2016 04:22 UTC, 5413739 people within 100km.</title>
+      <description>On 1/2/2016 4:22:19 AM, an earthquake occurred in China potentially affecting 5413739 people within 100km. The earthquake had Magnitude 5.7M, Depth:583.06km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1113973_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077619</link>
+      <pubDate>Sat, 02 Jan 2016 04:22:19 GMT</pubDate>
+      <gdacs:fromdate>Sat, 02 Jan 2016 04:22:19 GMT</gdacs:fromdate>
+      <gdacs:todate>Sat, 02 Jan 2016 04:22:19 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077619</guid>
+      <geo:Point>
+        <geo:lat>44.8653</geo:lat>
+        <geo:long>129.9685</geo:long>
+      </geo:Point>
+      <georss:point>44.8653 129.9685</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077619</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077619</gdacs:eventid>
+      <gdacs:episodeid>1113973</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="5.7">Magnitude 5.7M, Depth:583.06km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="5413739">5413739 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>China</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 5M, Depth:655.8km) in Fiji 01/01/2016 23:04 UTC, About 1545 people within 100km.</title>
+      <description>On 1/1/2016 11:04:53 PM, an earthquake occurred in Fiji potentially affecting About 1545 people within 100km. The earthquake had Magnitude 5M, Depth:655.8km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1113945_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077595</link>
+      <pubDate>Fri, 01 Jan 2016 23:04:53 GMT</pubDate>
+      <gdacs:fromdate>Fri, 01 Jan 2016 23:04:53 GMT</gdacs:fromdate>
+      <gdacs:todate>Fri, 01 Jan 2016 23:04:53 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077595</guid>
+      <geo:Point>
+        <geo:lat>-20.5278</geo:lat>
+        <geo:long>-179.2291</geo:long>
+      </geo:Point>
+      <georss:point>-20.5278 -179.2291</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077595</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077595</gdacs:eventid>
+      <gdacs:episodeid>1113945</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="5">Magnitude 5M, Depth:655.8km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="1545">About 1545 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Fiji</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.9M, Depth:37.6km) in Solomon Islands 01/01/2016 21:49 UTC, About 44046 people within 100km.</title>
+      <description>On 1/1/2016 9:49:42 PM, an earthquake occurred in Solomon Islands potentially affecting About 44046 people within 100km. The earthquake had Magnitude 4.9M, Depth:37.6km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1113939_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077591</link>
+      <pubDate>Fri, 01 Jan 2016 21:49:42 GMT</pubDate>
+      <gdacs:fromdate>Fri, 01 Jan 2016 21:49:42 GMT</gdacs:fromdate>
+      <gdacs:todate>Fri, 01 Jan 2016 21:49:42 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077591</guid>
+      <geo:Point>
+        <geo:lat>-8.9524</geo:lat>
+        <geo:long>158.405</geo:long>
+      </geo:Point>
+      <georss:point>-8.9524 158.405</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077591</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077591</gdacs:eventid>
+      <gdacs:episodeid>1113939</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.9">Magnitude 4.9M, Depth:37.6km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="44046">About 44046 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Solomon Islands</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.5M, Depth:10km) in West Chile Rise 01/01/2016 19:23 UTC, No people within 100km.</title>
+      <description>On 1/1/2016 7:23:29 PM, an earthquake occurred in West Chile Rise potentially affecting No people within 100km. The earthquake had Magnitude 4.5M, Depth:10km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114020_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077589</link>
+      <pubDate>Fri, 01 Jan 2016 19:23:29 GMT</pubDate>
+      <gdacs:fromdate>Fri, 01 Jan 2016 19:23:29 GMT</gdacs:fromdate>
+      <gdacs:todate>Fri, 01 Jan 2016 19:23:29 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077589</guid>
+      <geo:Point>
+        <geo:lat>-41.122</geo:lat>
+        <geo:long>-88.9618</geo:long>
+      </geo:Point>
+      <georss:point>-41.122 -88.9618</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077589</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077589</gdacs:eventid>
+      <gdacs:episodeid>1114020</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.5">Magnitude 4.5M, Depth:10km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="0">No people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>West Chile Rise</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>Green earthquake alert (Magnitude 4.8M, Depth:47.41km) in Ecuador 01/01/2016 17:15 UTC, 3178563 people within 100km.</title>
+      <description>On 1/1/2016 5:15:45 PM, an earthquake occurred in Ecuador potentially affecting 3178563 people within 100km. The earthquake had Magnitude 4.8M, Depth:47.41km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1114018_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077574</link>
+      <pubDate>Fri, 01 Jan 2016 17:15:45 GMT</pubDate>
+      <gdacs:fromdate>Fri, 01 Jan 2016 17:15:45 GMT</gdacs:fromdate>
+      <gdacs:todate>Fri, 01 Jan 2016 17:15:45 GMT</gdacs:todate>
+      <dc:subject>EQ1</dc:subject>
+      <guid isPermaLink="false">EQ1077574</guid>
+      <geo:Point>
+        <geo:lat>0.5193</geo:lat>
+        <geo:long>-78.7895</geo:long>
+      </geo:Point>
+      <georss:point>0.5193 -78.7895</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077574</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>Green</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077574</gdacs:eventid>
+      <gdacs:episodeid>1114018</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.8">Magnitude 4.8M, Depth:47.41km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="3178563">3178563 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Ecuador</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 5.8M, Depth:38.3km) in Kermadec Islands, New Zealand 01/01/2016 15:02 UTC, No people within 100km.</title>
+      <description>On 1/1/2016 3:02:15 PM, an earthquake occurred in Kermadec Islands, New Zealand potentially affecting No people within 100km. The earthquake had Magnitude 5.8M, Depth:38.3km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1113910_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077568</link>
+      <pubDate>Fri, 01 Jan 2016 15:02:15 GMT</pubDate>
+      <gdacs:fromdate>Fri, 01 Jan 2016 15:02:15 GMT</gdacs:fromdate>
+      <gdacs:todate>Fri, 01 Jan 2016 15:02:15 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077568</guid>
+      <geo:Point>
+        <geo:lat>-29.1103</geo:lat>
+        <geo:long>-177.0877</geo:long>
+      </geo:Point>
+      <georss:point>-29.1103 -177.0877</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077568</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077568</gdacs:eventid>
+      <gdacs:episodeid>1113910</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="5.8">Magnitude 5.8M, Depth:38.3km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="0">No people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Kermadec Islands, New Zealand</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>Green alert for tropical cyclone NINE-C-16. Population affected by Category 1 (120 km/h) wind speeds or higher is 0.</title>
+      <description>From 31/12/2015 to 01/01/2016, a Tropical Depression (maximum wind speed of 56 km/h) NINE-C-16 was active in CentralPacific. The cyclone affects these countries: [unknown] (vulnerability [unknown]). Estimated population affected by category 1 (120 km/h) wind speeds or higher is 0.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/tc/1000245/1000245_7_tn.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=TC&amp;eventid=1000245</link>
+      <pubDate>Fri, 01 Jan 2016 15:00:00 GMT</pubDate>
+      <gdacs:fromdate>Thu, 31 Dec 2015 03:00:00 GMT</gdacs:fromdate>
+      <gdacs:todate>Fri, 01 Jan 2016 15:00:00 GMT</gdacs:todate>
+      <dc:subject>TC1</dc:subject>
+      <guid isPermaLink="false">TC1000245</guid>
+      <geo:Point>
+        <geo:lat>2.2</geo:lat>
+        <geo:long>-177</geo:long>
+      </geo:Point>
+      <georss:point>2.2 -177</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=TC&amp;eventid=1000245</gdacs:cap>
+      <gdacs:version>7</gdacs:version>
+      <gdacs:eventtype>TC</gdacs:eventtype>
+      <gdacs:alertlevel>Green</gdacs:alertlevel>
+      <gdacs:eventname>NINE-C-16</gdacs:eventname>
+      <gdacs:eventid>1000245</gdacs:eventid>
+      <gdacs:episodeid>7</gdacs:episodeid>
+      <gdacs:calculationtype>tropicalcycloneonly</gdacs:calculationtype>
+      <gdacs:severity unit="km/h" value="55.5552">Tropical Depression (maximum wind speed of 56 km/h)</gdacs:severity>
+      <gdacs:population unit="Pop74" value="0">Population affected by Category 1 (120 km/h) wind speeds or higher is 0</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country />
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage>http://www.gdacs.org//images/satellite-icon.png</gdacs:gtsimage>
+      <gdacs:gtslink>http://www.gdacs.org/gts_list.aspx?eventid=1000245&amp;eventtype=TC</gdacs:gtslink>
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.6M, Depth:205.66km) in Afghanistan 01/01/2016 11:16 UTC, 1304820 people within 100km.</title>
+      <description>On 1/1/2016 11:16:49 AM, an earthquake occurred in Afghanistan potentially affecting 1304820 people within 100km. The earthquake had Magnitude 4.6M, Depth:205.66km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1113899_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077559</link>
+      <pubDate>Fri, 01 Jan 2016 11:16:49 GMT</pubDate>
+      <gdacs:fromdate>Fri, 01 Jan 2016 11:16:49 GMT</gdacs:fromdate>
+      <gdacs:todate>Fri, 01 Jan 2016 11:16:49 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077559</guid>
+      <geo:Point>
+        <geo:lat>36.4695</geo:lat>
+        <geo:long>70.5707</geo:long>
+      </geo:Point>
+      <georss:point>36.4695 70.5707</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077559</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077559</gdacs:eventid>
+      <gdacs:episodeid>1113899</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.6">Magnitude 4.6M, Depth:205.66km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="1304820">1304820 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Afghanistan</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.2M, Depth:5km) in Turkey 01/01/2016 09:11 UTC, 2793149 people within 100km.</title>
+      <description>On 1/1/2016 9:11:14 AM, an earthquake occurred in Turkey potentially affecting 2793149 people within 100km. The earthquake had Magnitude 4.2M, Depth:5km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1113885_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077552</link>
+      <pubDate>Fri, 01 Jan 2016 09:11:14 GMT</pubDate>
+      <gdacs:fromdate>Fri, 01 Jan 2016 09:11:14 GMT</gdacs:fromdate>
+      <gdacs:todate>Fri, 01 Jan 2016 09:11:14 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077552</guid>
+      <geo:Point>
+        <geo:lat>40.053</geo:lat>
+        <geo:long>30.5273</geo:long>
+      </geo:Point>
+      <georss:point>40.053 30.5273</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077552</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077552</gdacs:eventid>
+      <gdacs:episodeid>1113885</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.2">Magnitude 4.2M, Depth:5km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="2793149">2793149 people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Turkey</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 4.6M, Depth:29.78km) in Japan 01/01/2016 08:47 UTC, No people within 100km.</title>
+      <description>On 1/1/2016 8:47:01 AM, an earthquake occurred in Japan potentially affecting No people within 100km. The earthquake had Magnitude 4.6M, Depth:29.78km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1113886_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077553</link>
+      <pubDate>Fri, 01 Jan 2016 08:47:01 GMT</pubDate>
+      <gdacs:fromdate>Fri, 01 Jan 2016 08:47:01 GMT</gdacs:fromdate>
+      <gdacs:todate>Fri, 01 Jan 2016 08:47:01 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077553</guid>
+      <geo:Point>
+        <geo:lat>33.0776</geo:lat>
+        <geo:long>141.5155</geo:long>
+      </geo:Point>
+      <georss:point>33.0776 141.5155</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077553</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077553</gdacs:eventid>
+      <gdacs:episodeid>1113886</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="4.6">Magnitude 4.6M, Depth:29.78km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="0">No people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Japan</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+    <item>
+      <title>White earthquake alert (Magnitude 6.3M, Depth:10km) in Western Indian-Antarctic Ridge 01/01/2016 02:00 UTC, No people within 100km.</title>
+      <description>On 1/1/2016 2:00:39 AM, an earthquake occurred in Western Indian-Antarctic Ridge potentially affecting No people within 100km. The earthquake had Magnitude 6.3M, Depth:10km.</description>
+      <enclosure type="image/png" length="1" url="http://dma.gdacs.org/saved/gdacs/eq/eq1113856_1.png" />
+      <link>http://www.gdacs.org/report.aspx?eventtype=EQ&amp;eventid=1077528</link>
+      <pubDate>Fri, 01 Jan 2016 02:00:39 GMT</pubDate>
+      <gdacs:fromdate>Fri, 01 Jan 2016 02:00:39 GMT</gdacs:fromdate>
+      <gdacs:todate>Fri, 01 Jan 2016 02:00:39 GMT</gdacs:todate>
+      <dc:subject>EQ0</dc:subject>
+      <guid isPermaLink="false">EQ1077528</guid>
+      <geo:Point>
+        <geo:lat>-50.5751</geo:lat>
+        <geo:long>139.4469</geo:long>
+      </geo:Point>
+      <georss:point>-50.5751 139.4469</georss:point>
+      <gdacs:cap>http://www.gdacs.org/cap.aspx?eventtype=EQ&amp;eventid=1077528</gdacs:cap>
+      <gdacs:version>1</gdacs:version>
+      <gdacs:eventtype>EQ</gdacs:eventtype>
+      <gdacs:alertlevel>White</gdacs:alertlevel>
+      <gdacs:eventname />
+      <gdacs:eventid>1077528</gdacs:eventid>
+      <gdacs:episodeid>1113856</gdacs:episodeid>
+      <gdacs:calculationtype>earthquakeonly</gdacs:calculationtype>
+      <gdacs:severity unit="M" value="6.3">Magnitude 6.3M, Depth:10km</gdacs:severity>
+      <gdacs:population unit="Pop100" value="0">No people within 100km</gdacs:population>
+      <gdacs:vulnerability value="0" />
+      <gdacs:iso3 />
+      <gdacs:country>Western Indian-Antarctic Ridge</gdacs:country>
+      <gdacs:glide />
+      <gdacs:mapimage />
+      <gdacs:maplink />
+      <gdacs:gtsimage />
+      <gdacs:gtslink />
+      <gdacs:resources />
+    </item>
+  </channel>
+</rss><!--End 1/25/2016 10:10:43 PM-->

@@ -7,11 +7,11 @@ import struct
 import re
 import requests
 from bs4 import BeautifulSoup as bs
-from dataqs.helpers import gdal_translate
+from dataqs.helpers import gdal_translate, style_exists
 from dataqs.processor_base import GeoDataProcessor
 
-
 logger = logging.getLogger("dataqs.processors")
+script_dir = os.path.dirname(os.path.realpath(__file__))
 
 
 class GFMSProcessor(GeoDataProcessor):
@@ -40,7 +40,7 @@ class GFMSProcessor(GeoDataProcessor):
         Get the URL for the latest image of future projected flood intensity
         :return: URL of the latest image
         """
-        today  = datetime.datetime.now()
+        today = datetime.datetime.now()
         month = today.strftime("%m")
         year = today.strftime("%Y")
         base_url = self.base_url + "{year}/{year}{month}".format(
@@ -48,7 +48,7 @@ class GFMSProcessor(GeoDataProcessor):
 
         r = requests.get(base_url)
         html = bs(r.text)
-        latest_img =html.find_all('a')[-1].get('href')
+        latest_img = html.find_all('a')[-1].get('href')
         img_url = "{}/{}".format(base_url, latest_img)
         return img_url
 
@@ -97,11 +97,9 @@ class GFMSProcessor(GeoDataProcessor):
             outfile.write(self.header)
 
             for idx, value in enumerate(coords):
-                #print idx, value
                 outfile.write(str(value) + " ")
                 if (idx + 1) % 2458 == 0:
                     outfile.write("\n")
-                    #print idx
         finally:
             outfile.close()
             infile.close()
@@ -132,6 +130,11 @@ class GFMSProcessor(GeoDataProcessor):
         tif_file = self.convert(img_file)
         new_title = self.parse_title(tif_file)
         self.post_geoserver(tif_file, self.layer_future)
+        if not style_exists(self.layer_future):
+            with open(os.path.join(
+                    script_dir, 'resources/gfms.sld')) as sld:
+                self.set_default_style(self.layer_future,
+                                       self.layer_future, sld.read())
         self.update_geonode(self.layer_future, title=new_title,
                             store=self.layer_future)
         self.truncate_gs_cache(self.layer_future)
@@ -145,6 +148,11 @@ class GFMSProcessor(GeoDataProcessor):
         tif_file = self.convert(img_file)
         new_title = self.parse_title(tif_file)
         self.post_geoserver(tif_file, self.layer_current)
+        if not style_exists(self.layer_current):
+            with open(os.path.join(
+                    script_dir, 'resources/gfms.sld')) as sld:
+                self.set_default_style(self.layer_current,
+                                       self.layer_current, sld.read())
         self.update_geonode(self.layer_current, title=new_title,
                             store=self.layer_current)
         self.truncate_gs_cache(self.layer_current)

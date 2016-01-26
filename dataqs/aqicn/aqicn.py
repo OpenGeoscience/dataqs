@@ -1,5 +1,6 @@
 import json
 import logging
+import os
 import sys
 import re
 import time
@@ -18,6 +19,8 @@ from dataqs.processor_base import GeoDataProcessor, DEFAULT_WORKSPACE
 from geonode.geoserver.helpers import ogc_server_settings
 
 logger = logging.getLogger("dataqs.processors")
+
+script_dir = os.path.dirname(os.path.realpath(__file__))
 
 REQ_HEADER = {
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
@@ -76,129 +79,6 @@ SELECT AddGeometryColumn ('public','{table}','the_geom',4326,'POINT',2);
 CREATE INDEX {table}_the_geom ON {table} USING gist (the_geom);
 """
 
-AQICN_SLD="""<?xml version="1.0" encoding="UTF-8"?><sld:StyledLayerDescriptor xmlns="http://www.opengis.net/sld" xmlns:sld="http://www.opengis.net/sld" xmlns:ogc="http://www.opengis.net/ogc" xmlns:gml="http://www.opengis.net/gml" version="1.0.0">
-  <sld:NamedLayer>
-    <sld:Name>aqicn</sld:Name>
-    <sld:UserStyle>
-      <sld:Name>aqicn</sld:Name>
-      <sld:Title>aqicn</sld:Title>
-      <sld:IsDefault>1</sld:IsDefault>
-      <sld:Abstract>Air Quality Index</sld:Abstract>
-      <sld:FeatureTypeStyle>
-        <sld:Name>name</sld:Name>
-        <sld:Rule>
-          <sld:Name>rule1</sld:Name>
-          <sld:Title>Good (&lt;= 50)</sld:Title>
-          <sld:Abstract></sld:Abstract>
-          <ogc:Filter>
-            <ogc:PropertyIsLessThanOrEqualTo>
-              <ogc:PropertyName>aqi</ogc:PropertyName>
-              <ogc:Literal>50.0</ogc:Literal>
-            </ogc:PropertyIsLessThanOrEqualTo>
-          </ogc:Filter>
-          <sld:PointSymbolizer>
-            <sld:Graphic>
-              <sld:Mark>
-                <sld:WellKnownName>circle</sld:WellKnownName>
-                <sld:Fill>
-                  <sld:CssParameter name="fill">#10A624</sld:CssParameter>
-                </sld:Fill>
-              </sld:Mark>
-              <sld:Size>10</sld:Size>
-            </sld:Graphic>
-          </sld:PointSymbolizer>
-        </sld:Rule>
-        <sld:Rule>
-          <sld:Name>rule1</sld:Name>
-          <sld:Title>Moderate (50-100)</sld:Title>
-          <sld:Abstract></sld:Abstract>
-          <ogc:Filter>
-            <ogc:And>
-              <ogc:PropertyIsGreaterThan>
-                <ogc:PropertyName>aqi</ogc:PropertyName>
-                <ogc:Literal>50.0</ogc:Literal>
-              </ogc:PropertyIsGreaterThan>
-              <ogc:PropertyIsLessThanOrEqualTo>
-                <ogc:PropertyName>aqi</ogc:PropertyName>
-                <ogc:Literal>100.0</ogc:Literal>
-              </ogc:PropertyIsLessThanOrEqualTo>
-            </ogc:And>
-          </ogc:Filter>
-          <sld:PointSymbolizer>
-            <sld:Graphic>
-              <sld:Mark>
-                <sld:WellKnownName>circle</sld:WellKnownName>
-                <sld:Fill>
-                  <sld:CssParameter name="fill">#F5F108</sld:CssParameter>
-                </sld:Fill>
-              </sld:Mark>
-              <sld:Size>10</sld:Size>
-            </sld:Graphic>
-          </sld:PointSymbolizer>
-        </sld:Rule>
-        <sld:Rule>
-          <sld:Name>rule1</sld:Name>
-          <sld:Title>Unhealthy for Sensitive Groups (101-150)</sld:Title>
-          <sld:Abstract></sld:Abstract>
-          <ogc:Filter>
-            <ogc:And>
-              <ogc:PropertyIsGreaterThan>
-                <ogc:PropertyName>aqi</ogc:PropertyName>
-                <ogc:Literal>101.0</ogc:Literal>
-              </ogc:PropertyIsGreaterThan>
-              <ogc:PropertyIsLessThanOrEqualTo>
-                <ogc:PropertyName>aqi</ogc:PropertyName>
-                <ogc:Literal>150.0</ogc:Literal>
-              </ogc:PropertyIsLessThanOrEqualTo>
-            </ogc:And>
-          </ogc:Filter>
-          <sld:PointSymbolizer>
-            <sld:Graphic>
-              <sld:Mark>
-                <sld:WellKnownName>circle</sld:WellKnownName>
-                <sld:Fill>
-                  <sld:CssParameter name="fill">#EFAE17</sld:CssParameter>
-                </sld:Fill>
-              </sld:Mark>
-              <sld:Size>10</sld:Size>
-            </sld:Graphic>
-          </sld:PointSymbolizer>
-        </sld:Rule>
-        <sld:Rule>
-          <sld:Name>rule1</sld:Name>
-          <sld:Title> Unhealthy (&gt; 150)</sld:Title>
-          <sld:Abstract></sld:Abstract>
-          <ogc:Filter>
-            <ogc:And>
-              <ogc:PropertyIsGreaterThan>
-                <ogc:PropertyName>aqi</ogc:PropertyName>
-                <ogc:Literal>228.0</ogc:Literal>
-              </ogc:PropertyIsGreaterThan>
-              <ogc:PropertyIsLessThanOrEqualTo>
-                <ogc:PropertyName>aqi</ogc:PropertyName>
-                <ogc:Literal>603.0</ogc:Literal>
-              </ogc:PropertyIsLessThanOrEqualTo>
-            </ogc:And>
-          </ogc:Filter>
-          <sld:PointSymbolizer>
-            <sld:Graphic>
-              <sld:Mark>
-                <sld:WellKnownName>circle</sld:WellKnownName>
-                <sld:Fill>
-                  <sld:CssParameter name="fill">#FF0000</sld:CssParameter>
-                </sld:Fill>
-              </sld:Mark>
-              <sld:Size>10</sld:Size>
-            </sld:Graphic>
-          </sld:PointSymbolizer>
-        </sld:Rule>
-      </sld:FeatureTypeStyle>
-    </sld:UserStyle>
-  </sld:NamedLayer>
-</sld:StyledLayerDescriptor>
-"""
-
-
 def thread_parse(table, cities):
     """
     Thread worker for a list of cities
@@ -216,7 +96,7 @@ class AQICNWorker(object):
         if not table_exists(self.archive):
             postgres_query(AQICN_TABLE.format(table=self.archive), commit=True)
 
-    def handleCity(self, i, city):
+    def handle_city(self, i, city):
         try:
             logger.debug('Scraping %d of %d cities - %s' % (
                 i+1, len(self.cities), city['url']))
@@ -224,49 +104,68 @@ class AQICNWorker(object):
             page = requests.get(city['url'], timeout=60, headers=REQ_HEADER)
             page.raise_for_status()
             soup = bs(page.text, "lxml")
-            mapString = re.search(
+
+            aqi_div = soup.find('div', class_='aqivalue')
+            if not aqi_div:
+                logger.error('No AQI for {}'.format(city['url']))
+                return
+            aqi = aqi_div.text
+            if not aqi.isdigit():
+                logger.error('AQI is not a number - {}'.format(city['url']))
+                return
+
+            time_div = soup.find('span', id=re.compile(r'aqiwgtutime.*'))
+            if time_div:
+                city['utime'] = time_div.text
+            else:
+                logger.error('No date/time: {}'.format(city['url']))
+                return
+
+            map_string = re.search(
                 '(?<=mapInitWithData\()\[\{[^;]*\}\]', soup.text).group(0)
-            mapJson = json.loads(mapString.strip('\n'))
-            for item in mapJson:
-                if asciier(item['city']).lower().startswith(
-                        asciier(city['city']).lower()):
-                    for key in ['utime', 'tz', 'aqi', 'g']:
+            map_json = json.loads(map_string.strip('\n'))
+            for item in map_json:
+                if re.search(u'{}(,|$)'.format(asciier(city['city']).lower()),
+                             asciier(item['city']).lower()):
+                    logger.debug('{}:{}'.format(item['city'], city['city']))
+                    for key in ['tz', 'g']:
                         city[key] = item[key]
                     break
             if 'utime' not in city:
                 logger.error('No data for {}'.format(city['url']))
                 return
-            city['dateTime'] = self.getTime(city)
+            city['dateTime'] = self.get_time(city)
             city["data"] = {}
 
-            curList = soup.find_all("td", {"id" : re.compile('^cur_')})
-            #Go on to the next city if we don't find anything
-            if not curList:
+            cur_list = soup.find_all("td", {"id" : re.compile('^cur_')})
+            # Go on to the next city if we don't find anything
+            if not cur_list:
                 logger.debug("Nothing found for %s" % city['city'])
                 return
-            #Loop through all the variables for this city
-            savedVars = ""
-            for cur in curList:
+            # Loop through all the variables for this city
+            saved_vars = ""
+            for cur in cur_list:
                 curId = cur['id']
-                savedVars += curId + ","
+                saved_vars += curId + ","
                 if type(cur.contents[0]).__name__ == 'Tag':
                     city['data'][curId] = cur.contents[0].text
                 else:
                     city['data'][curId] = cur.contents[0]
-            city['data']['cur_aqi'] = city['aqi']
-            self.saveData(city)
-            logger.debug("Saved %s aqi for city %s" % (savedVars, city['city']))
-            #Clear out the city to reduce memory footprint
+            city['data']['cur_aqi'] = aqi
+            self.save_data(city)
+            logger.debug("Saved %s aqi for city %s" % (
+                saved_vars, city['city']))
+            # Clear out the city to reduce memory footprint
             for key in city.keys():
                 city.pop(key, None)
 
         except KeyboardInterrupt:
             sys.exit()
-        except:
+        except Exception as e:
             logger.error('Error with city {}'.format(city['url']))
             logger.error(traceback.format_exc())
 
-    def saveData(self, city):
+    def save_data(self, city):
         for item in city['data']:
             if city['data'][item] == '-':
                 city['data'][item] = 'NULL'
@@ -292,28 +191,29 @@ class AQICNWorker(object):
         postgres_query(sql_str, commit=True)
 
     @staticmethod
-    def getTime(city):
+    def get_time(city):
         try:
             utime = city["utime"]
             utime = utime.strip()
-            utime = re.sub(r"on |\.|-", "", utime)
-            logger.debug("Trying to parse time: %s , %s" % (str(utime), city["tz"]))
+            utime = re.sub(r"Updated on |\.|-", "", utime)
+            logger.debug("Trying to parse time: %s , %s" % (
+                str(utime), city["tz"]))
             try:
-                cityTime = parse(utime + " " + city["tz"]).astimezone(tzutc())
+                city_time = parse(utime + " " + city["tz"]).astimezone(tzutc())
             except:
                 utime = re.sub(r"am$|pm$", "", utime)
-                cityTime = parse(utime + " " + city["tz"]).astimezone(tzutc())
+                city_time = parse(utime + " " + city["tz"]).astimezone(tzutc())
 
-            logger.debug("Time parsed as: %s", str(cityTime));
+            logger.debug("Time parsed as: %s", str(city_time))
         except Exception as e:
             logger.error(city)
             raise e
-        return cityTime
+        return city_time
 
     def run(self):
         for i, city in enumerate(self.cities):
             if 'url' in city:
-                self.handleCity(i, city)
+                self.handle_city(i, city)
             else:
                 logger.warn('No url for {}'.format(city))
         logger.debug("End %s" % str(datetime.datetime.now()))
@@ -354,7 +254,6 @@ class AQICNProcessor(GeoDataProcessor):
         else:
             self.cities = cities
 
-
     def download(self, url=None):
         if not url:
             url = self.base_url
@@ -371,9 +270,10 @@ class AQICNProcessor(GeoDataProcessor):
             if not self.countries or country.get("id") in self.countries:
                 citylink = country.findNext('a')
                 while citylink and citylink.get('id') is None and citylink.text:
-                    self.cities.append({'city': citylink.text,
-                                         'country': country_code,
-                                         'url': citylink.get('href')})
+                    self.cities.append({
+                        'city': citylink.text,
+                        'country': country_code,
+                        'url': citylink.get('href')})
                     citylink = citylink.findNext('a')
 
     def split_list(self, num):
@@ -387,7 +287,6 @@ class AQICNProcessor(GeoDataProcessor):
     def process(self):
         if not table_exists(self.prefix):
             postgres_query(AQICN_TABLE.format(table=self.prefix), commit=True)
-
         logger.debug("Start %s" % datetime.datetime.now())
         if not self.cities:
             self.getCities()
@@ -405,7 +304,8 @@ class AQICNProcessor(GeoDataProcessor):
         if not layer_exists(layer_name, datastore, DEFAULT_WORKSPACE):
             self.post_geoserver_vector(layer_name)
         if not style_exists(layer_name):
-            self.set_default_style(layer_name, layer_name, AQICN_SLD)
+            with open(os.path.join(script_dir, 'resources/aqicn.sld')) as sld:
+                self.set_default_style(layer_name, layer_name, sld.read())
         self.update_geonode(layer_name,
                             title='Air Quality Index',
                             store=datastore)

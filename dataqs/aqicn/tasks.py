@@ -7,5 +7,3 @@ from dataqs.aqicn.aqicn import AQICNProcessor
 def aqicn_task(countries):
     processor = AQICNProcessor(countries=countries)
     processor.run()
-
-

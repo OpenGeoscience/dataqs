@@ -11,46 +11,19 @@ from dataqs.processor_base import GeoDataMosaicProcessor
 from dataqs.helpers import gdal_translate, style_exists
 
 logger = logging.getLogger("dataqs.processors")
+script_dir = os.path.dirname(os.path.realpath(__file__))
 
 GPM_ACCOUNT = getattr(settings, 'GPM_ACCOUNT', 'anonymous')
 GS_DATA_DIR = getattr(settings, 'GS_DATA_DIR', '/data/geodata')
 GS_TMP_DIR = getattr(settings, 'GS_TMP_DIR', '/tmp')
 
-GPM_SLD="""<?xml version="1.0" encoding="UTF-8"?><sld:StyledLayerDescriptor xmlns="http://www.opengis.net/sld" xmlns:sld="http://www.opengis.net/sld" xmlns:ogc="http://www.opengis.net/ogc" xmlns:gml="http://www.opengis.net/gml" version="1.0.0">
-  <sld:NamedLayer>
-    <sld:Name>nasa_gpm</sld:Name>
-    <sld:UserStyle>
-      <sld:Name>nasa_gpm</sld:Name>
-      <sld:Title>NASA GPM Precipitation Estimate</sld:Title>
-      <sld:IsDefault>1</sld:IsDefault>
-      <sld:FeatureTypeStyle>
-        <sld:Name>name</sld:Name>
-        <sld:Rule>
-          <sld:RasterSymbolizer>
-            <sld:ColorMap>
-              <sld:ColorMapEntry color="#000000" opacity="0" quantity="-1" label="No Data"/>
-              <sld:ColorMapEntry color="#110AF5" opacity="1" quantity="10" label="1 mm"/>
-              <sld:ColorMapEntry color="#166CDE" opacity="1" quantity="50" label="5 mm"/>
-              <sld:ColorMapEntry color="#12EFD9" opacity="1" quantity="100" label="10 mm"/>
-              <sld:ColorMapEntry color="#30B60E" opacity="1" quantity="250" label="25/mm"/>
-              <sld:ColorMapEntry color="#F6EE09" opacity="1" quantity="500" label="50 mm"/>
-              <sld:ColorMapEntry color="#F3830A" opacity="1" quantity="750" label="75 mm"/>
-              <sld:ColorMapEntry color="#F41708" opacity="1" quantity="1000" label="100 mm"/>
-            </sld:ColorMap>
-          </sld:RasterSymbolizer>
-        </sld:Rule>
-      </sld:FeatureTypeStyle>
-    </sld:UserStyle>
-  </sld:NamedLayer>
-</sld:StyledLayerDescriptor>
-"""
 
 class GPMProcessor(GeoDataMosaicProcessor):
     """
-    Class for processing the latest NASA IMERG Rainfall estimates combining data
-    from all passive-microwave instruments in the GPM Constellation.  Uses the 'early'
-    (possibly less accurate) images for most timely information (generated within 6-8
-    hours of observation).
+    Class for processing the latest NASA IMERG Rainfall estimates combining
+    data from all passive-microwave instruments in the GPM Constellation.
+    Uses the 'early' (possibly less accurate) images for most timely
+    information (generated within 6-8 hours of observation).
     """
 
     base_url = "jsimpson.pps.eosdis.nasa.gov"
@@ -90,8 +63,8 @@ class GPMProcessor(GeoDataMosaicProcessor):
         layer_title, imgtime = self.parse_name(tif_file)
         time_format = imgtime.strftime('%Y%m%dT%H0000000Z')
         tif_out = "{prefix}_{time}.tif".format(
-                prefix=self.layer_name,
-                time=time_format)
+            prefix=self.layer_name,
+            time=time_format)
         # Use gdal_translate to embed projection info
         gdal_translate(os.path.join(self.tmp_dir, tif_file),
                        os.path.join(self.tmp_dir, tif_out),
@@ -117,7 +90,9 @@ class GPMProcessor(GeoDataMosaicProcessor):
         self.drop_old_hourly_images(imgtime, self.layer_name)
         self.drop_old_daily_images(imgtime, self.layer_name)
         if not style_exists(self.layer_name):
-            self.set_default_style(self.layer_name, self.layer_name, GPM_SLD)
+            with open(os.path.join(script_dir, 'resources/gpm.sld')) as sld:
+                self.set_default_style(self.layer_name,
+                                       self.layer_name, sld.read())
         self.update_geonode(self.layer_name, title=layer_title,
                             store=self.layer_name,
                             bounds=('-180.0', '180.0', '-90.0', '90.0',
