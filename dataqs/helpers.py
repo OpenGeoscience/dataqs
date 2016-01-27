@@ -1,4 +1,6 @@
 import datetime
+import logging
+import traceback
 import os
 import subprocess
 
@@ -10,13 +12,15 @@ import psycopg2
 import re
 import sys
 from StringIO import StringIO
-from fiona import crs
 import rasterio
 from osgeo import gdal
 from rasterio._warp import RESAMPLING
 from rasterio.warp import calculate_default_transform, reproject
+import unicodedata
 from geonode.geoserver.helpers import ogc_server_settings
 import ogr2ogr
+
+logger = logging.getLogger("dataqs.helpers")
 
 
 class GdalErrorHandler(object):
@@ -24,14 +28,14 @@ class GdalErrorHandler(object):
     Don't display GDAL warnings, only errors
     """
     def __init__(self):
-        self.err_level=gdal.CE_Failure
-        self.err_no=0
-        self.err_msg=''
+        self.err_level = gdal.CE_Failure
+        self.err_no = 0
+        self.err_msg = ''
 
     def handler(self, err_level, err_no, err_msg):
-        self.err_level=err_level
-        self.err_no=err_no
-        self.err_msg=err_msg
+        self.err_level = err_level
+        self.err_no = err_no
+        self.err_msg = err_msg
 
 
 err = GdalErrorHandler()
@@ -65,8 +69,6 @@ def gdal_translate(src_filename, dst_filename, dst_format="GTiff", bands=None,
     """
     Convert a raster image with the specified arguments
     (as if running from commandline)
-    :param argstring: command line arguments as string
-    :return: Result of gdal_translate process (success or failure)
     """
     from osgeo import gdal
     from osr import SpatialReference
@@ -82,10 +84,10 @@ def gdal_translate(src_filename, dst_filename, dst_format="GTiff", bands=None,
     else:
         src_ds = gdal.Open(src_filename)
     try:
-        #Open output format driver, see gdal_translate --formats for list
+        # Open output format driver, see gdal_translate --formats for list
         driver = gdal.GetDriverByName(dst_format)
 
-        #Output to new format
+        # Output to new format
         dst_ds = driver.CreateCopy(dst_filename, src_ds, 0, options)
 
         if projection:
@@ -98,12 +100,13 @@ def gdal_translate(src_filename, dst_filename, dst_format="GTiff", bands=None,
             band.SetNoDataValue(nodata)
 
     finally:
-        #Properly close the datasets to flush to disk
+        # Properly close the datasets to flush to disk
         dst_ds = None
         src_ds = None
         band = None
         if bands and tmp_file:
             os.remove(tmp_file)
+
 
 def nc_convert(filename):
     """
@@ -117,6 +120,7 @@ def nc_convert(filename):
     subprocess.check_call(["nccopy", "-k", "classic", "{}.nc".format(
         filename), output_file])
     return output_file
+
 
 def cdo_invert(filename):
     """
@@ -177,6 +181,11 @@ def postgres_query(query, commit=False, returnable=False, params=None):
         if commit:
             conn.commit()
         return None
+    except Exception as e:
+        logger.error(traceback.format_exc())
+        logger.error(query)
+        logger.error(params)
+        raise e
     finally:
         cur.close()
         conn.close()
@@ -187,7 +196,8 @@ def purge_old_data(table, datefield, days):
     Remove data older than x days from a table
     """
     today = datetime.date.today()
-    cutoff = (today - datetime.timedelta(days=days)).strftime("%Y-%m-%d 00:00:00")
+    cutoff = (today - datetime.timedelta(days=days)).strftime(
+        "%Y-%m-%d 00:00:00")
     postgres_query('DELETE FROM {} where CAST("{}" as timestamp) < %s;'.format(
         table, datefield), commit=True, params=(cutoff,))
 
@@ -212,9 +222,8 @@ def layer_exists(layer_name, store, workspace):
     url = ogc_server_settings.rest
     gs_catalog = Catalog(url, _user, _password)
     try:
-        layer = gs_catalog.get_resource(layer_name,
-                                    store=store,
-                                    workspace=workspace)
+        layer = gs_catalog.get_resource(layer_name, store=store,
+                                        workspace=workspace)
         return layer is not None
     except FailedRequestError:
         return False
@@ -227,6 +236,7 @@ def style_exists(style_name):
     style = gs_catalog.get_style(style_name)
     return style is not None
 
+
 def gdal_band_subset(infile, bands, dst_filename, dst_format="GTiff"):
     """
     Create a new raster image containing only the specified bands
@@ -236,7 +246,6 @@ def gdal_band_subset(infile, bands, dst_filename, dst_format="GTiff"):
     :param bands: list of bands in input image to copy
     :param dst_filename: destination image filename
     :param dst_format: destination image format (default is GTiff)
-    :param nodata: NoDataValue for raster bands (default is None
     """
     ds = gdal.Open(infile)
     driver = gdal.GetDriverByName(dst_format)
@@ -247,7 +256,6 @@ def gdal_band_subset(infile, bands, dst_filename, dst_format="GTiff"):
                            ds.GetRasterBand(band).DataType)
     out_ds.SetGeoTransform(ds.GetGeoTransform())
 
-
     try:
         for idx, band_num in enumerate(bands):
             inband = ds.GetRasterBand(band_num).ReadAsArray()
@@ -257,7 +265,7 @@ def gdal_band_subset(infile, bands, dst_filename, dst_format="GTiff"):
             outBand = None
 
     finally:
-        #Properly close the datasets to flush to disk
+        # Properly close the datasets to flush to disk
         band = None
         inband = None
         outBand = None
@@ -336,3 +344,25 @@ def single_instance_task(timeout=86400):
                 raise Exception('Could not start; previous task still running')
         return wrapper
     return task_exc
+
+
+def asciier(txt):
+    """
+    Replace any non-ASCII characters
+    """
+    norm_txt = re.sub('\s+', ' ', unicodedata.normalize('NFD', txt))
+    ascii_txt = norm_txt.encode('ascii', 'ignore').decode('ascii')
+    return ascii_txt
+
+
+class MockResponse(object):
+    """
+    Mock requests.Response object with canned content
+    """
+    def __init__(self, content):
+        self.content = content
+        self.text = self.content
+        self.status_code = 200
+
+    def raise_for_status(self):
+        pass

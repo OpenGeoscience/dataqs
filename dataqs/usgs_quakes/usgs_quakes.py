@@ -6,11 +6,12 @@ import datetime
 import logging
 from django.db import connections
 from dataqs.processor_base import GeoDataProcessor, DEFAULT_WORKSPACE
-from dataqs.helpers import postgres_query, ogr2ogr_exec, layer_exists
+from dataqs.helpers import postgres_query, ogr2ogr_exec, layer_exists, \
+    style_exists
 from geonode.geoserver.helpers import ogc_server_settings
 
 logger = logging.getLogger("dataqs.processors")
-
+script_dir = os.path.dirname(os.path.realpath(__file__))
 
 class USGSQuakeProcessor(GeoDataProcessor):
     """
@@ -99,7 +100,13 @@ class USGSQuakeProcessor(GeoDataProcessor):
                 except:
                     c.close()
                 self.post_geoserver_vector(table)
-            self.update_geonode(table, title="Earthquakes - {}".format(title))
+            if not style_exists(table):
+                with open(os.path.join(
+                        script_dir, 'resources/usgs.sld')) as sld:
+                    self.set_default_style(table, table, sld.read())
+            self.update_geonode(table,
+                                title="Earthquakes - {}".format(title),
+                                store=datastore)
             self.truncate_gs_cache(table)
         self.purge_old_data()
         self.cleanup()

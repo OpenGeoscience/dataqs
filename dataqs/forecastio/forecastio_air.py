@@ -7,10 +7,10 @@ import requests
 from django.conf import settings
 import shutil
 from dataqs.processor_base import GeoDataMosaicProcessor
-from dataqs.helpers import gdal_translate
+from dataqs.helpers import gdal_translate, style_exists
 
 logger = logging.getLogger("dataqs.processors")
-
+script_dir = os.path.dirname(os.path.realpath(__file__))
 GS_DATA_DIR = getattr(settings, 'GS_DATA_DIR', '/data/geodata')
 
 
@@ -84,11 +84,17 @@ class ForecastIOAirTempProcessor(GeoDataMosaicProcessor):
         if dst_file.endswith('.tif'):
             shutil.move(os.path.join(self.tmp_dir, tif_file), dst_file)
             self.post_geoserver(dst_file, self.layer_name)
-
+        if not style_exists(self.layer_name):
+            with open(os.path.join(script_dir,
+                                   'resources/forecastio.sld')) as sld:
+                self.set_default_style(self.layer_name,
+                                       self.layer_name,
+                                       sld.read())
         self.drop_old_hourly_images(now, self.layer_name)
         self.drop_old_daily_images(now, self.layer_name)
 
         self.update_geonode(self.layer_name, title=self.parse_name(now),
+                            store=self.layer_name,
                             bounds=('-180.0', '180.0',
                                     '-90.0', '90.0', 'EPSG:4326'))
         self.truncate_gs_cache(self.layer_name)

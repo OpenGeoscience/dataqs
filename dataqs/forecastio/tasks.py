@@ -8,5 +8,3 @@ from dataqs.forecastio.forecastio_air import ForecastIOAirTempProcessor
 def forecast_io_task():
     processor = ForecastIOAirTempProcessor()
     processor.run()
-
-

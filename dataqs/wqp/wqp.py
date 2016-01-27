@@ -6,81 +6,13 @@ import datetime
 import re
 import requests
 from dataqs.helpers import gdal_translate, postgres_query, ogr2ogr_exec, \
-    table_exists, purge_old_data, layer_exists
+    table_exists, purge_old_data, layer_exists, style_exists
 from dataqs.processor_base import GeoDataProcessor, DEFAULT_WORKSPACE
 import unicodecsv as csv
 from geonode.geoserver.helpers import ogc_server_settings
 
 logger = logging.getLogger("dataqs.processors")
-
-#Template for creating indicator tables with correct data types
-CREATE_RESULTS_TABLE_SQL = """CREATE TABLE IF NOT EXISTS {tablename}
-(
-"OrganizationIdentifier" character varying,
-"OrganizationFormalName" character varying,
-"ActivityIdentifier" character varying,
-"ActivityTypeCode" character varying,
-"ActivityMediaName" character varying,
-"ActivityMediaSubdivisionName" character varying,
-"ActivityStartDate" timestamp with time zone,
-"ActivityStartTime_Time" character varying,
-"ActivityStartTime_TimeZoneCode" character varying,
-"ActivityEndDate" timestamp with time zone,
-"ActivityEndTime_Time" character varying,
-"ActivityEndTime_TimeZoneCode" character varying,
-"ActivityDepthHeightMeasure_MeasureValue" float,
-"ActivityDepthHeightMeasure_MeasureUnitCode" character varying,
-"ActivityDepthAltitudeReferencePointText" character varying,
-"ActivityTopDepthHeightMeasure_MeasureValue" character varying,
-"ActivityTopDepthHeightMeasure_MeasureUnitCode" character varying,
-"ActivityBottomDepthHeightMeasure_MeasureValue" character varying,
-"ActivityBottomDepthHeightMeasure_MeasureUnitCode" character varying,
-"ProjectIdentifier" character varying,
-"ActivityConductingOrganizationText" character varying,
-"MonitoringLocationIdentifier" character varying,
-"ActivityCommentText" character varying,
-"SampleAquifer" character varying,
-"HydrologicCondition" character varying,
-"HydrologicEvent" character varying,
-"SampleCollectionMethod_MethodIdentifier" character varying,
-"SampleCollectionMethod_MethodIdentifierContext" character varying,
-"SampleCollectionMethod_MethodName" character varying,
-"SampleCollectionEquipmentName" character varying,
-"ResultDetectionConditionText" character varying,
-"CharacteristicName" character varying,
-"ResultSampleFractionText" character varying,
-"ResultMeasureValue" float,
-"ResultMeasure_MeasureUnitCode" character varying,
-"MeasureQualifierCode" character varying,
-"ResultStatusIdentifier" character varying,
-"StatisticalBaseCode" character varying,
-"ResultValueTypeName" character varying,
-"ResultWeightBasisText" character varying,
-"ResultTimeBasisText" character varying,
-"ResultTemperatureBasisText" character varying,
-"ResultParticleSizeBasisText" character varying,
-"PrecisionValue" character varying,
-"ResultCommentText" character varying,
-"USGSPCode" character varying,
-"ResultDepthHeightMeasure_MeasureValue" float,
-"ResultDepthHeightMeasure_MeasureUnitCode" character varying,
-"ResultDepthAltitudeReferencePointText" character varying,
-"SubjectTaxonomicName" character varying,
-"SampleTissueAnatomyName" character varying,
-"ResultAnalyticalMethod_MethodIdentifier" character varying,
-"ResultAnalyticalMethod_MethodIdentifierContext" character varying,
-"ResultAnalyticalMethod_MethodName" character varying,
-"MethodDescriptionText" character varying,
-"LaboratoryName" character varying,
-"AnalysisStartDate" character varying,
-"ResultLaboratoryCommentText" character varying,
-"DetectionQuantitationLimitTypeName" character varying,
-"DetectionQuantitationLimitMeasure_MeasureValue" character varying,
-"DetectionQuantitationLimitMeasure_MeasureUnitCode" character varying,
-"PreparationStartDate" character varying,
-"ProviderName" character varying,
-CONSTRAINT wqp_{tablename}_pkey PRIMARY KEY ("ActivityIdentifier")
-)"""
+script_dir = os.path.dirname(os.path.realpath(__file__))
 
 
 class WaterQualityPortalProcessor(GeoDataProcessor):
@@ -151,7 +83,7 @@ class WaterQualityPortalProcessor(GeoDataProcessor):
             sql = 'ALTER TABLE {} '.format(station_table) + \
                   'ADD CONSTRAINT monitoringlocationidentifier_key ' + \
                   'UNIQUE (monitoringlocationidentifier)'
-            print sql
+            logger.debug(sql)
             postgres_query(sql, commit=True)
 
     def create_indicator_table(self, indicator):
@@ -160,8 +92,9 @@ class WaterQualityPortalProcessor(GeoDataProcessor):
         :param indicator: table name for the indicator
         :return: None
         """
-        postgres_query(CREATE_RESULTS_TABLE_SQL.format(tablename=indicator),
-                       commit=True)
+        with open(os.path.join(script_dir,
+                               'resources/create_table.sql')) as sql:
+            postgres_query(sql.read().format(tablename=indicator), commit=True)
 
     def update_indicator_table(self, csvfile):
         """
@@ -193,7 +126,7 @@ class WaterQualityPortalProcessor(GeoDataProcessor):
                         if attribute in date_cols and val:
                             time_idx = headers.index(
                                 '"{}_Time"'.format(
-                                    attribute.replace( "Date", "Time")))
+                                    attribute.replace("Date", "Time")))
                             zone_idx = headers.index(
                                 '"{}_TimeZoneCode"'.format(
                                     attribute.replace("Date", "Time")))
@@ -270,20 +203,31 @@ class WaterQualityPortalProcessor(GeoDataProcessor):
             if os.path.getsize(os.path.join(self.tmp_dir, station_csv)) > 0:
                 self.update_station_table(station_csv)
             result_csv = csv_dict['Result']
+            datastore = ogc_server_settings.server.get('DATASTORE')
             if os.path.getsize(os.path.join(self.tmp_dir, result_csv)) > 0:
                 self.update_indicator_table(result_csv)
-                layer_name = self.prefix + self.safe_name(indicator) + self.suffix
+                layer_name = '{}{}{}'.format(self.prefix,
+                                             self.safe_name(indicator),
+                                             self.suffix)
                 layer_title = 'Water Quality - {} - Updated {}'.format(
                     indicator, datetime.datetime.now().strftime('%Y-%m-%d'))
                 if not layer_exists(layer_name,
-                                    ogc_server_settings.server.get('DATASTORE'),
+                                    datastore,
                                     DEFAULT_WORKSPACE):
                     self.post_geoserver_vector(layer_name)
-                self.update_geonode(layer_name, title=layer_title)
+                if not style_exists(layer_name):
+                    with open(os.path.join(
+                            script_dir,
+                            'resources/{}.sld'.format(layer_name))) as sld:
+                        self.set_default_style(layer_name, layer_name,
+                                               sld.read())
+                self.update_geonode(layer_name,
+                                    title=layer_title,
+                                    store=datastore)
                 self.truncate_gs_cache(layer_name)
         self.cleanup()
 
 
 if __name__ == '__main__':
-    processor = WaterQualityPortalProcessor(days=90)
+    processor = WaterQualityPortalProcessor()
     processor.run()

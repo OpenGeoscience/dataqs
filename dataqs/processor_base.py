@@ -259,12 +259,13 @@ class GeoDataProcessor(object):
         # Populate the style
         data = sld_content
         url = urljoin(gs_url, sld_name)
-        print url
+        logger.debug(url)
         res = requests.put(url=url,
                            data=data,
                            auth=(_user, _password),
-                           headers={'Content-Type':
-                                        'application/vnd.ogc.sld+xml'})
+                           headers={
+                               'Content-Type': 'application/vnd.ogc.sld+xml'
+                           })
 
         res.raise_for_status()
 
@@ -273,7 +274,7 @@ class GeoDataProcessor(object):
         data = '<layer><defaultStyle><name>{}</name></defaultStyle></layer>'.format(
             sld_name)
         url = urljoin(gs_url.replace("styles", "layers"), layer_typename)
-        print url
+        logger.debug(url)
         res = requests.put(
             url=url,
             data=data,
@@ -328,7 +329,7 @@ class GeoDataMosaicProcessor(GeoDataProcessor):
         """
         Add another image to a mosaic datastore
         :param filepath: Full path&name of GeoTIFF to import
-        :param layer_name: Name of the mosaic layer & store (assumed to be same)
+        :param layer_name: Name of the layer & store (assumed to be same)
         """
         sleep(RSYNC_WAIT_TIME)
         gs_url = self.gs_url.format(ogc_server_settings.hostname,
@@ -480,14 +481,19 @@ class GeoDataMosaicProcessor(GeoDataProcessor):
                 res = requests.put(url=gs_url,
                                    data=data,
                                    auth=(_user, _password),
-                                   headers={'Content-Type': 'application/zip'})
+                                   headers={
+                                       'Content-Type': 'application/zip'}
+                                   )
                 res.raise_for_status()
                 gs_url = gs_url.replace(
-                    'file.imagemosaic', 'coverages/{}.json'.format(layer_name))
+                    'file.imagemosaic',
+                    'coverages/{}.json'.format(layer_name))
                 res = requests.put(url=gs_url,
                                    data=GPMOSAIC_COVERAGE_JSON,
                                    auth=(_user, _password),
-                                   headers={'Content-Type': 'application/json'})
+                                   headers={
+                                       'Content-Type': 'application/json'
+                                   })
                 res.raise_for_status()
         finally:
             if os.path.exists(ziploc):
