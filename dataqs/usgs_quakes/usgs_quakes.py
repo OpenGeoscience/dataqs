@@ -65,7 +65,7 @@ class USGSQuakeProcessor(GeoDataProcessor):
         if not rss_file:
             rss = self.download(self.base_url.format(self.params['sdate'],
                                                   self.params['edate']),
-                                self.prefix + '.rss')
+                                filename=self.prefix + '.rss')
             rss_file = os.path.join(self.tmp_dir, rss)
 
         json_data = None

@@ -38,8 +38,8 @@ class UsgsQuakesTest(TestCase):
             self.processor.params['sdate'], self.processor.params['edate'])
         httpretty.register_uri(httpretty.GET, dl_url,
                                body=response)
-        jsonfile = self.processor.download(dl_url,
-                                           self.processor.prefix + '.rss')
+        jsonfile = self.processor.download(
+            dl_url, filename=self.processor.prefix + '.rss')
         jsonpath = os.path.join(
             self.processor.tmp_dir, jsonfile)
         with open(jsonpath) as json_in:
@@ -58,7 +58,7 @@ class UsgsQuakesTest(TestCase):
             self.processor.params['sdate'], self.processor.params['edate'])
         httpretty.register_uri(httpretty.GET, dl_url,
                                body=response)
-        self.processor.download(dl_url, self.processor.prefix + '.rss')
+        self.processor.download(dl_url, filename=self.processor.prefix + '.rss')
         self.assertNotEqual([], glob.glob(os.path.join(
             self.processor.tmp_dir, self.processor.prefix + '*')))
         self.processor.cleanup()

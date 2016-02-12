@@ -12,6 +12,7 @@ import datetime
 import requests
 from django.conf import settings
 import shutil
+from dataqs.helpers import get_html
 from geonode.geoserver.helpers import ogc_server_settings, gs_catalog, get_store
 from geonode.geoserver.management.commands.updatelayers import Command \
     as UpdateLayersCommand
@@ -83,7 +84,7 @@ class GeoDataProcessor(object):
         if 'days' in kwargs.keys():
             self.days = kwargs['days']
 
-    def download(self, url, filename=None):
+    def download(self, url, filename=None, html=False):
         """
         Download a file from the specified URL
         :param url: The URL to download from
@@ -92,6 +93,8 @@ class GeoDataProcessor(object):
         """
         if not filename:
             filename = url.rsplit('/')[-1]
+        if html:
+            return get_html(url)
         r = requests.get(url, stream=True)
         with open(os.path.join(self.tmp_dir, filename), 'wb') as out_file:
             for chunk in r.iter_content(chunk_size=1024):

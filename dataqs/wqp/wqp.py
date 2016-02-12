@@ -140,7 +140,7 @@ class WaterQualityPortalProcessor(GeoDataProcessor):
                         ','.join('{}'.format(x) for x in query_format)) + \
                         ' WHERE NOT EXISTS (SELECT 1 from ' + \
                         '{} WHERE "ActivityIdentifier" = \'{}\');'.format(
-                            indicator, row[id_idx])
+                            indicator, re.sub('\'{1}', '\'\'', row[id_idx]))
                     postgres_query(insert_sql, params=tuple(row), commit=True)
         purge_old_data(indicator, date_cols[0], self.days_to_keep)
         if not table_exists(indicator + self.suffix):

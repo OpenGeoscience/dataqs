@@ -62,7 +62,7 @@ class ForecastIOAirTempProcessor(GeoDataMosaicProcessor):
                     year=str(now.year),
                     month='{0:02d}'.format(now.month),
                     day='{0:02d}'.format(now.day),
-                    hour='{0:02d}'.format(now.hour)), raw_name)
+                    hour='{0:02d}'.format(now.hour)), filename=raw_name)
         except requests.HTTPError:
             # Try the previous hour:
             now = now - datetime.timedelta(hours=1)
@@ -72,7 +72,7 @@ class ForecastIOAirTempProcessor(GeoDataMosaicProcessor):
                     year=str(now.year),
                     month='{0:02d}'.format(now.month),
                     day='{0:02d}'.format(now.day),
-                    hour='{0:02d}'.format(now.hour)), raw_name)
+                    hour='{0:02d}'.format(now.hour)), filename=raw_name)
 
         tif_file = self.convert(raw_file, now)
 
