@@ -13,7 +13,8 @@ setup(
     packages=['dataqs'],
     include_package_data=True,
     license='BSD License',  # example license
-    description='A simple GeoNode app to download, process, and import spatial data into PostGIS.',
+    description='A simple GeoNode app to download, process, and import '
+                'spatial data into PostGIS.',
     long_description=README,
     url='http://www.example.com/',
     author='Matt Bertrand ',
@@ -22,7 +23,7 @@ setup(
         'Environment :: Web Environment',
         'Framework :: Django',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: BSD License', # example license
+        'License :: OSI Approved :: BSD License',  # example license
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         # Replace these appropriately if you are stuck on Python 2.
@@ -31,16 +32,16 @@ setup(
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
     install_requires=[
-      'psycopg2',
-      'requests',
-      'celery',
-      'geopy',
-      'fiona',
-      'unicodecsv',
-      'shapely',
-      'pymongo',
-      'numpy',
-      'rasterio',
-      'gdal==1.10'
+        'psycopg2',
+        'requests',
+        'celery',
+        'geopy',
+        'fiona',
+        'unicodecsv',
+        'shapely',
+        'pymongo',
+        'numpy',
+        'rasterio',
+        'gdal==1.10'
     ]
 )

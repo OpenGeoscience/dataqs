@@ -2,7 +2,7 @@ from __future__ import absolute_import
 
 import logging
 import os
-from dataqs.processor_base import GeoDataProcessor, DEFAULT_WORKSPACE
+from dataqs.processor_base import GeoDataProcessor
 from dataqs.helpers import get_band_count, gdal_translate, cdo_invert, \
     nc_convert, style_exists
 

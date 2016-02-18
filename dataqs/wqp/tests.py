@@ -39,7 +39,8 @@ class WaterQualityTest(TestCase):
         """
         for qtype in ('Result', 'Station'):
             url = ('http://www.waterqualitydata.us/{}/search?'.format(qtype) +
-                   'countrycode=US&startDateLo=12-27-2015&startDateHi=01-26-2016' +
+                   'countrycode=US&startDateLo=12-27-2015' +
+                   '&startDateHi=01-26-2016' +
                    '&characteristicName=pH')
             httpretty.register_uri(httpretty.GET, url,
                                    body=get_mock_response(

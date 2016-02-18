@@ -71,8 +71,9 @@ class GeoDataProcessor(object):
     for import into GeoNode/GeoServer
     """
 
-    gs_url = "http://{}:8080/geoserver/rest/workspaces/{}/coveragestores/{}/file.geotiff"
-    gs_vec_url = "http://{}:8080/geoserver/rest/workspaces/{}/datastores/{}/featuretypes"
+    base_url = "http://{}:8080/geoserver/rest/workspaces/"
+    gs_url = base_url + "{}/coveragestores/{}/file.geotiff"
+    gs_vec_url = base_url + "{}/datastores/{}/featuretypes"
     gs_style_url = "http://{}:8080/geoserver/rest/styles/"
 
     def __init__(self, workspace=DEFAULT_WORKSPACE, tmp_dir=GS_TMP_DIR,
@@ -111,17 +112,17 @@ class GeoDataProcessor(object):
             ws=self.workspace,
             layer=layer_name
         )
-        truncate_json = json.dumps({'seedRequest':
-                                        {'name': 'geonode:{}'.format(
-                                            layer_name),
-                                         'srs': {'number': 900913},
-                                         'zoomStart': 0,
-                                         'zoomStop': 19,
-                                         'format': 'image/png',
-                                         'type': 'truncate',
-                                         'threadCount': 4
-                                         }
-                                    })
+        truncate_json = json.dumps({
+            'seedRequest': {
+                'name': 'geonode:{}'.format(layer_name),
+                'srs': {'number': 900913},
+                'zoomStart': 0,
+                'zoomStop': 19,
+                'format': 'image/png',
+                'type': 'truncate',
+                'threadCount': 4
+            }
+        })
         res = requests.post(url=gwc_url, data=truncate_json,
                             auth=(_user, _password),
                             headers={"Content-type": "application/json"})
@@ -249,8 +250,8 @@ class GeoDataProcessor(object):
         gs_url = self.gs_style_url.format(ogc_server_settings.hostname)
 
         # Create the style
-        data = "<style><name>{name}</name><filename>{name}.sld</filename></style>".format(
-            name=sld_name)
+        s = "<style><name>{name}</name><filename>{name}.sld</filename></style>"
+        data = s.format(name=sld_name)
         _user, _password = ogc_server_settings.credentials
         res = requests.post(url=gs_url,
                             data=data,
@@ -274,7 +275,8 @@ class GeoDataProcessor(object):
 
         # Assign to the layer
         layer_typename = "{}%3A{}".format(DEFAULT_WORKSPACE, layer_name)
-        data = '<layer><defaultStyle><name>{}</name></defaultStyle></layer>'.format(
+        s = '<layer><defaultStyle><name>{}</name></defaultStyle></layer>'
+        data = s.format(
             sld_name)
         url = urljoin(gs_url.replace("styles", "layers"), layer_typename)
         logger.debug(url)
@@ -303,11 +305,11 @@ class GeoDataProcessor(object):
 class GeoDataMosaicProcessor(GeoDataProcessor):
     """
     Processor for handling raster mosaic data stores
-    http://docs.geoserver.org/latest/en/user/tutorials/imagemosaic_timeseries/imagemosaic_timeseries.html
+    http://bit.ly/1oMPIE7
     http://geoserver.geo-solutions.it/multidim/en/rest/index.html
     """
-
-    gs_url = "http://{}:8080/geoserver/rest/workspaces/{}/coveragestores/{}/external.imagemosaic"
+    gs_url = "http://{}:8080/geoserver/rest/workspaces/{}/" \
+             "coveragestores/{}/external.imagemosaic"
     mosaic_url = gs_url.replace('external.imagemosaic',
                                 'coverages/{}/index/granules')
     create_url = gs_url.replace('external.imagemosaic', 'file.imagemosaic')

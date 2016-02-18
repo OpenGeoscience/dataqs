@@ -27,7 +27,8 @@ def mock_nlst(self, *args):
     current_date = datetime.datetime.utcnow()
     start_date = current_date - datetime.timedelta(days=7)
     while start_date < current_date:
-        file = '3B-HHR-E.MS.MRG.3IMERG.{}-S120000-E175959.1050.V03E.1day.tif'.format(
+        f = '3B-HHR-E.MS.MRG.3IMERG.{}-S120000-E175959.1050.V03E.1day.tif'
+        file = f.format(
             current_date.strftime('%Y%m%d'))
         file_list.append(file)
         current_date = current_date - datetime.timedelta(days=1)
@@ -73,10 +74,10 @@ class NasaGpmTest(TestCase):
         Layer title should contain date of image
         :return:
         """
-        imgfile = '3B-HHR-E.MS.MRG.3IMERG.20151027-S133000-E135959.0810.V03E.1day.tif'
-        title = self.processor.parse_name(imgfile)[0]
+        f = '3B-HHR-E.MS.MRG.3IMERG.20151027-S133000-E135959.0810.V03E.1day.tif'
+        title = self.processor.parse_name(f)[0]
         self.assertTrue('NASA Global Precipitation Estimate (1day) - 2015-10-27'
-                       in title)
+                        in title)
 
     @patch('ftplib.FTP', autospec=True)
     @patch('ftplib.FTP.retrbinary', mock_retrbinary)
@@ -106,7 +107,7 @@ class NasaGpmTest(TestCase):
         :return:
         """
         dl_tif = self.processor.download()[0]
-        convert_tif = self.processor.convert(dl_tif)
+        self.processor.convert(dl_tif)
         self.assertNotEqual([], glob.glob(os.path.join(
             self.processor.tmp_dir, self.processor.prefix + '*')))
         self.processor.cleanup()

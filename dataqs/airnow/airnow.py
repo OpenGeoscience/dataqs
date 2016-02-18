@@ -7,7 +7,7 @@ import datetime
 import re
 import shutil
 from django.conf import settings
-from dataqs.processor_base import GeoDataMosaicProcessor, DEFAULT_WORKSPACE
+from dataqs.processor_base import GeoDataMosaicProcessor
 from dataqs.helpers import warp_image, style_exists
 
 logger = logging.getLogger("dataqs.processors")
@@ -27,8 +27,9 @@ class AirNowGRIB2HourlyProcessor(GeoDataMosaicProcessor):
     """
     prefix = "airnow"
     base_url = "ftp.airnowapi.org"
-    layer_names = ["airnow_aqi_ozone", "airnow_aqi_pm25",
-                         "airnow_aqi_combined"]
+    layer_names = ["airnow_aqi_ozone",
+                   "airnow_aqi_pm25",
+                   "airnow_aqi_combined"]
     img_patterns = ["", "_pm25", "_combined"]
     layer_titles = ["Ozone", "PM25", "Combined Ozone & PM25"]
 

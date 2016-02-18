@@ -30,11 +30,13 @@ def mock_saveData(self, city):
     with open(tmpfile, 'w') as outfile:
         outfile.write(json.dumps(city))
 
+
 def mock_worker_init(self, table, cities):
     self.cities = cities
     self.prefix = table
     self.archive = self.prefix + "_archive"
     self.max_wait = 5
+
 
 class AQICNTest(TestCase):
     """

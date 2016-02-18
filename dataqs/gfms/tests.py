@@ -91,7 +91,7 @@ class GFMSTest(TestCase):
         httpretty.register_uri(httpretty.GET, current_url,
                                body=get_mock_image())
         imgfile = self.processor.download(current_url)
-        tif_file = self.processor.convert(imgfile)
+        self.processor.convert(imgfile)
         self.assertNotEqual([], glob.glob(os.path.join(
             self.processor.tmp_dir, self.processor.prefix + '*')))
         self.processor.cleanup()

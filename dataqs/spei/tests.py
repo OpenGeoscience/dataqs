@@ -52,7 +52,7 @@ class SpieTest(TestCase):
         imgurl = "{}spei03.nc".format(self.processor.base_url)
         httpretty.register_uri(httpretty.GET, imgurl,
                                body=get_mock_image())
-        dl_tif = self.processor.download(imgurl, 'spei03.tif')
+        self.processor.download(imgurl, 'spei03.tif')
         self.assertNotEqual([], glob.glob(os.path.join(
             self.processor.tmp_dir, self.processor.prefix + '*')))
         self.processor.cleanup()

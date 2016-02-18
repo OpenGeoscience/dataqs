@@ -21,9 +21,10 @@ install:
   - pip install -e .
   - git clone -b 2.4.x https://github.com/GeoNode/geonode.git
   - cp local_settings.py geonode/geonode/.
-  - pushd geonode
-  - pip install -e .
+  - pip install -e geonode
 
 script:
-
+  - flake8 --config flake8.cfg dataqs
+  - pushd geonode
   - python manage.py test dataqs
+  - popd

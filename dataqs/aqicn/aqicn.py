@@ -13,8 +13,8 @@ import datetime
 import traceback
 from dateutil.parser import parse
 from dateutil.tz import tzutc
-from dataqs.helpers import postgres_query, layer_exists, table_exists, style_exists, \
-    asciier
+from dataqs.helpers import postgres_query, layer_exists, table_exists, \
+    style_exists, asciier
 from dataqs.processor_base import GeoDataProcessor, DEFAULT_WORKSPACE
 from geonode.geoserver.helpers import ogc_server_settings
 
@@ -23,11 +23,11 @@ logger = logging.getLogger("dataqs.processors")
 script_dir = os.path.dirname(os.path.realpath(__file__))
 
 REQ_HEADER = {
-    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-    'User-Agent':
-                'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) \
-                AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 '
-                'Safari/537.36'
+    'Accept': 'text/html,application/xhtml+xml,application/xml;'
+              'q=0.9,image/webp,*/*;q=0.8',
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) '
+                  'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 '
+                  'Safari/537.36'
 }
 
 AQICN_SQL = u"""
@@ -78,6 +78,7 @@ CREATE INDEX {table}_datetime_idx ON {table}(datetime);
 SELECT AddGeometryColumn ('public','{table}','the_geom',4326,'POINT',2);
 CREATE INDEX {table}_the_geom ON {table} USING gist (the_geom);
 """
+
 
 def thread_parse(table, cities):
     """
@@ -135,8 +136,7 @@ class AQICNWorker(object):
                 return
             city['dateTime'] = self.get_time(city)
             city["data"] = {}
-
-            cur_list = soup.find_all("td", {"id" : re.compile('^cur_')})
+            cur_list = soup.find_all("td", {"id": re.compile('^cur_')})
             # Go on to the next city if we don't find anything
             if not cur_list:
                 logger.debug("Nothing found for %s" % city['city'])
@@ -160,7 +160,7 @@ class AQICNWorker(object):
 
         except KeyboardInterrupt:
             sys.exit()
-        except Exception as e:
+        except Exception:
             logger.error('Error with city {}'.format(city['url']))
             logger.error(traceback.format_exc())
 
@@ -221,8 +221,8 @@ class AQICNWorker(object):
 class AQICNProcessor(GeoDataProcessor):
     prefix = 'aqicn'
     directory = 'output'
-    cities=None
-    countries=None
+    cities = None
+    countries = None
     pool_size = 6
     base_url = 'http://aqicn.org/city/all/'
     layers = {
