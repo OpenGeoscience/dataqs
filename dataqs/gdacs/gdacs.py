@@ -40,7 +40,8 @@ class GDACSProcessor(GeoDataProcessor):
 
     def run(self):
         rss = self.download(self.base_url.format(
-            self.params['sdate'], self.params['edate']), self.prefix + ".rss")
+            self.params['sdate'], self.params['edate']),
+            filename=self.prefix + ".rss")
         db = ogc_server_settings.datastore_db
         ogr2ogr_exec("-append -skipfailures -f PostgreSQL \
             \"PG:host={db_host} user={db_user} password={db_pass} \

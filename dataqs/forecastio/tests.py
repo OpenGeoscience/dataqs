@@ -50,7 +50,7 @@ class ForecastIOAirTempTest(TestCase):
         httpretty.register_uri(httpretty.GET, img_url,
                                body=get_test_image(),
                                content_type="image/tif")
-        imgfile = self.processor.download(img_url, raw_name)
+        imgfile = self.processor.download(img_url, filename=raw_name)
         self.assertTrue(os.path.exists(os.path.join(
             self.processor.tmp_dir, imgfile)))
 
@@ -82,7 +82,7 @@ class ForecastIOAirTempTest(TestCase):
         httpretty.register_uri(httpretty.GET, img_url,
                                body=get_test_image(),
                                content_type="image/tif")
-        imgfile = self.processor.download(img_url, raw_name)
+        imgfile = self.processor.download(img_url, filename=raw_name)
         tif_file = self.processor.convert(imgfile, today)
         self.assertTrue(tif_file.endswith('0000000Z.tif'))
         self.assertTrue(os.path.exists(os.path.join(
@@ -104,7 +104,7 @@ class ForecastIOAirTempTest(TestCase):
         httpretty.register_uri(httpretty.GET, img_url,
                                body=get_test_image(),
                                content_type="image/tif")
-        self.processor.download(img_url, raw_name)
+        self.processor.download(img_url, filename=raw_name)
         self.assertNotEqual([], glob.glob(os.path.join(
             self.processor.tmp_dir, self.processor.prefix + '*')))
         self.processor.cleanup()
