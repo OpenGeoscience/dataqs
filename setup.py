@@ -41,5 +41,6 @@ setup(
       'pymongo',
       'numpy',
       'rasterio',
+      'gdal==1.10'
     ]
 )
