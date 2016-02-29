@@ -13,6 +13,7 @@ from geonode.geoserver.helpers import ogc_server_settings
 logger = logging.getLogger("dataqs.processors")
 script_dir = os.path.dirname(os.path.realpath(__file__))
 
+
 class USGSQuakeProcessor(GeoDataProcessor):
     """
     Class for retrieving and processing the latest earthquake data from USGS.
@@ -21,9 +22,11 @@ class USGSQuakeProcessor(GeoDataProcessor):
     are removed.
     """
     prefix = 'usgs_quakes'
-    tables = ("quakes_weekly", "quakes_monthly", "quakes_yearly", "quakes_archive")
+    tables = ("quakes_weekly", "quakes_monthly",
+              "quakes_yearly", "quakes_archive")
     titles = ("Last 7 Days", "Last 30 Days", "Last 365 Days", "Archive")
-    base_url = "http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime={}&endtime={}"
+    base_url = "http://earthquake.usgs.gov/fdsnws/event/1/query?" \
+               "format=geojson&starttime={}&endtime={}"
     params = {}
 
     def __init__(self, *args, **kwargs):
@@ -64,7 +67,7 @@ class USGSQuakeProcessor(GeoDataProcessor):
         """
         if not rss_file:
             rss = self.download(self.base_url.format(self.params['sdate'],
-                                                  self.params['edate']),
+                                                     self.params['edate']),
                                 filename=self.prefix + '.rss')
             rss_file = os.path.join(self.tmp_dir, rss)
 
@@ -93,11 +96,10 @@ class USGSQuakeProcessor(GeoDataProcessor):
             datastore = ogc_server_settings.server.get('DATASTORE')
             if not layer_exists(table, datastore, DEFAULT_WORKSPACE):
                 c = connections[datastore].cursor()
+                q = 'ALTER TABLE {tb} ADD CONSTRAINT {tb}_ids UNIQUE (ids);'
                 try:
-                    c.execute(
-                        'ALTER TABLE {tb} ADD CONSTRAINT {tb}_ids UNIQUE (ids);'.
-                            format(tb=table))
-                except:
+                    c.execute(q.format(tb=table))
+                except Exception:
                     c.close()
                 self.post_geoserver_vector(table)
             if not style_exists(table):

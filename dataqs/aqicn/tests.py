@@ -31,6 +31,13 @@ def mock_saveData(self, city):
         outfile.write(json.dumps(city))
 
 
+def mock_worker_init(self, table, cities):
+    self.cities = cities
+    self.prefix = table
+    self.archive = self.prefix + "_archive"
+    self.max_wait = 5
+
+
 class AQICNTest(TestCase):
     """
     Tests the dataqs.aqicn module.  Since each processor is highly
@@ -70,6 +77,7 @@ class AQICNTest(TestCase):
             self.assertIsNotNone(city['country'], city)
             self.assertIsNotNone(city['url'], city)
 
+    @patch('dataqs.aqicn.aqicn.AQICNWorker.__init__', mock_worker_init)
     @patch('dataqs.aqicn.aqicn.AQICNWorker.save_data', mock_saveData)
     def test_handleCity(self):
         """
