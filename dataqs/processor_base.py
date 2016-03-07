@@ -464,6 +464,7 @@ class GeoDataMosaicProcessor(GeoDataProcessor):
                 with open(idxprop_file, 'w') as index_prop:
                     index_prop.write(GPMOSAIC_INDEXER_PROP)
                 zipFile.write(idxprop_file, 'indexer.properties')
+            os.remove(img_file)    
             return zip_archive
         except Exception as e:
             shutil.rmtree(tmp_dir)
