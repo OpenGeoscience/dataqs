@@ -34,6 +34,12 @@ You can also change the war used to deploy geoserver with the following variable
 
 * `geoserver_url` - GeoServer war URL (default: `http://build.geonode.org/geoserver/latest/geoserver.war`)
 
+### Dataqs Processors
+
+* roles/dataqs/templates/dataq_settings.py: 
+    * Change the 'DATAQS_APPS' setting to add/remove individual dataqs processors
+    * Change the 'CELERYBEAT_SCHEDULE' setting to add/remove/modify scheduled dataqs celery tasks
+
 ### Setting up a vagrant box
 
 To configure a local development virtual machine, you will need to have virtualbox and vagrant installed.
