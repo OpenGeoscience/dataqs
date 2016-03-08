@@ -1,0 +1,164 @@
+TABLE III. Deaths in 122 U.S. cities*, week ending January 16, 2016
+
+column labels in same order that data fields appears in each record below:
+Reporting Area
+All causes of death, all ages**
+All causes of death, >=65 years
+All causes of death, 45-64 years
+All causes of death, 25-44 years
+All causes of death, 1-24 years
+All causes of death, less than 1 year
+Pneumonia and influenza
+
+tab delimited data:
+NEW ENGLAND	572	402	121	31	11	7	42
+Boston, Mass.	154	93	42	10	4	5	7
+Bridgeport, Conn.	37	29	5	1	2	-	3
+Cambridge, Mass.	18	16	2	-	-	-	1
+Fall River, Mass.	29	20	7	2	-	-	3
+Hartford, Conn.	58	43	12	1	2	-	3
+Lowell, Mass.	26	20	6	-	-	-	3
+Lynn, Mass.	9	7	2	-	-	-	-
+New Bedford, Mass.	21	14	5	1	1	-	-
+New Haven, Conn.	19	15	3	1	-	-	2
+Providence, R.I.	65	46	10	9	-	-	6
+Somerville, Mass.	3	2	1	-	-	-	-
+Springfield, Mass.	34	23	7	3	1	-	-
+Waterbury, Conn.	37	25	9	2	1	-	5
+Worcester, Mass.	62	49	10	1	-	2	9
+MID. ATLANTIC	1,045	772	205	46	12	10	64
+Albany, N.Y.	58	49	6	-	1	2	8
+Allentown, Pa.	31	25	4	2	-	-	1
+Buffalo, N.Y.	104	73	22	6	2	1	7
+Camden, N.J.	27	19	7	-	1	-	1
+Elizabeth, N.J.	14	7	7	-	-	-	-
+Erie, Pa.***	56	38	12	4	1	1	1
+Jersey City, N.J.	U	U	U	U	U	U	U
+New York City, N.Y.	365	276	68	17	2	2	18
+Newark, N.J.	42	19	15	7	1	-	-
+Paterson, N.J.	16	15	1	-	-	-	3
+Philadelphia, Pa.	U	U	U	U	U	U	U
+Pittsburgh, Pa.***	U	U	U	U	U	U	U
+Reading, Pa.	31	25	5	-	1	-	3
+Rochester, N.Y.	144	102	31	8	1	2	11
+Schenectady, N.Y.	27	22	5	-	-	-	1
+Scranton, Pa.***	31	27	4	-	-	-	-
+Syracuse, N.Y.	53	38	11	1	1	2	5
+Trenton, N.J.	U	U	U	U	U	U	U
+Utica, N.Y.	19	16	2	1	-	-	1
+Yonkers, N.Y.	27	21	5	-	1	-	4
+E.N. CENTRAL	2,447	1,620	598	136	41	52	172
+Akron, Ohio	61	37	14	5	1	4	3
+Canton, Ohio	53	38	12	2	-	1	5
+Chicago, Ill.	278	174	72	18	8	6	13
+Cincinnati, Ohio	70	48	15	5	1	1	2
+Cleveland, Ohio	326	227	72	23	3	1	14
+Columbus, Ohio	287	190	69	12	6	10	24
+Dayton, Ohio	180	135	33	9	1	2	21
+Detroit, Mich.	177	100	51	16	6	4	13
+Evansville, Ind.	56	35	18	1	2	-	4
+Fort Wayne, Ind.	116	85	27	3	-	1	9
+Gary, Ind.	15	11	3	1	-	-	2
+Grand Rapids, Mich.	82	46	26	3	3	4	7
+Indianapolis, Ind.	217	126	64	19	3	5	22
+Lansing, Mich.	69	48	16	4	-	1	4
+Milwaukee, Wis.	101	63	35	2	1	-	2
+Peoria, Ill.	76	54	16	4	-	2	11
+Rockford, Ill.	57	43	11	2	1	-	3
+South Bend, Ind.	56	37	11	2	-	6	6
+Toledo, Ohio	110	79	22	2	3	4	5
+Youngstown, Ohio	60	44	11	3	2	-	2
+W.N. CENTRAL	630	407	153	34	12	23	52
+Des Moines, Iowa	-	-	-	-	-	-	-
+Duluth, Minn.	37	26	8	3	-	-	2
+Kansas City, Kans.	32	24	7	-	1	-	2
+Kansas City, Mo.	68	42	19	2	3	2	9
+Lincoln, Nebr.	55	43	10	1	-	1	6
+Minneapolis, Minn.	80	40	23	10	2	5	6
+Omaha, Nebr.	127	86	28	4	1	8	12
+St. Louis, Mo.	64	39	18	2	2	3	5
+St. Paul, Minn.	70	41	17	8	1	2	2
+Wichita, Kans.	97	66	23	4	2	2	8
+S. ATLANTIC	1,243	814	296	82	28	23	98
+Atlanta, Ga.	204	128	50	18	5	3	16
+Baltimore, Md.	131	73	44	9	2	3	10
+Charlotte, N.C.	156	115	29	10	2	-	14
+Jacksonville, Fla.	183	125	44	8	4	2	14
+Miami, Fla.	50	38	6	5	1	-	7
+Norfolk, Va.	51	34	13	3	-	1	1
+Richmond, Va.	58	33	15	5	3	2	2
+Savannah, Ga.	65	40	13	3	4	5	7
+St. Petersburg, Fla.	64	40	21	2	1	-	4
+Tampa, Fla.	140	95	30	8	3	4	8
+Washington, D.C.	116	72	27	11	3	3	10
+Wilmington, Del.	25	21	4	-	-	-	5
+E.S. CENTRAL	1,186	803	281	68	19	15	105
+Birmingham, Ala.	207	143	40	17	3	4	24
+Chattanooga, Tenn.	119	83	29	6	1	-	9
+Knoxville, Tenn.	148	103	37	4	3	1	12
+Lexington, Ky.	70	50	13	6	1	-	6
+Memphis, Tenn.	202	134	42	20	4	2	19
+Mobile, Ala.	117	72	38	1	4	2	7
+Montgomery, Ala.	139	98	36	3	1	1	12
+Nashville, Tenn.	184	120	46	11	2	5	16
+W.S. CENTRAL	1,434	937	361	87	24	24	99
+Austin, Tex.	133	95	24	9	1	4	7
+Baton Rouge, La.	105	74	24	3	1	3	4
+Corpus Christi, Tex.	77	56	19	-	1	1	3
+Dallas, Tex.	270	171	69	17	8	4	15
+El Paso, Tex.	128	99	23	5	-	1	4
+Ft. Worth, Tex.	U	U	U	U	U	U	U
+Houston, Tex.	243	130	84	21	6	2	7
+Little Rock, Ark.	88	60	18	4	2	4	13
+New Orleans, La.	94	54	25	11	2	2	-
+San Antonio, Tex.	47	30	13	3	1	-	21
+Shreveport, La.	65	40	16	7	2	-	2
+Tulsa, Okla.	184	128	46	7	-	3	23
+MOUNTAIN	1,188	851	236	66	23	11	85
+Albuquerque, N.M.	113	86	21	3	3	-	10
+Boise, Idaho	82	63	15	2	1	1	7
+Colo. Springs, Colo.	58	38	12	5	2	1	2
+Denver, Colo.	51	31	12	5	1	2	2
+Las Vegas, Nev.	424	297	96	22	8	1	36
+Ogden, Utah	29	26	1	2	-	-	3
+Phoenix, Ariz.	219	144	40	23	6	5	19
+Pueblo, Colo.	26	17	7	2	-	-	2
+Salt Lake City, Utah	U	U	U	U	U	U	U
+Tucson, Ariz.	186	149	32	2	2	1	4
+PACIFIC	1,963	1,420	405	95	21	21	168
+Berkeley, Calif.	14	9	4	1	-	-	1
+Fresno, Calif.	175	122	41	8	1	3	16
+Glendale, Calif.	50	42	7	1	-	-	13
+Honolulu, Hawaii	90	68	20	2	-	-	20
+Long Beach, Calif.	91	62	19	7	1	2	8
+Los Angeles, Calif.	375	250	89	26	6	4	38
+Pasadena, Calif.	31	24	5	-	1	1	4
+Portland, Oreg.	196	145	38	10	2	1	10
+Sacramento, Calif.	304	230	49	16	5	4	16
+San Diego, Calif.	U	U	U	U	U	U	U
+San Francisco, Calif.	142	89	41	8	-	4	7
+San Jose, Calif.	258	195	50	7	4	1	24
+Santa Cruz, Calif.	26	20	3	2	1	-	1
+Seattle, Wash.	U	U	U	U	U	U	U
+Spokane, Wash.	69	54	13	2	-	-	3
+Tacoma, Wash.	142	110	26	5	-	1	7
+TOTAL	11,708	8,026	2,656	645	191	186	885
+
+U: Unavailable
+-: No reported cases
+* Mortality data in this table are voluntarily reported from 122 cities in the United States,
+ most of which have populations of 100,000 or more. A death is reported by the place of
+ its occurrence and by the week that the death certificate was filed.
+ Fetal deaths are not included.
+
+** Totals include unknown ages.
+
+*** Partial counts for this city.
+
+
+
+
+National Notifiable Diseases Surveillance System (NNDSS) at http://wwwn.cdc.gov/nndss/
+
+
+MMWR web application provided by CDC WONDER; http://wonder.cdc.gov

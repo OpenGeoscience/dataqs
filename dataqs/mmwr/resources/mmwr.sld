@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?><sld:StyledLayerDescriptor xmlns="http://www.opengis.net/sld" xmlns:sld="http://www.opengis.net/sld" xmlns:ogc="http://www.opengis.net/ogc" xmlns:gml="http://www.opengis.net/gml" version="1.0.0">
+  <sld:NamedLayer>
+    <sld:Name>{layername}</sld:Name>
+    <sld:UserStyle>
+      <sld:Name>{layername}</sld:Name>
+      <sld:Title>All Deaths</sld:Title>
+      <sld:IsDefault>1</sld:IsDefault>
+      <sld:Abstract>MMWWR</sld:Abstract>
+      <sld:FeatureTypeStyle>
+        <sld:Name>name</sld:Name>
+        <sld:Rule>
+          <sld:Name>rule1</sld:Name>
+          <sld:Title>&lt;= 75</sld:Title>
+          <sld:Abstract></sld:Abstract>
+          <ogc:Filter>
+            <ogc:PropertyIsLessThanOrEqualTo>
+              <ogc:PropertyName>all</ogc:PropertyName>
+              <ogc:Literal>75.0</ogc:Literal>
+            </ogc:PropertyIsLessThanOrEqualTo>
+          </ogc:Filter>
+          <sld:PointSymbolizer>
+            <sld:Graphic>
+              <sld:Mark>
+                <sld:WellKnownName>circle</sld:WellKnownName>
+                <sld:Fill>
+                  <sld:CssParameter name="fill">#0000FF</sld:CssParameter>
+                </sld:Fill>
+              </sld:Mark>
+              <sld:Size>6</sld:Size>
+            </sld:Graphic>
+          </sld:PointSymbolizer>
+        </sld:Rule>
+        <sld:Rule>
+          <sld:Name>rule1</sld:Name>
+          <sld:Title> &gt; 75 AND &lt;= 150</sld:Title>
+          <sld:Abstract></sld:Abstract>
+          <ogc:Filter>
+            <ogc:And>
+              <ogc:PropertyIsGreaterThan>
+                <ogc:PropertyName>all</ogc:PropertyName>
+                <ogc:Literal>75</ogc:Literal>
+              </ogc:PropertyIsGreaterThan>
+              <ogc:PropertyIsLessThanOrEqualTo>
+                <ogc:PropertyName>all</ogc:PropertyName>
+                <ogc:Literal>150</ogc:Literal>
+              </ogc:PropertyIsLessThanOrEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <sld:PointSymbolizer>
+            <sld:Graphic>
+              <sld:Mark>
+                <sld:WellKnownName>circle</sld:WellKnownName>
+                <sld:Fill>
+                  <sld:CssParameter name="fill">#12C308</sld:CssParameter>
+                </sld:Fill>
+              </sld:Mark>
+              <sld:Size>6</sld:Size>
+            </sld:Graphic>
+          </sld:PointSymbolizer>
+        </sld:Rule>
+        <sld:Rule>
+          <sld:Name>rule1</sld:Name>
+          <sld:Title> &gt; 150 AND &lt;= 250</sld:Title>
+          <sld:Abstract></sld:Abstract>
+          <ogc:Filter>
+            <ogc:And>
+              <ogc:PropertyIsGreaterThan>
+                <ogc:PropertyName>all</ogc:PropertyName>
+                <ogc:Literal>150</ogc:Literal>
+              </ogc:PropertyIsGreaterThan>
+              <ogc:PropertyIsLessThanOrEqualTo>
+                <ogc:PropertyName>all</ogc:PropertyName>
+                <ogc:Literal>250</ogc:Literal>
+              </ogc:PropertyIsLessThanOrEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <sld:PointSymbolizer>
+            <sld:Graphic>
+              <sld:Mark>
+                <sld:WellKnownName>circle</sld:WellKnownName>
+                <sld:Fill>
+                  <sld:CssParameter name="fill">#FFFF00</sld:CssParameter>
+                </sld:Fill>
+              </sld:Mark>
+              <sld:Size>6</sld:Size>
+            </sld:Graphic>
+          </sld:PointSymbolizer>
+        </sld:Rule>
+        <sld:Rule>
+          <sld:Name>rule1</sld:Name>
+          <sld:Title> &gt; 250 AND &lt;= 400</sld:Title>
+          <sld:Abstract></sld:Abstract>
+          <ogc:Filter>
+            <ogc:And>
+              <ogc:PropertyIsGreaterThan>
+                <ogc:PropertyName>all</ogc:PropertyName>
+                <ogc:Literal>250</ogc:Literal>
+              </ogc:PropertyIsGreaterThan>
+              <ogc:PropertyIsLessThanOrEqualTo>
+                <ogc:PropertyName>all</ogc:PropertyName>
+                <ogc:Literal>400</ogc:Literal>
+              </ogc:PropertyIsLessThanOrEqualTo>
+            </ogc:And>
+          </ogc:Filter>
+          <sld:PointSymbolizer>
+            <sld:Graphic>
+              <sld:Mark>
+                <sld:WellKnownName>circle</sld:WellKnownName>
+                <sld:Fill>
+                  <sld:CssParameter name="fill">#FF7F00</sld:CssParameter>
+                </sld:Fill>
+              </sld:Mark>
+              <sld:Size>6</sld:Size>
+            </sld:Graphic>
+          </sld:PointSymbolizer>
+        </sld:Rule>
+        <sld:Rule>
+          <sld:Name>rule1</sld:Name>
+          <sld:Title> &gt; 400</sld:Title>
+          <sld:Abstract></sld:Abstract>
+          <ogc:Filter>
+            <ogc:PropertyIsGreaterThan>
+              <ogc:PropertyName>all</ogc:PropertyName>
+              <ogc:Literal>400</ogc:Literal>
+            </ogc:PropertyIsGreaterThan>
+          </ogc:Filter>
+          <sld:PointSymbolizer>
+            <sld:Graphic>
+              <sld:Mark>
+                <sld:WellKnownName>circle</sld:WellKnownName>
+                <sld:Fill>
+                  <sld:CssParameter name="fill">#FF0000</sld:CssParameter>
+                </sld:Fill>
+              </sld:Mark>
+              <sld:Size>6</sld:Size>
+            </sld:Graphic>
+          </sld:PointSymbolizer>
+        </sld:Rule>
+      </sld:FeatureTypeStyle>
+    </sld:UserStyle>
+  </sld:NamedLayer>
+</sld:StyledLayerDescriptor>
+
