@@ -1,14 +1,11 @@
 from __future__ import absolute_import
-import json
-
 import os
-import datetime
 import logging
-from django.db import connections
+import time
+import traceback
 from django.conf import settings
 from dataqs.processor_base import GeoDataProcessor, DEFAULT_WORKSPACE
-from dataqs.helpers import postgres_query, ogr2ogr_exec, layer_exists, \
-    style_exists
+from dataqs.helpers import ogr2ogr_exec, layer_exists, style_exists
 from geonode.geoserver.helpers import ogc_server_settings
 
 logger = logging.getLogger("dataqs.processors")
@@ -30,7 +27,6 @@ class HIFLDProcessor(GeoDataProcessor):
             self.layers = layers
         else:
             self.layers = getattr(settings, 'HIFLD_LAYERS', [])
-
 
     def run(self):
         """
@@ -76,7 +72,7 @@ class HIFLDProcessor(GeoDataProcessor):
                                     title=layer['name'],
                                     store=datastore)
                 self.truncate_gs_cache(table)
-            except Exception as e:
+            except Exception:
                 logger.error('Error with layer {}'.format(layer['name']))
                 logger.error(traceback.format_exc())
         self.cleanup()
