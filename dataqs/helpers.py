@@ -3,8 +3,6 @@ import logging
 import traceback
 import os
 import subprocess
-
-import functools
 import requests
 from geoserver.catalog import Catalog, FailedRequestError
 import psycopg2

@@ -5,7 +5,7 @@ import os
 import datetime
 import re
 import requests
-from dataqs.helpers import gdal_translate, postgres_query, ogr2ogr_exec, \
+from dataqs.helpers import postgres_query, ogr2ogr_exec, \
     table_exists, purge_old_data, layer_exists, style_exists
 from dataqs.processor_base import GeoDataProcessor, DEFAULT_WORKSPACE
 import unicodecsv as csv
@@ -55,21 +55,22 @@ class WaterQualityPortalProcessor(GeoDataProcessor):
         :return: None
         """
         vrt_content = (
-        """<OGRVRTDataSource>
-            <OGRVRTLayer name="{name}">
-                <SrcDataSource>{csv}</SrcDataSource>
-                <GeometryType>wkbPoint</GeometryType>
-                <LayerSRS>WGS84</LayerSRS>
-                <GeometryField encoding="PointFromColumns" x="LongitudeMeasure" y="LatitudeMeasure"/>
-            </OGRVRTLayer>
-        </OGRVRTDataSource>
-        """)
+            """<OGRVRTDataSource>
+                <OGRVRTLayer name="{name}">
+                    <SrcDataSource>{csv}</SrcDataSource>
+                    <GeometryType>wkbPoint</GeometryType>
+                    <LayerSRS>WGS84</LayerSRS>
+                    <GeometryField encoding="PointFromColumns"
+                    x="LongitudeMeasure" y="LatitudeMeasure"/>
+                </OGRVRTLayer>
+            </OGRVRTDataSource>
+            """)
         station_table = self.station_table
         needs_index = not table_exists(station_table)
 
         db = ogc_server_settings.datastore_db
         vrt_file = os.path.join(self.tmp_dir, csvfile.replace('.csv', '.vrt'))
-        csv_name = os.path.basename(csvfile).replace(".csv","")
+        csv_name = os.path.basename(csvfile).replace(".csv", "")
         if not os.path.exists(vrt_file):
             with open(vrt_file, 'w') as vrt:
                 vrt.write(vrt_content.format(

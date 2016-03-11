@@ -1,0 +1,30 @@
+language: python
+
+sudo: required
+
+addons:
+  apt:
+    packages:
+      - python-dev
+      - libgdal1-dev
+
+python:
+  - "2.7"
+
+before_install:
+  - sudo apt-get -qq update
+
+install:
+  - export CPLUS_INCLUDE_PATH=/usr/include/gdal
+  - export C_INCLUDE_PATH=/usr/include/gdal
+  - pip install -r dev-requirements.txt
+  - pip install -e .
+  - git clone -b 2.4.x https://github.com/GeoNode/geonode.git
+  - cp local_settings.py geonode/geonode/.
+  - pip install -e geonode
+
+script:
+  - flake8 --config flake8.cfg dataqs
+  - pushd geonode
+  - python manage.py test dataqs
+  - popd

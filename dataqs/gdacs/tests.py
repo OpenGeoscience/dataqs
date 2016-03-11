@@ -1,5 +1,3 @@
-import glob
-import json
 import os
 import datetime
 from django.test import TestCase
@@ -8,6 +6,7 @@ import httpretty
 from xml.etree import ElementTree as et
 
 script_dir = os.path.dirname(os.path.realpath(__file__))
+
 
 class GdacsTest(TestCase):
     """

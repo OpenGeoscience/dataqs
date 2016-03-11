@@ -110,4 +110,3 @@ class ForecastIOAirTempTest(TestCase):
         self.processor.cleanup()
         self.assertEquals([], glob.glob(os.path.join(
             self.processor.tmp_dir, self.processor.prefix + '*')))
-
