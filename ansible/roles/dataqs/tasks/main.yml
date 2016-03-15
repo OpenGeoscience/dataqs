@@ -96,6 +96,12 @@
   command: "{{ app_code_dir }}/venvs/geonode/bin/python {{app_code_dir}}/venvs/geonode/src/dataqs/dataqs/forecastio/forecastio_air.py"
   ignore_errors: yes
 
+- include: geoserver_permissions.yml
+
+- name: Create the hifld layers
+  command: "{{ app_code_dir }}/venvs/geonode/bin/python {{app_code_dir}}/venvs/geonode/src/dataqs/dataqs/hifld/hifld.py"
+  ignore_errors: yes
+
 
 - name: Django updatelayers
   django_manage: command=updatelayers

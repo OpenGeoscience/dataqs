@@ -59,6 +59,28 @@ Quick start
 	#(sign up at http://registration.pps.eosdis.nasa.gov/registration/)
 	GPM_ACCOUNT = 'your_gpm_email_account'
 
+	#HIFLD: Dictionary of layers to process in the form of:
+	HIFLD_LAYERS = [
+	    {
+            'name': 'US State Boundaries',
+            'url': 'https://hifld-dhs-gii.opendata.arcgis.com/datasets/718791120f6549708cb642dac6ff0dbf_0.geojson',
+            'table': 'state_boundaries',
+            'sld': 'polygon'
+        },
+        {
+            'name': 'Cities and Towns NTAD',
+            'url': 'https://hifld-dhs-gii.opendata.arcgis.com/datasets/6a1e404a10754e59bac4bfa50db3f487_0.geojson',
+            'table': 'cities_towns',
+            'sld': 'point'
+        },
+        {
+            'name': 'Roads and Railroad Tunnels',
+            'url': 'https://hifld-dhs-gii.opendata.arcgis.com/datasets/2f6abb736360437ba363e0a1210b4d36_0.geojson',
+            'table': 'roads_tunnels',
+            'sld': 'line'
+        }
+	]
+
 	#Time to wait before updating Geoserver mosaic (keep at 0 unless Geoserver
 	#is on a different server. In that case, there will need to be an automated
 	#rsync between GS_TMP_DIR where celery is running and
