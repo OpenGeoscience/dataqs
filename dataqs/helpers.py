@@ -11,7 +11,7 @@ import sys
 from StringIO import StringIO
 import rasterio
 from osgeo import gdal
-from rasterio._warp import RESAMPLING
+from rasterio.warp import RESAMPLING
 from rasterio.warp import calculate_default_transform, reproject
 import unicodedata
 from geonode.geoserver.helpers import ogc_server_settings
