@@ -123,6 +123,10 @@
   sudo: yes
   sudo_user: postgres
 
+- name: make manage executable for ansible >= 2.0
+  file: path={{app_code_dir}}/{{app_name}}/manage.py mode=0777
+
+
 - name: Django collectstatic
   django_manage: command=collectstatic
                  app_path={{app_code_dir}}/{{app_name}}
