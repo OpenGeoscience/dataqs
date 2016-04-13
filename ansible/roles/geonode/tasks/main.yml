@@ -40,11 +40,9 @@
     - libxslt-dev
 
 
-- name: install known_hosts file to access GitHub
-  copy: src=known_hosts dest={{ssh_dir}}/known_hosts
 
 - name: checkout latest web app code
-  git: repo={{code_repository}} version=2.4.x dest={{app_code_dir}}/{{app_name}} force=yes
+  git: repo={{code_repository}} version=2.4.x dest={{app_code_dir}}/{{app_name}} force=yes accept_hostkey=yes
 
 - name: copy the local_settings.py file in place
   template: src=local_settings.py.j2 dest={{geonode_root}}/local_settings.py
