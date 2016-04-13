@@ -69,19 +69,19 @@
        extra_args='-e'
 
 - name: create static directory for Django app if it does not exist
-  file: path=/var/www/{{app_name}}/static state=directory mode=0777 owner=www-data group=www-data
+  file: path=/var/www/{{app_name}}/static state=directory mode=0770 owner=www-data group=www-data
   sudo: yes
 
 - name: create uploaded directory for Django app if it does not exist
-  file: path=/var/www/{{app_name}}/uploaded state=directory mode=0777 owner=www-data group=www-data
+  file: path=/var/www/{{app_name}}/uploaded state=directory mode=0770 owner=www-data group=www-data
   sudo: yes
 
 - name: create uploaded/layers directory for Django app if it does not exist
-  file: path=/var/www/{{app_name}}/uploaded/layers/ state=directory mode=0777 owner=www-data group=www-data
+  file: path=/var/www/{{app_name}}/uploaded/layers/ state=directory mode=0770 owner=www-data group=www-data
   sudo: yes
 
 - name: create uploaded/thumbs directory for Django app if it does not exist
-  file: path=/var/www/{{app_name}}/uploaded/thumbs/ state=directory mode=0777 owner=www-data group=www-data
+  file: path=/var/www/{{app_name}}/uploaded/thumbs/ state=directory mode=0770 owner=www-data group=www-data
   sudo: yes
 
 - name: rename the vassals-default.ini file to the app name
@@ -89,7 +89,7 @@
   sudo: yes
 
 - name: create uwsgi log directory
-  file: path=/var/log/uwsgi state=directory mode=0777 owner=www-data group=www-data
+  file: path=/var/log/uwsgi state=directory mode=0770 owner=www-data group=www-data
   sudo: yes
 
 - name: create {{db_metadata_instance}} db
@@ -122,7 +122,7 @@
   sudo_user: postgres
 
 - name: make manage executable for ansible >= 2.0
-  file: path={{app_code_dir}}/{{app_name}}/manage.py mode=0777
+  file: path={{app_code_dir}}/{{app_name}}/manage.py mode=0770
 
 
 - name: Django collectstatic
