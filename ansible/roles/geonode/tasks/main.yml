@@ -125,6 +125,15 @@
   file: path={{app_code_dir}}/{{app_name}}/manage.py mode=0770
 
 
+- name: Set file permissions so we can generate state content
+  file:
+    state: directory
+    owner: "{{ deploy_user }}"
+    group: "{{ deploy_user }}"
+    path: "/var/www/{{app_name}}"
+    recurse: true
+  sudo: yes
+
 - name: Django collectstatic
   django_manage: command=collectstatic
                  app_path={{app_code_dir}}/{{app_name}}
@@ -136,6 +145,17 @@
                  app_path={{app_code_dir}}/{{app_name}}
                  virtualenv={{virtualenv_dir}}/{{app_name}}
                  settings={{main_module}}.settings
+
+
+- name: Set file permissions so we can generate state content
+  file:
+    state: directory
+    owner: www-data
+    group: www-data
+    path: "/var/www/{{app_name}}"
+    recurse: true
+  sudo: yes
+
 
 - name: wait for geoserver to be up
   shell: curl --head --silent {{geoserver_root_url}}/web/
