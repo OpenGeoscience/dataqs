@@ -4,6 +4,9 @@ server {
 
     charset     utf-8;
 
+    server_tokens off;
+    more_set_headers 'Server: Kitware ;)';
+
     access_log /var/log/nginx/{{ app_name }}.access.log;
     error_log /var/log/nginx/{{ app_name }}.error.log info;
 
