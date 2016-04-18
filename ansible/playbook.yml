@@ -5,6 +5,7 @@
      - {role: geerlingguy.redis, sudo: yes}
      - zenoamaro.supervisord
      - postgres_postgis
+     - oracle_java
      - geoserver
      - nginx
      - uwsgi
