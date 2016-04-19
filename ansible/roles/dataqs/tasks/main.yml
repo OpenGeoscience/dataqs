@@ -108,3 +108,4 @@
                  app_path={{app_code_dir}}/{{app_name}}
                  virtualenv={{virtualenv_dir}}/{{app_name}}
                  settings={{main_module}}.settings
+  sudo: yes
