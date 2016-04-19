@@ -11,7 +11,10 @@ log-date = true
 vacuum = true
 
 ; project-level logging to the logs/ folder
-logto = /var/log/nginx/uwsgi-%n.log
+# TODO
+# This option does not for some reason as it does
+# not create a file
+#logto = /var/log/nginx/uwsgi-%n.log
 
 chdir = {{app_code_dir}}/%n
 module = django.core.handlers.wsgi:WSGIHandler()
