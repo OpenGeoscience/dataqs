@@ -69,27 +69,27 @@
        extra_args='-e'
 
 - name: create static directory for Django app if it does not exist
-  file: path=/var/www/{{app_name}}/static state=directory mode=0770 owner=www-data group=www-data
+  file: path=/var/www/{{app_name}}/static state=directory mode=0770 owner=www-data group={{ deploy_user }}
   sudo: yes
 
 - name: create uploaded directory for Django app if it does not exist
-  file: path=/var/www/{{app_name}}/uploaded state=directory mode=0770 owner=www-data group=www-data
+  file: path=/var/www/{{app_name}}/uploaded state=directory mode=0770 owner=www-data group={{ deploy_user }}
   sudo: yes
 
 - name: create uploaded/layers directory for Django app if it does not exist
-  file: path=/var/www/{{app_name}}/uploaded/layers/ state=directory mode=0770 owner=www-data group=www-data
+  file: path=/var/www/{{app_name}}/uploaded/layers/ state=directory mode=0770 owner=www-data group={{ deploy_user }}
   sudo: yes
 
 - name: create uploaded/thumbs directory for Django app if it does not exist
-  file: path=/var/www/{{app_name}}/uploaded/thumbs/ state=directory mode=0770 owner=www-data group=www-data
+  file: path=/var/www/{{app_name}}/uploaded/thumbs/ state=directory mode=0770 owner=www-data group={{ deploy_user }}
   sudo: yes
 
 - name: rename the vassals-default.ini file to the app name
-  file: src=/etc/uwsgi/vassals-default.skel dest=/etc/uwsgi/{{app_name}}.ini owner=www-data group=www-data state=link
+  file: src=/etc/uwsgi/vassals-default.skel dest=/etc/uwsgi/{{app_name}}.ini owner=www-data group={{ deploy_user }} state=link
   sudo: yes
 
 - name: create uwsgi log directory
-  file: path=/var/log/uwsgi state=directory mode=0770 owner=www-data group=www-data
+  file: path=/var/log/uwsgi state=directory mode=0770 owner=www-data group={{ deploy_user }}
   sudo: yes
 
 - name: create {{db_metadata_instance}} db
@@ -151,8 +151,9 @@
   file:
     state: directory
     owner: www-data
-    group: www-data
+    group: "{{ deploy_user }}"
     path: "/var/www/{{app_name}}"
+    mode: 0775
     recurse: true
   sudo: yes
 
