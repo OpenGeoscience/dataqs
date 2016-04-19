@@ -53,3 +53,48 @@ Note: You may need to bring the vagrant box down and up for geonode to work.
 
     $ vagrant halt
     $ vagrant up
+
+
+## Deploying to ec2 (or other server)
+
+Several variables have to be set correctly before deploying to a remote server. This can be achived by creating a custom inventory with the group ```[geoservices]``` and the host you will deploy too. 
+
+```
+[geoservices]
+XXX.XXX.XXX.XXX ansible_ssh_private_key_file=PATH_TO_PEM_FILE ansible_user=ubuntu deploy_user=ubuntu site_url=http://ec2-XXX-XXX-XXX-XXX.us-west-2.compute.amazonaws.com/ server_name=XXX-XXX-XXX-XXX-XXX.us-west-2.compute.amazonaws.com
+```
+
+Replace X's with the IP address of the remote server
+
+* `ansible_user` - will be the user ansible SSHes in as
+* `deploy_user` - will be the user used to deploy and install all the software (usually the same as ansible_user)
+* `ansible_ssh_private_key_file` - the PEM file that corresponds to the ansible_user and provides passwordless ssh access
+* `site_url` - the url of the website - used by geonode to identify its base URL
+* `server_name` - the fully qualified domain name of the server
+
+To deploy, run ```ansible-playbook -i /path/to/inventory playbook.yml``` From this directory.  
+
+Alternately,  variables may be placed in a local variables file,  e.g.:
+
+/path/to/local_vars.yml
+```yaml
+ansible_ssh_private_key_file: PATH_TO_PEM_FILE 
+ansible_user: ubuntu 
+deploy_user: ubuntu 
+site_url: http://ec2-XXX-XXX-XXX-XXX.us-west-2.compute.amazonaws.com/ 
+server_name: ec2-XXX-XXX-XXX-XXX.us-west-2.compute.amazonaws.com
+```
+
+With an inventory:
+
+/path/to/inventory
+```
+[geoservices]
+XXX.XXX.XXX.XXX 
+```
+
+To deploy,  run:
+
+```
+ansible-playbook -i /path/to/inventory -e @/path/to/local_vars.yml playbook.yml
+```

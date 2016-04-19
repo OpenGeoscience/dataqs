@@ -13,11 +13,12 @@ Vagrant.configure("2") do |config|
     config.vm.network "private_network", ip: "192.168.33.12"
     geoservices.vm.provider :virtualbox do |vb|
        vb.customize [ "modifyvm", :id, "--name", "geoservices","--memory", 4096 ]
-  	end
+        end
     geoservices.vm.provision "ansible" do |ansible|
-        ansible.playbook = "playbook.yml"
-        ansible.verbose = "vvvv"
-        ansible.host_key_checking = false
+      ansible.playbook = "playbook.yml"
+      ansible.galaxy_role_file = "requirements.txt"
+      ansible.verbose = "vv"
+      ansible.host_key_checking = false
     end
   end
 end
