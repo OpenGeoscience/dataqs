@@ -82,7 +82,7 @@ ansible_ssh_private_key_file: PATH_TO_PEM_FILE
 ansible_user: ubuntu 
 deploy_user: ubuntu 
 site_url: http://ec2-XXX-XXX-XXX-XXX.us-west-2.compute.amazonaws.com/ 
-server_name: XXX-XXX-XXX-XXX-XXX.us-west-2.compute.amazonaws.com
+server_name: ec2-XXX-XXX-XXX-XXX.us-west-2.compute.amazonaws.com
 ```
 
 With an inventory:
