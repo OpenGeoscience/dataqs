@@ -21,7 +21,8 @@ class GDACSProcessor(GeoDataProcessor):
     prefix = "gdacs_alerts"
     layer_title = 'Flood, Quake, Cyclone Alerts - GDACS'
     params = {}
-    base_url = "http://www.gdacs.org/rss.aspx?profile=ARCHIVE&from={}&to={}"
+    base_url = \
+        "http://www.gdacs.org/rss.gdacs.aspx?profile=ARCHIVE&from={}&to={}"
 
     def __init__(self, *args, **kwargs):
         for key in kwargs.keys():
