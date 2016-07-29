@@ -364,7 +364,7 @@ if __name__ == '__main__':
     }
 
     parser = argparse.ArgumentParser(description='Run a worldclim importer')
-    parser.add_argument('processor', default=None,
+    parser.add_argument('-p', dest='processor', default='current',
                         help='Processor to run (current, past, future)')
     parser.add_argument(
         '-r', action='store', dest='resolutions',
