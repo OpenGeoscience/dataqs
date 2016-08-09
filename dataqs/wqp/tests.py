@@ -32,6 +32,7 @@ class WaterQualityTest(TestCase):
 
     def tearDown(self):
         httpretty.disable()
+        self.processor.cleanup()
 
     def test_download(self):
         """

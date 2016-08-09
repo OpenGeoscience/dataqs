@@ -12,7 +12,7 @@ script_dir = os.path.dirname(os.path.realpath(__file__))
 
 def get_mock_image():
     """
-    Return a canned response with HTML for Boston
+    Return a canned GFMS test image
     """
     zf = zipfile.ZipFile(os.path.join(script_dir,
                                       'resources/test_gfms.zip'))
@@ -33,6 +33,7 @@ class GFMSTest(TestCase):
 
     def tearDown(self):
         httpretty.disable()
+        self.processor.cleanup()
 
     def test_find_current(self):
         """
