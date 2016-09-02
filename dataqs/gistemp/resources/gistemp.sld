@@ -15,10 +15,16 @@
                 </GrayChannel>
         </ChannelSelection>
         <ColorMap extended="true">
-                <ColorMapEntry color="#0000ff" quantity="0" label="0° C"/>
-                <ColorMapEntry color="#009933" quantity="250" label = "2.5 °C"/>
-                <ColorMapEntry color="#ff9900" quantity="500" label = "5.0 °C"/>
-                <ColorMapEntry color="#ff0000" quantity="750" label = "7.5 °C"/>
+            <sld:ColorMapEntry color="#2b83ba" label="&lt;= -7.5 °C" opacity="1.0" quantity="-750"/>
+            <sld:ColorMapEntry color="#6bb0af" label="-5.0 °C" opacity="1.0" quantity="-500"/>
+            <sld:ColorMapEntry color="#abdda4" label="-3.75 °C" opacity="1.0" quantity="-375"/>
+            <sld:ColorMapEntry color="#d5eeb1" label="-1.5 °C" opacity="1.0" quantity="-150"/>
+            <sld:ColorMapEntry color="#ffffbf" label="0 °C" opacity="1.0" quantity="0"/>
+            <sld:ColorMapEntry color="#fed690" label="1.5 °C" opacity="1.0" quantity="150"/>
+            <sld:ColorMapEntry color="#fdae61" label="3.75 °C" opacity="1.0" quantity="375"/>
+            <sld:ColorMapEntry color="#ea633e" label="5.0 °C" opacity="1.0" quantity="500"/>
+            <sld:ColorMapEntry color="#d7191c" label="&gt;= 75 °C" opacity="1.0" quantity="750"/>
+            <sld:ColorMapEntry color="#FFFFFF" label="" opacity="0.0" quantity="32765"/>
         </ColorMap>
           </sld:RasterSymbolizer>
         </sld:Rule>
