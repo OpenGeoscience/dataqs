@@ -438,6 +438,28 @@ class GeoDataMosaicProcessor(GeoDataProcessor):
         mosaic_query = "ingestion<={}".format(month_cutoff)
         self.remove_mosaic_granules(mosaic_index_url, mosaic_query, layer_name)
 
+    def get_mosaic_filenames(self, layer_name):
+        """
+        Return a list of filenames in a mosaic
+        :param layer_name:
+        :return:
+        """
+        _user, _password = ogc_server_settings.credentials
+        mosaic_index_url = '{}.json'.format(
+            self.mosaic_url.format(ogc_server_settings.hostname,
+                                   self.workspace,
+                                   layer_name,
+                                   layer_name)
+        )
+        files = []
+        try:
+            r = requests.get(
+                mosaic_index_url, timeout=30, auth=(_user, _password))
+            for feature in r.json()['features']:
+                files.append(feature['properties']['location'])
+        finally:
+            return files
+
     def create_mosaic_properties_zip(self, layer_name, img_file):
         """
         Create a zipfile containing the required config files and

@@ -52,6 +52,9 @@ class NasaGpmTest(TestCase):
     def setUp(self):
         self.processor = GPMProcessor()
 
+    def tearDown(self):
+        self.processor.cleanup()
+
     @patch('ftplib.FTP', autospec=True)
     @patch('ftplib.FTP.retrbinary', mock_retrbinary)
     @patch('ftplib.FTP.nlst', mock_nlst)

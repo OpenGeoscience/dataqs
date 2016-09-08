@@ -10,4 +10,5 @@ INSTALLED_APPS = settings.INSTALLED_APPS + (
   'dataqs.nasa_gpm',
   'dataqs.spei',
   'dataqs.usgs_quakes',
+  'dataqs.gistemp',
 )

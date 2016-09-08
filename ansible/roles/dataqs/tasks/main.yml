@@ -86,6 +86,12 @@
   command: "{{ app_code_dir }}/venvs/geonode/bin/python {{app_code_dir}}/venvs/geonode/src/dataqs/dataqs/gfms/gfms.py"
   ignore_errors: yes
 
+- include: geoserver_permissions.yml
+
+- name: Create the gistemp coverage store
+  command: "{{ app_code_dir }}/venvs/geonode/bin/python {{app_code_dir}}/venvs/geonode/src/dataqs/dataqs/gistemp/gistemp.py"
+  ignore_errors: yes
+
 - name: create geoserver data directory
   file: path=/var/lib/tomcat7/webapps/geoserver/data/data/geonode/forecast_io_airtemp recurse=yes owner=tomcat7 group=tomcat7 state=directory mode=g+rws
   sudo: yes

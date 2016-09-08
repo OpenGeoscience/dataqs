@@ -34,6 +34,7 @@ DATAQS_APPS = (
     'dataqs.usgs_quakes',
     'dataqs.wqp',
     'dataqs.hifld',
+    'dataqs.gistemp',
 )
 
 # CELERY SETTINGS
@@ -120,6 +121,11 @@ CELERYBEAT_SCHEDULE = {
     'hifld': {
         'task': 'dataqs.hifld.tasks.hifld_task',
         'schedule': crontab(day_of_week='sunday', hour=12, minute=0),
+        'args': ()
+    },
+    'gistemp': {
+        'task': 'dataqs.gistemp.tasks.gistemp_task',
+        'schedule': crontab(day_of_month=15, hour=12, minute=0),
         'args': ()
     }
 }

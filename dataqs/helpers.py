@@ -1,5 +1,7 @@
 import datetime
+import gzip
 import logging
+import shutil
 import traceback
 import os
 import subprocess
@@ -105,6 +107,13 @@ def gdal_translate(src_filename, dst_filename, dst_format="GTiff", bands=None,
             os.remove(tmp_file)
 
 
+def gunzip(filepath):
+    outfile = filepath.rstrip('.gz')
+    with gzip.open(filepath) as gfile, open(outfile, 'wb') as ucfile:
+        shutil.copyfileobj(gfile, ucfile)
+    return outfile
+
+
 def nc_convert(filename):
     """
     Transform a NETCDF4 file to classic-model format.
@@ -113,9 +122,9 @@ def nc_convert(filename):
     :param filename:
     :return: output filename
     """
-    output_file = "{}.classic.nc".format(filename)
-    subprocess.check_call(["nccopy", "-k", "classic", "{}.nc".format(
-        filename), output_file])
+    output_file = re.sub('\.nc$', '.classic.nc', filename)
+    subprocess.check_call(
+        ["/usr/local/bin/nccopy", "-k", "classic", filename, output_file])
     return output_file
 
 
@@ -130,6 +139,19 @@ def cdo_invert(filename):
 
     output_file = "{}.inv.nc".format(os.path.splitext(filename)[0])
     subprocess.check_call(["cdo", "invertlat", "{}".format(
+        filename), output_file])
+    return output_file
+
+
+def cdo_fixlng(filename):
+    """
+    Change the longitude coordinates of a NetCDF file from 0->360 to -180->180
+    :param filename: Full path * name of NetCDF image to process
+    :return: output filename
+    """
+
+    output_file = "{}.lng.nc".format(os.path.splitext(filename)[0])
+    subprocess.check_call(["cdo", "sellonlatbox,-180,180,-90,90", "{}".format(
         filename), output_file])
     return output_file
 

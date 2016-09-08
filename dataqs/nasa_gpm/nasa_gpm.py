@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 
+import glob
 from ftplib import FTP
 import logging
 import os
@@ -100,6 +101,16 @@ class GPMProcessor(GeoDataMosaicProcessor):
         self.truncate_gs_cache(self.layer_name)
         self.cleanup()
 
+    def cleanup(self):
+        """
+        Remove any files in the temp directory matching
+        the processor class prefix or layer name
+        """
+        filelist = glob.glob("{}*.*".format(
+            os.path.join(self.tmp_dir, self.layer_name)))
+        for f in filelist:
+            os.remove(f)
+        super(GPMProcessor, self).cleanup()
 
 if __name__ == '__main__':
     processor = GPMProcessor()
