@@ -1,5 +1,23 @@
-from __future__ import absolute_import
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
+###############################################################################
+#  Copyright Kitware Inc. and Epidemico Inc.
+#
+#  Licensed under the Apache License, Version 2.0 ( the "License" );
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+###############################################################################
+
+from __future__ import absolute_import
 from ftplib import FTP
 import logging
 import os
@@ -32,6 +50,31 @@ class AirNowGRIB2HourlyProcessor(GeoDataMosaicProcessor):
                    "airnow_aqi_combined"]
     img_patterns = ["", "_pm25", "_combined"]
     layer_titles = ["Ozone", "PM25", "Combined Ozone & PM25"]
+    description = """
+U.S. Environmental Protection Agency’s (EPA) nationwide, voluntary program,
+AirNow(www.airnow.gov), provides real-time air quality data and forecasts to
+protect public health across the United States, Canada, and parts of Mexico.
+AirNowreceives real-time ozone and PM2.5data from over 2,000 monitors and
+collects air quality forecasts for more than 300 cities.
+
+As part of the Global Earth Observation System of Systems (GEOSS)
+(www.epa.gov/geoss) program, the AirNow API system broadens access to AirNowdata
+ and data products. AirNow API produces data products in several standard data
+formats and makes them available via FTP and web services. This document
+describes the GRIB2 file formats.
+
+All data provided by AirNow API are made possible by the efforts of more than
+120 local, state, tribal, provincial, and federal government agencies
+(www.airnow.gov/index.cfm?action=airnow.partnerslist). These data are not fully
+verified or validated and should be considered preliminary and subject to
+change. Data and information reported to AirNow from federal, state, local, and
+tribal agencies are for the express purpose of reporting and forecasting the
+Air Quality Index (AQI). As such, they should not be used to formulate or
+support regulation, trends, guidance, or any other government or public
+decision making. Official regulatory air quality data must be obtained from
+EPA’s Air Quality System (AQS) (www.epa.gov/ttn/airs/airsaqs). See the AirNow
+Data Exchange Guidelines at http://airnowapi.org/docs/DataUseGuidelines.pdf.
+"""
 
     def download(self, auth_account=AIRNOW_ACCOUNT, days=1):
         """
@@ -118,7 +161,8 @@ class AirNowGRIB2HourlyProcessor(GeoDataMosaicProcessor):
                 with open(os.path.join(
                         script_dir, 'resources/airnow.sld')) as sld:
                     self.set_default_style(layer_name, layer_name, sld.read())
-            self.update_geonode(layer_name, title=layer_title, store=layer_name)
+            self.update_geonode(layer_name, title=layer_title,
+                                description=self.description, store=layer_name)
             self.truncate_gs_cache(layer_name)
         self.cleanup()
 

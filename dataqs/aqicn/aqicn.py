@@ -1,3 +1,22 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+###############################################################################
+#  Copyright Kitware Inc. and Epidemico Inc.
+#
+#  Licensed under the Apache License, Version 2.0 ( the "License" );
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+###############################################################################
+
 import json
 import logging
 import os
@@ -100,7 +119,7 @@ class AQICNWorker(object):
     def handle_city(self, i, city):
         try:
             logger.debug('Scraping %d of %d cities - %s' % (
-                i+1, len(self.cities), city['url']))
+                i + 1, len(self.cities), city['url']))
             time.sleep(randint(1, self.max_wait))
             page = requests.get(city['url'], timeout=60, headers=REQ_HEADER)
             page.raise_for_status()
@@ -241,6 +260,8 @@ class AQICNProcessor(GeoDataProcessor):
         'uvi': 'Ultraviolet Index',
         'w': 'Wind Speed'
     }
+    description = \
+        'Air quality index data scraped from http://aqicn.org every 3 hours.'
 
     def __init__(self, countries=None, cities=None):
         super(AQICNProcessor, self).__init__()
@@ -279,9 +300,9 @@ class AQICNProcessor(GeoDataProcessor):
         """ Yield n successive lists from cities list.
         """
         newn = int(1.0 * len(self.cities) / num + 0.5)
-        for i in xrange(0, num-1):
-            yield self.cities[i*newn:i*newn+newn]
-        yield self.cities[num*newn-newn:]
+        for i in xrange(0, num - 1):
+            yield self.cities[i * newn:i * newn + newn]
+        yield self.cities[num * newn - newn:]
 
     def process(self):
         if not table_exists(self.prefix):
@@ -307,9 +328,11 @@ class AQICNProcessor(GeoDataProcessor):
                 self.set_default_style(layer_name, layer_name, sld.read())
         self.update_geonode(layer_name,
                             title='Air Quality Index',
+                            description=self.description,
                             store=datastore)
         self.truncate_gs_cache(layer_name)
         self.cleanup()
+
 
 if __name__ == '__main__':
     parser = AQICNProcessor()

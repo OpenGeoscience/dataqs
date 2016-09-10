@@ -1,5 +1,23 @@
-from __future__ import absolute_import
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
+###############################################################################
+#  Copyright Kitware Inc. and Epidemico Inc.
+#
+#  Licensed under the Apache License, Version 2.0 ( the "License" );
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+###############################################################################
+
+from __future__ import absolute_import
 import logging
 import os
 import datetime
@@ -22,7 +40,18 @@ class GDACSProcessor(GeoDataProcessor):
     layer_title = 'Flood, Quake, Cyclone Alerts - GDACS'
     params = {}
     base_url = \
-        "http://www.gdacs.org/rss.gdacs.aspx?profile=ARCHIVE&from={}&to={}"
+        "http://www.gdacs.org/rss.aspx?profile=ARCHIVE&fromarchive=true&" + \
+        "from={}&to={}&alertlevel=&country=&eventtype=EQ,TC,FL&map=true"
+    description = """GDACS (Global Disaster and Alert Coordination System) is a
+collaboration platform for organisations providing information on humanitarian
+disasters. From a technical point of view, GDACS links information of all
+participating organisations using a variety of systems to have a harmonized list
+ of data sources.In 2011, the GDACS platform was completely revised to collect,
+store and distribute resources explicitly by events. The system matches
+information from all organisations (by translating unique identifiers), and make
+ these resources available for GDACS users and developers in the form of GDACS
+Platform Services.  The GDACS RSS feed automatically include a list of available
+ resources.\n\nSource: http://www.gdacs.org/resources.aspx"""
 
     def __init__(self, *args, **kwargs):
         for key in kwargs.keys():
@@ -40,6 +69,8 @@ class GDACSProcessor(GeoDataProcessor):
         super(GDACSProcessor, self).__init__(*args)
 
     def run(self):
+        print(self.base_url.format(
+            self.params['sdate'], self.params['edate']))
         rss = self.download(self.base_url.format(
             self.params['sdate'], self.params['edate']),
             filename=self.prefix + ".rss")
@@ -67,7 +98,7 @@ class GDACSProcessor(GeoDataProcessor):
                     script_dir, 'resources/gdacs.sld')) as sld:
                 self.set_default_style(self.prefix, self.prefix, sld.read())
         self.update_geonode(self.prefix, title=self.layer_title,
-                            store=datastore)
+                            description=self.description, store=datastore)
         self.truncate_gs_cache(self.prefix)
         self.cleanup()
 

@@ -1,3 +1,22 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+###############################################################################
+#  Copyright Kitware Inc. and Epidemico Inc.
+#
+#  Licensed under the Apache License, Version 2.0 ( the "License" );
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+###############################################################################
+
 from __future__ import absolute_import
 
 import logging
@@ -22,6 +41,13 @@ class ForecastIOAirTempProcessor(GeoDataMosaicProcessor):
     prefix = "forecast_io_airtemp"
     base_url = "http://maps.forecast.io/temperature/"
     layer_name = "forecast_io_airtemp"
+    description = """Project Quicksilver is an experimental new data product
+that attempts to create the world's highest resolution real-time map of global
+(near-surface) air temperature.\n\n
+It is generated using the same source data models that power Forecast.io,
+combined with a sophisticated microclimate model that adjusts the temperatures
+based on the effects of elevation, terrain, proximity to water, foliage cover,
+and other factors.\n\nSource: http://blog.forecast.io/project-quicksilver/"""
 
     def parse_name(self, img_date):
         imgstrtime = img_date.strftime("%Y-%m-%d %H:00")
@@ -94,6 +120,7 @@ class ForecastIOAirTempProcessor(GeoDataMosaicProcessor):
         self.drop_old_daily_images(now, self.layer_name)
 
         self.update_geonode(self.layer_name, title=self.parse_name(now),
+                            description=self.description,
                             store=self.layer_name,
                             bounds=('-180.0', '180.0',
                                     '-90.0', '90.0', 'EPSG:4326'))
