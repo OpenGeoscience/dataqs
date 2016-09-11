@@ -99,8 +99,6 @@
                  lc_ctype='en_US.UTF-8'
                  owner={{db_user}}
                  template='template0'
-  sudo: yes
-  sudo_user: postgres
   retries: 2
   delay: 5
 
@@ -112,14 +110,14 @@
                  owner={{db_user}}
                  template='template0'
   sudo: yes
-  sudo_user: postgres
+  sudo_user: root
   retries: 2
   delay: 5
 
 - name: add postgis to the {{db_data_instance}} db
   postgresql_ext: name=postgis db={{db_data_instance}}
   sudo: yes
-  sudo_user: postgres
+  sudo_user: root
 
 - name: make manage executable for ansible >= 2.0
   file: path={{app_code_dir}}/{{app_name}}/manage.py mode=0770

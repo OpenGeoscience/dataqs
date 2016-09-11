@@ -32,7 +32,5 @@
                    role_attr_flags=LOGIN,CREATEDB,NOSUPERUSER
   # in case the user already exists
   ignore_errors: True
-  sudo: yes
-  sudo_user: postgres
   notify:
     - restart postgres_postgis

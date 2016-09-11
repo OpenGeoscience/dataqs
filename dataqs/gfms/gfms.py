@@ -52,7 +52,7 @@ class GFMSProcessor(GeoDataProcessor):
     layer_future = "gfms_latest"
     layer_current = "gfms_current"
     prefix = 'Flood_byStor_'
-    description = """The GFMS (Global Flood Management System) is a NASA-funded
+    description = u"""The GFMS (Global Flood Management System) is a NASA-funded
 experimental system using real-time TRMM Multi-satellite Precipitation Analysis
 (TMPA) precipitation information as input to a quasi-global (50°N - 50°S)
 hydrological runoff and routing model running on a 1/8th degree latitude /

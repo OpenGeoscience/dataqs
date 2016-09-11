@@ -23,6 +23,8 @@ import logging
 import os
 import datetime
 import re
+import traceback
+
 import requests
 from dataqs.helpers import postgres_query, ogr2ogr_exec, \
     table_exists, purge_old_data, layer_exists, style_exists
@@ -66,6 +68,7 @@ Commonwealth of the Northern Mariana Islands.\n\nUSEPA STORET - A data warehouse
  for water quality, biological, and physical data used by state environmental
 agencies, EPA, other federal agencies, universities, private citizens, and
 others.\n\nSource: http://www.waterqualitydata.us"""
+    skip_errors = True
 
     def __init__(self, *args, **kwargs):
         super(WaterQualityPortalProcessor, self).__init__(*args, **kwargs)
@@ -169,7 +172,15 @@ others.\n\nSource: http://www.waterqualitydata.us"""
                         ' WHERE NOT EXISTS (SELECT 1 from ' + \
                         '{} WHERE "ActivityIdentifier" = \'{}\');'.format(
                             indicator, re.sub('\'{1}', '\'\'', row[id_idx]))
-                    postgres_query(insert_sql, params=tuple(row), commit=True)
+                    try:
+                        postgres_query(
+                            insert_sql, params=tuple(row), commit=True)
+                    except Exception as e:
+                        logger.error("The query failed: {} with parameters: {}".
+                                     format(insert_sql, row))
+                        logger.error(traceback.format_exc())
+                        if not self.skip_errors:
+                            raise e
         purge_old_data(indicator, date_cols[0], self.days_to_keep)
         if not table_exists(indicator + self.suffix):
             view_sql = 'CREATE OR REPLACE VIEW ' + indicator + self.suffix + \
