@@ -11,4 +11,5 @@ INSTALLED_APPS = settings.INSTALLED_APPS + (
   'dataqs.spei',
   'dataqs.usgs_quakes',
   'dataqs.gistemp',
+  'dataqs.worldclim',
 )

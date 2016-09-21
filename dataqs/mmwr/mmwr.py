@@ -1,3 +1,22 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+###############################################################################
+#  Copyright Kitware Inc. and Epidemico Inc.
+#
+#  Licensed under the Apache License, Version 2.0 ( the "License" );
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+###############################################################################
+
 import json
 import logging
 import os
@@ -42,6 +61,18 @@ class MortalityProcessor(GeoDataProcessor):
                '&mmwr_location=Click+here+for+all+Locations&mmwr_table=4A' \
                '&mmwr_year={year}&mmwr_week={week:02d}'
     params = {}
+    description = """Mortality data voluntarily reported from 122 cities in the
+United States, most of which have populations of 100,000 or more. A death is
+reported by the place of its occurrence and by the week that the death
+certificate was filed. Fetal deaths are not included.
+
+The Morbidity and Mortality Weekly Report (MMWR ) series is
+prepared by the Centers for Disease Control and Prevention (CDC). Often called
+“the voice of CDC,” the MMWR  series is the agency’s primary vehicle for
+scientific publication of timely, reliable, authoritative, accurate, objective,
+and useful public health information and recommendations. The data in the weekly
+ MMWR  are provisional, based on weekly reports to CDC by state health
+departments.\n\nSource: http://wonder.cdc.gov/mmwr/mmwr_2015.asp"""
 
     def __init__(self, *args, **kwargs):
         for key in kwargs.keys():
@@ -163,7 +194,9 @@ class MortalityProcessor(GeoDataProcessor):
                 sld = sldfile.read().format(layername=table)
                 self.set_default_style(table, table, sld)
         self.update_geonode(
-            table, title='{} {}'.format(self.base_title, layer))
+            table,
+            title='{} {}'.format(self.base_title, layer),
+            description=self.description)
         self.truncate_gs_cache(table)
 
     def run(self):

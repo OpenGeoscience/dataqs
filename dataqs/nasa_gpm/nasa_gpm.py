@@ -1,3 +1,22 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+###############################################################################
+#  Copyright Kitware Inc. and Epidemico Inc.
+#
+#  Licensed under the Apache License, Version 2.0 ( the "License" );
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+###############################################################################
+
 from __future__ import absolute_import
 
 import glob
@@ -32,6 +51,17 @@ class GPMProcessor(GeoDataMosaicProcessor):
     prefix = '3B-HHR-E.MS.MRG.3IMERG.'
     layer_name = 'nasa_gpm_24hr'
     archive_hours = ("T12:00:00.000Z", "T12:30:00.000Z")
+    description = """NASA IMERG: Rainfall estimates combining data from all
+passive-microwave instruments in the GPM Constellation.
+
+This algorithm is intended to intercalibrate, merge, and interpolate "all"
+satellite microwave precipitation estimates, together with microwave-calibrated
+infrared (IR) satellite estimates, precipitation gauge analyses, and
+potentially other precipitation estimators at fine time and space scales for the
+ TRMM and GPM eras over the entire globe. The system is run several times for
+each observation time, first giving a quick estimate (this image) and
+successively providing better estimates as more data arrive.
+\n\nSource: http://pmm.nasa.gov/data-access/downloads/gpm"""
 
     def download(self, auth_account=GPM_ACCOUNT, tmp_dir=GS_TMP_DIR, days=1):
         ftp = FTP(self.base_url)
@@ -94,7 +124,9 @@ class GPMProcessor(GeoDataMosaicProcessor):
             with open(os.path.join(script_dir, 'resources/gpm.sld')) as sld:
                 self.set_default_style(self.layer_name,
                                        self.layer_name, sld.read())
-        self.update_geonode(self.layer_name, title=layer_title,
+        self.update_geonode(self.layer_name,
+                            title=layer_title,
+                            description=self.description,
                             store=self.layer_name,
                             bounds=('-180.0', '180.0', '-90.0', '90.0',
                                     'EPSG:4326'))

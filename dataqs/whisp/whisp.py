@@ -1,3 +1,22 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+###############################################################################
+#  Copyright Kitware Inc. and Epidemico Inc.
+#
+#  Licensed under the Apache License, Version 2.0 ( the "License" );
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+###############################################################################
+
 import base64
 import os
 import zipfile
@@ -61,6 +80,27 @@ class WhispProcessor(GeoDataProcessor):
     prefix = "whisp"
     base_url = "https://www.nwhc.usgs.gov/whispers/searchForm/recent100"
     title = "Wildlife Health Information Sharing Partnership - Events"
+    description = """WHISPers stands for Wildlife Health Information Sharing
+Partnership - event reporting system. It is a partner-driven, web-based
+repository for sharing basic information about historic and ongoing wildlife
+mortality (death) and morbidity (illness) events involving five or more wild
+animals. The primary goal of the system is to provide natural resource
+management partners and the public with timely, accurate information on where
+wildlife disease events are occurring or have occurred. The system is also a
+searchable archive of historic wildlife mortality and morbidity event data.
+The information is opportunistically collected and does not reflect all the
+mortality events that occur in North America.\n\nEach record includes location
+of the event (to county level), start and end dates, species involved, number of
+ sick and dead, cause of wildlife illness or death, the laboratory where cause
+of disease/death was confirmed, and contact information for the agency that
+submitted carcasses/samples to the laboratory.\n\nThis information is from a
+variety of sources including federal, tribal, and state agencies who contacted
+the USGS National Wildlife Health Center for diagnostic and epidemiological
+assistance during mortality events; diagnostic case reports from other wildlife
+diagnostic laboratories; and published reports in journals, newspapers, or other
+ reporting outlets such as ProMEDmail.org.
+\n\nData source: http://www.nwhc.usgs.gov/whispers/
+"""
 
     def download(self, url=None, filename=None):
         if not url:
@@ -130,7 +170,9 @@ class WhispProcessor(GeoDataProcessor):
                 with open(os.path.join(script_dir,
                                        'resources/whisp.sld')) as sld:
                     self.set_default_style(self.prefix, self.prefix, sld.read())
-        self.update_geonode(self.prefix, title=self.title)
+        self.update_geonode(self.prefix,
+                            title=self.title,
+                            description=self.description)
         self.truncate_gs_cache(self.prefix)
         self.cleanup()
 
