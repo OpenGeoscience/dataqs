@@ -162,15 +162,16 @@ def cdo_invert(filename):
     return output_file
 
 
-def cdo_fixlng(filename):
+def cdo_fixlng(filename, bounds="-180,180,-90,90"):
     """
     Change the longitude coordinates of a NetCDF file from 0->360 to -180->180
     :param filename: Full path * name of NetCDF image to process
+    :param bounds: String representation of bounds (minX,maxX,minY,maxY)
     :return: output filename
     """
 
     output_file = "{}.lng.nc".format(os.path.splitext(filename)[0])
-    subprocess.check_call(["cdo", "sellonlatbox,-180,180,-90,90", "{}".format(
+    subprocess.check_call(["cdo", "sellonlatbox,{}".format(bounds), "{}".format(
         filename), output_file])
     return output_file
 

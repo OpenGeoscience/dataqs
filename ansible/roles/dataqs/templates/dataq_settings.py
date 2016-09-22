@@ -35,6 +35,7 @@ DATAQS_APPS = (
     'dataqs.wqp',
     'dataqs.hifld',
     'dataqs.gistemp',
+    'dataqs.cmap',
 )
 
 # CELERY SETTINGS
@@ -125,6 +126,11 @@ CELERYBEAT_SCHEDULE = {
     },
     'gistemp': {
         'task': 'dataqs.gistemp.tasks.gistemp_task',
+        'schedule': crontab(day_of_month=15, hour=12, minute=0),
+        'args': ()
+    },
+    'cmap': {
+        'task': 'dataqs.cmap.tasks.cmap_task',
         'schedule': crontab(day_of_month=15, hour=12, minute=0),
         'args': ()
     }
