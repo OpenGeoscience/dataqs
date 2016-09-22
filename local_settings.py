@@ -7,6 +7,7 @@ INSTALLED_APPS = settings.INSTALLED_APPS + (
   'dataqs.forecastio',
   'dataqs.gfms',
   'dataqs.gdacs',
+  'dataqs.hifld',
   'dataqs.nasa_gpm',
   'dataqs.spei',
   'dataqs.usgs_quakes',
