@@ -85,7 +85,7 @@ class LandscanProcessor(GeoDataProcessor):
                     script_dir, 'resources/landscan.sld')) as sld:
                 self.set_default_style(self.layer,
                                        self.layer, sld.read())
-        self.update_geonode(self.layer_current, title=self.layer,
+        self.update_geonode(self.layer, title=self.layer,
                             store=self.layer,
                             description=self.description)
         self.truncate_gs_cache(self.layer)
