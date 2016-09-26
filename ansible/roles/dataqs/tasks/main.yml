@@ -16,7 +16,7 @@
     - flower
 
 - name: install dataqs python package
-  pip: virtualenv={{virtualenv_dir}}/{{app_name}} name=git+https://github.com/OpenGeoscience/dataqs.git#egg=dataqs
+  pip: virtualenv={{virtualenv_dir}}/{{app_name}} name=git+https://github.com/OpenGeoscience/dataqs.git@sample-landscan-data#egg=dataqs
   environment:
     CPLUS_INCLUDE_PATH: "/usr/include/gdal"
     C_INCLUDE_PATH: "/usr/include/gdal"
@@ -112,6 +112,12 @@
 
 - name: Create the cmap layer
   command: "{{ app_code_dir }}/venvs/geonode/bin/python {{app_code_dir}}/venvs/geonode/src/dataqs/dataqs/cmap/cmap.py"
+  ignore_errors: yes
+
+- include: geoserver_permissions.yml
+
+- name: Create the landscan layer
+  command: "{{ app_code_dir }}/venvs/geonode/bin/python {{app_code_dir}}/venvs/geonode/src/dataqs/dataqs/landscan/landscan.py"
   ignore_errors: yes
 
 - name: Django updatelayers
