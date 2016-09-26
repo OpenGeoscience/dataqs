@@ -16,7 +16,7 @@
     - flower
 
 - name: install dataqs python package
-  pip: virtualenv={{virtualenv_dir}}/{{app_name}} name=git+https://github.com/OpenGeoscience/dataqs.git@sample-landscan-data#egg=dataqs
+  pip: virtualenv={{virtualenv_dir}}/{{app_name}} name=git+https://github.com/OpenGeoscience/dataqs.git#egg=dataqs
   environment:
     CPLUS_INCLUDE_PATH: "/usr/include/gdal"
     C_INCLUDE_PATH: "/usr/include/gdal"
