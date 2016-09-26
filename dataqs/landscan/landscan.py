@@ -17,9 +17,12 @@
 #  limitations under the License.
 ###############################################################################
 import os
+from urllib import urlretrieve
 import zipfile
 
-from dataqs.helpers import gdal_translate, style_exists
+import gdal
+
+from dataqs.helpers import style_exists
 from dataqs.processor_base import GeoDataProcessor
 
 script_dir = os.path.dirname(os.path.realpath(__file__))
@@ -38,7 +41,9 @@ class LandscanProcessor(GeoDataProcessor):
         Downloads the sample landscan image for Cyprus
         """
 
-        url = "http://web.ornl.gov/sci/landscan/landscan2011/LS11sample_Cyprus.zip"
+        url = "http://web.ornl.gov/sci/landscan/" + \
+        "landscan2011/LS11sample_Cyprus.zip"
+
         zip_dir = os.path.join(self.tmp_dir, "landscan.zip")
         urlretrieve(url, zip_dir)
 
@@ -61,16 +66,17 @@ class LandscanProcessor(GeoDataProcessor):
 
         for subdir, dirs, files in os.walk(landscan_dir):
             for d in dirs:
-                if set([f.endswith('.adf') for f in os.listdir(os.path.join(subdir, d))]) == {True}:
+                direc = os.listdir(os.path.join(subdir, d))
+                if set([f.endswith('.adf') for f in direc]) == {True}:
                     grid_dir = os.path.join(subdir, d)
 
         src_ds = gdal.Open(grid_dir)
         src_ds.SetProjection('+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs')
         driver = gdal.GetDriverByName("GTiff")
 
-        #Output to new format
+        # Output to new format
         tiff_output = os.path.join(self.tmp_dir, "landscan.tiff")
-        dst_ds = driver.CreateCopy(tiff_output, src_ds, 0)
+        driver.CreateCopy(tiff_output, src_ds, 0)
 
         return tiff_output
 
@@ -89,7 +95,6 @@ class LandscanProcessor(GeoDataProcessor):
                             store=self.layer,
                             description=self.description)
         self.truncate_gs_cache(self.layer)
-
 
     def run(self):
         """
