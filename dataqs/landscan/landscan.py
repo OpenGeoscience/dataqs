@@ -42,7 +42,7 @@ class LandscanProcessor(GeoDataProcessor):
         """
 
         url = "http://web.ornl.gov/sci/landscan/" + \
-        "landscan2011/LS11sample_Cyprus.zip"
+              "landscan2011/LS11sample_Cyprus.zip"
 
         zip_dir = os.path.join(self.tmp_dir, "landscan.zip")
         urlretrieve(url, zip_dir)
@@ -71,7 +71,8 @@ class LandscanProcessor(GeoDataProcessor):
                     grid_dir = os.path.join(subdir, d)
 
         src_ds = gdal.Open(grid_dir)
-        src_ds.SetProjection('+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs')
+        proj = '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs'
+        src_ds.SetProjection(proj)
         driver = gdal.GetDriverByName("GTiff")
 
         # Output to new format
