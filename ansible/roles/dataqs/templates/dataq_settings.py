@@ -36,6 +36,7 @@ DATAQS_APPS = (
     'dataqs.hifld',
     'dataqs.gistemp',
     'dataqs.cmap',
+    'dataqs.landscan',
 )
 
 # CELERY SETTINGS

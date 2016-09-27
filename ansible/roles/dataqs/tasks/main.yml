@@ -114,6 +114,12 @@
   command: "{{ app_code_dir }}/venvs/geonode/bin/python {{app_code_dir}}/venvs/geonode/src/dataqs/dataqs/cmap/cmap.py"
   ignore_errors: yes
 
+- include: geoserver_permissions.yml
+
+- name: Create the landscan layer
+  command: "{{ app_code_dir }}/venvs/geonode/bin/python {{app_code_dir}}/venvs/geonode/src/dataqs/dataqs/landscan/landscan.py"
+  ignore_errors: yes
+
 - name: Django updatelayers
   django_manage: command=updatelayers
                  app_path={{app_code_dir}}/{{app_name}}
