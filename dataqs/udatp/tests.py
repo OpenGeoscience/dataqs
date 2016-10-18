@@ -19,6 +19,7 @@
 
 import glob
 import os
+import unittest
 from datetime import date
 from django.test import TestCase
 from dataqs.udatp.udatp import UoDAirTempPrecipProcessor
@@ -103,9 +104,13 @@ class UoDAirTempPrecipTest(TestCase):
     def test_convert(self, ftp_mock):
         cdf_files = self.processor.download()
         for cdf in cdf_files:
-            self.processor.convert(cdf)
-            self.assertNotEqual([], glob.glob(cdf.replace(
-                '.nc', '.classic.lng.nc')))
+            try:
+                self.processor.convert(cdf)
+                self.assertNotEqual([], glob.glob(cdf.replace(
+                    '.nc', '.classic.lng.nc')))
+            except OSError:
+                # cdo and/or netcdf not installed
+                raise unittest.SkipTest()
 
     @patch('ftplib.FTP', autospec=True)
     @patch('ftplib.FTP.retrbinary', mock_retrbinary_tif)
