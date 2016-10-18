@@ -32,6 +32,7 @@ import sys
 from StringIO import StringIO
 import rasterio
 from osgeo import gdal, ogr
+from osr import SpatialReference
 from rasterio.warp import RESAMPLING
 from rasterio.warp import calculate_default_transform, reproject
 import unicodedata
@@ -88,9 +89,6 @@ def gdal_translate(src_filename, dst_filename, dst_format="GTiff", bands=None,
     Convert a raster image with the specified arguments
     (as if running from commandline)
     """
-    from osgeo import gdal
-    from osr import SpatialReference
-
     if not options:
         options = []
 
