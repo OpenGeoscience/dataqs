@@ -5,10 +5,10 @@ import re
 import shutil
 from datetime import date
 from ftplib import FTP
-
+from time import sleep
 from dateutil.relativedelta import relativedelta
 from dataqs.processor_base import GeoDataMosaicProcessor, GS_DATA_DIR, \
-    GS_TMP_DIR
+    GS_TMP_DIR, RSYNC_WAIT_TIME
 from dataqs.helpers import get_band_count, gdal_translate, \
     nc_convert, style_exists, cdo_fixlng
 
@@ -135,7 +135,7 @@ class CMAPProcessor(GeoDataMosaicProcessor):
                 if dst_file.endswith('.tif'):
                     shutil.move(os.path.join(self.tmp_dir, band_tif), dst_file)
                     dst_files.append(dst_file)
-        time.sleep(RSYNC_WAIT_TIME * 2)
+        sleep(RSYNC_WAIT_TIME * 2)
         for dst_file in dst_files:
             self.post_geoserver(dst_file, self.layer_name, sleeptime=0)
 

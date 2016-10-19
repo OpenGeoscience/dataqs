@@ -89,7 +89,7 @@ class WorldClimProcessor(GeoDataProcessor):
     base_description = (
         "WorldClim data layers were generated through interpolation of average "
         "monthly climate data from weather stations on a 30 arc-second "
-        "resolution grid (often referred to as "1 km2" resolution).\n\nMethods:"
+        "resolution grid (often referred to as '1 km2' resolution).\n\nMethods:"
         " http://worldclim.org/methods1\n\nSource: http://worldclim.org/"
         "version1\n\nCitation: Hijmans, R.J., S.E. Cameron, J.L. Parra, P.G. "
         "Jones and A. Jarvis, 2005. Very high resolution interpolated climate "
