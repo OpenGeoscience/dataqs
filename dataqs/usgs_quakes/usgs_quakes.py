@@ -46,9 +46,10 @@ class USGSQuakeProcessor(GeoDataProcessor):
     base_url = "http://earthquake.usgs.gov/fdsnws/event/1/query?" \
                "format=geojson&starttime={}&endtime={}"
     params = {}
-    description = """Earthquake data from the US Geological Survey.
-\n\nSource: http://earthquake.usgs.gov/fdsnws/event/1/
-"""
+    description = (
+        "Earthquake data from the US Geological Survey.\n\nSource: http://"
+        "earthquake.usgs.gov/fdsnws/event/1/"
+    )
 
     def __init__(self, *args, **kwargs):
         for key in kwargs.keys():

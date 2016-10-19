@@ -60,14 +60,17 @@ class WaterQualityPortalProcessor(GeoDataProcessor):
     station_table = "wqp_api_stations"
     suffix = "_map"
     base_url = "http://www.waterqualitydata.us/{}/search?countrycode=US"
-    description = """Water quality measurements obtained from the Water Quality
-Data Portal (WQP), which includes data from:\n\nUSGS NWIS - Water-resources data
- collected from approximately 1.5 million sites in all 50 states, the District
-of Columbia, Puerto Rico, the Virgin Islands, Guam, American Samoa, and the
-Commonwealth of the Northern Mariana Islands.\n\nUSEPA STORET - A data warehouse
- for water quality, biological, and physical data used by state environmental
-agencies, EPA, other federal agencies, universities, private citizens, and
-others.\n\nSource: http://www.waterqualitydata.us"""
+    description = (
+        "Water quality measurements obtained from the Water Quality Data Portal"
+        " (WQP), which includes data from:\n\nUSGS NWIS - Water-resources data "
+        "collected from approximately 1.5 million sites in all 50 states, the "
+        "District of Columbia, Puerto Rico, the Virgin Islands, Guam, American "
+        "Samoa, and the Commonwealth of the Northern Mariana Islands.\n\nUSEPA "
+        "STORET - A data warehouse for water quality, biological, and physical "
+        "data used by state environmental agencies, EPA, other federal agencies"
+        ", universities, private citizens, and others.\n\nSource: "
+        "http://www.waterqualitydata.us"
+    )
     skip_errors = True
 
     def __init__(self, *args, **kwargs):

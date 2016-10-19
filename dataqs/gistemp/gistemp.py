@@ -23,8 +23,10 @@ import os
 import re
 import shutil
 from datetime import date
+import time
 from dateutil.relativedelta import relativedelta
-from dataqs.processor_base import GeoDataMosaicProcessor, GS_DATA_DIR
+from dataqs.processor_base import GeoDataMosaicProcessor, GS_DATA_DIR, \
+    RSYNC_WAIT_TIME
 from dataqs.helpers import get_band_count, gdal_translate, \
     nc_convert, style_exists, cdo_fixlng, gunzip
 
@@ -43,23 +45,24 @@ class GISTEMPProcessor(GeoDataMosaicProcessor):
     base_url = "http://data.giss.nasa.gov/pub/gistemp/gistemp1200_ERSSTv4.nc.gz"
     layer_name = 'gistemp1200_ERSSTv4'
     title = 'Global Monthly Air Temperature Anomalies, 1880/01/01 - {}'
-    abstract = """The GISTEMP analysis recalculates consistent temperature
-anomaly series from 1880 to the present for a regularly spaced array of virtual
-stations covering the whole globe. Those data are used to investigate regional
-and global patterns and trends.  Graphs and tables are updated around the
-middle of every month using current data files from NOAA GHCN v3 (meteorological
- stations), ERSST v4 (ocean areas), and SCAR (Antarctic stations).
-
- The displayed image is based on the most current month.
-
-Citations:
-    - GISTEMP Team, 2016: GISS Surface Temperature Analysis (GISTEMP).
-      NASA Goddard Institute for Space Studies.  Dataset accessed monthly
-      since 8/2016 at http://data.giss.nasa.gov/gistemp/.
-    - Hansen, J., R. Ruedy, M. Sato, and K. Lo, 2010: Global surface
-      temperature change, Rev. Geophys., 48, RG4004, doi:10.1029/2010RG000345.
-
- """
+    abstract = (
+        "The GISTEMP analysis recalculates consistent temperature "
+        "anomaly series from 1880 to the present for a regularly spaced array "
+        "of virtual stations covering the whole globe. Those data are used to "
+        "investigate regional and global patterns and trends.  Graphs and "
+        "tables are updated around the middle of every month using current data"
+        " files from NOAA GHCN v3 (meteorological stations), ERSST v4 (ocean "
+        "areas), and SCAR (Antarctic stations).\n\nThe displayed image is based"
+        " on the most current month."
+        "\n\nSource:http://data.giss.nasa.gov/gistemp/\n\nRaw data file: "
+        "http://data.giss.nasa.gov/pub/gistemp/gistemp1200_ERSSTv4.nc.gz"
+        "\n\nCitations:\n\n- GISTEMP Team, 2016: "
+        "GISS Surface Temperature Analysis (GISTEMP).\nNASA Goddard Institute "
+        "for Space Studies.  Dataset accessed monthly since 8/2016 at "
+        "http://data.giss.nasa.gov/gistemp/.\n- Hansen, J., R. Ruedy, M. Sato,"
+        " and K. Lo, 2010: Global surface temperature change, Rev. Geophys., "
+        "48, RG4004, doi:10.1029/2010RG000345."
+    )
 
     def convert(self, nc_file):
         nc_transform = nc_convert(nc_file)
@@ -91,6 +94,7 @@ Citations:
         cdf_file = self.convert(ncfile)
         bands = get_band_count(cdf_file)
         img_list = self.get_mosaic_filenames(self.layer_name)
+        dst_files = []
         for band in range(1, bands+1):
             band_date = re.sub('[\-\.]+', '', self.get_date(band).isoformat())
             img_name = '{}_{}T000000000Z.tif'.format(self.layer_name, band_date)
@@ -105,7 +109,10 @@ Citations:
                     os.makedirs(dst_dir)
                 if dst_file.endswith('.tif'):
                     shutil.move(os.path.join(self.tmp_dir, band_tif), dst_file)
-                    self.post_geoserver(dst_file, self.layer_name)
+                    dst_files.append(dst_file)
+        time.sleep(RSYNC_WAIT_TIME * 2)
+        for dst_file in dst_files:
+            self.post_geoserver(dst_file, self.layer_name, sleeptime=0)
 
         if not style_exists(self.layer_name):
             with open(os.path.join(script_dir,

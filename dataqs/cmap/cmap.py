@@ -30,57 +30,54 @@ class CMAPProcessor(GeoDataMosaicProcessor):
     layer_name = 'cmap'
     bounds = '-178.75,178.75,-88.75,88.75'
     title = 'CPC Merged Analysis of Precipitation, 1979/01 - {}'
-    abstract = """The CPC Merged Analysis of Precipitation ("CMAP") is a
-technique which produces pentad and monthly analyses of global precipitation
- in which observations from raingauges are merged with precipitation estimates
-from several satellite-based algorithms (infrared and microwave). The analyses
-are are on a 2.5 x 2.5 degree latitude/longitude grid and extend back to 1979.
-These data are comparable (but should not be confused with) similarly combined
-analyses by the Global Precipitation Climatology Project which are described in
-Huffman et al (1997).
-
-It is important to note that the input data sources to make these analyses are
-not constant throughout the period of record. For example, SSM/I (passive
-microwave - scattering and emission) data became available in July of 1987;
-prior to that the only microwave-derived estimates available are from the MSU
-algorithm (Spencer 1993) which is emission-based thus precipitation estimates
-are avaialble only over oceanic areas. Furthermore, high temporal resolution IR
-data from geostationary satellites (every 3-hr) became available during 1986;
-prior to that, estimates from the OPI technique (Xie and Arkin 1997) are used
-based on OLR from polar orbiting satellites.
-
-The merging technique is thoroughly described in Xie and Arkin (1997). Briefly,
-the methodology is a two-step process. First, the random error is reduced by
-linearly combining the satellite estimates using the maximum likelihood method,
-in which case the linear combination coefficients are inversely proportional to
-the square of the local random error of the individual data sources. Over global
- land areas the random error is defined for each time period and grid location
-by comparing the data source with the raingauge analysis over the surrounding
-area. Over oceans, the random error is defined by comparing the data sources
-with the raingauge observations over the Pacific atolls. Bias is reduced when
-the data sources are blended in the second step using the blending technique of
-Reynolds (1988). Here the data output from step 1 is used to define the "shape"
-of the precipitation field and the rain gauge data are used to constrain the
-amplitude.
-
-Monthly and pentad CMAP estimates back to the 1979 are available from CPC ftp
-server.
-
-References:
-
-Huffman, G. J. and co-authors, 1997: The Global Precipitation Climatology
-Project (GPCP) combined data set. Bull. Amer. Meteor. Soc., 78, 5-20.
-
-Reynolds, R. W., 1988: A real-time global sea surface temperature analysis. J.
-Climate, 1, 75-86.
-
-Spencer, R. W., 1993: Global oceanic precipitation from the MSU during 1979-91
-and comparisons to other climatologies. J. Climate, 6, 1301-1326.
-
-Xie P., and P. A. Arkin, 1996: Global precipitation: a 17-year monthly analysis
-based on gauge observations, satellite estimates, and numerical model outputs.
-Bull. Amer. Meteor. Soc., 78, 2539-2558.
-"""
+    abstract = (
+        "The CPC Merged Analysis of Precipitation ('CMAP') is a technique which"
+        " produces pentad and monthly analyses of global precipitation in which"
+        " observations from raingauges are merged with precipitation estimates "
+        "from several satellite-based algorithms (infrared and microwave). The "
+        "analyses are on a 2.5 x 2.5 degree latitude/longitude grid and extend "
+        "back to 1979.\n\nThese data are comparable (but should not be confused"
+        " with) similarly combined analyses by the Global Precipitation "
+        "Climatology Project which are described in Huffman et al (1997).\n\n"
+        "It is important to note that the input data sources to make these "
+        "analyses are not constant throughout the period of record. For example"
+        ", SSM/I (passive microwave - scattering and emission) data became "
+        "available in July of 1987; prior to that the only microwave-derived "
+        "estimates available are from the MSU algorithm (Spencer 1993) which is"
+        " emission-based thus precipitation estimates are avaialble only over "
+        " oceanic areas. Furthermore, high temporal resolution IR data from "
+        "geostationary satellites (every 3-hr) became available during 1986;"
+        " prior to that, estimates from the OPI technique (Xie and Arkin 1997) "
+        "are used based on OLR from polar orbiting satellites.\n\nThe merging "
+        "technique is thoroughly described in Xie and Arkin (1997). Briefly, "
+        "the methodology is a two-step process. First, the random error is "
+        "reduced by linearly combining the satellite estimates using the "
+        "maximum likelihood method, in which case the linear combination "
+        "coefficients are inversely proportional to the square of the local "
+        "random error of the individual data sources. Over global land areas "
+        "the random error is defined for each time period and grid location by "
+        "comparing the data source with the raingauge analysis over the "
+        "surrounding area. Over oceans, the random error is defined by "
+        "comparing the data sources with the raingauge observations over the "
+        "Pacific atolls. Bias is reduced when the data sources are blended in "
+        "the second step using the blending technique of Reynolds (1988). Here "
+        "the data output from step 1 is used to define the \"shape\" of the "
+        "precipitation field and the rain gauge data are used to constrain the "
+        "amplitude.\n\nMonthly and pentad CMAP estimates back to the 1979 are "
+        "available from CPC ftp server.\n\nSource: "
+        "http://www.esrl.noaa.gov/psd/data/gridded/data.cmap.html\n\nRaw data "
+        "file: ftp://ftp.cdc.noaa.gov/Datasets/cmap/enh/precip.mon.mean.nc"
+        "\n\nReferences:\n\nHuffman, G. J. and "
+        "co-authors, 1997: The Global Precipitation Climatology Project (GPCP) "
+        "combined data set. Bull. Amer. Meteor. Soc., 78, 5-20.\n\nReynolds, R."
+        " W., 1988: A real-time global sea surface temperature analysis. J. "
+        "Climate, 1, 75-86.\n\nSpencer, R. W., 1993: Global oceanic "
+        "precipitation from the MSU during 1979-91 and comparisons to other "
+        "climatologies. J. Climate, 6, 1301-1326.\n\nXie P., and P. A. Arkin, "
+        "1996: Global precipitation: a 17-year monthly analysis based on gauge "
+        "observations, satellite estimates, and numerical model outputs. Bull. "
+        "Amer. Meteor. Soc., 78, 2539-2558."
+    )
 
     def download(self, url, tmp_dir=GS_TMP_DIR, filename=None):
         if not filename:
@@ -122,6 +119,7 @@ Bull. Amer. Meteor. Soc., 78, 2539-2558.
         cdf_file = self.convert(os.path.join(self.tmp_dir, ncfile))
         bands = get_band_count(cdf_file)
         img_list = self.get_mosaic_filenames(self.layer_name)
+        dst_files = []
         for band in range(1, bands + 1):
             band_date = re.sub('[\-\.]+', '', self.get_date(band).isoformat())
             img_name = '{}_{}T000000000Z.tif'.format(self.layer_name, band_date)
@@ -136,7 +134,10 @@ Bull. Amer. Meteor. Soc., 78, 2539-2558.
                     os.makedirs(dst_dir)
                 if dst_file.endswith('.tif'):
                     shutil.move(os.path.join(self.tmp_dir, band_tif), dst_file)
-                    self.post_geoserver(dst_file, self.layer_name)
+                    dst_files.append(dst_file)
+        time.sleep(RSYNC_WAIT_TIME * 2)
+        for dst_file in dst_files:
+            self.post_geoserver(dst_file, self.layer_name, sleeptime=0)
 
         if not style_exists(self.layer_name):
             with open(os.path.join(script_dir,

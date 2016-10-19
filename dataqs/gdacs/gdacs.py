@@ -39,19 +39,23 @@ class GDACSProcessor(GeoDataProcessor):
     prefix = "gdacs_alerts"
     layer_title = 'Flood, Quake, Cyclone Alerts - GDACS'
     params = {}
-    base_url = \
-        "http://www.gdacs.org/rss.aspx?profile=ARCHIVE&fromarchive=true&" + \
-        "from={}&to={}&alertlevel=&country=&eventtype=EQ,TC,FL&map=true"
-    description = """GDACS (Global Disaster and Alert Coordination System) is a
-collaboration platform for organisations providing information on humanitarian
-disasters. From a technical point of view, GDACS links information of all
-participating organisations using a variety of systems to have a harmonized list
- of data sources.In 2011, the GDACS platform was completely revised to collect,
-store and distribute resources explicitly by events. The system matches
-information from all organisations (by translating unique identifiers), and make
- these resources available for GDACS users and developers in the form of GDACS
-Platform Services.  The GDACS RSS feed automatically include a list of available
- resources.\n\nSource: http://www.gdacs.org/resources.aspx"""
+    base_url = (
+        "http://www.gdacs.org/rss.aspx?profile=ARCHIVE&fromarchive=true&"
+        "from={}&to={}&alertlevel=&country=&eventtype=EQ,TC,FL&map=true")
+    description = (
+        "GDACS (Global Disaster and Alert Coordination System) is a "
+        "collaboration platform for organisations providing information on "
+        "humanitarian disasters. From a technical point of view, GDACS links "
+        "information of all participating organisations using a variety of "
+        "systems to have a harmonized list of data sources.In 2011, the GDACS "
+        "platform was completely revised to collect, store and distribute "
+        "resources explicitly by events. The system matches information from "
+        "all organisations (by translating unique identifiers), and make these "
+        "resources available for GDACS users and developers in the form of "
+        "GDACS Platform Services.  The GDACS RSS feed automatically include a "
+        "list of available resources.\n\nSource: "
+        "http://www.gdacs.org/resources.aspx"
+    )
 
     def __init__(self, *args, **kwargs):
         for key in kwargs.keys():

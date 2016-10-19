@@ -38,27 +38,31 @@ class SPEIProcessor(GeoDataProcessor):
         'spei01': 'SPEI Global Drought Monitor (past month)',
         'spei03': 'SPEI Global Drought Monitor (past 3 months)'}
     base_url = "http://notos.eead.csic.es/spei/nc/"
-    description = """The SPEI Global Drought Monitor (http://sac.csic.es/spei/)
-offers near real-time information about drought conditions at the global scale,
-with a 0.5 degrees spatial resolution and a monthly time resolution. SPEI
-time-scales between 1 and 48 months are provided. The calibration period for the
- SPEI is January 1950 to December 2010.
-\n\nThe dataset is updated during the first days of the following month based on
- the most reliable and updated sources of climatic data. Mean temperature data
-are obtained from the NOAA NCEP CPC GHCN_CAMS gridded dataset. Monthly
-precipitation sums data are obtained from the Global Precipitation Climatology
-Centre (GPCC). Data from the 'first guess' GPCC product, with an original
-resolution of 1º, are interpolated to the resolution of 0.5º.\n\nCurrently,
-the SPEI Global Drought Monitor is based on the Thortnthwaite
-equation for estimating potential evapotranspiration, PET. This is due to the
-lack of real-time data sources for computing more robust PET estimations which
-have larger data requirements. The main advantage of the SPEI Global Drought
-Monitor is thus its near real-time character, a characteristic best suited for
-drought monitoring and early warning purposes. For long-term analysis, however,
-other datasets are to be preferred that rely on more robust methods of PET
-estimation. Use of the SPEIbase dataset, which is based on the FAO-56
-Penman-Monteith model, is thus recommended for climatological studies of
-drought.\n\nSource: http://notos.eead.csic.es/spei/nc/"""
+    description = (
+        "The SPEI Global Drought Monitor (http://sac.csic.es/spei/) offers near"
+        " real-time information about drought conditions at the global scale, "
+        "with a 0.5 degrees spatial resolution and a monthly time resolution. "
+        "SPEI time-scales between 1 and 48 months are provided. The calibration"
+        " period for the SPEI is January 1950 to December 2010.\n\nThe dataset "
+        "is updated during the first days of the following month based on the "
+        "most reliable and updated sources of climatic data. Mean temperature "
+        "data are obtained from the NOAA NCEP CPC GHCN_CAMS gridded dataset. "
+        "Monthly precipitation sums data are obtained from the Global "
+        "Precipitation Climatology Centre (GPCC). Data from the 'first guess' "
+        "GPCC product, with an original resolution of 1º, are interpolated to "
+        "the resolution of 0.5º.\n\nCurrently, the SPEI Global Drought Monitor "
+        "is based on the Thortnthwaite equation for estimating potential "
+        "evapotranspiration, PET. This is due to the lack of real-time data "
+        "sources for computing more robust PET estimations which have larger "
+        "data requirements. The main advantage of the SPEI Global Drought "
+        "Monitor is thus its near real-time character, a characteristic best "
+        "suited for drought monitoring and early warning purposes. For long-"
+        "term analysis, however, other datasets are to be preferred that rely "
+        "on more robust methods of PET estimation. Use of the SPEIbase dataset,"
+        " which is based on the FAO-56 Penman-Monteith model, is thus "
+        "recommended for climatological studies of drought.\n\nSource: http://"
+        "notos.eead.csic.es/spei/nc/"
+    )
 
     def convert(self, nc_file):
         tif_file = "{}.tif".format(nc_file)

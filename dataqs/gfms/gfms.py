@@ -52,18 +52,21 @@ class GFMSProcessor(GeoDataProcessor):
     layer_future = "gfms_latest"
     layer_current = "gfms_current"
     prefix = 'Flood_byStor_'
-    description = u"""The GFMS (Global Flood Management System) is a NASA-funded
-experimental system using real-time TRMM Multi-satellite Precipitation Analysis
-(TMPA) precipitation information as input to a quasi-global (50°N - 50°S)
-hydrological runoff and routing model running on a 1/8th degree latitude /
-longitude grid. Flood detection/intensity estimates are based on 13 years of
-retrospective model runs with TMPA input, with flood thresholds derived for
-each grid location using surface water storage statistics (95th percentile plus
-parameters related to basin hydrologic characteristics). Streamflow,surface
-water storage,inundation variables are also calculated at 1km resolution.
-In addition, the latest maps of instantaneous precipitation and totals from the
-last day, three days and seven days are displayed.
-\n\nSource: http://eagle1.umd.edu/flood/"""
+    description = (
+        u"The GFMS (Global Flood Management System) is a NASA-funded"
+        u"experimental system using real-time TRMM Multi-satellite "
+        u"Precipitation Analysis (TMPA) precipitation information as input to a"
+        u"quasi-global (50°N - 50°S) hydrological runoff and routing model "
+        u"running on a 1/8th degree latitude /longitude grid. Flood detection/"
+        u"intensity estimates are based on 13 years of retrospective model runs"
+        u"with TMPA input, with flood thresholds derived for each grid location"
+        u" using surface water storage statistics (95th percentile plus "
+        u"parameters related to basin hydrologic characteristics). Streamflow,"
+        u" surface water storage,inundation variables are also calculated at 1"
+        u"km resolution.  In addition, the latest maps of instantaneous "
+        u"precipitation and totals from the last day, three days and seven days"
+        u" are displayed.\n\nSource: http://eagle1.umd.edu/flood/"
+    )
 
     def get_latest_future(self):
         """

@@ -80,27 +80,30 @@ class WhispProcessor(GeoDataProcessor):
     prefix = "whisp"
     base_url = "https://www.nwhc.usgs.gov/whispers/searchForm/recent100"
     title = "Wildlife Health Information Sharing Partnership - Events"
-    description = """WHISPers stands for Wildlife Health Information Sharing
-Partnership - event reporting system. It is a partner-driven, web-based
-repository for sharing basic information about historic and ongoing wildlife
-mortality (death) and morbidity (illness) events involving five or more wild
-animals. The primary goal of the system is to provide natural resource
-management partners and the public with timely, accurate information on where
-wildlife disease events are occurring or have occurred. The system is also a
-searchable archive of historic wildlife mortality and morbidity event data.
-The information is opportunistically collected and does not reflect all the
-mortality events that occur in North America.\n\nEach record includes location
-of the event (to county level), start and end dates, species involved, number of
- sick and dead, cause of wildlife illness or death, the laboratory where cause
-of disease/death was confirmed, and contact information for the agency that
-submitted carcasses/samples to the laboratory.\n\nThis information is from a
-variety of sources including federal, tribal, and state agencies who contacted
-the USGS National Wildlife Health Center for diagnostic and epidemiological
-assistance during mortality events; diagnostic case reports from other wildlife
-diagnostic laboratories; and published reports in journals, newspapers, or other
- reporting outlets such as ProMEDmail.org.
-\n\nData source: http://www.nwhc.usgs.gov/whispers/
-"""
+    description = (
+        "WHISPers stands for Wildlife Health Information Sharing Partnership -"
+        " event reporting system. It is a partner-driven, web-based repository "
+        "for sharing basic information about historic and ongoing wildlife "
+        "mortality (death) and morbidity (illness) events involving five or "
+        "more wild animals. The primary goal of the system is to provide "
+        "natural resource management partners and the public with timely, "
+        "accurate information on where wildlife disease events are occurring or"
+        " have occurred. The system is also a searchable archive of historic "
+        "wildlife mortality and morbidity event data. The information is "
+        "opportunistically collected and does not reflect all the mortality "
+        "events that occur in North America.\n\nEach record includes location "
+        "of the event (to county level), start and end dates, species involved,"
+        " number of sick and dead, cause of wildlife illness or death, the "
+        "laboratory where cause of disease/death was confirmed, and contact "
+        "information for the agency that submitted carcasses/samples to the "
+        "laboratory.\n\nThis information is from a variety of sources including"
+        " federal, tribal, and state agencies who contacted the USGS National "
+        "Wildlife Health Center for diagnostic and epidemiological assistance "
+        "during mortality events; diagnostic case reports from other wildlife "
+        "diagnostic laboratories; and published reports in journals, newspapers"
+        ", or other reporting outlets such as ProMEDmail.org.\n\nData source: "
+        "http://www.nwhc.usgs.gov/whispers/"
+    )
 
     def download(self, url=None, filename=None):
         if not url:

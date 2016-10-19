@@ -9,11 +9,6 @@
         <sld:Rule>
           <sld:RasterSymbolizer>
         <Opacity>1.0</Opacity>
-        <ChannelSelection>
-                <GrayChannel>
-                        <SourceChannelName>{latest_band}</SourceChannelName>
-                </GrayChannel>
-        </ChannelSelection>
         <ColorMap extended="true">
             <sld:ColorMapEntry color="#2b83ba" label="0 mm" opacity="1.0" quantity="0"/>
             <sld:ColorMapEntry color="#74b6ad" label="10 mm" opacity="1.0" quantity="10"/>

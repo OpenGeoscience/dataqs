@@ -61,18 +61,20 @@ class MortalityProcessor(GeoDataProcessor):
                '&mmwr_location=Click+here+for+all+Locations&mmwr_table=4A' \
                '&mmwr_year={year}&mmwr_week={week:02d}'
     params = {}
-    description = """Mortality data voluntarily reported from 122 cities in the
-United States, most of which have populations of 100,000 or more. A death is
-reported by the place of its occurrence and by the week that the death
-certificate was filed. Fetal deaths are not included.
-
-The Morbidity and Mortality Weekly Report (MMWR ) series is
-prepared by the Centers for Disease Control and Prevention (CDC). Often called
-“the voice of CDC,” the MMWR  series is the agency’s primary vehicle for
-scientific publication of timely, reliable, authoritative, accurate, objective,
-and useful public health information and recommendations. The data in the weekly
- MMWR  are provisional, based on weekly reports to CDC by state health
-departments.\n\nSource: http://wonder.cdc.gov/mmwr/mmwr_2015.asp"""
+    description = (
+        "Mortality data voluntarily reported from 122 cities in the United "
+        "States, most of which have populations of 100,000 or more. A death is "
+        "reported by the place of its occurrence and by the week that the death"
+        " certificate was filed. Fetal deaths are not included.\n\nThe "
+        "Morbidity and Mortality Weekly Report (MMWR ) series is prepared by "
+        "the Centers for Disease Control and Prevention (CDC). Often called the"
+        " voice of CDC,” the MMWR  series is the agency’s primary vehicle for "
+        "scientific publication of timely, reliable, authoritative, accurate, "
+        "objective, and useful public health information and recommendations. "
+        "The data in the weekly MMWR  are provisional, based on weekly reports "
+        "to CDC by state health departments.\n\nSource: http://wonder.cdc.gov/"
+        "mmwr/mmwr_2015.asp"
+    )
 
     def __init__(self, *args, **kwargs):
         for key in kwargs.keys():

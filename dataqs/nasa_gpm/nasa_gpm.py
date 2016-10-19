@@ -51,17 +51,19 @@ class GPMProcessor(GeoDataMosaicProcessor):
     prefix = '3B-HHR-E.MS.MRG.3IMERG.'
     layer_name = 'nasa_gpm_24hr'
     archive_hours = ("T12:00:00.000Z", "T12:30:00.000Z")
-    description = """NASA IMERG: Rainfall estimates combining data from all
-passive-microwave instruments in the GPM Constellation.
-
-This algorithm is intended to intercalibrate, merge, and interpolate "all"
-satellite microwave precipitation estimates, together with microwave-calibrated
-infrared (IR) satellite estimates, precipitation gauge analyses, and
-potentially other precipitation estimators at fine time and space scales for the
- TRMM and GPM eras over the entire globe. The system is run several times for
-each observation time, first giving a quick estimate (this image) and
-successively providing better estimates as more data arrive.
-\n\nSource: http://pmm.nasa.gov/data-access/downloads/gpm"""
+    description = (
+        "NASA IMERG: Rainfall estimates combining data from all passive-"
+        "microwave instruments in the GPM Constellation.\n\nThis algorithm is "
+        "intended to intercalibrate, merge, and interpolate \"all\" satellite "
+        "microwave precipitation estimates, together with microwave-calibrated "
+        "infrared (IR) satellite estimates, precipitation gauge analyses, and "
+        "potentially other precipitation estimators at fine time and space "
+        "scales for the TRMM and GPM eras over the entire globe. The system is "
+        "run several times for each observation time, first giving a quick "
+        "estimate (this image) and successively providing better estimates as "
+        "more data arrive.\n\nSource: http://pmm.nasa.gov/data-access/downloads"
+        "/gpm"
+    )
 
     def download(self, auth_account=GPM_ACCOUNT, tmp_dir=GS_TMP_DIR, days=1):
         ftp = FTP(self.base_url)
