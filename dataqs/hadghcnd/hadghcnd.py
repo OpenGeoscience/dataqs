@@ -51,13 +51,13 @@ class HadGHCNDProcessor(GeoDataMosaicProcessor):
     base_url = "http://www.metoffice.gov.uk/hadobs/hadghcnd/data/"
 
     layers = {
-        # 'HadGHCND_TXTN_anoms_1950-2014_15052015.nc.tgz': {
-        #     'title': 'HadGHCND Temperature Anomalies - {measure}, {interval}',
-        #     'name': '{prefix}_anomalies_{measure}_{interval}'
-        # },
+        'HadGHCND_TXTN_anoms_1950-2014_15052015.nc.tgz': {
+            'title': 'HadGHCND Temperature Anomalies - {measure}, 1950-2014',
+            'name': '{prefix}_anomalies_{measure}'
+        },
         'HadGHCND_TXTN_acts_1950-2014_15102015.nc.tgz': {
-            'title': 'HadGHCND Actual Temperatures - {measure}, {interval}',
-            'name': '{prefix}_temperatures_{measure}_{interval}'
+            'title': 'HadGHCND Actual Temperatures - {measure}, 1950-2014',
+            'name': '{prefix}_temperatures_{measure}'
         }
 
     }
@@ -148,7 +148,8 @@ class HadGHCNDProcessor(GeoDataMosaicProcessor):
         """
         for key in self.layers.keys():
             src = os.path.join(self.base_url, key)
-            cdf_files = untar(src, self.tmp_dir)
+            tarfile = self.download(src)
+            cdf_files = untar(os.path.join(self.tmp_dir, tarfile), self.tmp_dir)
             for cdf in cdf_files:
                 interval = re.findall('\d{4}-\d{4}',
                                       os.path.basename(cdf))[0]
@@ -157,11 +158,11 @@ class HadGHCNDProcessor(GeoDataMosaicProcessor):
                     ncds = gdal.Open(ncds_gdal_name)
                     bands = ncds.RasterCount
                     layer_name = self.layers[key]['name'].format(
-                        prefix=self.prefix, measure=measure, interval=interval
+                        prefix=self.prefix, measure=measure
                     )
                     img_list = self.get_mosaic_filenames(layer_name)
                     files = []
-                    for band in range(1, bands + 1):
+                    for band in range(1, min(11, bands + 1)):
                         days = int(ncds.GetRasterBand(band)
                                    .GetMetadata()['NETCDF_DIM_time'])
                         band_date = re.sub('[\-\.]+', '',
@@ -193,9 +194,7 @@ class HadGHCNDProcessor(GeoDataMosaicProcessor):
                             self.set_default_style(layer_name,
                                                    layer_name,
                                                    sld.read())
-                    title = self.layers[key]['title'].format(
-                        measure=measure, interval=interval
-                    )
+                    title = self.layers[key]['title'].format(measure=measure)
                     self.update_geonode(layer_name,
                                         title=title,
                                         description=self.abstract.format(src),
@@ -204,7 +203,7 @@ class HadGHCNDProcessor(GeoDataMosaicProcessor):
                                                 '-90.0', '90.0',
                                                 'EPSG:4326'))
                     self.truncate_gs_cache(layer_name)
-                self.cleanup()
+            self.cleanup()
 
 
 if __name__ == '__main__':
