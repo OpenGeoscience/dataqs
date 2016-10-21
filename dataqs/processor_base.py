@@ -91,17 +91,19 @@ class GeoDataProcessor(object):
     for import into GeoNode/GeoServer
     """
 
+    tmp_dir = GS_TMP_DIR
     base_url = "http://{}:8080/geoserver/rest/workspaces/"
     gs_url = base_url + "{}/coveragestores/{}/file.geotiff"
     gs_vec_url = base_url + "{}/datastores/{}/featuretypes"
     gs_style_url = "http://{}:8080/geoserver/rest/styles/"
 
-    def __init__(self, workspace=DEFAULT_WORKSPACE, tmp_dir=GS_TMP_DIR,
+    def __init__(self, workspace=DEFAULT_WORKSPACE, tmp_dir=None,
                  **kwargs):
         self.workspace = workspace
-        self.tmp_dir = tmp_dir
-        if not os.path.exists(tmp_dir):
-            os.makedirs(tmp_dir)
+        if tmp_dir:
+            self.tmp_dir = tmp_dir
+        if not os.path.exists(self.tmp_dir):
+            os.makedirs(self.tmp_dir)
         if 'days' in kwargs.keys():
             self.days = kwargs['days']
 
@@ -337,7 +339,7 @@ class GeoDataProcessor(object):
         Remove any files in the temp directory matching
         the processor class prefix
         """
-        filelist = glob.glob("{}*.*".format(
+        filelist = glob.glob("{}*".format(
             os.path.join(self.tmp_dir, self.prefix)))
         for f in filelist:
             os.remove(f)
@@ -374,13 +376,13 @@ class GeoDataMosaicProcessor(GeoDataProcessor):
         r.raise_for_status()
         return r.status_code, r.content
 
-    def post_geoserver(self, filepath, layer_name):
+    def post_geoserver(self, filepath, layer_name, sleeptime=RSYNC_WAIT_TIME):
         """
         Add another image to a mosaic datastore
         :param filepath: Full path&name of GeoTIFF to import
         :param layer_name: Name of the layer & store (assumed to be same)
         """
-        sleep(RSYNC_WAIT_TIME)
+        sleep(sleeptime)
         gs_url = self.gs_url.format(ogc_server_settings.hostname,
                                     self.workspace, layer_name)
         data = "file://{}".format(filepath)
