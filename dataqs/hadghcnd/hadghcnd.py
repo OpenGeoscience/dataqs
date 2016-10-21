@@ -151,8 +151,6 @@ class HadGHCNDProcessor(GeoDataMosaicProcessor):
             tarfile = self.download(src)
             cdf_files = untar(os.path.join(self.tmp_dir, tarfile), self.tmp_dir)
             for cdf in cdf_files:
-                interval = re.findall('\d{4}-\d{4}',
-                                      os.path.basename(cdf))[0]
                 for measure in ('tmin', 'tmax'):
                     ncds_gdal_name = 'NETCDF:{}:{}'.format(cdf, measure)
                     ncds = gdal.Open(ncds_gdal_name)
