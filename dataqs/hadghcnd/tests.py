@@ -76,11 +76,11 @@ class HadGHCNDTest(TestCase):
             self.processor.base_url, layer.rstrip('.tgz'))
         ncds_gdal_name = 'NETCDF:{}:tmin'.format(
             os.path.join(self.processor.tmp_dir, imgfile))
-        bandout = os.path.join(self.processor.tmp_dir,
-                               '{}test'.format(self.processor.prefix))
-        self.processor.extract_band(ncds_gdal_name, 1, bandout)
-        self.assertTrue(os.path.exists(os.path.join(bandout)))
-        img = gdal.Open(bandout)
+        bandout = '{}_test.tif'.format(self.processor.prefix)
+        outpath = self.processor.extract_band(ncds_gdal_name, 1, bandout,
+                                              projection='WGS84')
+        self.assertTrue(os.path.exists(outpath))
+        img = gdal.Open(outpath)
         try:
             self.assertEquals(1, img.RasterCount)
         finally:
