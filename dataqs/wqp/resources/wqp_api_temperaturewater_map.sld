@@ -3,7 +3,7 @@
     <sld:Name>wqp_api_temperaturewater_map</sld:Name>
     <sld:UserStyle>
       <sld:Name>wqp_api_temperaturewater_map</sld:Name>
-      <sld:Title>point</sld:Title>
+      <sld:Title>Temperature (Water Quality)</sld:Title>
       <sld:IsDefault>1</sld:IsDefault>
       <sld:FeatureTypeStyle>
         <sld:Name>name</sld:Name>
