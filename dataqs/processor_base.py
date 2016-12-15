@@ -349,6 +349,14 @@ class GeoDataMosaicProcessor(GeoDataProcessor):
     data_dir = "{gsd}/data/{ws}/{layer}/{file}"
     local_gs = True
 
+    def mosaic_date_format(self, dt):
+        """
+        Return a date in the string format expected for a geoserver mosaic layer
+        :param dt: Date
+        :return: Formatted date string
+        """
+        return dt.strftime("%Y%m%dT%H0000000Z")
+
     def del_mosaic_image(self, url):
         """
         Remove an image from a mosaic store
