@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Vegetation Index [NDVI] (16 day - Terra/MODIS) | NASA</title>
+
+        <!-- Mobile viewport optimized -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+        <!-- standard metadata -->
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <meta name="title" content="Vegetation Index [NDVI] (16 day - Terra/MODIS) | NASA"/>
+
+        <!-- NASA required metadata -->
+        <meta name="orgcode" content="610"/>
+        <meta name="rno" content="Charles.M.Ichoku.1"/>
+        <meta name="content-owner" content="Paul.D.Przyborski.1"/>
+        <meta name="webmaster" content="Paul.D.Przyborski.1"/>
+        <meta name="keywords" content="climate change, global climate change, global warming,
+        natural hazards, Earth, environment, remote sensing, atmosphere,
+        land processes, oceans, volcanoes, land cover, Earth science data, NASA,
+        environmental processes, Blue Marble, global maps">
+
+        <!-- Dublin Core Metadata Initiative (DCMI) metadata - http://dublincore.org/ -->
+        <meta name="DC.Identifier" content="http://neo.sci.gsfc.nasa.gov/"/>
+        <meta name="DC.Title" content="Vegetation Index [NDVI] (16 day - Terra/MODIS) | NASA"/>
+        <meta name="DC.Description" content="Welcome to NASA Earth Observations, where you can browse and download imagery of satellite data from NASAs Earth Observing System. Over 50 different global datasets are represented with daily, weekly, and monthly snapshots, and images are available in a variety of formats."/>
+        <meta name="DC.Date" scheme="ISO8601" content="2016-12-14"/>
+        <meta name="DC.Date.X-MetadataLastModified" scheme="ISO8601" content="2016-12-14"/>
+        <meta name="DC.Publisher" content="NASA Earth Observations (NEO)"/>
+        <meta name="DC.Publisher.Address" content="paul.przyborski@nasa.gov,kevin.a.ward@nasa.gov"/>
+        <meta name="DC.Language" scheme="ISO639-1" content="en"/>
+        <meta name="DC.Type" content="Text.Article"/>
+        <meta name="DC.Format" scheme="IMT" content="text/html"/>
+        <meta name="DC.Subject" content="climate change, global climate change, global warming,
+        natural hazards, Earth, environment, remote sensing, atmosphere,
+        land processes, oceans, volcanoes, land cover, Earth science data, NASA,
+        environmental processes, Blue Marble, global maps"/>
+
+        <!-- facebook metadata -->
+        <link rel="image_src" href="http://neo.sci.gsfc.nasa.gov/about/globes_banner.jpg"/>
+        <link rel="canonical" href="http://neo.sci.gsfc.nasa.gov/view.php?datasetId=MOD13A2_E_NDVI&date=2016-12-13"/>
+        <meta property="og:title" content="Vegetation Index [NDVI] (16 day - Terra/MODIS) | NASA"/>
+        <meta property="og:url" content="http://neo.sci.gsfc.nasa.gov/view.php?datasetId=MOD13A2_E_NDVI&date=2016-12-13"/>
+        <meta property="og:image" content="http://neo.sci.gsfc.nasa.gov/about/globes_banner.jpg"/>
+        <meta property="og:site_name" content="Vegetation Index [NDVI] (16 day - Terra/MODIS) | NASA"/>
+        <meta property="og:description" content="Welcome to NASA Earth Observations, where you can browse and download imagery of satellite data from NASAs Earth Observing System. Over 50 different global datasets are represented with daily, weekly, and monthly snapshots, and images are available in a variety of formats."/>
+
+        <!-- google thumbnail -->
+        <meta name="thumbnail" content="http://neo.sci.gsfc.nasa.gov/about/globes_banner.jpg"/>
+
+        <link rel="stylesheet" href="/css/global.css" media="all">
+        <link rel="stylesheet" href="/js/fancybox/source/jquery.fancybox.css?v=2.1.4" media="screen"/>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="//code.jquery.com/jquery-migrate-1.0.0.js"></script>
+        <script src="/js/fancybox/source/jquery.fancybox.pack.js?v=2.1.4"></script>
+        <script src="/js/jquery.hoverIntent.minified.js"></script>
+        <script src="/js/jquery.easing.js"></script>
+		<script src="/js/jquery.cookie.js"></script>
+        <script src="/js/icebox.js"></script>
+        <script src="/js/global.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                $(".contact-link").fancybox ({
+                	'titlePosition'		: 'inside',
+                	'transitionIn'		: 'none',
+                	'transitionOut'		: 'none'
+                });
+            });
+
+            setIceboxJSON({
+                "ICETray":[
+
+                ],
+
+                "boundingBox":{
+                },
+                "commonRes":"",
+                "outputRes":"",
+                "mode":"" });
+
+            function loadPage() {
+            	listIcebox(false, 'http://neo.sci.gsfc.nasa.gov/servlet/');
+            	if (_hasScenes) {
+            	    var queueString = '';
+
+            	    $('.menu-queue').addClass('data');
+            	    $('.menu-analyze').addClass('data');
+
+            	    // show text for the number of images in the icebox
+            	    if (iceboxJSON.ICETray.length > 1) {
+            	        queueString = iceboxJSON.ICETray.length + ' Images';
+            	    } else {
+            	        queueString = iceboxJSON.ICETray.length + ' Image';
+            	    }
+
+            	    $('.menu-queue').html('<a href="javascript:;">'+queueString+'</a>');
+            	} else {
+            	    // no scenes
+            	}
+            }
+
+            $(document).ready(function() {
+                loadPage();
+            });
+
+        </script>
+
+        <!--[if IE 6]>
+        <style type="text/css"> body { behavior:url(/js/csshover.htc); } </style>
+        <script language="javascript" type="text/javascript" src="/js/DD_belatedPNG_0.0.8a-min.js"></script>
+        <script>
+            DD_belatedPNG.fix('.pngbg');
+        </script>
+        <![endif]-->
+
+		<script type="text/javascript">
+
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-19441810-1']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+
+		</script>
+
+		<script language="javascript" id="_fed_an_ua_tag" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NASA&subagency=GSFC&dclink=true"></script>
+
+
+    </head>
+    <!--[if lt IE 7 ]><body class="ie6"><![endif]-->
+    <!--[if IE 7 ]><body class="ie7"><![endif]-->
+    <!--[if IE 8 ]><body class="ie8"><![endif]-->
+    <!--[if IE 9 ]><body class="ie9"><![endif]-->
+    <!--[if (gt IE 9)|!(IE)]><!--><body><!--<![endif]-->
+
+        <div id="header">
+            <div id="header-in">
+                <a href="http://www.nasa.gov" class="nasa-logo">NASA</a>
+                <a href="http://neo.sci.gsfc.nasa.gov/" class="logo">NASA Earth Observations</a>
+            </div>
+
+            <div id="navigation">
+                <ul>
+                    <li class="menu-atmosphere dataset"><a href="javascript:;">Atmosphere</a></li>
+                    <li class="menu-energy dataset"><a href="javascript:;">Energy</a></li>
+                    <li class="menu-land dataset"><a href="javascript:;">Land</a></li>
+                    <li class="menu-life dataset"><a href="javascript:;">Life</a></li>
+                    <li class="menu-ocean dataset"><a href="javascript:;">Ocean</a></li>
+                    <!--<li class="menu-planets dataset"><a href="javascript:;">Other Planets</a></li>-->
+                    <li class="menu-news general"><a href="/blog/">News</a></li>
+                    <li class="menu-about general"><a href="/about/">About</a></li>
+                    <li class="menu-queue"><a href="javascript:;">0 Images</a></li>
+                    <li class="menu-analyze"><a href="/analysis/configure.php">Analyze</a></li>
+                </ul>
+
+                <div id="slider-nav">
+                    <a class="nav-close" href="javascript:;">close</a>
+
+                    <div class="nav-atmosphere nav-hover">
+                        <div class="nav-content">
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MYDAL2_M_AER_OD"><img src="/images/datasets/132x66/MYDAL2_M_AER_OD.jpg" width="132" height="66" alt="Aerosol Optical Thickness"></a>
+                                <h3><a href="/view.php?datasetId=MYDAL2_M_AER_OD">Aerosol Optical Thickness</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MYDAL2_M_AER_RA"><img src="/images/datasets/132x66/MYDAL2_M_AER_RA.jpg" width="132" height="66" alt="Aerosol Particle Radius"></a>
+                                <h3><a href="/view.php?datasetId=MYDAL2_M_AER_RA">Aerosol Particle Radius</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MOP_CO_M"><img src="/images/datasets/132x66/MOP_CO_M.jpg" width="132" height="66" alt="Carbon Monoxide"></a>
+                                <h3><a href="/view.php?datasetId=MOP_CO_M">Carbon Monoxide</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MYDAL2_M_CLD_FR"><img src="/images/datasets/132x66/MYDAL2_M_CLD_FR.jpg" width="132" height="66" alt="Cloud Fraction"></a>
+                                <h3><a href="/view.php?datasetId=MYDAL2_M_CLD_FR">Cloud Fraction</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MYDAL2_M_CLD_OT"><img src="/images/datasets/132x66/MYDAL2_M_CLD_OT.jpg" width="132" height="66" alt="Cloud Optical Thickness"></a>
+                                <h3><a href="/view.php?datasetId=MYDAL2_M_CLD_OT">Cloud Optical Thickness</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MYDAL2_M_CLD_RD"><img src="/images/datasets/132x66/MYDAL2_M_CLD_RD.jpg" width="132" height="66" alt="Cloud Particle Radius"></a>
+                                <h3><a href="/view.php?datasetId=MYDAL2_M_CLD_RD">Cloud Particle Radius</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MYDAL2_M_CLD_WP"><img src="/images/datasets/132x66/MYDAL2_M_CLD_WP.jpg" width="132" height="66" alt="Cloud Water Content"></a>
+                                <h3><a href="/view.php?datasetId=MYDAL2_M_CLD_WP">Cloud Water Content</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MYD_721D_RR"><img src="/images/datasets/132x66/MYD_721D_RR.jpg" width="132" height="66" alt="False Color (MODIS)"></a>
+                                <h3><a href="/view.php?datasetId=MYD_721D_RR">False Color (MODIS)</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=AURA_NO2_M"><img src="/images/datasets/132x66/AURA_NO2_M.jpg" width="132" height="66" alt="Nitrogen Dioxide"></a>
+                                <h3><a href="/view.php?datasetId=AURA_NO2_M">Nitrogen Dioxide</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=AURA_OZONE_M"><img src="/images/datasets/132x66/AURA_OZONE_M.jpg" width="132" height="66" alt="Ozone"></a>
+                                <h3><a href="/view.php?datasetId=AURA_OZONE_M">Ozone</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=TRMM_3B43M"><img src="/images/datasets/132x66/TRMM_3B43M.jpg" width="132" height="66" alt="Rainfall"></a>
+                                <h3><a href="/view.php?datasetId=TRMM_3B43M">Rainfall</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MYD_143D_RR"><img src="/images/datasets/132x66/MYD_143D_RR.jpg" width="132" height="66" alt="True Color (MODIS)"></a>
+                                <h3><a href="/view.php?datasetId=MYD_143D_RR">True Color (MODIS)</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=VIIRS_543D"><img src="/images/datasets/132x66/VIIRS_543D.jpg" width="132" height="66" alt="True Color (VIIRS)"></a>
+                                <h3><a href="/view.php?datasetId=VIIRS_543D">True Color (VIIRS)</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MYDAL2_M_SKY_WV"><img src="/images/datasets/132x66/MYDAL2_M_SKY_WV.jpg" width="132" height="66" alt="Water Vapor"></a>
+                                <h3><a href="/view.php?datasetId=MYDAL2_M_SKY_WV">Water Vapor</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+
+                        </div>
+                        <div class="bot"></div>
+                    </div>
+                    <div class="nav-energy nav-hover">
+                        <div class="nav-content">
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MCD43C3_M_BSA"><img src="/images/datasets/132x66/MCD43C3_M_BSA.jpg" width="132" height="66" alt="Albedo"></a>
+                                <h3><a href="/view.php?datasetId=MCD43C3_M_BSA">Albedo</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MOD_LSTD_CLIM_M"><img src="/images/datasets/132x66/MOD_LSTD_CLIM_M.jpg" width="132" height="66" alt="Average Land Surface Temperature [Day]"></a>
+                                <h3><a href="/view.php?datasetId=MOD_LSTD_CLIM_M">Average Land Surface Temperature [Day]</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MOD_LSTN_CLIM_M"><img src="/images/datasets/132x66/MOD_LSTN_CLIM_M.jpg" width="132" height="66" alt="Average Land Surface Temperature [Night]"></a>
+                                <h3><a href="/view.php?datasetId=MOD_LSTN_CLIM_M">Average Land Surface Temperature [Night]</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=AVHRR_CLIM_M"><img src="/images/datasets/132x66/AVHRR_CLIM_M.jpg" width="132" height="66" alt="Average Sea Surface Temperature 1985-1997 (AVHRR)"></a>
+                                <h3><a href="/view.php?datasetId=AVHRR_CLIM_M">Average Sea Surface Temperature 1985-1997 (AVHRR)</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=GISS_TA_M"><img src="/images/datasets/132x66/GISS_TA_M.jpg" width="132" height="66" alt="Global Temperature Anomaly"></a>
+                                <h3><a href="/view.php?datasetId=GISS_TA_M">Global Temperature Anomaly</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MOD_LSTAD_M"><img src="/images/datasets/132x66/MOD_LSTAD_M.jpg" width="132" height="66" alt="Land Surface Temperature Anomaly [Day]"></a>
+                                <h3><a href="/view.php?datasetId=MOD_LSTAD_M">Land Surface Temperature Anomaly [Day]</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MOD_LSTAN_M"><img src="/images/datasets/132x66/MOD_LSTAN_M.jpg" width="132" height="66" alt="Land Surface Temperature Anomaly [Night]"></a>
+                                <h3><a href="/view.php?datasetId=MOD_LSTAN_M">Land Surface Temperature Anomaly [Night]</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MOD11C1_M_LSTDA"><img src="/images/datasets/132x66/MOD11C1_M_LSTDA.jpg" width="132" height="66" alt="Land Surface Temperature [Day]"></a>
+                                <h3><a href="/view.php?datasetId=MOD11C1_M_LSTDA">Land Surface Temperature [Day]</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MOD11C1_M_LSTNI"><img src="/images/datasets/132x66/MOD11C1_M_LSTNI.jpg" width="132" height="66" alt="Land Surface Temperature [Night]"></a>
+                                <h3><a href="/view.php?datasetId=MOD11C1_M_LSTNI">Land Surface Temperature [Night]</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=CERES_NETFLUX_M"><img src="/images/datasets/132x66/CERES_NETFLUX_M.jpg" width="132" height="66" alt="Net Radiation"></a>
+                                <h3><a href="/view.php?datasetId=CERES_NETFLUX_M">Net Radiation</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=CERES_LWFLUX_M"><img src="/images/datasets/132x66/CERES_LWFLUX_M.jpg" width="132" height="66" alt="Outgoing Longwave Radiation"></a>
+                                <h3><a href="/view.php?datasetId=CERES_LWFLUX_M">Outgoing Longwave Radiation</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=CERES_SWFLUX_M"><img src="/images/datasets/132x66/CERES_SWFLUX_M.jpg" width="132" height="66" alt="Reflected Shortwave Radiation"></a>
+                                <h3><a href="/view.php?datasetId=CERES_SWFLUX_M">Reflected Shortwave Radiation</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=AVHRR_SST_M"><img src="/images/datasets/132x66/AVHRR_SST_M.jpg" width="132" height="66" alt="Sea Surface Temperature 1981-2006 (AVHRR)"></a>
+                                <h3><a href="/view.php?datasetId=AVHRR_SST_M">Sea Surface Temperature 1981-2006 (AVHRR)</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MWOI_SST_M"><img src="/images/datasets/132x66/MWOI_SST_M.jpg" width="132" height="66" alt="Sea Surface Temperature 1998+ (MWOI)"></a>
+                                <h3><a href="/view.php?datasetId=MWOI_SST_M">Sea Surface Temperature 1998+ (MWOI)</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MYD28M"><img src="/images/datasets/132x66/MYD28M.jpg" width="132" height="66" alt="Sea Surface Temperature 2002+ (MODIS)"></a>
+                                <h3><a href="/view.php?datasetId=MYD28M">Sea Surface Temperature 2002+ (MODIS)</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=AMSRE_SSTAn_M"><img src="/images/datasets/132x66/AMSRE_SSTAn_M.jpg" width="132" height="66" alt="Sea Surface Temperature Anomaly 2002-2011 (AMSR-E)"></a>
+                                <h3><a href="/view.php?datasetId=AMSRE_SSTAn_M">Sea Surface Temperature Anomaly 2002-2011 (AMSR-E)</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=CERES_INSOL_M"><img src="/images/datasets/132x66/CERES_INSOL_M.jpg" width="132" height="66" alt="Solar Insolation"></a>
+                                <h3><a href="/view.php?datasetId=CERES_INSOL_M">Solar Insolation</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=AURA_UVI_CLIM_M"><img src="/images/datasets/132x66/AURA_UVI_CLIM_M.jpg" width="132" height="66" alt="UV Index"></a>
+                                <h3><a href="/view.php?datasetId=AURA_UVI_CLIM_M">UV Index</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                        </div>
+                        <div class="bot"></div>
+                    </div>
+                    <div class="nav-land nav-hover">
+                        <div class="nav-content">
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MOD14A1_M_FIRE"><img src="/images/datasets/132x66/MOD14A1_M_FIRE.jpg" width="132" height="66" alt="Active Fires"></a>
+                                <h3><a href="/view.php?datasetId=MOD14A1_M_FIRE">Active Fires</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MCD43C3_M_BSA"><img src="/images/datasets/132x66/MCD43C3_M_BSA.jpg" width="132" height="66" alt="Albedo"></a>
+                                <h3><a href="/view.php?datasetId=MCD43C3_M_BSA">Albedo</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MOD_LSTD_CLIM_M"><img src="/images/datasets/132x66/MOD_LSTD_CLIM_M.jpg" width="132" height="66" alt="Average Land Surface Temperature [Day]"></a>
+                                <h3><a href="/view.php?datasetId=MOD_LSTD_CLIM_M">Average Land Surface Temperature [Day]</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MOD_LSTN_CLIM_M"><img src="/images/datasets/132x66/MOD_LSTN_CLIM_M.jpg" width="132" height="66" alt="Average Land Surface Temperature [Night]"></a>
+                                <h3><a href="/view.php?datasetId=MOD_LSTN_CLIM_M">Average Land Surface Temperature [Night]</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=BlueMarbleNG-TB"><img src="/images/datasets/132x66/BlueMarbleNG-TB.jpg" width="132" height="66" alt="Blue Marble: Next Generation"></a>
+                                <h3><a href="/view.php?datasetId=BlueMarbleNG-TB">Blue Marble: Next Generation</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MYD_721D_RR"><img src="/images/datasets/132x66/MYD_721D_RR.jpg" width="132" height="66" alt="False Color (MODIS)"></a>
+                                <h3><a href="/view.php?datasetId=MYD_721D_RR">False Color (MODIS)</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=GISS_TA_M"><img src="/images/datasets/132x66/GISS_TA_M.jpg" width="132" height="66" alt="Global Temperature Anomaly"></a>
+                                <h3><a href="/view.php?datasetId=GISS_TA_M">Global Temperature Anomaly</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=ICESAT_ELEV_G"><img src="/images/datasets/132x66/ICESAT_ELEV_G.jpg" width="132" height="66" alt="Greenland / Antarctica Elevation"></a>
+                                <h3><a href="/view.php?datasetId=ICESAT_ELEV_G">Greenland / Antarctica Elevation</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MCD12C1_T1"><img src="/images/datasets/132x66/MCD12C1_T1.jpg" width="132" height="66" alt="Land Cover Classification"></a>
+                                <h3><a href="/view.php?datasetId=MCD12C1_T1">Land Cover Classification</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MOD_LSTAD_M"><img src="/images/datasets/132x66/MOD_LSTAD_M.jpg" width="132" height="66" alt="Land Surface Temperature Anomaly [Day]"></a>
+                                <h3><a href="/view.php?datasetId=MOD_LSTAD_M">Land Surface Temperature Anomaly [Day]</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MOD_LSTAN_M"><img src="/images/datasets/132x66/MOD_LSTAN_M.jpg" width="132" height="66" alt="Land Surface Temperature Anomaly [Night]"></a>
+                                <h3><a href="/view.php?datasetId=MOD_LSTAN_M">Land Surface Temperature Anomaly [Night]</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MOD11C1_M_LSTDA"><img src="/images/datasets/132x66/MOD11C1_M_LSTDA.jpg" width="132" height="66" alt="Land Surface Temperature [Day]"></a>
+                                <h3><a href="/view.php?datasetId=MOD11C1_M_LSTDA">Land Surface Temperature [Day]</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MOD11C1_M_LSTNI"><img src="/images/datasets/132x66/MOD11C1_M_LSTNI.jpg" width="132" height="66" alt="Land Surface Temperature [Night]"></a>
+                                <h3><a href="/view.php?datasetId=MOD11C1_M_LSTNI">Land Surface Temperature [Night]</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MOD15A2_M_LAI"><img src="/images/datasets/132x66/MOD15A2_M_LAI.jpg" width="132" height="66" alt="Leaf Area Index"></a>
+                                <h3><a href="/view.php?datasetId=MOD15A2_M_LAI">Leaf Area Index</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MOD17A2_M_PSN"><img src="/images/datasets/132x66/MOD17A2_M_PSN.jpg" width="132" height="66" alt="Net Primary Productivity"></a>
+                                <h3><a href="/view.php?datasetId=MOD17A2_M_PSN">Net Primary Productivity</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=PermafrostNSIDC"><img src="/images/datasets/132x66/PermafrostNSIDC.jpg" width="132" height="66" alt="Permafrost"></a>
+                                <h3><a href="/view.php?datasetId=PermafrostNSIDC">Permafrost</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=SCSIE_W"><img src="/images/datasets/132x66/SCSIE_W.jpg" width="132" height="66" alt="Sea Ice and Snow Extent, Northern Hemisphere"></a>
+                                <h3><a href="/view.php?datasetId=SCSIE_W">Sea Ice and Snow Extent, Northern Hemisphere</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=NISE_D"><img src="/images/datasets/132x66/NISE_D.jpg" width="132" height="66" alt="Sea Ice Concentration and Snow Extent, Global"></a>
+                                <h3><a href="/view.php?datasetId=NISE_D">Sea Ice Concentration and Snow Extent, Global</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MOD10C1_M_SNOW"><img src="/images/datasets/132x66/MOD10C1_M_SNOW.jpg" width="132" height="66" alt="Snow Cover"></a>
+                                <h3><a href="/view.php?datasetId=MOD10C1_M_SNOW">Snow Cover</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=SWE_M"><img src="/images/datasets/132x66/SWE_M.jpg" width="132" height="66" alt="Snow Water Equivalent"></a>
+                                <h3><a href="/view.php?datasetId=SWE_M">Snow Water Equivalent</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=SRTM_RAMP2_TOPO"><img src="/images/datasets/132x66/SRTM_RAMP2_TOPO.jpg" width="132" height="66" alt="Topography"></a>
+                                <h3><a href="/view.php?datasetId=SRTM_RAMP2_TOPO">Topography</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MYD_143D_RR"><img src="/images/datasets/132x66/MYD_143D_RR.jpg" width="132" height="66" alt="True Color (MODIS)"></a>
+                                <h3><a href="/view.php?datasetId=MYD_143D_RR">True Color (MODIS)</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=VIIRS_543D"><img src="/images/datasets/132x66/VIIRS_543D.jpg" width="132" height="66" alt="True Color (VIIRS)"></a>
+                                <h3><a href="/view.php?datasetId=VIIRS_543D">True Color (VIIRS)</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MOD13A2_M_NDVI"><img src="/images/datasets/132x66/MOD13A2_M_NDVI.jpg" width="132" height="66" alt="Vegetation Index [NDVI] 2000+ (MODIS)"></a>
+                                <h3><a href="/view.php?datasetId=MOD13A2_M_NDVI">Vegetation Index [NDVI] 2000+ (MODIS)</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=GRACE_LWE_M"><img src="/images/datasets/132x66/GRACE_LWE_M.jpg" width="132" height="66" alt="Water Equivalent Anomaly"></a>
+                                <h3><a href="/view.php?datasetId=GRACE_LWE_M">Water Equivalent Anomaly</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                        </div>
+                        <div class="bot"></div>
+                    </div>
+                    <div class="nav-life nav-hover">
+                        <div class="nav-content">
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MY1DMM_CHLORA"><img src="/images/datasets/132x66/MY1DMM_CHLORA.jpg" width="132" height="66" alt="Chlorophyll Concentration"></a>
+                                <h3><a href="/view.php?datasetId=MY1DMM_CHLORA">Chlorophyll Concentration</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MCD12C1_T1"><img src="/images/datasets/132x66/MCD12C1_T1.jpg" width="132" height="66" alt="Land Cover Classification"></a>
+                                <h3><a href="/view.php?datasetId=MCD12C1_T1">Land Cover Classification</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MOD15A2_M_LAI"><img src="/images/datasets/132x66/MOD15A2_M_LAI.jpg" width="132" height="66" alt="Leaf Area Index"></a>
+                                <h3><a href="/view.php?datasetId=MOD15A2_M_LAI">Leaf Area Index</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MOD17A2_M_PSN"><img src="/images/datasets/132x66/MOD17A2_M_PSN.jpg" width="132" height="66" alt="Net Primary Productivity"></a>
+                                <h3><a href="/view.php?datasetId=MOD17A2_M_PSN">Net Primary Productivity</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=SEDAC_POP"><img src="/images/datasets/132x66/SEDAC_POP.jpg" width="132" height="66" alt="Population"></a>
+                                <h3><a href="/view.php?datasetId=SEDAC_POP">Population</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MOD13A2_M_NDVI"><img src="/images/datasets/132x66/MOD13A2_M_NDVI.jpg" width="132" height="66" alt="Vegetation Index [NDVI] 2000+ (MODIS)"></a>
+                                <h3><a href="/view.php?datasetId=MOD13A2_M_NDVI">Vegetation Index [NDVI] 2000+ (MODIS)</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                        </div>
+                        <div class="bot"></div>
+                    </div>
+                    <div class="nav-ocean nav-hover">
+                        <div class="nav-content">
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=AVHRR_CLIM_M"><img src="/images/datasets/132x66/AVHRR_CLIM_M.jpg" width="132" height="66" alt="Average Sea Surface Temperature 1985-1997 (AVHRR)"></a>
+                                <h3><a href="/view.php?datasetId=AVHRR_CLIM_M">Average Sea Surface Temperature 1985-1997 (AVHRR)</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=GEBCO_BATHY"><img src="/images/datasets/132x66/GEBCO_BATHY.jpg" width="132" height="66" alt="Bathymetry"></a>
+                                <h3><a href="/view.php?datasetId=GEBCO_BATHY">Bathymetry</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=BlueMarbleNG-TB"><img src="/images/datasets/132x66/BlueMarbleNG-TB.jpg" width="132" height="66" alt="Blue Marble: Next Generation"></a>
+                                <h3><a href="/view.php?datasetId=BlueMarbleNG-TB">Blue Marble: Next Generation</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MY1DMM_CHLORA"><img src="/images/datasets/132x66/MY1DMM_CHLORA.jpg" width="132" height="66" alt="Chlorophyll Concentration"></a>
+                                <h3><a href="/view.php?datasetId=MY1DMM_CHLORA">Chlorophyll Concentration</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=GISS_TA_M"><img src="/images/datasets/132x66/GISS_TA_M.jpg" width="132" height="66" alt="Global Temperature Anomaly"></a>
+                                <h3><a href="/view.php?datasetId=GISS_TA_M">Global Temperature Anomaly</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=SCSIE_W"><img src="/images/datasets/132x66/SCSIE_W.jpg" width="132" height="66" alt="Sea Ice and Snow Extent, Northern Hemisphere"></a>
+                                <h3><a href="/view.php?datasetId=SCSIE_W">Sea Ice and Snow Extent, Northern Hemisphere</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=NISE_D"><img src="/images/datasets/132x66/NISE_D.jpg" width="132" height="66" alt="Sea Ice Concentration and Snow Extent, Global"></a>
+                                <h3><a href="/view.php?datasetId=NISE_D">Sea Ice Concentration and Snow Extent, Global</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=AQUARIUS_SSS_M"><img src="/images/datasets/132x66/AQUARIUS_SSS_M.jpg" width="132" height="66" alt="Sea Surface Salinity 2011-2015"></a>
+                                <h3><a href="/view.php?datasetId=AQUARIUS_SSS_M">Sea Surface Salinity 2011-2015</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=AVHRR_SST_M"><img src="/images/datasets/132x66/AVHRR_SST_M.jpg" width="132" height="66" alt="Sea Surface Temperature 1981-2006 (AVHRR)"></a>
+                                <h3><a href="/view.php?datasetId=AVHRR_SST_M">Sea Surface Temperature 1981-2006 (AVHRR)</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MWOI_SST_M"><img src="/images/datasets/132x66/MWOI_SST_M.jpg" width="132" height="66" alt="Sea Surface Temperature 1998+ (MWOI)"></a>
+                                <h3><a href="/view.php?datasetId=MWOI_SST_M">Sea Surface Temperature 1998+ (MWOI)</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=MYD28M"><img src="/images/datasets/132x66/MYD28M.jpg" width="132" height="66" alt="Sea Surface Temperature 2002+ (MODIS)"></a>
+                                <h3><a href="/view.php?datasetId=MYD28M">Sea Surface Temperature 2002+ (MODIS)</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                            <div class="nav-dataset">
+                                <a href="/view.php?datasetId=AMSRE_SSTAn_M"><img src="/images/datasets/132x66/AMSRE_SSTAn_M.jpg" width="132" height="66" alt="Sea Surface Temperature Anomaly 2002-2011 (AMSR-E)"></a>
+                                <h3><a href="/view.php?datasetId=AMSRE_SSTAn_M">Sea Surface Temperature Anomaly 2002-2011 (AMSR-E)</a></h3>
+                                <h5>&nbsp;</h5>
+                            </div>
+                        </div>
+                        <div class="bot"></div>
+                    </div>
+                    <div class="nav-planets nav-hover">
+                        <div class="nav-content">
+                        </div>
+                        <div class="bot"></div>
+                    </div>
+                </div>
+
+                <div class="nav-news"></div>
+                <div class="nav-about"></div>
+
+                <div id="slider-queue">
+                    <div class="nav-queue">
+                        <p><strong>Select 1 to 3 images in order to perform any analysis.</strong></p>
+                        <p>Look for &lsquo;Analyze this image&rsquo; and click on that link to add to your analysis queue.</p>
+                    </div>
+                    <div class="nav-analyze">
+                        <a class="analyze-close" href="javascript:;">close</a>
+                        <div class="nav-analyze-content" id="icebox"></div>
+                        <div class="nav-analyze-bot"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+<script src="/js/tinyscroller.js"></script>
+<script>
+	$(document).ready(function(e) {
+
+	    $(".fancyhelp").fancybox({
+            'type'      : 'iframe'
+        });
+
+	    // set the width of the scrolling area
+	    var width = 0;
+        $('.slider-elem').each(function() {
+            width += $(this).outerWidth( true );
+        });
+        $('#timeline').css('width', width + 0);
+
+        // initialize the scroller
+        if ($('#timeline').length > 0) {
+		    $('#scrollbar1').tinyscrollbar({ axis: 'x', size: 643, sizethumb: 122 });
+		}
+
+    });
+
+    function gotoURL(param,value) {
+		// set the base url
+		curURL = document.URL;
+
+        // eliminate the date parameter if it exists in a year change
+        if (param == 'year') {
+			curURL = removeParam('date', curURL);
+        }
+
+		if ($.getUrlVar(param) != null) {
+            oldValue = ($.getUrlVar(param));
+            newLoc = curURL.replace(oldValue,value);
+        } else {
+			newLoc = curURL+'&'+param+'='+value;
+        }
+		location.href=newLoc;
+    }
+
+    $.extend({
+        getUrlVars: function() {
+            var vars = [], hash;
+            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            for(var i = 0; i < hashes.length; i++)
+            {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        },
+        getUrlVar: function(name) {
+            return $.getUrlVars()[name];
+        }
+    });
+
+	function removeParam(key, sourceURL) {
+	    var rtn = sourceURL.split("?")[0],
+	        param,
+	        params_arr = [],
+	        queryString = (sourceURL.indexOf("?") !== -1) ? sourceURL.split("?")[1] : "";
+	    if (queryString !== "") {
+	        params_arr = queryString.split("&");
+	        for (var i = params_arr.length - 1; i >= 0; i -= 1) {
+	            param = params_arr[i].split("=")[0];
+	            if (param === key) {
+	                params_arr.splice(i, 1);
+	            }
+	        }
+	        rtn = rtn + "?" + params_arr.join("&");
+	    }
+	    return rtn;
+	}
+
+</script>
+
+        <div id="content">
+
+            <div class="col-double">
+
+                <div class="col-l">
+
+                    <div class="box">
+
+                        <div class="mid">
+                            <div class="full-hd-image">
+                                <h2>Vegetation Index [NDVI] (16 day - Terra/MODIS)</h2>
+                            </div>
+
+                            <div class="full-hd-sub basic view">
+                                <img class="wide" id="preview-image" src="http://neo.sci.gsfc.nasa.gov/servlet/RenderData?si=1710813&cs=rgb&format=JPEG&width=720&height=360" width="720" height="360" alt="Vegetation Index [NDVI] (16 day - Terra/MODIS) | NASA" title="Vegetation Index [NDVI] (16 day - Terra/MODIS) | NASA">
+
+                                <div class="dataset-info">
+                                    <div id="view-by">
+                                        <div id="view-by-date">
+                                            <p><strong>View by date:</strong></p>
+                                            <div class="date-container">
+                                                    <a class="date selected" href="view.php?datasetId=MOD13A2_E_NDVI&date=2016-12-13">16 day</a>
+                                                    <a class="date" href="view.php?datasetId=MOD13A2_M_NDVI&date=2016-12-13">1 mo</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="colorbar">
+                                        <img src="http://neo.sci.gsfc.nasa.gov/palettes/modis_ndvi.png" width="200">
+                                        <p><a href="http://neo.sci.gsfc.nasa.gov/palettes/modis_ndvi.act">Download color table</a> <a class="fancyhelp btn-info" href="/parts/help_act.php">info</a></p>
+                                    </div>
+                                </div>
+
+                                <div class="dataset-timeline">
+                                    <div id="timeline-head">
+                                        <p><strong>Dataset you are currently viewing:</strong> <span id="dataset-date"></span></p>
+                                        <div class="year-select">
+                                            <p><strong>Select Year</strong>&nbsp;
+                                            <select name="year-list" id="year-list" onchange="gotoURL('year',this.value)">
+                                                <option value="2016" selected>2016</option>
+                                                <option value="2015">2015</option>
+                                                <option value="2014">2014</option>
+                                                <option value="2013">2013</option>
+                                                <option value="2012">2012</option>
+                                                <option value="2011">2011</option>
+                                                <option value="2010">2010</option>
+                                                <option value="2009">2009</option>
+                                                <option value="2008">2008</option>
+                                                <option value="2007">2007</option>
+                                                <option value="2006">2006</option>
+                                                <option value="2005">2005</option>
+                                                <option value="2004">2004</option>
+                                                <option value="2003">2003</option>
+                                                <option value="2002">2002</option>
+                                                <option value="2001">2001</option>
+                                                <option value="2000">2000</option>
+                                            </select>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div id="scrollbar1">
+
+
+<div class="viewport viewport-days">
+    <div id="timeline" class="overview days">
+
+
+        <div class="slider-elem days">
+            <div class="ui-datepicker-title">
+                <span class="ui-datepicker-month">January</span>
+                <span class="ui-datepicker-year">2016</span>
+            </div>
+            <div class="date-range" id="2016-01-01">
+                <a onclick="viewDataset('1699762','2016-01-01','2016-01-17');" href="javascript:void(0);"><span class="date-left">Jan 1</span><span class="date-right">Jan 17</span></a>
+            </div>
+            <div class="date-range" id="2016-01-17">
+                <a onclick="viewDataset('1700276','2016-01-17','2016-02-02');" href="javascript:void(0);"><span class="date-left">Jan 17</span><span class="date-right">Feb 2</span></a>
+            </div>
+        </div>
+
+        <div class="slider-elem days">
+            <div class="ui-datepicker-title">
+                <span class="ui-datepicker-month">February</span>
+                <span class="ui-datepicker-year">2016</span>
+            </div>
+            <div class="date-range" id="2016-02-02">
+                <a onclick="viewDataset('1701940','2016-02-02','2016-02-18');" href="javascript:void(0);"><span class="date-left">Feb 2</span><span class="date-right">Feb 18</span></a>
+            </div>
+            <div class="date-range" id="2016-02-18">
+                <a onclick="viewDataset('1701941','2016-02-18','2016-03-06');" href="javascript:void(0);"><span class="date-left">Feb 18</span><span class="date-right">Mar 6</span></a>
+            </div>
+        </div>
+
+        <div class="slider-elem days">
+            <div class="ui-datepicker-title">
+                <span class="ui-datepicker-month">March</span>
+                <span class="ui-datepicker-year">2016</span>
+            </div>
+            <div class="date-range" id="2016-03-06">
+                <a onclick="viewDataset('1701942','2016-03-06','2016-03-22');" href="javascript:void(0);"><span class="date-left">Mar 6</span><span class="date-right">Mar 22</span></a>
+            </div>
+            <div class="date-range" id="2016-03-22">
+                <a onclick="viewDataset('1702629','2016-03-22','2016-04-07');" href="javascript:void(0);"><span class="date-left">Mar 22</span><span class="date-right">Apr 7</span></a>
+            </div>
+        </div>
+
+        <div class="slider-elem days">
+            <div class="ui-datepicker-title">
+                <span class="ui-datepicker-month">April</span>
+                <span class="ui-datepicker-year">2016</span>
+            </div>
+            <div class="date-range" id="2016-04-07">
+                <a onclick="viewDataset('1703293','2016-04-07','2016-04-23');" href="javascript:void(0);"><span class="date-left">Apr 7</span><span class="date-right">Apr 23</span></a>
+            </div>
+            <div class="date-range" id="2016-04-23">
+                <a onclick="viewDataset('1703918','2016-04-23','2016-05-09');" href="javascript:void(0);"><span class="date-left">Apr 23</span><span class="date-right">May 9</span></a>
+            </div>
+        </div>
+
+        <div class="slider-elem days">
+            <div class="ui-datepicker-title">
+                <span class="ui-datepicker-month">May</span>
+                <span class="ui-datepicker-year">2016</span>
+            </div>
+            <div class="date-range" id="2016-05-09">
+                <a onclick="viewDataset('1704431','2016-05-09','2016-05-25');" href="javascript:void(0);"><span class="date-left">May 9</span><span class="date-right">May 25</span></a>
+            </div>
+        </div>
+
+        <div class="slider-elem days">
+            <div class="ui-datepicker-title">
+                <span class="ui-datepicker-month">June</span>
+                <span class="ui-datepicker-year">2016</span>
+            </div>
+            <div class="date-range" id="2016-06-10">
+                <a onclick="viewDataset('1706145','2016-06-10','2016-06-26');" href="javascript:void(0);"><span class="date-left">Jun 10</span><span class="date-right">Jun 26</span></a>
+            </div>
+            <div class="date-range" id="2016-06-26">
+                <a onclick="viewDataset('1706146','2016-06-26','2016-07-12');" href="javascript:void(0);"><span class="date-left">Jun 26</span><span class="date-right">Jul 12</span></a>
+            </div>
+        </div>
+
+        <div class="slider-elem days">
+            <div class="ui-datepicker-title">
+                <span class="ui-datepicker-month">July</span>
+                <span class="ui-datepicker-year">2016</span>
+            </div>
+            <div class="date-range" id="2016-07-12">
+                <a onclick="viewDataset('1706915','2016-07-12','2016-07-28');" href="javascript:void(0);"><span class="date-left">Jul 12</span><span class="date-right">Jul 28</span></a>
+            </div>
+        </div>
+
+        <div class="slider-elem days">
+            <div class="ui-datepicker-title">
+                <span class="ui-datepicker-month">August</span>
+                <span class="ui-datepicker-year">2016</span>
+            </div>
+            <div class="date-range" id="2016-08-13">
+                <a onclick="viewDataset('1707776','2016-08-13','2016-08-29');" href="javascript:void(0);"><span class="date-left">Aug 13</span><span class="date-right">Aug 29</span></a>
+            </div>
+            <div class="date-range" id="2016-08-29">
+                <a onclick="viewDataset('1708504','2016-08-29','2016-09-14');" href="javascript:void(0);"><span class="date-left">Aug 29</span><span class="date-right">Sep 14</span></a>
+            </div>
+        </div>
+
+        <div class="slider-elem days">
+            <div class="ui-datepicker-title">
+                <span class="ui-datepicker-month">September</span>
+                <span class="ui-datepicker-year">2016</span>
+            </div>
+            <div class="date-range" id="2016-09-14">
+                <a onclick="viewDataset('1709180','2016-09-14','2016-09-30');" href="javascript:void(0);"><span class="date-left">Sep 14</span><span class="date-right">Sep 30</span></a>
+            </div>
+            <div class="date-range" id="2016-09-30">
+                <a onclick="viewDataset('1709578','2016-09-30','2016-10-16');" href="javascript:void(0);"><span class="date-left">Sep 30</span><span class="date-right">Oct 16</span></a>
+            </div>
+        </div>
+
+        <div class="slider-elem days">
+            <div class="ui-datepicker-title">
+                <span class="ui-datepicker-month">October</span>
+                <span class="ui-datepicker-year">2016</span>
+            </div>
+            <div class="date-range" id="2016-10-16">
+                <a onclick="viewDataset('1710077','2016-10-16','2016-11-01');" href="javascript:void(0);"><span class="date-left">Oct 16</span><span class="date-right">Nov 1</span></a>
+            </div>
+        </div>
+
+        <div class="slider-elem days">
+            <div class="ui-datepicker-title">
+                <span class="ui-datepicker-month">November</span>
+                <span class="ui-datepicker-year">2016</span>
+            </div>
+            <div class="date-range" id="2016-11-01">
+                <a onclick="viewDataset('1710813','2016-11-01','2016-11-17');" href="javascript:void(0);"><span class="date-left">Nov 1</span><span class="date-right">Nov 17</span></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/date.js"></script>
+<script>
+
+$('#dataset-date').text('November 1 - 17, 2016');
+
+// onclick calendar action
+function viewDataset(newSceneImageId, startDate, endDate)
+{
+
+    // remove the current flag from the old entry
+    removeCurrentFlags();
+
+    $('#'+startDate).addClass('selected');
+
+	startDateLink = startDate;
+    // add time to the end of the passed date to get the correct dates
+    startDate = startDate+'T12:00:00Z'; // 12 is set here to get chrome on the correct date
+    endDate = endDate+'T12:00:00Z'; // 12 is set here to get chrome on the correct date
+
+    // create date objects
+    startDateObj = new Date(startDate);
+    endDateObj = new Date(endDate);
+
+    // update the "currently viewing" text
+    var startMonth = $.datepicker.formatDate('MM', startDateObj);
+    var startDay = $.datepicker.formatDate('d', startDateObj);
+    var startYear = $.datepicker.formatDate('yy', startDateObj);
+
+    var endMonth = $.datepicker.formatDate('MM', endDateObj);
+    var endDay = $.datepicker.formatDate('d', endDateObj);
+    var endYear = $.datepicker.formatDate('yy', endDateObj);
+
+    if (startYear != endYear) {
+        var startDate = startMonth+' '+startDay+', '+startYear;
+    } else {
+        var startDate = startMonth+' '+startDay;
+    }
+
+    if (endMonth != startMonth) {
+        var endDate = endMonth+' '+endDay+', '+endYear;
+    } else {
+        var endDate = endDay+', '+endYear;
+    }
+
+    var date = startDate+' - '+endDate;
+    var dateString = $.datepicker.formatDate('dd-M-yy', startDateObj);
+    var unixTime = Date.parse(dateString).getTime()/1000;
+
+    // update the date text
+    $('#dataset-date').text(date);
+    $('#download-date').text(date);
+
+    // other stuff to make the dataset update should happen here
+    // udpate the downloads section so that the links have the dataset id and
+    // something to indicate the requested size
+    $.ajax({
+        url: "/lib/imageSizes.php?datasetId=MOD13A2_E_NDVI&curDate="+unixTime,
+        type: "POST",
+        dataType: "text",
+        data: { },
+        cache: false,
+        async: false,
+        success: function () {
+            $('.download').each(function() {
+
+                var queryParameters = {}, queryString = this.search.substring(1),
+                    re = /([^&=]+)=([^&]*)/g, m;
+                while (m = re.exec(queryString)) {
+                    queryParameters[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+                }
+
+                oldUrl = $(this).attr('href');
+                newUrl = oldUrl.replace(queryParameters['si'], newSceneImageId);
+                $(this).attr('href', newUrl);
+            });
+        },
+        error: function (request, status, error) {
+            alert ("status "+status+" error "+error+"responseText "+request.responseText);
+        },
+    });
+
+    // update the download data link, if necessary
+    if ($('#download-data').length) {
+        $.ajax({
+            url: "/lib/downloadData.php?datasetId=MOD13A2_E_NDVI&curDate="+unixTime,
+            type: "POST",
+            dataType: "text",
+            data: { },
+            cache: false,
+            async: false,
+            success: function (sceneInfo) {
+                sceneInfo = JSON.parse(sceneInfo);
+                $('#download-data').attr("href", sceneInfo['data_url']);
+                $('#data-size').html(sceneInfo['data_size']);
+            },
+            error: function (request, status, error) {
+                alert ("status "+status+" error "+error+"responseText "+request.responseText);
+            },
+        });
+    }
+
+	// update the date for timespan changes
+	$('.date').each(function() {
+		var loc = $(this).attr('href').split('?'), base = loc[0];
+		query = updateParam(loc, 'date', startDateLink);
+		// set the newly modified link
+		$(this).attr('href', base + query);
+	});
+
+	// update the sensor for timespan changes
+	if ($('.sens-link').length != 0) {
+		var loc = $('.sens-link').attr('href').split('?'), base = loc[0];
+		query = updateParam(loc, 'date', startDateLink);
+		// set the newly modified link
+		$('.sens-link').attr('href', base + query);
+	}
+
+	// update the permalink info
+	$('#permalink').attr("href", "view.php?datasetId=MOD13A2_E_NDVI&date="+startDateLink);
+
+    // update the preview image
+    // function contained in view.php
+    updatePreview(newSceneImageId);
+    toggleButton(newSceneImageId, "Vegetation Index [NDVI] (16 day - Terra/MODIS) "+date);
+}
+
+// this strips all the "current" flags on the calendar dates
+function removeCurrentFlags()
+{
+    $('.date-range').each(function() {
+        $(this).removeClass('selected');
+    });
+}
+
+$(document).ready(function() {
+
+    var width = 170;
+    var startPos = 0;
+    var handlePos = 0;
+	var monthArray = new Array();
+	var i = 0;
+	// create an array of months containing data to determine scrolling
+	$('.date-range').each(function() {
+        var dateArray = $(this).attr('id').split('-');
+        var month = dateArray[1];
+		if ($.inArray(month, monthArray) == -1) {
+			monthArray[i++] = month;
+		}
+	});
+
+	// set up each data view
+    $('.date-range').each(function() {
+
+        var dateArray = $(this).attr('id').split('-');
+
+        var month = dateArray[1];
+        var day = dateArray[2];
+        month = '' + month; // cast month as string
+        day = '' + day; // cast day as string
+        if (month.length < 2) {
+            month = '0' + month;
+        }
+        if (day.length < 2) {
+            day = '0' + day;
+        }
+        calDate = '2016-'+month+'-'+day;
+
+        // add the current flag
+        if (calDate == '2016-11-01') {
+            $('#'+$(this).attr('id')).addClass('selected');
+
+			// update the permalink info
+			$('#permalink').attr("href", "view.php?datasetId=MOD13A2_E_NDVI&date=2016-11-01");
+
+            startPos = width * parseInt(monthArray.length);
+            if (parseInt(monthArray.length) == 12) {
+                if (startPos > 1358) {
+                    startPos = 1358;
+                }
+            } else {
+                startPos = ((width * parseInt(monthArray.length)) - (width * 4.05))
+            }
+
+            handlePos = 57.6 * parseInt(month);
+            if (handlePos > 480) {
+                handlePos = 521;
+            }
+        }
+
+    });
+
+    // move slider to proper position
+    $('#timeline').css('left', '-'+startPos+'px');
+    $('#handle').css('left', handlePos+'px');
+});
+</script>                                        <div id="timeline-foot">
+                                            <div id="timeline-slider">
+
+                                                <!--slider goes here-->
+                                                <div class="scrollbar">
+                                                    <div class="track">
+                                                        <div class="thumb" id="handle">
+                                                            <div class="end"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div> <!-- close scrollbar1 -->
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="bot"></div>
+                    </div>
+
+                    <div class="box">
+
+                        <div class="mid">
+
+
+<script>
+
+var descArr = {"DESC_BEG":"<p>Our lives depend upon plants and trees.  They feed us and give us clothes.  They absorb carbon dioxide and give off oxygen we need to breathe.  Plants even provide many of our medicines and building materials.  So when the plants and trees around us change, these changes can affect our health, our environment, and our economy.  For these reasons, and more, scientists monitor plant life around the world.  Today, scientists use NASA satellites to map the \"greenness\" of all Earth's lands.  These <em>vegetation index<\/em> maps show where and how much green leaf vegetation was growing for the time period shown.<\/p>","DESC_INT":"<p>The colors on these maps show a measure of the \"greenness\" of Earth's landscapes.  The values on these maps&mdash;ranging from -0.1 to 0.9&mdash;have no unit.  Rather, they are index values in which higher values (0.4 to 0.9) show lands covered by green, leafy vegetation and lower values (0 to 0.4) show lands where there is little or no vegetation.<\/p>\r\n<p>As can be seen through a prism, many different wavelengths make up the spectrum of sunlight.  When sunlight shines on objects, certain wavelengths are absorbed and other wavelengths are reflected.  The pigment in plant leaves&mdash;<em>chlorophyll<\/em>&mdash;strongly absorbs visible light for use in photosynthesis.  The cell structure of the leaves, on the other hand, strongly reflects near-infrared light.  The more leaves a plant has, the more these wavelengths of light are affected.  Scientists exploit this knowledge of plants' interactions with light to map the density of green vegetation across Earth's landscapes by designing satellite sensors to measure the wavelengths of red and near-infrared light that is absorbed and reflected by plants all over the world.<\/p>\r\n<p>Subtracting plants' reflectance of red light from near-infrared light and then dividing that difference by the addition of the red and near-infrared light reflected produces a resulting value that scientists call Normalized Difference Vegetation Index (NDVI).  The NDVI maps shown here were made using data collected by the Moderate Resolution Imaging Spectroradiometer (MODIS) aboard NASA's Terra satellite.<\/p>\r\n<p>Plants are sensitive to their environment and so they serve as a good indicator whenever there is change.  Scientists routinely produce global NDVI maps to help them monitor and investigate shifts in plant growth patterns that occur in response to climate changes, environmental changes, and changes caused by humans.  Farmers and resource managers also use NDVI maps to help them monitor the health of our forests and croplands.  So these maps are useful both for scientific research as well as societal benefit.<\/p>","DESC_ADV":"<p>One of the primary interests of NASA's Earth Sciences Program is to study the role of terrestrial vegetation in large-scale processes with the goal of understanding how our world functions as a system.  Reaching this goal requires an understanding of the global distribution of vegetation types, their biophysical and structural properties, and their variations over time and space.  Remote-sensing observations offer the opportunity to monitor, quantify, and investigate large-scale changes in vegetation in response to human actions as well as climatic and environmental changes.  In short, vegetation can serve as a sensitive indicator of climatic and anthropogenic influences on the environment.<\/p>\r\n<p>The maps shown here, called Normalized Difference Vegetation Index (NDVI), were produced using data collected by the Moderate Resolution Imaging Spectroradiometer (MODIS) aboard NASA's Terra satellite.  These NDVI maps are robust, empirical measures of vegetation activity at the land surface.  They are designed to enhance the vegetation signal from measured spectral responses by combining two (or more) different wavebands, often in the red (0.6-0.7 mm) and near-infrared wavelengths (0.7-1.1 mm).  Reflected red energy decreases with plant development due to chlorophyll absorption within actively photosynthetic leaves. Reflected near-infrared energy, on the other hand, will increase with plant development through scattering processes (reflection and transmission) in healthy, turgid leaves.  Unfortunately &mdash; because the amount of red and near-infrared radiation reflected from a plant canopy and reaching a satellite sensor varies with solar irradiance, atmospheric conditions, canopy background, canopy structure, and canopy composition &mdash; one cannot use a simple measure of reflected energy to quantify plant biophysical parameters nor monitor vegetation on a global, operational basis.  This problem is made more difficult due to the intricate radiant transfer processes at both the leaf level (i.e., cell constituents, leaf morphology) and canopy level (i.e., leaf elements, orientation, non-photosynthetic vegetation, and background).<\/p>\r\n<p>But Vegetation Indices circumvent these problems somewhat by combining two or more bands into an equation, such as the one for NDVI.  Producing a measure of NDVI requires dividing the difference between red and near-infrared reflectance values by the sum of those same two values.  The result produces a global measure of the \"greenness\" of vegetation across Earth's landscapes for a given composite period.  These MODIS NDVI maps provide consistent, spatial and temporal comparisons of global vegetation conditions that scientists use to monitor Earth's terrestrial photosynthetic vegetation activity in support of phenologic research, change detection, and biophysical interpretations.  Such maps are also used for a wide variety of land applications, including natural resource management, agriculture, and the operational Famine Early Warning Systems (FEWS).  The FEWS work is one of a number of examples in which NASA satellite data are currently being used to help inform policy decisions.<\/p>"};
+
+$(document).ready(function() {
+    $('.dataset-detail a').click(function(e) {
+        e.preventDefault();
+        $('.dataset-detail a').each(function() {
+            $(this).removeClass('selected');
+        });
+        $(this).addClass('selected');
+        var viewType = $(this).attr('id');
+        if (viewType == 'view-intermediate') {
+            $('#description-text').html(descArr['DESC_INT']);
+        } else if (viewType == 'view-advanced') {
+            $('#description-text').html(descArr['DESC_ADV']);
+        } else {
+            $('#description-text').html(descArr['DESC_BEG']);
+        }
+    });
+});
+
+</script>
+
+<div class="full-hd-sub basic view">
+    <h1>About this dataset</h1>
+
+    <div class="dataset-detail">
+        <a href="javascript:;" id="view-basic" class="selected">Basic</a>
+        <a href="javascript:;" id="view-intermediate">Intermediate</a>
+        <a href="javascript:;" id="view-advanced">Advanced</a>
+    </div>
+
+    <div class="divi"></div>
+
+    <span id="description-text">
+        <p>Our lives depend upon plants and trees.  They feed us and give us clothes.  They absorb carbon dioxide and give off oxygen we need to breathe.  Plants even provide many of our medicines and building materials.  So when the plants and trees around us change, these changes can affect our health, our environment, and our economy.  For these reasons, and more, scientists monitor plant life around the world.  Today, scientists use NASA satellites to map the "greenness" of all Earth's lands.  These <em>vegetation index</em> maps show where and how much green leaf vegetation was growing for the time period shown.</p>    </span>
+
+</div>
+                        </div>
+                        <div class="bot"></div>
+                    </div>
+
+                </div>
+
+                <div class="col-r">
+
+                    <div class="box analyze">
+                        <div class="mid">
+                            <div class="side-hd">
+                                <h3>
+                                    <span class="arr"></span>
+                                    <span class="l"></span>
+                                    <a href="javascript:;" onclick="addSceneImage('1710813','Vegetation Index [NDVI] (16 day - Terra/MODIS) November 1 - 17, 2016', 'http://neo.sci.gsfc.nasa.gov/servlet/');" id="btn-analyze-image" class="btn-analyze-image hover">Add to Analysis</a>
+                                </h3>
+                            </div>
+                            <div class="side-post">
+                               <div class="details">
+                                    <p>Currently viewing:</p>
+                                    <h3><span id="download-date">November 1 - 17, 2016</span></h3>
+
+									<p><strong><a id="permalink" class="permalink" href="view.php?datasetId=MOD13A2_E_NDVI&date=2016-11-01">Permalink</a></strong></p>
+                                </div>
+
+<div class="downloads">
+    <h3>Downloads <a class="fancyhelp btn-info" href="/parts/help_download.php">info</a></h3>
+
+    <form>
+        <table>
+            <tr>
+                <th>File Type:</th>
+                <td>
+                    <select class="updateFormat">
+                        <option value="JPEG" selected="selected">
+							JPEG
+						</option>
+						<option value="PNG">
+							PNG
+						</option>
+                        <option value="FLOAT.TIFF">
+                            GeoTIFF (floating point)
+                        </option>
+                         <option value="TIFF">
+                            GeoTIFF (raster)
+                        </option>
+
+						<option value="">
+						    -----
+						</option>
+						<option value="CSV">
+							CSV
+						</option>
+						<option value="SS.CSV">
+							CSV for Excel
+						</option>
+                        <option value="KMZ">
+                            Google Earth
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="color-option">
+                <th colspan="2">
+                    <input type="radio" name="colorbar-select" class="updateColor" id="colorbar-color" value="rgb" checked>&nbsp;<label for="colorbar-color">Color</label>
+                    <input type="radio" name="colorbar-select" class="updateColor" id="colorbar-grayscale" value="gs">&nbsp;<label for="colorbar-grayscale">Grayscale</label>
+                </th>
+            </tr>
+
+            <tr class="size-option">
+                <th>1.0 degrees</th>
+                <td><strong><a href="http://neo.sci.gsfc.nasa.gov/servlet/RenderData?si=1710813&cs=rgb&format=JPEG&width=360&height=180" class="download" target="_blank">360 x 180</a></strong> <a href="http://neo.sci.gsfc.nasa.gov/servlet/RenderData?si=1710813&cs=rgb&format=JPEG&width=360&height=180" class="download download-link" target="_blank">download</a></td>
+            </tr>
+
+
+            <tr class="size-option">
+                <th>0.5 degrees</th>
+                <td><strong><a href="http://neo.sci.gsfc.nasa.gov/servlet/RenderData?si=1710813&cs=rgb&format=JPEG&width=720&height=360" class="download" target="_blank">720 x 360</a></strong> <a href="http://neo.sci.gsfc.nasa.gov/servlet/RenderData?si=1710813&cs=rgb&format=JPEG&width=720&height=360" class="download download-link" target="_blank">download</a></td>
+            </tr>
+
+
+            <tr class="size-option">
+                <th>0.25 degrees</th>
+                <td><strong><a href="http://neo.sci.gsfc.nasa.gov/servlet/RenderData?si=1710813&cs=rgb&format=JPEG&width=1440&height=720" class="download" target="_blank">1440 x 720</a></strong> <a href="http://neo.sci.gsfc.nasa.gov/servlet/RenderData?si=1710813&cs=rgb&format=JPEG&width=1440&height=720" class="download download-link" target="_blank">download</a></td>
+            </tr>
+
+
+            <tr class="size-option">
+                <th>0.1 degrees</th>
+                <td><strong><a href="http://neo.sci.gsfc.nasa.gov/servlet/RenderData?si=1710813&cs=rgb&format=JPEG&width=3600&height=1800" class="download" target="_blank">3600 x 1800</a></strong> <a href="http://neo.sci.gsfc.nasa.gov/servlet/RenderData?si=1710813&cs=rgb&format=JPEG&width=3600&height=1800" class="download download-link" target="_blank">download</a></td>
+            </tr>
+
+			<tr class="sscsv">
+                <th colspan=2><strong><a href="http://neo.sci.gsfc.nasa.gov/servlet/RenderData?si=1710813&cs=gs&format=SS.CSV&width=250&height=125" target="_blank">CSV for Excel older than 2007</a></strong> <a href="http://neo.sci.gsfc.nasa.gov/servlet/RenderData?si=1710813&cs=rgb&format=JPEG&width=3600&height=1800" class="download download-link" target="_blank">download</a></th>
+			</tr>
+        </table>
+    </form>
+
+</div>
+
+<script>
+    // update the download request format
+    $('.updateFormat').change(function() {
+
+        $('.download').each(function() {
+
+            var format = $('.updateFormat option:selected').val();
+			if (format == 'SS.CSV') {
+				// hide the color and download options, showing only the csv excel download
+				$('.color-option').hide();
+				$('.size-option').show();
+				$('.sscsv').show();
+			} else if ((format == 'CSV') || (format == 'FLOAT.TIFF')) {
+				$('.color-option').hide();
+				$('.sscsv').hide();
+			} else {
+				// check to see if csv is currently being shown, and hide if it is
+				if ($('.sscsv').is(":visible")) {
+					$('.sscsv').hide();
+					$('.color-option').show();
+					$('.size-option').show();
+				}
+			}
+
+            if (format == '') {
+                format = 'JPEG';
+            }
+            var queryParameters = {}, queryString = this.search.substring(1),
+                re = /([^&=]+)=([^&]*)/g, m;
+            while (m = re.exec(queryString)) {
+                queryParameters[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+            }
+
+            oldUrl = $(this).attr('href');
+            newUrl = oldUrl.replace(queryParameters['format'], format);
+            $(this).attr('href', newUrl);
+
+			// show the modal popup if CSV related
+			if (
+				format == 'CSV' ||
+				format == 'SS.CSV' ||
+				format == 'FLOAT.TIFF'
+			) {
+				if ($.cookie('neo_alert_status') != '1') {
+					$.fancybox({
+						'width': 600,
+						'height': 700,
+						'type': 'iframe',
+						'href': '/parts/help_alert.php',
+					});
+					$.cookie('neo_alert_status', '1', { expires: 365});
+				}
+			}
+        });
+
+    });
+
+    // update the color options for download
+    $('.updateColor').change(function() {
+
+        $('.download').each(function() {
+
+            var cs = $('input[name="colorbar-select"]:checked').val();
+            if (cs == '') {
+                cs = 'rgb';
+            }
+
+            var queryParameters = {}, queryString = this.search.substring(1),
+                re = /([^&=]+)=([^&]*)/g, m;
+            while (m = re.exec(queryString)) {
+                queryParameters[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+            }
+
+            renderPath = 'http://neo.sci.gsfc.nasa.gov/servlet/';
+            oldUrl = $(this).attr('href');
+            oldUrl = oldUrl.replace(renderPath, 'xxx');
+            tempUrl = oldUrl.replace(queryParameters['cs'], cs);
+            newUrl = tempUrl.replace('xxx', renderPath);
+            $(this).attr('href', newUrl);
+
+        });
+
+    });
+</script>                            </div>
+                        </div>
+                    </div>
+
+
+<div class="box">
+    <div class="mid">
+
+
+        <div class="side-hd">
+            <h4>What do the colors mean?</h4>
+        </div>
+        <div class="side-post">
+            <p>Dark green areas show where there was a lot of green leaf growth; light greens show where there was some green leaf growth; and tan areas show little or no growth. Black means "no data."</p>
+        </div>
+        <div class="side-post-divi"></div>
+
+        <div class="side-hd">
+            <h4>Related Websites</h4>
+        </div>
+        <div class="side-post">
+
+        <p><a href="http://modis.gsfc.nasa.gov/">MODIS</a><br /></p>
+
+        <p><a href="http://terra.nasa.gov/">Terra</a><br /></p>
+
+        <p><a href="http://modis-land.gsfc.nasa.gov/">MODIS Land Science Team</a><br /></p>
+        </div>
+
+        <div class="side-post-divi"></div>
+        <div class="side-hd">
+            <h4>Further Reading</h4>
+        </div>
+        <div class="side-post">
+
+        <p><a href="http://earthobservatory.nasa.gov/Features/MeasuringVegetation/">Measuring Vegetation (NASA Earth Observatory)</a><br /></p>
+        </div>
+
+        <div class="side-post-divi"></div>
+        <div class="side-hd">
+            <h4>ATBD (Algorithm Theoretical Basis Document)</h4>
+        </div>
+        <div class="side-post">
+
+        <p><a href="http://eospso.gsfc.nasa.gov/sites/default/files/atbd/atbd_mod13.pdf">MODIS Vegetation Index</a><br /></p>
+        </div>
+
+        <div class="side-post-divi"></div>
+        <div class="side-hd">
+            <h4>Credits</h4>
+        </div>
+        <div class="side-post">
+
+        <p>Images by Reto Stockli, NASA's Earth Observatory Group, using data provided by the MODIS Land Science Team.<br /></p>
+        </div>
+
+        <div class="side-post-divi"></div>
+
+        <div class="side-hd">
+            <h4>Federal Geographic Data Committee Geospatial Metadata</h4>
+        </div>
+        <div class="side-post">
+            <p>View the <a href="http://neo.sci.gsfc.nasa.gov/servlet/FGDCMetadata?datasetId=MOD13A2_E_NDVI" target="_blank">FGDC Metatdata</a> for Vegetation Index [NDVI] (16 day - Terra/MODIS)</p>
+        </div>
+
+
+    </div>
+    <div class="bot"></div>
+</div>
+
+<div class="side-tip">
+    <h2>Quick Tip</h2>
+    <p id="quick-tip"></p>
+    <p id="new-tip"><a href="javascript:;" onclick="randomTip(quickTips, x);">View another tip</a></p>
+</div>
+
+
+
+<script>
+
+    var quickTips = new Array();
+    quickTips[0] = "The <strong>Image Composite Explorer</strong> (ICE) is a simple analytical tool that allows you to select datasets for side-by-side comparison. Look for the &ldquo;Add to Analysis&rdquo; link on most datasets to get started.";
+    quickTips[1] = "Want all the images from a single dataset in either color or grayscale? Try downloading them from our <a href='/about/ftp.php'>ftp site</a>.";
+    //quickTips[2] = "3";
+    //quickTips[3] = "4";
+    //quickTips[4] = "5";
+
+    var x = Math.floor((quickTips.length)*Math.random());
+
+    function randomTip(tips, old) {
+        var i = Math.floor((tips.length)*Math.random());
+        if (typeof old !== 'undefined') {
+            while (i == old) {
+                i = Math.floor((tips.length)*Math.random());
+            }
+        }
+        $('#quick-tip').html(tips[i]);
+        x = i;
+    }
+
+    randomTip(quickTips);
+</script>
+                </div>
+
+                <div class="cf"></div>
+
+            </div>
+
+        </div>
+
+        <script>
+            function updatePreview(sceneImageID)
+            {
+                $("#preview-image").attr("src", "http://neo.sci.gsfc.nasa.gov/servlet/RenderData?si="+sceneImageID+"&cs=rgb&format=JPEG&width=720&height=360");
+                $("#btn-analyze-image").attr("onclick", "addSceneImage('"+sceneImageID+"','Vegetation Index [NDVI] (16 day - Terra/MODIS)','http://neo.sci.gsfc.nasa.gov/servlet/')");
+            }
+        </script>
+
+        <div id="footer">
+            <div id="footer-in">
+
+                <div class="footer-btn">
+                    <a href="/blog/feed/" alt="RSS Feeds"><img src="/images/buttons/btn-share-rss.png" height="32" width="32" alt="RSS Feeds"></a>
+                    <a href="https://www.facebook.com/NASAEarthObservations" alt="Find us on Facebook"><img src="/images/buttons/btn-share-facebook.png" height="32" width="32" alt="Find us on Facebook"></a>
+                    <a href="/subscribe/" alt="Subscribe"><img src="/images/buttons/btn-share-email.png" height="32" width="32" alt="Subscribe"></a>
+                </div>
+                <div class="footer-sub">
+                    <a href="/subscribe/">Subscribe to NEO</a>
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="/dataset_index.php">Dataset Index</a></li>
+                        <li><a href="/about/wms.php">WMS</a></li>
+                        <li><a href="/about/ftp.php">FTP Bulk Download</a></li>
+                        <li><a href="#contact" class="contact-link">Contact Us</a></li>
+                        <li><a href="http://www.nasa.gov/about/highlights/HP_Privacy.html">Privacy Policy &amp; Important Notices</a></li>
+                    </ul>
+
+					<ul id="fed-links">
+						<li><a href="http://nca2014.globalchange.gov/">National Climate Assessment</a></li>
+						<li><a href="http://toolkit.climate.gov/">Climate Resilience Toolkit</a></li>
+						<li><a href="http://climate.data.gov/">Climate Data Initiative</a></li>
+					</ul>
+
+                    <p>NASA Earth Observations is part of the <a href="http://eospso.nasa.gov/">EOS Project Science Office</a> located at <a href="http://www.nasa.gov/goddard/">NASA Goddard Space Flight Center</a><br>
+                    webmaster: <a href="#contact" class="contact-link">Paul Przyborski</a> | NASA official: <a href="#contact" class="contact-link">Charles Ichoku</a></p>
+                </div>
+
+            </div>
+        </div>
+
+<script>
+    $(function() {
+        $("#contact-submit").click(function() {
+
+            var email = $("input#email").val();
+            var subject = $("input#subject").val();
+            var message = $("textarea#message").val();
+
+            var dataString = 'email=' + email + '&subject=' + subject + '&message=' + message;
+            //alert (dataString);return false;
+            $.ajax({
+                type: "POST",
+                url: "/lib/message.php",
+                data: dataString,
+                success: function() {
+                    $('#contact-message').html("<h3>Contact Form Submitted!</h3>")
+                    .append("<p>We will be in touch soon.</p>")
+                }
+            });
+            return false;
+        });
+    });
+</script>
+
+<div id="contact-window" class="white">
+	<div id="contact">
+        <div id="contact-message">
+            <h3>Contact Us</h3>
+            <p>Need to get a hold of someone at NEO? Just fill out the form below.</p>
+            <form name="contact" action="">
+                <p><label for="email"><strong>Your email address</strong></label><br />
+                <input id="email" name="email" type="email" size="59" value="" required></p>
+
+    		    <p><label for="subject"><strong>Subject of your message</strong></label><br />
+                <input id="subject" name="subject" type="text" size="59" value="" required></p>
+
+                <p><label for="message"><strong>Your message</strong></label><br />
+                <textarea rows="20" cols="57" id="message" name="message" required></textarea></p>
+
+                <input id="contact-submit" class="btn-submit" name="submit" type="submit" value="Submit">
+
+                <br />
+                <p><em>Trouble with this form?  <a href="/contact.php">Submit your comment here</a>.</em></p>
+            </form>
+        </div>
+	</div>
+</div>
+    </body>
+</html>
