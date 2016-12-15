@@ -20,7 +20,7 @@
 import glob
 import os
 import datetime
-from urlparse import urljoin, urlparse, parse_qs
+from urlparse import urlparse, parse_qs
 from dataqs.ndvi16modis.ndvi16modis import NDVI16MODISProcessor
 from django.test import TestCase
 import httpretty
@@ -42,6 +42,7 @@ def get_test_page():
     """
     with open(os.path.join(script_dir, 'resources/test_ndvi.html'), 'r') as inf:
         return inf.read()
+
 
 class NDVI16MODISProcessorTest(TestCase):
     """

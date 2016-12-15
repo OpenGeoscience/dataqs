@@ -152,4 +152,3 @@ photosynthetic vegetation, and background)."""
 if __name__ == '__main__':
     processor = NDVI16MODISProcessor()
     processor.run()
-
