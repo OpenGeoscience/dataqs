@@ -29,13 +29,10 @@ from geoserver.catalog import Catalog, FailedRequestError
 import psycopg2
 import re
 import sys
-from StringIO import StringIO
-import rasterio
-from osgeo import gdal, ogr
-from osr import SpatialReference
-from rasterio.warp import RESAMPLING
-from rasterio.warp import calculate_default_transform, reproject
 import unicodedata
+from StringIO import StringIO
+from osgeo import gdal
+from osgeo.osr import SpatialReference
 from geonode.geoserver.helpers import ogc_server_settings
 import ogr2ogr
 
@@ -310,42 +307,38 @@ def gdal_band_subset(infile, bands, dst_filename, dst_format="GTiff"):
         out_ds = None
 
 
-def warp_image(infile, outfile, dst_crs="EPSG:3857", dst_driver='GTiff'):
+def warp_image(infile, outfile, dst_crs=3857, dst_driver='GTiff',
+               threshold=0.125, resampling=gdal.GRA_NearestNeighbour):
     """
-    Use rasterio to warp an image from one projection to another
+    Use GDAL to warp an image from one projection to another
     :param infile: Origina raster image
     :param outfile: Warped raster image
     :param dst_crs: Output projection
     :param dst_driver: Output filetype driver
+    :param threshold: error threshold
+    :param resampling: Resampling method
     :return: None
     """
-    with rasterio.drivers(CPL_DEBUG=False):
-        with rasterio.open(infile) as src:
-            res = None
-            dst_transform, dst_width, dst_height = calculate_default_transform(
-                src.crs, dst_crs, src.width, src.height,
-                *src.bounds, resolution=res)
-            out_kwargs = src.meta.copy()
-            out_kwargs.update({
-                'crs': dst_crs,
-                'transform': dst_transform,
-                'affine': dst_transform,
-                'width': dst_width,
-                'height': dst_height,
-                'driver': dst_driver
-            })
+    # Open source dataset
+    src_ds = gdal.Open(infile)
 
-            with rasterio.open(outfile, 'w', **out_kwargs) as dst:
-                for i in range(1, src.count + 1):
-                    reproject(
-                        source=rasterio.band(src, i),
-                        destination=rasterio.band(dst, i),
-                        src_transform=src.affine,
-                        src_crs=src.crs,
-                        dst_transform=out_kwargs['transform'],
-                        dst_crs=out_kwargs['crs'],
-                        resampling=RESAMPLING.nearest,
-                        num_threads=1)
+    # Define target SRS
+    dst_srs = SpatialReference()
+    dst_srs.ImportFromEPSG(dst_crs)
+    dst_wkt = dst_srs.ExportToWkt()
+
+    tmp_ds = gdal.AutoCreateWarpedVRT(src_ds,
+                                      None,
+                                      dst_wkt,
+                                      resampling,
+                                      threshold)
+
+    # Create the final warped raster
+    try:
+        dst_ds = gdal.GetDriverByName(dst_driver).CreateCopy(outfile, tmp_ds)
+        dst_ds.FlushCache()
+    finally:
+        dst_ds = None
 
 
 def get_html(url=None):
@@ -366,6 +359,7 @@ def asciier(txt):
     norm_txt = re.sub('\s+', ' ', unicodedata.normalize('NFD', txt))
     ascii_txt = norm_txt.encode('ascii', 'ignore').decode('ascii')
     return ascii_txt
+<<<<<<< HEAD
 
 
 class MockResponse(object):
