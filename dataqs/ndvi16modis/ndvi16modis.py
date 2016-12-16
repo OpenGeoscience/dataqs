@@ -80,8 +80,11 @@ photosynthetic vegetation, and background)."""
         :param datestr: date interval as string
         :return: date object
         """
-        parts = re.match(r"(\w+)\s+\d+\s+\-\s+(\d+),\s(\d{4})", datestr)
-        return datetime.strptime("%s %s %s" % parts.group(1, 2, 3), "%B %d %Y")
+        parts = re.match(r"([A-z]+)\s+\d+\s+\-\s+([A-z]*)\s*(\d+),\s(\d{4})",
+                         datestr)
+        month = parts.group(2) or parts.group(1)
+        day, year = parts.group(3, 4)
+        return datetime.strptime("%s %s %s" % (month, day, year), "%B %d %Y")
 
     def convert(self, tif_file, dt):
         """

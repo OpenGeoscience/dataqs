@@ -87,6 +87,10 @@ class NDVI16MODISProcessorTest(TestCase):
         interval_date = self.processor.parse_date(test_interval)
         self.assertEquals(datetime.datetime(2010, 3, 17), interval_date)
 
+        test_interval = "March 18 - April 1, 2010"
+        interval_date = self.processor.parse_date(test_interval)
+        self.assertEquals(datetime.datetime(2010, 4, 1), interval_date)
+
     def test_convert_image(self):
         """
         Verifies that the original image is translated into a new one with the
