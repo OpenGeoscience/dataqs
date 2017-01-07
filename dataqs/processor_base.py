@@ -265,7 +265,7 @@ class GeoDataProcessor(object):
                 url = ogc_server_settings.rest
                 gs_catalog = Catalog(url, _user, _password)
                 gs_catalog.save(res)
-            elif extra_keywords:
+            if extra_keywords:
                 assert isinstance(extra_keywords, list)
                 # Append extra keywords to the default ones
                 res = lyr.gs_resource
