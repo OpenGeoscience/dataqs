@@ -235,7 +235,8 @@ class GeoDataProcessor(object):
         return res.content
 
     def update_geonode(self, layer_name, title="", description="",
-                       category=None, bounds=None, store=None, extra_keywords=None):
+                       category=None, bounds=None, store=None,
+                       extra_keywords=None):
         """
         Update a layer and it's title in GeoNode
         :param layer_name: Name of the layer
@@ -276,8 +277,8 @@ class GeoDataProcessor(object):
                 gs_catalog = Catalog(url, _user, _password)
                 gs_catalog.save(res)
 
-
-    def set_default_style(self, layer_name, sld_name, sld_content, create=True):
+    def set_default_style(self, layer_name, sld_name, sld_content,
+                          create=True):
         """
         Create a style and assign it as default to a layer
         :param layer_name: the layer to assign the style to

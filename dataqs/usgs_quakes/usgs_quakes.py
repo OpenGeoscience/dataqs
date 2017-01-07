@@ -127,11 +127,12 @@ class USGSQuakeProcessor(GeoDataProcessor):
                 with open(os.path.join(
                         script_dir, 'resources/usgs.sld')) as sld:
                     self.set_default_style(table, table, sld.read())
-            self.update_geonode(table,
-                                title="Earthquakes - {}".format(title),
-                                description=self.description,
-                                store=datastore,
-                                extra_keywords=['category:Geoscientific Information'])
+            self.update_geonode(
+                table,
+                title="Earthquakes - {}".format(title),
+                description=self.description,
+                store=datastore,
+                extra_keywords=['category:Geoscientific Information'])
             self.truncate_gs_cache(table)
         self.purge_old_data()
         self.cleanup()

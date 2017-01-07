@@ -100,11 +100,13 @@ class HIFLDProcessor(GeoDataProcessor):
                         sld_text = sld.read().format(table=layer['table'],
                                                      title=layer['name'])
                         self.set_default_style(table, table, sld_text)
-                self.update_geonode(table,
-                                    title=layer['name'],
-                                    description=layer['description'],
-                                    store=datastore,
-                                    extra_keywords=[layer_category_mapping[layer['table']])]
+                keywords = self.layer_category_mapping[layer['table']]
+                self.update_geonode(
+                    table,
+                    title=layer['name'],
+                    description=layer['description'],
+                    store=datastore,
+                    extra_keywords=[keywords])
                 self.truncate_gs_cache(table)
             except Exception:
                 logger.error('Error with layer {}'.format(layer['name']))

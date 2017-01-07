@@ -143,12 +143,13 @@ Bull. Amer. Meteor. Soc., 78, 2539-2558.
                                    'resources/cmap.sld')) as sld:
                 self.set_default_style(self.layer_name, self.layer_name,
                                        sld.read().format(latest_band=bands))
-        self.update_geonode(self.layer_name, title=self.get_title(bands),
-                            description=self.abstract,
-                            store=self.layer_name,
-                            bounds=('-178.75', '178.75', '-88.75', '88.75',
-                                    'EPSG:4326'),
-                            extra_keywords=['category:Climatology Meteorology Atmosphere'])
+        self.update_geonode(
+            self.layer_name, title=self.get_title(bands),
+            description=self.abstract,
+            store=self.layer_name,
+            bounds=('-178.75', '178.75', '-88.75', '88.75',
+                    'EPSG:4326'),
+            extra_keywords=['category:Climatology Meteorology Atmosphere'])
         self.truncate_gs_cache(self.layer_name)
         self.cleanup()
 
