@@ -166,7 +166,9 @@ last day, three days and seven days are displayed.
                 self.set_default_style(self.layer_future,
                                        self.layer_future, sld.read())
         self.update_geonode(self.layer_future, title=new_title,
-                            store=self.layer_future)
+                            store=self.layer_future,
+                            description=self.description,
+                            extra_keywords=['category:Disaster Alerts'])
         self.truncate_gs_cache(self.layer_future)
 
     def import_current(self):
@@ -185,7 +187,8 @@ last day, three days and seven days are displayed.
                                        self.layer_current, sld.read())
         self.update_geonode(self.layer_current, title=new_title,
                             store=self.layer_current,
-                            description=self.description)
+                            description=self.description,
+                            extra_keywords=['category:Disaster Alerts'])
         self.truncate_gs_cache(self.layer_current)
 
     def run(self):
