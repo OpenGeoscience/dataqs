@@ -43,7 +43,7 @@ class HIFLDProcessor(GeoDataProcessor):
         'us_state_boundaries': 'category:Boundaries',
         'us_county_boundaries': 'category:Boundaries',
         'us_urban_areas': 'category:Boundaries',
-        'puoltry_facilities': 'category:Agriculture',
+        'poultry_facilities': 'category:Agriculture',
         'state_fairgrounds': 'category:Agriculture',
         'epa_tsca_facilities': 'category:Chemicals',
         'epa_er_rmp_facilities': 'category:Chemicals',
