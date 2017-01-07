@@ -85,7 +85,8 @@ drought.\n\nSource: http://notos.eead.csic.es/spei/nc/"""
             self.update_geonode(layer_name,
                                 title=self.spei_files[layer_name],
                                 description=self.description,
-                                store=layer_name)
+                                store=layer_name,
+                                extra_keywords=['category:Agriculture'])
             self.truncate_gs_cache(layer_name)
             self.cleanup()
 

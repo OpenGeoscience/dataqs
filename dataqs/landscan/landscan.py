@@ -94,7 +94,8 @@ class LandscanProcessor(GeoDataProcessor):
                                        self.layer, sld.read())
         self.update_geonode(self.layer, title=self.layer,
                             store=self.layer,
-                            description=self.description)
+                            description=self.description,
+                            extra_keywords=['category:Population'])
         self.truncate_gs_cache(self.layer)
 
     def run(self):

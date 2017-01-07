@@ -116,7 +116,8 @@ Citations:
                             description=self.abstract,
                             store=self.layer_name,
                             bounds=('-180.0', '180.0', '-90.0', '90.0',
-                                    'EPSG:4326'))
+                                    'EPSG:4326'),
+                            extra_keywords=['category:Climatology Meteorology Atmosphere'])
         self.truncate_gs_cache(self.layer_name)
         self.cleanup()
 

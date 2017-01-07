@@ -329,7 +329,8 @@ class AQICNProcessor(GeoDataProcessor):
         self.update_geonode(layer_name,
                             title='Air Quality Index',
                             description=self.description,
-                            store=datastore)
+                            store=datastore,
+                            extra_keywords=['category:Climatology Meteorology Atmosphere'])
         self.truncate_gs_cache(layer_name)
         self.cleanup()
 

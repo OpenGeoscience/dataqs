@@ -98,7 +98,8 @@ Platform Services.  The GDACS RSS feed automatically include a list of available
                     script_dir, 'resources/gdacs.sld')) as sld:
                 self.set_default_style(self.prefix, self.prefix, sld.read())
         self.update_geonode(self.prefix, title=self.layer_title,
-                            description=self.description, store=datastore)
+                            description=self.description, store=datastore,
+                            extra_keywords=['category:Disaster Alerts'])
         self.truncate_gs_cache(self.prefix)
         self.cleanup()
 

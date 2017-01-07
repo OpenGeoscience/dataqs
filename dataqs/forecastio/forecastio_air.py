@@ -123,7 +123,8 @@ and other factors.\n\nSource: http://blog.forecast.io/project-quicksilver/"""
                             description=self.description,
                             store=self.layer_name,
                             bounds=('-180.0', '180.0',
-                                    '-90.0', '90.0', 'EPSG:4326'))
+                                    '-90.0', '90.0', 'EPSG:4326'),
+                            extra_keywords=['category:Climatology Meteorology Atmosphere'])
         self.truncate_gs_cache(self.layer_name)
         self.cleanup()
 

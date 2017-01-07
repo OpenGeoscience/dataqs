@@ -39,6 +39,19 @@ class HIFLDProcessor(GeoDataProcessor):
     prefix = 'hifld_'
     layers = []
     base_url = "https://hifld-dhs-gii.opendata.arcgis.com/datasets/"
+    layer_category_mapping = {
+        'us_state_boundaries': 'category:Boundaries',
+        'us_county_boundaries': 'category:Boundaries',
+        'us_urban_areas': 'category:Boundaries',
+        'puoltry_facilities': 'category:Agriculture',
+        'state_fairgrounds': 'category:Agriculture',
+        'epa_tsca_facilities': 'category:Chemicals',
+        'epa_er_rmp_facilities': 'category:Chemicals',
+        'epa_er_tri_facilities': 'category:Chemicals',
+        'hospitals': 'category:Public Health',
+        'pharmacies': 'category:Public Health',
+        'hazmat_routes': 'category:Chemicals:'
+    }
 
     def __init__(self, layers=None):
         super(HIFLDProcessor, self).__init__()
@@ -90,7 +103,8 @@ class HIFLDProcessor(GeoDataProcessor):
                 self.update_geonode(table,
                                     title=layer['name'],
                                     description=layer['description'],
-                                    store=datastore)
+                                    store=datastore,
+                                    extra_keywords=[layer_category_mapping[layer['table']])]
                 self.truncate_gs_cache(table)
             except Exception:
                 logger.error('Error with layer {}'.format(layer['name']))

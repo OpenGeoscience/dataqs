@@ -130,7 +130,8 @@ class USGSQuakeProcessor(GeoDataProcessor):
             self.update_geonode(table,
                                 title="Earthquakes - {}".format(title),
                                 description=self.description,
-                                store=datastore)
+                                store=datastore,
+                                extra_keywords=['category:Geoscientific Information'])
             self.truncate_gs_cache(table)
         self.purge_old_data()
         self.cleanup()

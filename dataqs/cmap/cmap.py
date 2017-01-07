@@ -147,7 +147,8 @@ Bull. Amer. Meteor. Soc., 78, 2539-2558.
                             description=self.abstract,
                             store=self.layer_name,
                             bounds=('-178.75', '178.75', '-88.75', '88.75',
-                                    'EPSG:4326'))
+                                    'EPSG:4326'),
+                            extra_keywords=['category:Climatology Meteorology Atmosphere'])
         self.truncate_gs_cache(self.layer_name)
         self.cleanup()
 
