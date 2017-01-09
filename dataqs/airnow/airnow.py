@@ -161,8 +161,10 @@ Data Exchange Guidelines at http://airnowapi.org/docs/DataUseGuidelines.pdf.
                 with open(os.path.join(
                         script_dir, 'resources/airnow.sld')) as sld:
                     self.set_default_style(layer_name, layer_name, sld.read())
-            self.update_geonode(layer_name, title=layer_title,
-                                description=self.description, store=layer_name)
+            self.update_geonode(
+                layer_name, title=layer_title,
+                description=self.description, store=layer_name,
+                extra_keywords=['category:Climatology Meteorology Atmosphere'])
             self.truncate_gs_cache(layer_name)
         self.cleanup()
 

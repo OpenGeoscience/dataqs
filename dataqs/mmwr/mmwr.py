@@ -196,7 +196,8 @@ departments.\n\nSource: http://wonder.cdc.gov/mmwr/mmwr_2015.asp"""
         self.update_geonode(
             table,
             title='{} {}'.format(self.base_title, layer),
-            description=self.description)
+            description=self.description,
+            extra_keywords=['category:Population'])
         self.truncate_gs_cache(table)
 
     def run(self):

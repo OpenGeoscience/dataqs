@@ -124,12 +124,14 @@ successively providing better estimates as more data arrive.
             with open(os.path.join(script_dir, 'resources/gpm.sld')) as sld:
                 self.set_default_style(self.layer_name,
                                        self.layer_name, sld.read())
-        self.update_geonode(self.layer_name,
-                            title=layer_title,
-                            description=self.description,
-                            store=self.layer_name,
-                            bounds=('-180.0', '180.0', '-90.0', '90.0',
-                                    'EPSG:4326'))
+        self.update_geonode(
+            self.layer_name,
+            title=layer_title,
+            description=self.description,
+            store=self.layer_name,
+            bounds=('-180.0', '180.0', '-90.0', '90.0',
+                    'EPSG:4326'),
+            extra_keywords=['category:Climatology Meteorology Atmosphere'])
         self.truncate_gs_cache(self.layer_name)
         self.cleanup()
 

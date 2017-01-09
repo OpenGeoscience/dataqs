@@ -119,11 +119,13 @@ and other factors.\n\nSource: http://blog.forecast.io/project-quicksilver/"""
         self.drop_old_hourly_images(now, self.layer_name)
         self.drop_old_daily_images(now, self.layer_name)
 
-        self.update_geonode(self.layer_name, title=self.parse_name(now),
-                            description=self.description,
-                            store=self.layer_name,
-                            bounds=('-180.0', '180.0',
-                                    '-90.0', '90.0', 'EPSG:4326'))
+        self.update_geonode(
+            self.layer_name, title=self.parse_name(now),
+            description=self.description,
+            store=self.layer_name,
+            bounds=('-180.0', '180.0',
+                    '-90.0', '90.0', 'EPSG:4326'),
+            extra_keywords=['category:Climatology Meteorology Atmosphere'])
         self.truncate_gs_cache(self.layer_name)
         self.cleanup()
 

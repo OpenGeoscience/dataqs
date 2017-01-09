@@ -263,7 +263,8 @@ others.\n\nSource: http://www.waterqualitydata.us"""
                 self.update_geonode(layer_name,
                                     title=layer_title,
                                     description=self.description,
-                                    store=datastore)
+                                    store=datastore,
+                                    extra_keywords=['category:Water Quality'])
                 self.truncate_gs_cache(layer_name)
         self.cleanup()
 

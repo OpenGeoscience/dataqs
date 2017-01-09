@@ -326,10 +326,12 @@ class AQICNProcessor(GeoDataProcessor):
         if not style_exists(layer_name):
             with open(os.path.join(script_dir, 'resources/aqicn.sld')) as sld:
                 self.set_default_style(layer_name, layer_name, sld.read())
-        self.update_geonode(layer_name,
-                            title='Air Quality Index',
-                            description=self.description,
-                            store=datastore)
+        self.update_geonode(
+            layer_name,
+            title='Air Quality Index',
+            description=self.description,
+            store=datastore,
+            extra_keywords=['category:Climatology Meteorology Atmosphere'])
         self.truncate_gs_cache(layer_name)
         self.cleanup()
 
