@@ -15,6 +15,10 @@
   with_items:
     - redis
     - flower
+
+- name: upgrade urllib3
+  pip: virtualenv={{virtualenv_dir}}/{{app_name}} name={{item}} state=forcereinstall
+  with_items:
     - urllib3[secure]
 
 - name: install dataqs python package
