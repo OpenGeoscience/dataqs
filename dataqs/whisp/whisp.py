@@ -172,7 +172,8 @@ diagnostic laboratories; and published reports in journals, newspapers, or other
                     self.set_default_style(self.prefix, self.prefix, sld.read())
         self.update_geonode(self.prefix,
                             title=self.title,
-                            description=self.description)
+                            description=self.description,
+                            extra_keywords=['category:Wildlife'])
         self.truncate_gs_cache(self.prefix)
         self.cleanup()
 

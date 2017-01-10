@@ -39,6 +39,19 @@ class HIFLDProcessor(GeoDataProcessor):
     prefix = 'hifld_'
     layers = []
     base_url = "https://hifld-dhs-gii.opendata.arcgis.com/datasets/"
+    layer_category_mapping = {
+        'us_state_boundaries': 'category:Boundaries',
+        'us_county_boundaries': 'category:Boundaries',
+        'us_urban_areas': 'category:Boundaries',
+        'poultry_facilities': 'category:Agriculture',
+        'state_fairgrounds': 'category:Agriculture',
+        'epa_tsca_facilities': 'category:Chemicals',
+        'epa_er_rmp_facilities': 'category:Chemicals',
+        'epa_er_tri_facilities': 'category:Chemicals',
+        'hospitals': 'category:Public Health',
+        'pharmacies': 'category:Public Health',
+        'hazmat_routes': 'category:Chemicals:'
+    }
 
     def __init__(self, layers=None):
         super(HIFLDProcessor, self).__init__()
@@ -87,10 +100,13 @@ class HIFLDProcessor(GeoDataProcessor):
                         sld_text = sld.read().format(table=layer['table'],
                                                      title=layer['name'])
                         self.set_default_style(table, table, sld_text)
-                self.update_geonode(table,
-                                    title=layer['name'],
-                                    description=layer['description'],
-                                    store=datastore)
+                keywords = self.layer_category_mapping[layer['table']]
+                self.update_geonode(
+                    table,
+                    title=layer['name'],
+                    description=layer['description'],
+                    store=datastore,
+                    extra_keywords=[keywords])
                 self.truncate_gs_cache(table)
             except Exception:
                 logger.error('Error with layer {}'.format(layer['name']))
