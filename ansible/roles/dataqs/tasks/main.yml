@@ -73,35 +73,30 @@
 - name: Create the usgs_quakes  store
   command: "{{ app_code_dir }}/venvs/geonode/bin/python {{app_code_dir}}/venvs/geonode/src/dataqs/dataqs/usgs_quakes/usgs_quakes.py"
   ignore_errors: yes
-  sudo: yes
 
 - include: geoserver_permissions.yml
 
 - name: Create the wqp store
   command: "{{ app_code_dir }}/venvs/geonode/bin/python {{app_code_dir}}/venvs/geonode/src/dataqs/dataqs/wqp/wqp.py"
   ignore_errors: yes
-  sudo: yes
 
 - include: geoserver_permissions.yml
 
 - name: Create the gdacs store
   command: "{{ app_code_dir }}/venvs/geonode/bin/python {{app_code_dir}}/venvs/geonode/src/dataqs/dataqs/gdacs/gdacs.py"
   ignore_errors: yes
-  sudo: yes
 
 - include: geoserver_permissions.yml
 
 - name: Create the gfms coverage store
   command: "{{ app_code_dir }}/venvs/geonode/bin/python {{app_code_dir}}/venvs/geonode/src/dataqs/dataqs/gfms/gfms.py"
   ignore_errors: yes
-  sudo: yes
 
 - include: geoserver_permissions.yml
 
 - name: Create the gistemp coverage store
   command: "{{ app_code_dir }}/venvs/geonode/bin/python {{app_code_dir}}/venvs/geonode/src/dataqs/dataqs/gistemp/gistemp.py"
   ignore_errors: yes
-  sudo: yes
 
 - name: create geoserver data directory
   file: path=/var/lib/tomcat7/webapps/geoserver/data/data/geonode/forecast_io_airtemp recurse=yes owner=tomcat7 group=tomcat7 state=directory mode=774
@@ -112,28 +107,24 @@
 - name: Create the forecastio coverage store
   command: "{{ app_code_dir }}/venvs/geonode/bin/python {{app_code_dir}}/venvs/geonode/src/dataqs/dataqs/forecastio/forecastio_air.py"
   ignore_errors: yes
-  sudo: yes
 
 - include: geoserver_permissions.yml
 
 - name: Create the hifld layers
   command: "{{ app_code_dir }}/venvs/geonode/bin/python {{app_code_dir}}/venvs/geonode/src/dataqs/dataqs/hifld/hifld.py"
   ignore_errors: yes
-  sudo: yes
 
 - include: geoserver_permissions.yml
 
 - name: Create the cmap layer
   command: "{{ app_code_dir }}/venvs/geonode/bin/python {{app_code_dir}}/venvs/geonode/src/dataqs/dataqs/cmap/cmap.py"
   ignore_errors: yes
-  sudo: yes
 
 - include: geoserver_permissions.yml
 
 - name: Create the landscan layer
   command: "{{ app_code_dir }}/venvs/geonode/bin/python {{app_code_dir}}/venvs/geonode/src/dataqs/dataqs/landscan/landscan.py"
   ignore_errors: yes
-  sudo: yes
 
 - name: Django updatelayers
   django_manage: command=updatelayers
