@@ -164,7 +164,7 @@ Data Exchange Guidelines at http://airnowapi.org/docs/DataUseGuidelines.pdf.
             self.update_geonode(
                 layer_name, title=layer_title,
                 description=self.description, store=layer_name,
-                extra_keywords=['category:Climatology Meteorology Atmosphere'])
+                extra_keywords=['category:Climatology Meteorology'])
             self.truncate_gs_cache(layer_name)
         self.cleanup()
 

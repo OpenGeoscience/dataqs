@@ -125,7 +125,7 @@ and other factors.\n\nSource: http://blog.forecast.io/project-quicksilver/"""
             store=self.layer_name,
             bounds=('-180.0', '180.0',
                     '-90.0', '90.0', 'EPSG:4326'),
-            extra_keywords=['category:Climatology Meteorology Atmosphere'])
+            extra_keywords=['category:Climatology Meteorology'])
         self.truncate_gs_cache(self.layer_name)
         self.cleanup()
 
