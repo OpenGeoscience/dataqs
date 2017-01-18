@@ -3,7 +3,7 @@
     <sld:Name>Landscan</sld:Name>
     <sld:UserStyle>
       <sld:Name>Landscan</sld:Name>
-      <sld:Title>Population</sld:Title>
+      <sld:Title>Population - Landscan</sld:Title>
       <sld:FeatureTypeStyle>
         <sld:Name>name</sld:Name>
         <sld:Rule>
