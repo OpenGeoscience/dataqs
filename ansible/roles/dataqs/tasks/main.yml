@@ -76,11 +76,11 @@
 
 - include: geoserver_permissions.yml
 
-- name: Create the wqp store
-  command: "{{ app_code_dir }}/venvs/geonode/bin/python {{app_code_dir}}/venvs/geonode/src/dataqs/dataqs/wqp/wqp.py"
-  ignore_errors: yes
+# - name: Create the wqp store
+#   command: "{{ app_code_dir }}/venvs/geonode/bin/python {{app_code_dir}}/venvs/geonode/src/dataqs/dataqs/wqp/wqp.py"
+#   ignore_errors: yes
 
-- include: geoserver_permissions.yml
+# - include: geoserver_permissions.yml
 
 - name: Create the gdacs store
   command: "{{ app_code_dir }}/venvs/geonode/bin/python {{app_code_dir}}/venvs/geonode/src/dataqs/dataqs/gdacs/gdacs.py"
