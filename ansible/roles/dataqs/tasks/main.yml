@@ -7,7 +7,6 @@
     - libgdal-dev
     - cdo
     - netcdf-bin
-    - libffi-dev
   sudo: yes
 
 - name: install python dependencies
@@ -15,11 +14,6 @@
   with_items:
     - redis
     - flower
-
-- name: upgrade urllib3
-  pip: virtualenv={{virtualenv_dir}}/{{app_name}} name={{item}} state=forcereinstall
-  with_items:
-    - urllib3[secure]
 
 - name: install dataqs python package
   pip: virtualenv={{virtualenv_dir}}/{{app_name}} name=git+https://github.com/OpenGeoscience/dataqs.git#egg=dataqs
