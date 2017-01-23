@@ -92,7 +92,7 @@ class LandscanProcessor(GeoDataProcessor):
                     script_dir, 'resources/landscan.sld')) as sld:
                 self.set_default_style(self.layer,
                                        self.layer, sld.read())
-        self.update_geonode(self.layer, title=self.layer,
+        self.update_geonode(self.layer, title="Population - Landscan",
                             store=self.layer,
                             description=self.description,
                             extra_keywords=['category:Population'])
