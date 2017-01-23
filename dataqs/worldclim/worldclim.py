@@ -147,7 +147,7 @@ arc-second resolution grid (often referred to as "1 km2" resolution).
         self.update_geonode(
             name, title,
             description=desc, category=category, store=name,
-            extra_keywords=['category:Climatology Meteorology Atmosphere'])
+            extra_keywords=['category:Climatology Meteorology'])
 
     def cleanup(self, outdir):
         """
