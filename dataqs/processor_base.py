@@ -31,7 +31,7 @@ import datetime
 import requests
 from django.conf import settings
 import shutil
-from dataqs.helpers import get_html
+from dataqs.helpers import get_html, add_keywords
 from geonode.geoserver.helpers import ogc_server_settings, gs_catalog, get_store
 from geonode.geoserver.management.commands.updatelayers import Command \
     as UpdateLayersCommand
@@ -268,9 +268,11 @@ class GeoDataProcessor(object):
                 gs_catalog.save(res)
             if extra_keywords:
                 assert isinstance(extra_keywords, list)
+                now = datetime.datetime.now().isoformat()
+                extra_keywords.append('datetime:{}'.format(now))
                 # Append extra keywords to the default ones
                 res = lyr.gs_resource
-                keywords = res.keywords + extra_keywords
+                keywords = add_keywords(res.keywords, extra_keywords)
                 res.keywords = keywords
                 _user, _password = ogc_server_settings.credentials
                 url = ogc_server_settings.rest

@@ -381,3 +381,18 @@ class MockResponse(object):
 
     def raise_for_status(self):
         pass
+
+
+def add_keywords(keyword_list, extra_keywords):
+    """Adds extra_keywords list to the keyword_list"""
+
+    # check if datetime and category already exist in the
+    # keyword list
+
+    keywords_added = [k for k in keyword_list
+                      if k.startswith('category:') or k.startswith('datetime:')]
+
+    if keywords_added:
+        return keyword_list[:len(extra_keywords)-1] + extra_keywords
+    else:
+        return keyword_list + extra_keywords
