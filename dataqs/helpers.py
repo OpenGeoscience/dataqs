@@ -393,6 +393,9 @@ def add_keywords(keyword_list, extra_keywords):
                       if k.startswith('category:') or k.startswith('datetime:')]
 
     if keywords_added:
-        return keyword_list[:len(extra_keywords)-1] + extra_keywords
+        filtered_keywords = [k for k in keyword_list
+                             if not k.startswith('category:') or
+                             not k.startswith('datetime:')]
+        return filtered_keywords + extra_keywords
     else:
         return keyword_list + extra_keywords
