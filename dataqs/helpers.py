@@ -388,14 +388,8 @@ def add_keywords(keyword_list, extra_keywords):
 
     # check if datetime and category already exist in the
     # keyword list
+    filtered_keywords = [k for k in keyword_list if not
+                         (k.startswith('category:') or
+                          k.startswith('datetime:'))]
 
-    keywords_added = [k for k in keyword_list
-                      if k.startswith('category:') or k.startswith('datetime:')]
-
-    if keywords_added:
-        filtered_keywords = [k for k in keyword_list
-                             if not k.startswith('category:') or
-                             not k.startswith('datetime:')]
-        return filtered_keywords + extra_keywords
-    else:
-        return keyword_list + extra_keywords
+    return filtered_keywords + extra_keywords
