@@ -50,7 +50,8 @@ class HIFLDProcessor(GeoDataProcessor):
         'epa_er_tri_facilities': 'category:Chemicals',
         'hospitals': 'category:Public Health',
         'pharmacies': 'category:Public Health',
-        'hazmat_routes': 'category:Chemicals:'
+        'hazmat_routes': 'category:Chemicals',
+        'colleges_universities': 'category:Education'
     }
 
     def __init__(self, layers=None):
