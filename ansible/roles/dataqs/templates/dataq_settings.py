@@ -222,6 +222,13 @@ HIFLD_LAYERS = [
         'table': 'colleges_universities',
         'sld': 'point',
         'description': 'The Colleges and Universities shapefile is composed of all Post Secondary Education facilities as defined by the Integrated Post Secondary Education System (IPEDS, http://nces.ed.gov/ipeds/), National Center for Education Statistics (NCES, https://nces.ed.gov/), US Department of Education for the 2013-2014 school year. Included are Doctoral/Research Universities, Masters Colleges and Universities, Baccalaureate Colleges, Associates Colleges, Theological seminaries, Medical Schools and other health care professions, Schools of engineering and technology, business and management, art, music, design, Law schools, Teachers colleges, Tribal colleges, and other specialized institutions. Overall, this data layer covers all 50 states, as well as Puerto Rico and other assorted U.S. territories. This shapefile contains all MEDS/MEDS+ as approved by the National Geospatial-Intelligence Agency (NGA) Homeland Security Infrastructure Program (HSIP) Team. Complete field and attribute information is available in the ”Entities and Attributes” metadata section. Geographical coverage is depicted in the thumbnail above and detailed in the "Place Keyword" section of the metadata. This shapefile does not have a relationship class but is related to Supplemental Colleges. Colleges and Universities that are not included in the NCES IPEDS data are added to the Supplemental Colleges shapefile when found.'
+    },
+    {
+        'name': 'Nursing Homes',
+        'url': 'https://hifld-dhs-gii.opendata.arcgis.com/datasets/e60622bb7fb344e889d9d03473aba74c_0.geojson',
+        'table': 'nursing_homes',
+        'sld': 'point',
+        'description': 'The Nursing Home / Assisted Care shapefile contains facilities that house elderly adults. This shapefile’s attribution contains physical and demographic information for facilities in the continental United States, Hawaii, Alaska, District of Columbia and Puerto Rico. The purpose of this shapefile is to provide accurate locations for high concentrations of elderly adults in the event of a disaster. The attribution within this shapefile was populated via open source methodologies of authoritative sources.'
     }
 ]
 
