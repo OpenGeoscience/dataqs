@@ -257,6 +257,13 @@ HIFLD_LAYERS = [
         'table': 'private_schools',
         'sld': 'point',
         'description': 'This dataset represents private schools composed of all private elementary and secondary education features in the United States as defined by the Private School Universe Survey (PSS), National Center for Education Statistics, US Department of Education. This includes all kindergarten through 12th grade schools as tracked by the PSS. This feature class contains all MEDS/MEDS+ attributes as approved by NGA. For each field, the 'Not Available' and NULL designations are used to indicate that the data for the particular record and field is currently unavailable and will be populated when and if that data becomes available.'
+    },
+    {
+        'name': 'Public Schools',
+        'url': 'https://hifld-dhs-gii.opendata.arcgis.com/datasets/1f74a16c80e949c0adfd7866684b83c5_0.geojson',
+        'table': 'public_schools',
+        'sld': 'point',
+        'description': 'This Public Schools feature dataset is composed of all Public elementary and secondary education facilities in the United States as defined by the Common Core of Data(CCD, https://nces.ed.gov/ccd/ ), National Center for Education Statistics (NCES, https://nces.ed.gov ), US Department of Education for the 2012-2013 school year. This includes all Kindergarten through 12th grade schools as tracked by the Common Core of Data. Included in this dataset are military schools in US territories and referenced in the city field with an APO or FPO address. DOD schools represented in the NCES data that are outside of the United States or US territories have been omitted. This shapefile contains all MEDS/MEDS+ as approved by NGA. Complete field and attribute information is available in the ”Entities and Attributes” metadata section. Geographical coverage is depicted in the thumbnail above and detailed in the Place Keyword section of the metadata. This shapefile does not have a relationship class.'
     }
 ]
 
