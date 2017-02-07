@@ -243,6 +243,13 @@ HIFLD_LAYERS = [
         'table': 'major_sport_venues',
         'sld': 'point',
         'description': "The Major Sport Venues dataset is composed of facilities within the United States, Canada, and Mexico that host events for the National Association for Stock Car Auto Racing (NASCAR), Indy Racing League (IRL), Major League Soccer (MLS), Major League Baseball (MLB), National Basketball Association (NBA), Women's National Basketball Association (WNBA), National Hockey League (NHL), National Football League (NFL), Professional Golfers Association (PGA) Tour, National Collegiate Athletic Association (NCAA) Division 1-Football Bowl Subdivision (FBS), National Collegiate Athletic Association (NCAA) Division 1 Basketball, Minor League Baseball (MiLB) Class Triple-A, and thoroughbred horse racing. Large numbers of people congregate at these facilities to attend major sporting events, therefore the locations of these facilities and the characteristics that describe each facility is essential for emergency preparedness, response, and evacuation. [NOTE: This shapefile is related (one-to-many) to the “Usage” table, which captures the relationship between “MajorSportVenues” and its associated events. “MajorSportVenues” is the origin using VENUEID as the primary key. The “Usage” table is the destination using VENUEID as the foreign key. The relationship is used to demonstrate multiple uses/events at a single venue location.]"
+    },
+    {
+        'name': 'Day Care Centers',
+        'url': 'https://hifld-dhs-gii.opendata.arcgis.com/datasets/3a9271a1a30443fca150461b35a51b53_0.geojson',
+        'table': 'day_care_centers',
+        'sld': 'point',
+        'description': 'This database contains locations of day care centers for 50 states of USA, Washington D.C., and Puerto Rico.The dataset only includes center based day care locations (including schools and religious institutes) and does not include group, home, and family based day cares. All the data was acquired from respective states departments or their open source websites and contains data only provided by these sources. Information on the source of data for each state is available in the database itself.Data for the states of AK, AR, AZ, CA, CT, FL, GA, IA, ID, IN, KY, LA, MI, MO, MN, MS, MT, NC, NV, NY, OH, PA, SC, SD, and TX was updated in this release.Currency of data is denoted by the SOURCEDATE field.The TYPE attribute is a common classification of day care for all states which classifies every day care into Center Based, School Based, Head Start, or Religious Facility.'
     }
 ]
 
