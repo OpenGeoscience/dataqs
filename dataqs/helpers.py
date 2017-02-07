@@ -31,7 +31,7 @@ import re
 import sys
 from StringIO import StringIO
 import rasterio
-from osgeo import gdal
+from osgeo import gdal, ogr
 from rasterio.warp import RESAMPLING
 from rasterio.warp import calculate_default_transform, reproject
 import unicodedata
@@ -390,6 +390,50 @@ def add_keywords(keyword_list, extra_keywords):
     # keyword list
     filtered_keywords = [k for k in keyword_list if not
                          (k.startswith('category:') or
-                          k.startswith('datetime:'))]
+                          k.startswith('datetime:') or
+                          k.startswith('layer_info'))]
 
     return filtered_keywords + extra_keywords
+
+
+def _getMinMax(layer, field):
+    fieldVal = [f.GetField(field) for f in layer]
+    return {'properties': {'min': min(fieldVal), 'max': max(fieldVal)},
+            'type': 'numeric'}
+
+
+def _getNumericFields(layer):
+    """ Gets only the numeric fields from layer"""
+
+    layerDefinition = layer.GetLayerDefn()
+    numFields = []
+    for i in range(layerDefinition.GetFieldCount()):
+        fieldName = layerDefinition.GetFieldDefn(i).GetName()
+        fieldTypeCode = layerDefinition.GetFieldDefn(i).GetType()
+        fieldDef = layerDefinition.GetFieldDefn(i)
+        fieldType = fieldDef.GetFieldTypeName(fieldTypeCode)
+        if fieldType != 'String':
+            numFields.append(fieldName)
+
+    return numFields
+
+
+def get_vector_layer_info(geojson):
+    """ Gets information about a given geojson file """
+
+    dataSource = ogr.Open(geojson)
+    layer = dataSource.GetLayer()
+    geom = {1: 'point', 2: 'line', 3: 'polygon'}
+    subType = geom[layer.GetGeomType()]
+    count = layer.GetFeatureCount()
+    numFields = _getNumericFields(layer)
+    info = {'layerType': 'vector', 'subType': subType}
+    attr = {}
+    for f in numFields:
+        prop = _getMinMax(layer, f)
+        prop['properties']['count'] = count
+        attr[f.lower()] = prop
+        layer.ResetReading()
+    dataSource = None
+    info['attributes'] = attr
+    return info
