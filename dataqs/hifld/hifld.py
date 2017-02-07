@@ -52,7 +52,8 @@ class HIFLDProcessor(GeoDataProcessor):
         'pharmacies': 'category:Public Health',
         'hazmat_routes': 'category:Chemicals',
         'colleges_universities': 'category:Education',
-        'nursing_homes': 'category:Public Health'
+        'nursing_homes': 'category:Public Health',
+        'veterans_health_administration_medical_facilities': 'category:Public Health'
     }
 
     def __init__(self, layers=None):
