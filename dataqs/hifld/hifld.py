@@ -53,7 +53,7 @@ class HIFLDProcessor(GeoDataProcessor):
         'hazmat_routes': 'category:Chemicals',
         'colleges_universities': 'category:Education',
         'nursing_homes': 'category:Public Health',
-        'veterans_health_administration_medical_facilities': 'category:Public Health',
+        'veterans_medical_facilities': 'category:Public Health',
         'major_sport_venues': 'category:Public Venues',
         'day_care_centers': 'category:Education',
         'private_schools': 'category:Education',
