@@ -250,6 +250,13 @@ HIFLD_LAYERS = [
         'table': 'day_care_centers',
         'sld': 'point',
         'description': 'This database contains locations of day care centers for 50 states of USA, Washington D.C., and Puerto Rico.The dataset only includes center based day care locations (including schools and religious institutes) and does not include group, home, and family based day cares. All the data was acquired from respective states departments or their open source websites and contains data only provided by these sources. Information on the source of data for each state is available in the database itself.Data for the states of AK, AR, AZ, CA, CT, FL, GA, IA, ID, IN, KY, LA, MI, MO, MN, MS, MT, NC, NV, NY, OH, PA, SC, SD, and TX was updated in this release.Currency of data is denoted by the SOURCEDATE field.The TYPE attribute is a common classification of day care for all states which classifies every day care into Center Based, School Based, Head Start, or Religious Facility.'
+    },
+    {
+        'name': 'Private Schools',
+        'url': 'https://hifld-dhs-gii.opendata.arcgis.com/datasets/36695bf035fb4e98a88dbdcbaca2c40d_0.geojson',
+        'table': 'private_schools',
+        'sld': 'point',
+        'description': 'This dataset represents private schools composed of all private elementary and secondary education features in the United States as defined by the Private School Universe Survey (PSS), National Center for Education Statistics, US Department of Education. This includes all kindergarten through 12th grade schools as tracked by the PSS. This feature class contains all MEDS/MEDS+ attributes as approved by NGA. For each field, the 'Not Available' and NULL designations are used to indicate that the data for the particular record and field is currently unavailable and will be populated when and if that data becomes available.'
     }
 ]
 
