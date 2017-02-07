@@ -57,7 +57,8 @@ class HIFLDProcessor(GeoDataProcessor):
         'major_sport_venues': 'category:Public Venues',
         'day_care_centers': 'category:Education',
         'private_schools': 'category:Education',
-        'public_schools': 'category:Education'
+        'public_schools': 'category:Education',
+        'urgent_care_facilities': 'category:Public Health'
     }
 
     def __init__(self, layers=None):
