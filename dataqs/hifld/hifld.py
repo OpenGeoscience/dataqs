@@ -82,7 +82,7 @@ class HIFLDProcessor(GeoDataProcessor):
                         lyr_file = os.path.join(
                             self.tmp_dir,
                             self.download(layer['url'], filename=table))
-                info = get_vector_layer_info(os.path.join(self.tmp_dir, table))
+                info = get_vector_layer_info(lyr_file)
                 layer_info = 'layer_info:{}'.format(json.dumps(info))
                 db = ogc_server_settings.datastore_db
                 ogr2ogr_exec("-overwrite -skipfailures -f PostgreSQL \
