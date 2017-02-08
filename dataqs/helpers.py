@@ -397,8 +397,15 @@ def add_keywords(keyword_list, extra_keywords):
 
 
 def _getMinMax(layer, field):
-    fieldVal = [f.GetField(field) for f in layer]
-    return {'properties': {'min': min(fieldVal), 'max': max(fieldVal)},
+    min_value, max_value = float('inf'), float('-inf')
+    for f in layer:
+        value = f.GetField(field)
+        if value < min_value:
+            min_value = value
+        if value > max_value:
+            max_value = value
+
+    return {'properties': {'min': min_value, 'max': max_value},
             'type': 'numeric'}
 
 
@@ -407,7 +414,7 @@ def _getNumericFields(layer):
 
     layerDefinition = layer.GetLayerDefn()
     numFields = []
-    for i in range(layerDefinition.GetFieldCount()):
+    for i in xrange(layerDefinition.GetFieldCount()):
         fieldName = layerDefinition.GetFieldDefn(i).GetName()
         fieldTypeCode = layerDefinition.GetFieldDefn(i).GetType()
         fieldDef = layerDefinition.GetFieldDefn(i)
@@ -423,7 +430,9 @@ def get_vector_layer_info(geojson):
 
     dataSource = ogr.Open(geojson)
     layer = dataSource.GetLayer()
-    geom = {1: 'point', 2: 'line', 3: 'polygon'}
+    geom = {0: 'polygon', 1: 'point', 2: 'line',
+            3: 'polygon', 4: 'polygon', 5: 'polygon',
+            6: 'polygon'}
     subType = geom[layer.GetGeomType()]
     count = layer.GetFeatureCount()
     numFields = _getNumericFields(layer)
