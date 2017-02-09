@@ -432,7 +432,8 @@ def get_vector_layer_info(geojson):
     layer = dataSource.GetLayer()
     geom = {0: 'polygon', 1: 'point', 2: 'line',
             3: 'polygon', 4: 'polygon', 5: 'polygon',
-            6: 'polygon'}
+            6: 'polygon', -2147483647: 'point'}
+
     subType = geom[layer.GetGeomType()]
     count = layer.GetFeatureCount()
     numFields = _getNumericFields(layer)

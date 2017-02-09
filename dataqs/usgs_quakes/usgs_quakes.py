@@ -25,7 +25,7 @@ import logging
 from django.db import connections
 from dataqs.processor_base import GeoDataProcessor, DEFAULT_WORKSPACE
 from dataqs.helpers import postgres_query, ogr2ogr_exec, layer_exists, \
-    style_exists
+    style_exists, get_vector_layer_info
 from geonode.geoserver.helpers import ogc_server_settings
 
 logger = logging.getLogger("dataqs.processors")
@@ -106,7 +106,8 @@ class USGSQuakeProcessor(GeoDataProcessor):
                     "%Y-%m-%d %H:%M:%S")
         with open(rss_file, 'w') as modified_file:
             json.dump(json_data, modified_file)
-
+        info = get_vector_layer_info(rss_file)
+        layer_info = 'layer_info:{}'.format(json.dumps(info))
         db = ogc_server_settings.datastore_db
         for table, title in zip(self.tables, self.titles):
             ogr2ogr_exec("-append -skipfailures -f PostgreSQL \
@@ -132,7 +133,8 @@ class USGSQuakeProcessor(GeoDataProcessor):
                 title="Earthquakes - {}".format(title),
                 description=self.description,
                 store=datastore,
-                extra_keywords=['category:Geoscientific Information'])
+                extra_keywords=['category:Geoscientific Information',
+                                layer_info])
             self.truncate_gs_cache(table)
         self.purge_old_data()
         self.cleanup()
