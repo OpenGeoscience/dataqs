@@ -18,13 +18,15 @@
 ###############################################################################
 
 from __future__ import absolute_import
+import json
 import os
 import logging
 import time
 import traceback
 from django.conf import settings
 from dataqs.processor_base import GeoDataProcessor, DEFAULT_WORKSPACE
-from dataqs.helpers import ogr2ogr_exec, layer_exists, style_exists
+from dataqs.helpers import ogr2ogr_exec, layer_exists, style_exists,\
+    get_vector_layer_info
 from geonode.geoserver.helpers import ogc_server_settings
 
 logger = logging.getLogger("dataqs.processors")
@@ -90,6 +92,8 @@ class HIFLDProcessor(GeoDataProcessor):
                         lyr_file = os.path.join(
                             self.tmp_dir,
                             self.download(layer['url'], filename=table))
+                info = get_vector_layer_info(lyr_file)
+                layer_info = 'layer_info:{}'.format(json.dumps(info))
                 db = ogc_server_settings.datastore_db
                 ogr2ogr_exec("-overwrite -skipfailures -f PostgreSQL \
                     \"PG:host={db_host} user={db_user} password={db_pass} \
@@ -116,7 +120,7 @@ class HIFLDProcessor(GeoDataProcessor):
                     title=layer['name'],
                     description=layer['description'],
                     store=datastore,
-                    extra_keywords=[keywords])
+                    extra_keywords=[keywords, layer_info])
                 self.truncate_gs_cache(table)
             except Exception:
                 logger.error('Error with layer {}'.format(layer['name']))
