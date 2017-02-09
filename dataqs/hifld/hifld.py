@@ -50,7 +50,17 @@ class HIFLDProcessor(GeoDataProcessor):
         'epa_er_tri_facilities': 'category:Chemicals',
         'hospitals': 'category:Public Health',
         'pharmacies': 'category:Public Health',
-        'hazmat_routes': 'category:Chemicals:'
+        'hazmat_routes': 'category:Chemicals',
+        'colleges_universities': 'category:Education',
+        'nursing_homes': 'category:Public Health',
+        'veterans_medical_facilities': 'category:Public Health',
+        'major_sport_venues': 'category:Public Venues',
+        'day_care_centers': 'category:Education',
+        'private_schools': 'category:Education',
+        'public_schools': 'category:Education',
+        'urgent_care_facilities': 'category:Public Health',
+        'all_places_of_worship': 'category:Public Venues',
+        'jewish_synagogues': 'category:Public Venues'
     }
 
     def __init__(self, layers=None):
