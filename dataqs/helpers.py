@@ -359,7 +359,6 @@ def asciier(txt):
     norm_txt = re.sub('\s+', ' ', unicodedata.normalize('NFD', txt))
     ascii_txt = norm_txt.encode('ascii', 'ignore').decode('ascii')
     return ascii_txt
-<<<<<<< HEAD
 
 
 class MockResponse(object):
