@@ -31,7 +31,7 @@ import re
 import sys
 import unicodedata
 from StringIO import StringIO
-from osgeo import gdal
+from osgeo import gdal, ogr
 from osgeo.osr import SpatialReference
 from geonode.geoserver.helpers import ogc_server_settings
 import ogr2ogr
