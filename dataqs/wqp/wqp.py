@@ -219,7 +219,8 @@ others.\n\nSource: http://www.waterqualitydata.us"""
                 end=today.strftime('%m-%d-%Y'),
                 indicator=indicator)
 
-            r = requests.get(indicator_url, timeout=120, stream=True)
+            r = requests.get(indicator_url,
+                             timeout=120, stream=True, verify=False)
             r.raise_for_status()
             outname = "{}{}_{}.csv".format(
                 self.prefix, self.safe_name(indicator), query_type)
