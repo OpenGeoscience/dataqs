@@ -1,5 +1,5 @@
 ###
-# Install GeoServer from Custom GeoNode Build 
+# Install GeoServer from Custom GeoNode Build
 #
 ---
 
@@ -7,11 +7,12 @@
   apt: update_cache=yes
   sudo: yes
 
-- name: install Tomcat 
+- name: install Tomcat
   apt: pkg={{ item }} state=present
   sudo: yes
   with_items:
    - tomcat7
+   - unzip
 
 - name: copy the Tomcat setenv.sh file to /usr/share/tomcat7/bin
   template: src=setenv.sh dest=/usr/share/tomcat7/bin/setenv.sh
@@ -21,16 +22,45 @@
   template: src=tomcat7 dest=/etc/default/tomcat7
   sudo: yes
 
+- name: Create Geoserver data directory
+  file: path=/data/ state=directory
+  sudo: yes
+
 - name: Download Geoserver (remote)
   sudo: yes
   get_url:
-    dest=/var/lib/tomcat7/webapps/geoserver.war
+    dest=/tmp/geoserver.war
     url={{ geoserver_url }}
     owner=0
     group=0
     mode=0644
 
+- name: Unzip Geoserver WAR file
+  command: unzip -o -d '/tmp/geoserver' '/tmp/geoserver.war'
+  sudo: yes
+
+- name: Copy Geoserver web.xml file with custom data directory
+  template: src=web.xml dest=/tmp/geoserver/WEB-INF/web.xml
+  sudo: yes
+
+- name: Move data files
+  command: mv -n '/tmp/geoserver/data' '/data/geodata'
+  sudo: yes
+
+- name: Move web app
+  command: mv -n '/tmp/geoserver' '/var/lib/tomcat7/webapps/geoserver'
+  sudo: yes
+
+- name: reset geoserver owner
+  file:
+    state: directory
+    owner: tomcat7
+    group: "{{ deploy_user }}"
+    path: "/data"
+    mode: 0774
+    recurse: true
+  sudo: yes
+
 - name: Restart Tomcat
   service: name=tomcat7 state=restarted
   sudo: yes
-

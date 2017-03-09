@@ -60,11 +60,11 @@ AIRNOW_ACCOUNT = 'your_airnow_username:your_airnow_password'
 GPM_ACCOUNT = 'your_gpm_email_account'
 
 # Location of GeoServer data directory
-GS_DATA_DIR = '/var/lib/tomcat7/webapps/geoserver/data'
+GS_DATA_DIR = '/data/geodata/data'
 
 # Directory where temporary data_queues geoprocessing files should
 # be downloaded
-GS_TMP_DIR = '/tmp'
+GS_TMP_DIR = '/data/tmp'
 
 # Time to wait before updating Geoserver mosaic (keep at 0 unless Geoserver
 # is on a different server.
