@@ -42,18 +42,19 @@
     strip=1
   notify: restart uwsgi
 
-- name: copy settings to geonode application
+- name: copy dataqs settings to geonode application
   template: src=dataq_settings.py dest={{geonode_root}}/dataq_settings.py
-  notify: restart uwsgi
+
+- name: copy custom settings to geonode application
+  template: src=custom_settings.py dest={{geonode_root}}/custom_settings.py
 
 - name: import dataq settings in geonode configuration
   lineinfile: name="{{geonode_root}}/local_settings.py" state=present
               insertafter="EOF" line="from dataq_settings import *"
-  notify: restart uwsgi
 
-- name: enable dataq apps in geonode configuration
-  lineinfile: name={{geonode_root}}/local_settings.py state=present
-              insertafter=EOF line="dataqs_extend()"
+- name: import custom settings in geonode configuration
+  lineinfile: name="{{geonode_root}}/local_settings.py" state=present
+              insertafter="EOF" line="from custom_settings import *"
   notify: restart uwsgi
 
 - name: install supervisor config for workers
