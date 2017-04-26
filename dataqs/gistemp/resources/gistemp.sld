@@ -9,11 +9,6 @@
         <sld:Rule>
           <sld:RasterSymbolizer>
         <Opacity>1.0</Opacity>
-        <ChannelSelection>
-                <GrayChannel>
-                        <SourceChannelName>{latest_band}</SourceChannelName>
-                </GrayChannel>
-        </ChannelSelection>
         <ColorMap extended="true">
             <sld:ColorMapEntry color="#2b83ba" label="&lt;= -7.5 °C" opacity="1.0" quantity="-750"/>
             <sld:ColorMapEntry color="#6bb0af" label="-5.0 °C" opacity="1.0" quantity="-500"/>

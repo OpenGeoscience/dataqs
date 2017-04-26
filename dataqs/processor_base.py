@@ -374,13 +374,13 @@ class GeoDataMosaicProcessor(GeoDataProcessor):
         r.raise_for_status()
         return r.status_code, r.content
 
-    def post_geoserver(self, filepath, layer_name):
+    def post_geoserver(self, filepath, layer_name, sleeptime=RSYNC_WAIT_TIME):
         """
         Add another image to a mosaic datastore
         :param filepath: Full path&name of GeoTIFF to import
         :param layer_name: Name of the layer & store (assumed to be same)
         """
-        sleep(RSYNC_WAIT_TIME)
+        sleep(sleeptime)
         gs_url = self.gs_url.format(ogc_server_settings.hostname,
                                     self.workspace, layer_name)
         data = "file://{}".format(filepath)

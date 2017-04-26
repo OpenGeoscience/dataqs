@@ -20,7 +20,7 @@ install:
   - pip install -r dev-requirements.txt
   - pip install -e .
   - git clone -b 2.4.x https://github.com/GeoNode/geonode.git
-  - cp local_settings.py geonode/geonode/.
+  - cp local_settings.py.template geonode/geonode/local_settings.py
   - pip install -e geonode
 
 script:

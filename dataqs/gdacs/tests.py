@@ -55,7 +55,7 @@ class GdacsTest(TestCase):
                                body=response)
         rssfile = self.processor.download(self.processor.base_url.format(
             self.processor.params['sdate'], self.processor.params['edate']),
-            self.processor.prefix + ".rss")
+            filename=self.processor.prefix + ".rss")
         rsspath = os.path.join(
             self.processor.tmp_dir, rssfile)
         self.assertTrue(os.path.exists(rsspath))
@@ -74,7 +74,7 @@ class GdacsTest(TestCase):
                                body=response)
         rssfile = self.processor.download(self.processor.base_url.format(
             self.processor.params['sdate'], self.processor.params['edate']),
-            self.processor.prefix + ".rss")
+            filename=self.processor.prefix + ".rss")
         rsspath = os.path.join(
             self.processor.tmp_dir, rssfile)
         self.assertTrue(os.path.exists(rsspath))

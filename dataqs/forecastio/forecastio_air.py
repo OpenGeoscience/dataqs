@@ -41,13 +41,16 @@ class ForecastIOAirTempProcessor(GeoDataMosaicProcessor):
     prefix = "forecast_io_airtemp"
     base_url = "http://maps.forecast.io/temperature/"
     layer_name = "forecast_io_airtemp"
-    description = """Project Quicksilver is an experimental new data product
-that attempts to create the world's highest resolution real-time map of global
-(near-surface) air temperature.\n\n
-It is generated using the same source data models that power Forecast.io,
-combined with a sophisticated microclimate model that adjusts the temperatures
-based on the effects of elevation, terrain, proximity to water, foliage cover,
-and other factors.\n\nSource: http://blog.forecast.io/project-quicksilver/"""
+    description = (
+        "Project Quicksilver is an experimental new data product that attempts "
+        "to create the world's highest resolution real-time map of global "
+        "(near-surface) air temperature.\n\nIt is generated using the same "
+        "source data models that power Forecast.io, combined with a "
+        "sophisticated microclimate model that adjusts the temperatures based "
+        "on the effects of elevation, terrain, proximity to water, foliage "
+        "cover, and other factors.\n\nSource: "
+        "http://blog.forecast.io/project-quicksilver/"
+    )
 
     def parse_name(self, img_date):
         imgstrtime = img_date.strftime("%Y-%m-%d %H:00")

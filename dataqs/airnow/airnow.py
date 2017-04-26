@@ -50,31 +50,31 @@ class AirNowGRIB2HourlyProcessor(GeoDataMosaicProcessor):
                    "airnow_aqi_combined"]
     img_patterns = ["", "_pm25", "_combined"]
     layer_titles = ["Ozone", "PM25", "Combined Ozone & PM25"]
-    description = """
-U.S. Environmental Protection Agency’s (EPA) nationwide, voluntary program,
-AirNow(www.airnow.gov), provides real-time air quality data and forecasts to
-protect public health across the United States, Canada, and parts of Mexico.
-AirNowreceives real-time ozone and PM2.5data from over 2,000 monitors and
-collects air quality forecasts for more than 300 cities.
-
-As part of the Global Earth Observation System of Systems (GEOSS)
-(www.epa.gov/geoss) program, the AirNow API system broadens access to AirNowdata
- and data products. AirNow API produces data products in several standard data
-formats and makes them available via FTP and web services. This document
-describes the GRIB2 file formats.
-
-All data provided by AirNow API are made possible by the efforts of more than
-120 local, state, tribal, provincial, and federal government agencies
-(www.airnow.gov/index.cfm?action=airnow.partnerslist). These data are not fully
-verified or validated and should be considered preliminary and subject to
-change. Data and information reported to AirNow from federal, state, local, and
-tribal agencies are for the express purpose of reporting and forecasting the
-Air Quality Index (AQI). As such, they should not be used to formulate or
-support regulation, trends, guidance, or any other government or public
-decision making. Official regulatory air quality data must be obtained from
-EPA’s Air Quality System (AQS) (www.epa.gov/ttn/airs/airsaqs). See the AirNow
-Data Exchange Guidelines at http://airnowapi.org/docs/DataUseGuidelines.pdf.
-"""
+    description = (
+        u"U.S. Environmental Protection Agency's (EPA) nationwide, voluntary "
+        u"program, AirNow(www.airnow.gov), provides real-time air quality data "
+        u"and forecasts to protect public health across the United States, "
+        u" Canada, and parts of Mexico. AirNow receives real-time ozone and "
+        u"PM2.5 data from over 2000 monitors and collects air quality forecasts"
+        u" for more than 300 cities.\n\nAs part of the Global Earth Observation"
+        u" System of Systems (GEOSS)(www.epa.gov/geoss) program, the AirNow API"
+        u" system broadens access to AirNowdata and data products. AirNow API "
+        u"produces data products in several standard data formats and makes "
+        u"them available via FTP and web services. This documen describes the "
+        u"GRIB2 file formats.  All data provided by AirNow API are made "
+        u"possible by the efforts of more than 120 local, state, tribal, "
+        u"provincial, and federal government agencies (www.airnow.gov/index.cfm"
+        u"?action=airnow.partnerslist). These data are not fully verified or "
+        u"validated and should be considered preliminary and subject to change."
+        u" Data and information reported to AirNow from federal, state, local, "
+        u"and tribal agencies are for the express purpose of reporting and"
+        u" forecasting the Air Quality Index (AQI). As such, they should not be"
+        u" used to formulate or support regulation, trends, guidance, or any "
+        u"other government or public decision making. Official regulatory air "
+        u"quality data must be obtained from EPA’s Air Quality System (AQS) "
+        u"(www.epa.gov/ttn/airs/airsaqs). See the AirNow Data Exchange "
+        u"Guidelines at http://airnowapi.org/docs/DataUseGuidelines.pdf."
+    )
 
     def download(self, auth_account=AIRNOW_ACCOUNT, days=1):
         """
