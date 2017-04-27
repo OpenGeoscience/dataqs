@@ -21,23 +21,25 @@ import datetime
 import gzip
 import logging
 import shutil
+import tarfile
 import traceback
 import os
 import subprocess
 import requests
-from geoserver.catalog import Catalog, FailedRequestError
 import psycopg2
 import re
 import sys
-from StringIO import StringIO
+import unicodedata
+import ogr2ogr
 import rasterio
 from osgeo import gdal, ogr
 from osr import SpatialReference
+import xml.etree.ElementTree as ET
+from StringIO import StringIO
 from rasterio.warp import RESAMPLING
 from rasterio.warp import calculate_default_transform, reproject
-import unicodedata
 from geonode.geoserver.helpers import ogc_server_settings
-import ogr2ogr
+from geoserver.catalog import Catalog, FailedRequestError
 
 logger = logging.getLogger("dataqs.helpers")
 
@@ -80,10 +82,39 @@ def get_band_count(raster_file):
     :return: number of bands
     """
     datafile = gdal.Open(raster_file)
-    return datafile.RasterCount
+    count = datafile.RasterCount
+    del datafile
+    return count
 
 
-def gdal_translate(src_filename, dst_filename, dst_format="GTiff", bands=None,
+def create_band_vrt(src, dst, bands, source_str, nodata=None, projection=None,
+                    geotransform=None):
+    """
+    Create a VRT file for an image by band.
+    :param src: Source raster filepath
+    :param dst: Destination VRT filepath
+    :param bands: list of band numbers
+    :param source_str: String version of 'Source' XML elements
+    :param nodata: NoData value for output
+    :param projection: Projection of output
+    :param geotransform: Geotransform string for output
+    """
+    gdal_translate(src, dst,
+                   bands=bands, nodata=nodata, of='vrt', projection=projection)
+    tree = ET.parse(dst)
+    root = tree.getroot()
+    if geotransform:
+        gt = root.find('GeoTransform')
+        gt.text = geotransform
+    sources = ET.fromstring(source_str).getchildren()
+    bands = root.findall('VRTRasterBand')
+    for band in bands:
+        for source in sources:
+            band.append(source)
+    tree.write(dst, encoding='utf-8')
+
+
+def gdal_translate(src_filename, dst_filename, of="GTiff", bands=None,
                    nodata=None, projection=None, options=None):
     """
     Convert a raster image with the specified arguments
@@ -93,42 +124,76 @@ def gdal_translate(src_filename, dst_filename, dst_format="GTiff", bands=None,
         options = []
 
     # Open existing dataset, subsetting bands if necessary
-    if bands:
-        tmp_file = src_filename + ".sub"
-        gdal_band_subset(src_filename, bands, tmp_file)
-        src_ds = gdal.Open(tmp_file)
-    else:
-        src_ds = gdal.Open(src_filename)
+
+    src_ds = gdal.Open(src_filename)
     try:
         # Open output format driver, see gdal_translate --formats for list
-        driver = gdal.GetDriverByName(dst_format)
+        driver = gdal.GetDriverByName(of)
 
         # Output to new format
-        dst_ds = driver.CreateCopy(dst_filename, src_ds, 0, options)
+        if bands:
+            dst_ds = driver.Create(dst_filename, src_ds.RasterXSize,
+                                   src_ds.RasterYSize, len(bands),
+                                   src_ds.GetRasterBand(bands[0]).DataType)
+
+            dst_ds.SetMetadata(src_ds.GetMetadata())
+            for idx, band_num in enumerate(bands):
+                inband = src_ds.GetRasterBand(band_num).ReadAsArray()
+                outBand = dst_ds.GetRasterBand(idx + 1)
+                outBand.WriteArray(inband)
+                outBand.SetMetadata(outBand.GetMetadata())
+                if nodata is not None:
+                    outBand.SetNoDataValue(nodata)
+                else:
+                    outBand.SetNoDataValue(
+                        src_ds.GetRasterBand(band_num).GetNoDataValue())
+                inband = None
+                outBand = None
+        else:
+            dst_ds = driver.CreateCopy(dst_filename, src_ds, 0, options)
+            if nodata is not None:
+                band = dst_ds.GetRasterBand(1)
+                band.SetNoDataValue(nodata)
+
+        dst_ds.SetGeoTransform(src_ds.GetGeoTransform())
 
         if projection:
             srs = SpatialReference()
             srs.SetWellKnownGeogCS(projection)
             dst_ds.SetProjection(srs.ExportToWkt())
 
-        if nodata is not None:
-            band = dst_ds.GetRasterBand(1)
-            band.SetNoDataValue(nodata)
-
     finally:
         # Properly close the datasets to flush to disk
         dst_ds = None
         src_ds = None
         band = None
-        if bands and tmp_file:
-            os.remove(tmp_file)
 
 
 def gunzip(filepath):
+    """
+    Gunzip a file.
+    :param filepath: Filepath of gzipped file
+    :return: Name of output file
+    """
     outfile = filepath.rstrip('.gz')
     with gzip.open(filepath) as gfile, open(outfile, 'wb') as ucfile:
         shutil.copyfileobj(gfile, ucfile)
     return outfile
+
+
+def untar(filepath, outpath=''):
+    """
+    Extract contents of a tar file to a specified directory
+    :param filepath: Filepath of tar file
+    :param outpath: Output directory
+    :return:
+    """
+    files = []
+    tf = tarfile.open(filepath)
+    for item in tf:
+        tf.extract(item, outpath)
+        files.append(os.path.join(outpath, item.name))
+    return files
 
 
 def nc_convert(filename):
