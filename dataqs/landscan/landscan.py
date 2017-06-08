@@ -17,11 +17,9 @@
 #  limitations under the License.
 ###############################################################################
 import os
-from urllib import urlretrieve
 import zipfile
-
 import gdal
-
+from django.conf import settings
 from dataqs.helpers import style_exists
 from dataqs.processor_base import GeoDataProcessor
 
@@ -41,19 +39,28 @@ class LandscanProcessor(GeoDataProcessor):
         Downloads the sample landscan image for Cyprus
         """
 
-        url = "http://web.ornl.gov/sci/landscan/" + \
-              "landscan2011/LS11sample_Cyprus.zip"
+        landscan = getattr(settings, "LANDSCAN_FILEPATH",
+                           "http://web.ornl.gov/sci/landscan/" +
+                           "landscan2011/LS11sample_Cyprus.zip")
+        print(landscan)
+        if landscan.startswith("http"):
+            filepath = os.path.join(self.tmp_dir, landscan.split("/")[-1])
+            self.download(landscan, filepath)
+        else:
+            filepath = landscan
 
-        zip_dir = os.path.join(self.tmp_dir, "landscan.zip")
-        urlretrieve(url, zip_dir)
-
-        # Open up the zip file
-        zip_ref = zipfile.ZipFile(zip_dir, 'r')
-        landscan_dir = os.path.join(self.tmp_dir, "landscan")
-        zip_ref.extractall(landscan_dir)
-        zip_ref.close()
-
-        return landscan_dir
+        if os.path.splitext(filepath)[1].lower() == ".zip":
+            # Open up the zip file
+            zip_ref = zipfile.ZipFile(filepath, 'r')
+            landscan_dir = os.path.join(self.tmp_dir, "landscan")
+            zip_ref.extractall(landscan_dir)
+            zip_ref.close()
+            print(landscan_dir)
+            return landscan_dir
+        else:
+            # Assume it's a directory
+            print(filepath)
+            return filepath
 
     def convert_landscan(self, landscan_dir):
         """

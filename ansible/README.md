@@ -40,6 +40,12 @@ You can also change the war used to deploy geoserver with the following variable
     * Change the 'DATAQS_APPS' setting to add/remove individual dataqs processors
     * Change the 'CELERYBEAT_SCHEDULE' setting to add/remove/modify scheduled dataqs celery tasks
 
+### Additional Customizations
+
+* roles/dataqs/templates/custom_settings.py:
+    * Replace this file with your own or add/modify/remove settings in the current file
+    * Any settings and/or apps specified in this file will be added to the GeoNode instance
+
 ### Setting up a vagrant box
 
 To configure a local development virtual machine, you will need to have virtualbox and vagrant installed.
