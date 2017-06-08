@@ -33,6 +33,7 @@ import unicodedata
 import ogr2ogr
 import rasterio
 from osgeo import gdal, ogr
+from osr import SpatialReference
 import xml.etree.ElementTree as ET
 from StringIO import StringIO
 from rasterio.warp import RESAMPLING
@@ -119,9 +120,6 @@ def gdal_translate(src_filename, dst_filename, of="GTiff", bands=None,
     Convert a raster image with the specified arguments
     (as if running from commandline)
     """
-    from osgeo import gdal
-    from osr import SpatialReference
-
     if not options:
         options = []
 
