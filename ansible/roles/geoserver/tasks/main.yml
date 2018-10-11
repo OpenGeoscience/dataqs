@@ -4,63 +4,73 @@
 ---
 
 - name: ensure apt cache is up to date
-  apt: update_cache=yes
-  sudo: yes
+  apt:
+    update_cache: true
+  become: true
 
 - name: install Tomcat
-  apt: pkg={{ item }} state=present
-  sudo: yes
-  with_items:
-   - tomcat7
-   - unzip
+  apt:
+    name: ['tomcat8', 'unzip']
+  become: true
 
 - name: copy the Tomcat setenv.sh file to /usr/share/tomcat7/bin
-  template: src=setenv.sh dest=/usr/share/tomcat7/bin/setenv.sh
-  sudo: yes
+  template:
+    src: setenv.sh
+    dest: /usr/share/tomcat8/bin/setenv.sh
+  become: true
 
-- name: copy the tomcat7 file to /etc/default
-  template: src=tomcat7 dest=/etc/default/tomcat7
-  sudo: yes
+- name: copy the tomcat8 file to /etc/default
+  template:
+    src: tomcat8
+    dest: /etc/default/tomcat8
+  become: true
 
 - name: Create Geoserver data directory
-  file: path=/data/ state=directory
-  sudo: yes
+  file:
+    path: /data/
+    state: directory
+  become: true
 
 - name: Download Geoserver (remote)
-  sudo: yes
+  become: true
   get_url:
-    dest=/tmp/geoserver.war
-    url={{ geoserver_url }}
-    owner=0
-    group=0
-    mode=0644
+    dest: /tmp/geoserver.war
+    url: "{{ geoserver_url }}"
+    owner: 0
+    group: 0
+    mode: 0644
+    validate_certs: no
 
 - name: Unzip Geoserver WAR file
   command: unzip -o -d '/tmp/geoserver' '/tmp/geoserver.war'
-  sudo: yes
+  become: true
 
 - name: Copy Geoserver web.xml file with custom data directory
-  template: src=web.xml dest=/tmp/geoserver/WEB-INF/web.xml
-  sudo: yes
+  template:
+    src: web.xml
+    dest: /tmp/geoserver/WEB-INF/web.xml
+  become: true
 
 - name: Move data files
   command: mv -n '/tmp/geoserver/data' '/data/geodata'
-  sudo: yes
+  become: true
 
 - name: Move web app
-  command: mv -n '/tmp/geoserver' '/var/lib/tomcat7/webapps/geoserver'
-  sudo: yes
+  command: mv -n '/tmp/geoserver' '/var/lib/tomcat8/webapps/geoserver'
+  become: true
 
 - name: reset geoserver owner
   file:
     state: directory
-    owner: tomcat7
+    owner: tomcat8
     group: "{{ deploy_user }}"
     path: "/data"
     mode: 0774
     recurse: true
-  sudo: yes
+  become: true
 
 - name: Restart Tomcat
-  service: name=tomcat7 state=restarted
-  sudo: yes
+  service:
+    name: tomcat8
+    state: restarted
+  become: true
