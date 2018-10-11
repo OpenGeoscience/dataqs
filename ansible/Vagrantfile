@@ -16,7 +16,7 @@ Vagrant.configure("2") do |config|
         end
     geoservices.vm.provision "ansible" do |ansible|
       ansible.playbook = "playbook.yml"
-      ansible.galaxy_role_file = "requirements.txt"
+      ansible.galaxy_role_file = "requirements.yml"
       ansible.verbose = "vv"
       ansible.host_key_checking = false
     end

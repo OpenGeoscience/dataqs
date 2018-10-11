@@ -1,0 +1,2 @@
+- src: zenoamaro.supervisord
+- src: geerlingguy.redis

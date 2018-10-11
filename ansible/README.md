@@ -14,7 +14,7 @@ The ansible playbook that performs the provisioning depends on a few roles provi
 ansible galaxy.  You can install these rolls with the following command in this directory:
 
 ```
-ansible-galaxy install -r requirements.txt
+ansible-galaxy install -r requirements.yml
 ```
 
 ### Role Variables
@@ -36,7 +36,7 @@ You can also change the war used to deploy geoserver with the following variable
 
 ### Dataqs Processors
 
-* roles/dataqs/templates/dataq_settings.py: 
+* roles/dataqs/templates/dataq_settings.py:
     * Change the 'DATAQS_APPS' setting to add/remove individual dataqs processors
     * Change the 'CELERYBEAT_SCHEDULE' setting to add/remove/modify scheduled dataqs celery tasks
 
@@ -47,9 +47,9 @@ Note: You may need to change the IP configuration in the VagrantFile to a valid 
 
     $ vagrant up geoservices
     $ vagrant ssh geoservices
-    
-    
-Note: You may need to bring the vagrant box down and up for geonode to work.  
+
+
+Note: You may need to bring the vagrant box down and up for geonode to work.
 
     $ vagrant halt
     $ vagrant up
@@ -57,7 +57,7 @@ Note: You may need to bring the vagrant box down and up for geonode to work.
 
 ## Deploying to ec2 (or other server)
 
-Several variables have to be set correctly before deploying to a remote server. This can be achived by creating a custom inventory with the group ```[geoservices]``` and the host you will deploy too. 
+Several variables have to be set correctly before deploying to a remote server. This can be achived by creating a custom inventory with the group ```[geoservices]``` and the host you will deploy too.
 
 ```
 [geoservices]
@@ -72,16 +72,16 @@ Replace X's with the IP address of the remote server
 * `site_url` - the url of the website - used by geonode to identify its base URL
 * `server_name` - the fully qualified domain name of the server
 
-To deploy, run ```ansible-playbook -i /path/to/inventory playbook.yml``` From this directory.  
+To deploy, run ```ansible-playbook -i /path/to/inventory playbook.yml``` From this directory.
 
 Alternately,  variables may be placed in a local variables file,  e.g.:
 
 /path/to/local_vars.yml
 ```yaml
-ansible_ssh_private_key_file: PATH_TO_PEM_FILE 
-ansible_user: ubuntu 
-deploy_user: ubuntu 
-site_url: http://ec2-XXX-XXX-XXX-XXX.us-west-2.compute.amazonaws.com/ 
+ansible_ssh_private_key_file: PATH_TO_PEM_FILE
+ansible_user: ubuntu
+deploy_user: ubuntu
+site_url: http://ec2-XXX-XXX-XXX-XXX.us-west-2.compute.amazonaws.com/
 server_name: ec2-XXX-XXX-XXX-XXX.us-west-2.compute.amazonaws.com
 ```
 
@@ -90,7 +90,7 @@ With an inventory:
 /path/to/inventory
 ```
 [geoservices]
-XXX.XXX.XXX.XXX 
+XXX.XXX.XXX.XXX
 ```
 
 To deploy,  run:
