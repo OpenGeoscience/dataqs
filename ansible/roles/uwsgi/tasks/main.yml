@@ -4,30 +4,29 @@
 ---
 
 - name: ensure web server packages are installed
-  apt: name={{item}}
-  sudo: yes
-  with_items:
-    - python-dev
-    - python-pip
-
-- name: add uwsgi from pypi
-  pip: name=uwsgi
-  sudo: yes
+  apt:
+    name: ["python3-dev", "python3-pip", "uwsgi"]
+  become: true
 
 - name: create /etc/uwsgi to place apps
-  file: path=/etc/uwsgi owner=www-data group=www-data state=directory mode=0755
-  sudo: yes
+  file:
+    path: /etc/uwsgi
+    owner: www-data
+    group: www-data
+    state: directory
+    mode: 0755
+  become: true
 
 - name: write default vassals configuration file
-  template: src=vassals-default.skel.j2 dest=/etc/uwsgi/vassals-default.skel
-  sudo: yes
-
-- name: make the uwsgi plugins dir
-  command: mkdir -p /usr/lib/uwsgi/plugins
-  sudo: yes
+  template:
+    src: vassals-default.skel.j2
+    dest: /etc/uwsgi/vassals-default.skel
+  become: true
 
 - name: write uwsgi configuration for upstart in emperor mode
-  template: src=uwsgi.conf.j2 dest=/etc/init/uwsgi.conf
-  sudo: yes
+  template:
+    src: emperor.uwsgi.service
+    dest: /etc/systemd/system/emperor.uwsgi.service
+  become: true
   notify:
     - restart uwsgi

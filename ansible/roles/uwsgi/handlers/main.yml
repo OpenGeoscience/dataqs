@@ -1,5 +1,7 @@
 ---
 
 - name: restart uwsgi
-  service: name=uwsgi state=restarted
-  sudo: yes
+  service:
+    name: emperor.uwsgi
+    state: restarted
+  become: true
