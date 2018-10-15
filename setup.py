@@ -41,7 +41,6 @@ setup(
         'shapely',
         'pymongo',
         'numpy',
-        'rasterio==0.31.0',
-        'gdal==2.1.0'
+        'rasterio==0.31.0'
     ]
 )
